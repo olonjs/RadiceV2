@@ -1,0 +1,75 @@
+{
+  "name": "Radice Visual Language",
+  "tokens": {
+    "colors": {
+      "light": {
+        "background": "#fdf7ff",
+        "on-background": "#1d1b20",
+        "surface": "#fdf7ff",
+        "on-surface": "#1d1b20",
+        "surface-container": "#f2ecf4",
+        "surface-container-high": "#ece6ee",
+        "on-surface-variant": "#494551",
+        "primary": "#4f378a",
+        "on-primary": "#ffffff",
+        "secondary": "#63597c",
+        "on-secondary": "#ffffff",
+        "tertiary": "#765b00",
+        "on-tertiary": "#ffffff",
+        "error": "#ba1a1a",
+        "on-error": "#ffffff",
+        "outline": "#7a7582"
+      },
+      "dark": {
+        "background": "#1d1b20",
+        "on-background": "#e6e0e9",
+        "surface": "#1d1b20",
+        "on-surface": "#e6e0e9",
+        "surface-container": "#322f35",
+        "surface-container-high": "#494551",
+        "on-surface-variant": "#cbc4d2",
+        "primary": "#cfbcff",
+        "on-primary": "#381e72",
+        "secondary": "#cdc0e9",
+        "on-secondary": "#332d4b",
+        "tertiary": "#e7c365",
+        "on-tertiary": "#3e2e00",
+        "error": "#ffb4ab",
+        "on-error": "#690005",
+        "outline": "#948f99"
+      }
+    },
+    "typography": {
+      "fontFamily": {
+        "primary": "'Hanken Grotesk', sans-serif",
+        "display": "'Bodoni Moda', serif",
+        "mono": "'Hanken Grotesk', sans-serif"
+      },
+      "wordmark": {
+        "fontFamily": "'Bodoni Moda', serif",
+        "weight": "700",
+        "tracking": "-0.02em"
+      }
+    },
+    "borderRadius": {
+      "sm": "0px",
+      "md": "0px",
+      "lg": "0px",
+      "xl": "0px",
+      "full": "9999px"
+    },
+    "spacing": {
+      "container-max": "1280px",
+      "section-y": "120px"
+    },
+    "zIndex": {
+      "base": "0",
+      "elevated": "10",
+      "dropdown": "100",
+      "sticky": "200",
+      "overlay": "300",
+      "modal": "400",
+      "toast": "500"
+    }
+  }
+}

@@ -1,0 +1,82 @@
+{
+  "id": "experience-page",
+  "slug": "experience",
+  "meta": {
+    "title": "The Experience | Radice",
+    "description": "Learn about the dining experience at Radice, from the architectural ambiance to our philosophy of choreographed, intuitive service."
+  },
+  "sections": [
+    {
+      "id": "exp-intro",
+      "type": "text-block",
+      "data": {
+        "headline": "Space, Time, and Sensation",
+        "content": "<p>The experience at Radice is a carefully choreographed symphony of details. It is more than a meal; it is a dedicated moment in time, designed to engage all the senses and remove you from the everyday.</p>",
+        "alignment": "center"
+      },
+      "settings": {}
+    },
+    {
+      "id": "exp-ambiance",
+      "type": "philosophy-section",
+      "data": {
+        "label": "The Ambiance",
+        "headline": "Architectural Serenity",
+        "content": "Our dining room is an exercise in quiet confidence. Designed by architect Matteo Bianchi, the space combines natural stone, raw linen, and soft, dramatic lighting to create an atmosphere that is both intimate and architectural. It is a tranquil canvas, designed to focus attention on the table and the company you share.",
+        "image": {
+          "url": "/assets/images/1778236542307-1771598125734-Firefly_Flux_a_michelin_green_star_restaurant_interior__detail__fine_dining__954770.jpg",
+          "alt": "1778236542307-1771598125734-Firefly_Flux_a_michelin_green_star_restaurant_interior__detail__fine_dining__954770.jpg"
+        },
+        "imagePosition": "right"
+      },
+      "settings": {}
+    },
+    {
+      "id": "exp-service",
+      "type": "philosophy-section",
+      "data": {
+        "label": "The Service",
+        "headline": "Anticipatory Hospitality",
+        "content": "Our service is built on the principle of 'sprezzatura'—a studied grace that appears effortless. The team moves with precision and warmth, anticipating needs without intrusion. Our goal is to provide a seamless, intuitive experience that feels both deeply personal and impeccably professional.",
+        "image": {
+          "url": "/assets/images/1778236491175-1771598312886-Firefly_a_tasting_menu_photo_with_multiple_plates_for_a_michelin_green_star_restaurant__detai_954770.png",
+          "alt": "1778236491175-1771598312886-Firefly_a_tasting_menu_photo_with_multiple_plates_for_a_michelin_green_star_restaurant__detai_954770.png"
+        },
+        "imagePosition": "left"
+      },
+      "settings": {}
+    },
+    {
+      "id": "exp-gallery",
+      "type": "gallery-grid",
+      "data": {
+        "headline": "Moments at Radice",
+        "items": [
+          {
+            "id": "g1",
+            "image": {
+              "url": "/assets/images/1778249400692-Generated_Image_May_08__2026_-_4_09PM.jpg",
+              "alt": "Generated Image May 08, 2026 - 4_09PM.jpg"
+            },
+            "caption": ""
+          },
+          {
+            "id": "g5",
+            "image": {
+              "url": "/assets/images/1778248952030-Generated_Image_May_08__2026_-_4_00PM_1_.jpg",
+              "alt": "1778248952030-Generated_Image_May_08__2026_-_4_00PM_1_.jpg"
+            }
+          },
+          {
+            "id": "g6",
+            "image": {
+              "url": "/assets/images/1778249646728-Generated_Image_May_08__2026_-_4_13PM.jpg",
+              "alt": "Generated Image May 08, 2026 - 4_13PM.jpg"
+            }
+          }
+        ]
+      },
+      "settings": {}
+    }
+  ]
+}

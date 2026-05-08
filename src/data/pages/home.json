@@ -1,0 +1,86 @@
+{
+  "id": "home-page",
+  "slug": "home",
+  "meta": {
+    "title": "Radice | Contemporary Fine Dining",
+    "description": "Experience Radice, a two-Michelin-star restaurant in Chicago, offering seasonal tasting menus rooted in Italian terroir and modern technique."
+  },
+  "sections": [
+    {
+      "id": "home-hero",
+      "type": "editorial-hero",
+      "data": {
+        "label": "A Two-Michelin-Star Experience",
+        "headline": "Cuisine as<br>Narrative",
+        "subheadline": "At Radice, we believe every ingredient has a story. Our tasting menus are a journey through the seasons, a dialogue between the earth and the hand.",
+        "primaryCta": {
+          "id": "cta-home-hero",
+          "label": "Explore the Menu",
+          "href": "/menu",
+          "variant": "primary"
+        },
+        "backgroundImage": {
+          "url": "/assets/images/1778249988071-Generated_Image_May_08__2026_-_4_19PM.jpg",
+          "alt": "1778249988071-Generated_Image_May_08__2026_-_4_19PM.jpg"
+        }
+      },
+      "settings": {}
+    },
+    {
+      "id": "home-philosophy",
+      "type": "philosophy-section",
+      "data": {
+        "label": "Our Philosophy",
+        "headline": "The Essence of Season",
+        "content": "Radice—Italian for 'root'—is a commitment to origin. We collaborate with a dedicated network of local farmers, growers, and artisans to source ingredients at their absolute peak, translating the ephemeral beauty of the seasons onto the plate.",
+        "image": {
+          "url": "/assets/images/1778233514127-1771599023714-Generated_Image_February_20__2026_-_3_49PM.jpeg",
+          "alt": "1778233514127-1771599023714-Generated_Image_February_20__2026_-_3_49PM.jpeg"
+        },
+        "imagePosition": "left"
+      },
+      "settings": {}
+    },
+    {
+      "id": "home-menu-preview",
+      "type": "menu-display",
+      "data": {
+        "title": "The Autumn Menu",
+        "description": "A preview of our current tasting menu, celebrating the harvest and the transition to cooler days.",
+        "items": [
+          {
+            "id": "item-1",
+            "name": "Forest Floor",
+            "description": "Foraged Mushrooms, Pine Dashi, Cured Egg Yolk"
+          },
+          {
+            "id": "item-2",
+            "name": "Scallop Crudo",
+            "description": "Fermented Apple, Burnt Dill Oil, Horseradish"
+          },
+          {
+            "id": "item-3",
+            "name": "Agnolotti del Plin",
+            "description": "Braised Veal, Parmesan Brodo, White Truffle"
+          }
+        ],
+        "footnote": "The full ten-course tasting menu is available for exploration."
+      },
+      "settings": {}
+    },
+    {
+      "id": "home-cta",
+      "type": "cta-banner",
+      "data": {
+        "headline": "An Invitation to the Table",
+        "primaryCta": {
+          "id": "cta-home-res",
+          "label": "Make a Reservation",
+          "href": "/reservations",
+          "variant": "primary"
+        }
+      },
+      "settings": {}
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "id": "philosophy-page",
+  "slug": "philosophy",
+  "meta": {
+    "title": "Philosophy | Radice",
+    "description": "Discover the culinary philosophy of Radice, centered on seasonality, terroir, and a deep respect for ingredients."
+  },
+  "sections": [
+    {
+      "id": "phil-hero",
+      "type": "philosophy-section",
+      "data": {
+        "label": "Our Foundation",
+        "headline": "Rooted in Respect",
+        "content": "Our philosophy is simple: to honor the ingredient. This begins with sourcing—building lasting relationships with the people who grow, raise, and harvest our food. It continues in the kitchen, where technique is employed not to disguise, but to amplify the inherent character of each element. We cook with intention, precision, and a profound respect for nature's integrity.",
+        "image": {
+          "url": "https://images.unsplash.com/photo-1542838132-92c53300491e?q=80&w=3174&auto=format&fit=crop",
+          "alt": "A farmer's hands holding a handful of rich, dark soil."
+        },
+        "imagePosition": "right"
+      },
+      "settings": {}
+    },
+    {
+      "id": "phil-tech",
+      "type": "philosophy-section",
+      "data": {
+        "label": "The Craft",
+        "headline": "Contemporary Technique",
+        "content": "While our heart is in Italian tradition, our mind is in the contemporary. We embrace modern techniques—fermentation, preservation, and precise temperature control—as tools to unlock new depths of flavor and texture. The goal is not novelty for its own sake, but a more vivid, more expressive articulation of the ingredient's soul. It is a cuisine that is both timeless and of its time.",
+        "image": {
+          "url": "https://images.unsplash.com/photo-1628135234533-356a59551c6c?q=80&w=3024&auto=format&fit=crop",
+          "alt": "A chef using a sous-vide machine in a professional kitchen."
+        },
+        "imagePosition": "left"
+      },
+      "settings": {}
+    }
+  ]
+}
+

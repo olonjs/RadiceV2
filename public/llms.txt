@@ -1,0 +1,41 @@
+# Radice | Fine Dining
+
+Experience Radice, a two-Michelin-star restaurant in Chicago, offering seasonal tasting menus rooted in Italian terroir and modern technique.
+
+> **AI Agents:** This site is built with OlonJS. It exposes a native Model Context Protocol (MCP) manifest for direct structural interaction. 
+> To read the site map or access structured content, use the URI `olon://pages` or `olon://pages/[slug]`.
+> Endpoint: `/mcp-manifest.json`
+
+## Pages
+
+- **[Chef Elara Rossi | Radice](/chef)** (`chef`)
+  Meet Executive Chef Elara Rossi, the visionary behind the two-Michelin-star cuisine at Radice.
+  *Contract:* `/schemas/chef.schema.json` | *Manifest:* `/mcp-manifests/chef.json`
+
+- **[Contact | Radice](/contact)** (`contact`)
+  Find our location, hours of operation, and contact information for reservations and general inquiries.
+  *Contract:* `/schemas/contact.schema.json` | *Manifest:* `/mcp-manifests/contact.json`
+
+- **[The Experience | Radice](/experience)** (`experience`)
+  Learn about the dining experience at Radice, from the architectural ambiance to our philosophy of choreographed, intuitive service.
+  *Contract:* `/schemas/experience.schema.json` | *Manifest:* `/mcp-manifests/experience.json`
+
+- **[Radice | Contemporary Fine Dining](/)** (`home`)
+  Experience Radice, a two-Michelin-star restaurant in Chicago, offering seasonal tasting menus rooted in Italian terroir and modern technique.
+  *Contract:* `/schemas/home.schema.json` | *Manifest:* `/mcp-manifests/home.json`
+
+- **[Menu | Radice](/menu)** (`menu`)
+  Explore the seasonal tasting menus at Radice, featuring 'Il Viaggio' and 'La Stagione', with optional wine pairings.
+  *Contract:* `/schemas/menu.schema.json` | *Manifest:* `/mcp-manifests/menu.json`
+
+- **[Philosophy | Radice](/philosophy)** (`philosophy`)
+  Discover the culinary philosophy of Radice, centered on seasonality, terroir, and a deep respect for ingredients.
+  *Contract:* `/schemas/philosophy.schema.json` | *Manifest:* `/mcp-manifests/philosophy.json`
+
+- **[Private Dining | Radice](/private-dining)** (`private-dining`)
+  Host your bespoke event in our exclusive private dining spaces, The Cantina and The Studio.
+  *Contract:* `/schemas/private-dining.schema.json` | *Manifest:* `/mcp-manifests/private-dining.json`
+
+- **[Reservations | Radice](/reservations)** (`reservations`)
+  Book your table at Radice. Find information on our booking policies, dress code, and dietary accommodations.
+  *Contract:* `/schemas/reservations.schema.json` | *Manifest:* `/mcp-manifests/reservations.json`

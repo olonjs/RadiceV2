@@ -1,0 +1,122 @@
+@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,500;6..96,600;6..96,700&family=Hanken+Grotesk:wght@400;600&display=swap');
+
+@import "tailwindcss";
+@source "./**/*.tsx";
+
+@theme {
+  --color-background:           var(--background);
+  --color-foreground:           var(--foreground);
+  --color-card:                 var(--card);
+  --color-card-foreground:      var(--card-foreground);
+  --color-primary:              var(--primary);
+  --color-primary-foreground:   var(--primary-foreground);
+  --color-secondary:            var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted:                var(--muted);
+  --color-muted-foreground:     var(--muted-foreground);
+  --color-accent:               var(--accent);
+  --color-border:               var(--border);
+  --radius-lg:                  var(--theme-radius-lg);
+  --radius-md:                  var(--theme-radius-md);
+  --radius-sm:                  var(--theme-radius-sm);
+  --font-primary: var(--theme-font-primary);
+  --font-mono:    var(--theme-font-mono);
+  --font-display: var(--theme-font-display);
+}
+
+:root, [data-theme='light'] {
+  --background:           var(--theme-colors-light-background);
+  --foreground:           var(--theme-colors-light-on-background);
+  --card:                 var(--theme-colors-light-surface-container);
+  --card-foreground:      var(--theme-colors-light-on-surface);
+  --primary:              var(--theme-colors-light-primary);
+  --primary-foreground:   var(--theme-colors-light-on-primary);
+  --secondary:            var(--theme-colors-light-secondary);
+  --secondary-foreground: var(--theme-colors-light-on-secondary);
+  --muted:                var(--theme-colors-light-surface-container-high);
+  --muted-foreground:     var(--theme-colors-light-on-surface-variant);
+  --accent:               var(--theme-colors-light-tertiary);
+  --accent-foreground:    var(--theme-colors-light-on-tertiary);
+  --border:               var(--theme-colors-light-outline);
+  --input:                var(--theme-colors-light-surface-container-high);
+  --ring:                 var(--theme-colors-light-primary);
+  --destructive:          var(--theme-colors-light-error);
+  --destructive-foreground: var(--theme-colors-light-on-error);
+  --radius:               var(--theme-radius-lg);
+}
+
+[data-theme='dark'] {
+  --background:           var(--theme-colors-dark-background);
+  --foreground:           var(--theme-colors-dark-on-background);
+  --card:                 var(--theme-colors-dark-surface-container);
+  --card-foreground:      var(--theme-colors-dark-on-surface);
+  --primary:              var(--theme-colors-dark-primary);
+  --primary-foreground:   var(--theme-colors-dark-on-primary);
+  --secondary:            var(--theme-colors-dark-secondary);
+  --secondary-foreground: var(--theme-colors-dark-on-secondary);
+  --muted:                var(--theme-colors-dark-surface-container-high);
+  --muted-foreground:     var(--theme-colors-dark-on-surface-variant);
+  --accent:               var(--theme-colors-dark-tertiary);
+  --accent-foreground:    var(--theme-colors-dark-on-tertiary);
+  --border:               var(--theme-colors-dark-outline);
+  --input:                var(--theme-colors-dark-surface-container-high);
+  --ring:                 var(--theme-colors-dark-primary);
+  --destructive:          var(--theme-colors-dark-error);
+  --destructive-foreground: var(--theme-colors-dark-on-error);
+}
+
+@layer base {
+  * { border-color: var(--border); }
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-primary);
+    line-height: 1.6;
+    overflow-x: hidden;
+    @apply antialiased;
+  }
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800"%3E%3Cfilter id="noiseFilter"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%" height="100%" filter="url(%23noiseFilter)"/%3E%3C/svg%3E');
+    opacity: 0.03;
+    z-index: -1;
+    pointer-events: none;
+  }
+}
+
+.font-display {
+  font-family: var(--font-display, var(--font-primary));
+}
+
+html { scroll-behavior: smooth; }
+
+/* TOCC — required by §7 spec */
+[data-jp-section-overlay] {
+  position: absolute; inset: 0; z-index: 9999;
+  pointer-events: none; border: 2px solid transparent;
+  transition: border-color 0.15s, background-color 0.15s;
+}
+[data-section-id]:hover [data-jp-section-overlay] {
+  border: 2px dashed color-mix(in oklch, var(--primary) 50%, transparent);
+  background-color: color-mix(in oklch, var(--primary) 6%, transparent);
+}
+[data-section-id][data-jp-selected] [data-jp-section-overlay] {
+  border: 2px solid var(--primary);
+  background-color: color-mix(in oklch, var(--primary) 10%, transparent);
+}
+[data-jp-section-overlay] > div {
+  position: absolute; top: 0; right: 0;
+  padding: 0.2rem 0.55rem;
+  font-size: 9px; font-weight: 800;
+  text-transform: uppercase; letter-spacing: 0.1em;
+  background: var(--primary); color: var(--primary-foreground);
+  opacity: 0; transition: opacity 0.15s;
+}
+[data-section-id]:hover [data-jp-section-overlay] > div,
+[data-section-id][data-jp-selected] [data-jp-section-overlay] > div { opacity: 1; }
+

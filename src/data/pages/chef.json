@@ -1,0 +1,25 @@
+{
+  "id": "chef-page",
+  "slug": "chef",
+  "meta": {
+    "title": "Chef Elara Rossi | Radice",
+    "description": "Meet Executive Chef Elara Rossi, the visionary behind the two-Michelin-star cuisine at Radice."
+  },
+  "sections": [
+    {
+      "id": "chef-profile-main",
+      "type": "chef-profile",
+      "data": {
+        "name": "Elara Rossi",
+        "title": "Executive Chef & Founder",
+        "bio": "Born in Bologna, Chef Elara Rossi's culinary education was a tale of two worlds: the rustic traditions learned in her grandmother's kitchen and the rigorous discipline of haute cuisine under Chef Massimo Bottura at Osteria Francescana. After stages at Noma in Copenhagen and Mirazur in Menton, she returned to her roots with a new perspective, founding Radice as a testament to the power of memory, terroir, and minimalist elegance.",
+        "quote": "We are not creating something from nothing. We are listening to what the earth gives us and trying, with humility, to tell its story.",
+        "image": {
+          "url": "/assets/images/1778233544049-1771598502228-Firefly_a_photo_of_the_young_male_chef_of_a_michelin_green_star_restaurant_in_the_act_of_cook_954770.png",
+          "alt": "1778233544049-1771598502228-Firefly_a_photo_of_the_young_male_chef_of_a_michelin_green_star_restaurant_in_the_act_of_cook_954770.png"
+        }
+      },
+      "settings": {}
+    }
+  ]
+}

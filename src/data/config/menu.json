@@ -1,0 +1,62 @@
+{
+  "main": [
+    {
+      "id": "nav-1",
+      "label": "Menu",
+      "href": "/menu"
+    },
+    {
+      "id": "nav-2",
+      "label": "Philosophy",
+      "href": "/philosophy"
+    },
+    {
+      "id": "nav-3",
+      "label": "Chef",
+      "href": "/chef"
+    },
+    {
+      "id": "nav-4",
+      "label": "Experience",
+      "href": "/experience"
+    },
+    {
+      "id": "nav-5",
+      "label": "Private Dining",
+      "href": "/private-dining"
+    },
+    {
+      "id": "nav-6",
+      "label": "Contact",
+      "href": "/contact"
+    },
+    {
+      "id": "nav-7",
+      "label": "Reservations",
+      "href": "/reservations",
+      "isCta": true
+    }
+  ],
+  "footer": [
+    {
+      "id": "fnav-1",
+      "label": "Home",
+      "href": "/"
+    },
+    {
+      "id": "fnav-2",
+      "label": "Menu",
+      "href": "/menu"
+    },
+    {
+      "id": "fnav-3",
+      "label": "Reservations",
+      "href": "/reservations"
+    },
+    {
+      "id": "fnav-4",
+      "label": "Contact",
+      "href": "/contact"
+    }
+  ]
+}

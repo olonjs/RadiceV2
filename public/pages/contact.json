@@ -1,0 +1,36 @@
+{
+  "id": "contact-page",
+  "slug": "contact",
+  "meta": {
+    "title": "Contact | Radice",
+    "description": "Find our location, hours of operation, and contact information for reservations and general inquiries."
+  },
+  "sections": [
+    {
+      "id": "contact-info",
+      "type": "info-grid",
+      "data": {
+        "headline": "Get in Touch",
+        "items": [
+          { "id": "info-1", "title": "Location", "content": "123 Via della Radice\nChicago, IL 60611\n\nWe are located in the River North neighborhood." },
+          { "id": "info-2", "title": "Hours", "content": "Tuesday – Saturday\nDinner: 5:30 PM – 9:30 PM\n\nClosed Sunday & Monday" },
+          { "id": "info-3", "title": "Contact", "content": "General Inquiries:\ninfo@radice.com\n\nReservations:\n+1 (312) 555-0123\n\nPress:\npress@radice.com" }
+        ]
+      },
+      "settings": {}
+    },
+    {
+      "id": "contact-image",
+      "type": "image-block",
+      "data": {
+        "image": {
+          "url": "https://images.unsplash.com/photo-1549488344-cbb6c34cf08b?q=80&w=3174&auto=format&fit=crop",
+          "alt": "A map showing the location of Radice in Chicago."
+        },
+        "caption": "A placeholder map image."
+      },
+      "settings": {}
+    }
+  ]
+}
+

@@ -1,0 +1,45 @@
+{
+  "header": {
+    "id": "global-header",
+    "type": "header",
+    "data": {
+      "logoText": "Radice",
+      "menu": {
+        "$ref": "../config/menu.json#/main"
+      }
+    },
+    "settings": {}
+  },
+  "footer": {
+    "id": "global-footer",
+    "type": "footer",
+    "data": {
+      "logoText": "Radice",
+      "tagline": "A contemporary Italian fine dining experience rooted in terroir and seasonality.",
+      "address": "123 Via della Radice\nChicago, IL 60611",
+      "phone": "+1 (312) 555-0123",
+      "email": "reservations@radice.com",
+      "copyright": "© 2024 Radice. All rights reserved.",
+      "menu": {
+        "$ref": "../config/menu.json#/footer"
+      },
+      "socialLinks": [
+        {
+          "id": "soc-1",
+          "platform": "Instagram",
+          "url": "https://instagram.com"
+        },
+        {
+          "id": "soc-2",
+          "platform": "Facebook",
+          "url": "https://facebook.com"
+        }
+      ]
+    },
+    "settings": {}
+  },
+  "identity": {
+    "title": "Radice | Fine Dining"
+  },
+  "pages": []
+}

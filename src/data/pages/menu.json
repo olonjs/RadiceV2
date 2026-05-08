@@ -1,0 +1,124 @@
+{
+  "id": "menu-page",
+  "slug": "menu",
+  "meta": {
+    "title": "Menu | Radice",
+    "description": "Explore the seasonal tasting menus at Radice, featuring 'Il Viaggio' and 'La Stagione', with optional wine pairings."
+  },
+  "sections": [
+    {
+      "id": "menu-intro",
+      "type": "text-block",
+      "data": {
+        "headline": "The Culinary Journey",
+        "content": "<p>Our menus are a reflection of time and place, offered in two distinct narrative formats. Each is designed to be a complete, multi-sensory experience, unfolding over several hours. We invite you to trust our kitchen as we guide you through a story told in flavor, texture, and aroma.</p>",
+        "alignment": "center"
+      },
+      "settings": {}
+    },
+    {
+      "id": "menu-viaggio",
+      "type": "menu-display",
+      "data": {
+        "title": "Il Viaggio — The Journey",
+        "description": "A comprehensive, ten-course exploration of Chef Rossi's signature techniques and philosophical concepts. This is the definitive Radice experience.",
+        "items": [
+          {
+            "id": "v-1",
+            "name": "Ostrica",
+            "description": "Oyster, Smoked Cream, Sea Lettuce"
+          },
+          {
+            "id": "v-2",
+            "name": "Cipolla",
+            "description": "Onion Consommé, Black Garlic, Thyme"
+          },
+          {
+            "id": "v-3",
+            "name": "Ricciola",
+            "description": "Amberjack, Citrus, Fermented Chili"
+          },
+          {
+            "id": "v-4",
+            "name": "Risotto",
+            "description": "Acquerello Rice, Saffron, Bone Marrow"
+          },
+          {
+            "id": "v-5",
+            "name": "Animelle",
+            "description": "Veal Sweetbread, Licorice, Hazelnut"
+          },
+          {
+            "id": "v-6",
+            "name": "Piccione",
+            "description": "Squab, Cherry, Endive"
+          },
+          {
+            "id": "v-7",
+            "name": "Formaggio",
+            "description": "Selection of Italian Artisanal Cheeses"
+          },
+          {
+            "id": "v-8",
+            "name": "Predessert",
+            "description": "Yogurt, Cucumber, Mint"
+          },
+          {
+            "id": "v-9",
+            "name": "Cioccolato",
+            "description": "Amedei Chocolate, Olive Oil, Salt"
+          },
+          {
+            "id": "v-10",
+            "name": "Piccola Pasticceria",
+            "description": "Mignardises"
+          }
+        ],
+        "footnote": "Menu: $295 per guest. Wine Pairing: $175. Non-Alcoholic Pairing: $110."
+      },
+      "settings": {}
+    },
+    {
+      "id": "menu-stagione",
+      "type": "menu-display",
+      "data": {
+        "title": "La Stagione — The Season",
+        "description": "A concise, six-course menu focusing entirely on the most exceptional ingredients of the current season. A snapshot of the now.",
+        "items": [
+          {
+            "id": "s-1",
+            "name": "Radicchio",
+            "description": "Tardivo Radicchio, Blood Orange, Anchovy"
+          },
+          {
+            "id": "s-2",
+            "name": "Raviolo",
+            "description": "Single Raviolo of Ricotta and Egg Yolk"
+          },
+          {
+            "id": "s-3",
+            "name": "Rombo",
+            "description": "Turbot, Artichoke, Lemon Verbena"
+          },
+          {
+            "id": "s-4",
+            "name": "Manzo",
+            "description": "Dry-Aged Beef, Potato, Rosemary"
+          },
+          {
+            "id": "s-5",
+            "name": "Mela",
+            "description": "Apple, Celery, Walnut"
+          },
+          {
+            "id": "s-6",
+            "name": "Caffè",
+            "description": "Espresso, Mascarpone, Amaro"
+          }
+        ],
+        "footnote": "Menu: $215 per guest. Wine Pairing: $125."
+      },
+      "settings": {}
+    }
+  ]
+}
