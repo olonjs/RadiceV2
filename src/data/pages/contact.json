@@ -1,16 +1,14 @@
 {
   "id": "contact-page",
-  "slug": "contact",
   "meta": {
     "title": "Contact | Radice",
     "description": "Find our location, hours of operation, and contact information for reservations and general inquiries."
   },
+  "slug": "contact",
   "sections": [
     {
       "id": "contact-info",
-      "type": "info-grid",
       "data": {
-        "headline": "Get in Touch",
         "items": [
           {
             "id": "info-1",
@@ -27,20 +25,22 @@
             "title": "Contact",
             "content": "General Inquiries:\ninfo@radice.com\n\nReservations:\n+1 (312) 555-0123\n\nPress:\npress@radice.com"
           }
-        ]
+        ],
+        "headline": "Get in Touch"
       },
+      "type": "info-grid",
       "settings": {}
     },
     {
       "id": "contact-image",
-      "type": "image-block",
       "data": {
         "image": {
-          "url": "/assets/images/1778233514127-1771599023714-Generated_Image_February_20__2026_-_3_49PM.jpeg",
-          "alt": "1778233514127-1771599023714-Generated_Image_February_20__2026_-_3_49PM.jpeg"
+          "alt": "1778254401377-7780b737-6034-412e-ad34-872afd43037c-1778238061787-1771599023714-Generated_Image_February_20__2026_-_3_49PM",
+          "url": "https://bat5elmxofxdroan.public.blob.vercel-storage.com/tenant-assets/8cd8d078-420c-4f7b-9f32-1235271bc160/1778254401377-7780b737-6034-412e-ad34-872afd43037c-1778238061787-1771599023714-Generated_Image_February_20__2026_-_3_49PM.jpg"
         },
         "caption": ""
       },
+      "type": "image-block",
       "settings": {}
     }
   ]
