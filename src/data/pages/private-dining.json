@@ -1,31 +1,29 @@
 {
   "id": "private-dining-page",
-  "slug": "private-dining",
   "meta": {
     "title": "Private Dining | Radice",
     "description": "Host your bespoke event in our exclusive private dining spaces, The Cantina and The Studio."
   },
+  "slug": "private-dining",
   "sections": [
     {
       "id": "pd-intro",
-      "type": "philosophy-section",
       "data": {
-        "label": "Bespoke Events",
-        "headline": "Intimate Gatherings, Elevated",
-        "content": "For special occasions that demand an unforgettable setting, Radice offers two distinct private dining spaces. Each provides the full depth of our culinary experience, tailored to the specific needs of your event with dedicated service and personalized menu planning.",
         "image": {
-          "url": "/assets/images/1778253599584-cantina.png",
-          "alt": "cantina.png"
+          "alt": "cantina.png",
+          "url": "/assets/images/1778253599584-cantina.png"
         },
+        "label": "Bespoke Events",
+        "content": "For special occasions that demand an unforgettable setting, Radice offers two distinct private dining spaces. Each provides the full depth of our culinary experience, tailored to the specific needs of your event with dedicated service and personalized menu planning.",
+        "headline": "Intimate Gatherings, Elevated",
         "imagePosition": "right"
       },
+      "type": "philosophy-section",
       "settings": {}
     },
     {
       "id": "pd-info",
-      "type": "info-grid",
       "data": {
-        "headline": "Our Spaces",
         "items": [
           {
             "id": "info-1",
@@ -42,22 +40,24 @@
             "title": "Inquiries",
             "content": "Our events team is available to discuss your needs and curate a bespoke experience. Please reach out to events@radice.com for availability and menu consultation."
           }
-        ]
+        ],
+        "headline": "Our Spaces"
       },
+      "type": "info-grid",
       "settings": {}
     },
     {
       "id": "pd-cta",
-      "type": "cta-banner",
       "data": {
         "headline": "Plan Your Event",
         "primaryCta": {
           "id": "cta-pd",
-          "label": "Inquire Now",
           "href": "mailto:events@radice.com",
+          "label": "Inquire Now",
           "variant": "primary"
         }
       },
+      "type": "cta-banner",
       "settings": {}
     }
   ]
