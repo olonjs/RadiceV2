@@ -1,52 +1,49 @@
 {
   "id": "home-page",
-  "slug": "home",
   "meta": {
     "title": "Radice | Contemporary Fine Dining",
     "description": "Experience Radice, a two-Michelin-star restaurant in Chicago, offering seasonal tasting menus rooted in Italian terroir and modern technique."
   },
+  "slug": "home",
   "sections": [
     {
       "id": "home-hero",
-      "type": "editorial-hero",
       "data": {
         "label": "A Two-Michelin-Star Experience",
         "headline": "Cuisine as<br>Narrative",
-        "subheadline": "At Radice, we believe every ingredient has a story. Our tasting menus are a journey through the seasons, a dialogue between the earth and the hand.",
         "primaryCta": {
           "id": "cta-home-hero",
-          "label": "Explore the Menu",
           "href": "/menu",
+          "label": "Explore the Menu",
           "variant": "primary"
         },
+        "subheadline": "At Radice, we believe every ingredient has a story. Our tasting menus are a journey through the seasons, a dialogue between the earth and the hand.",
         "backgroundImage": {
-          "url": "/assets/images/1778249988071-Generated_Image_May_08__2026_-_4_19PM.jpg",
-          "alt": "1778249988071-Generated_Image_May_08__2026_-_4_19PM.jpg"
+          "alt": "1778249988071-Generated_Image_May_08__2026_-_4_19PM.jpg",
+          "url": "https://bat5elmxofxdroan.public.blob.vercel-storage.com/tenant-assets/8cd8d078-420c-4f7b-9f32-1235271bc160/1778254370170-6dedfe15-e89d-4fd9-a947-a67087861892-1778249988071-Generated_Image_May_08__2026_-_4_19PM.jpg"
         }
       },
+      "type": "editorial-hero",
       "settings": {}
     },
     {
       "id": "home-philosophy",
-      "type": "philosophy-section",
       "data": {
-        "label": "Our Philosophy",
-        "headline": "The Essence of Season",
-        "content": "Radice—Italian for 'root'—is a commitment to origin. We collaborate with a dedicated network of local farmers, growers, and artisans to source ingredients at their absolute peak, translating the ephemeral beauty of the seasons onto the plate.",
         "image": {
-          "url": "/assets/images/1778233514127-1771599023714-Generated_Image_February_20__2026_-_3_49PM.jpeg",
-          "alt": "1778233514127-1771599023714-Generated_Image_February_20__2026_-_3_49PM.jpeg"
+          "alt": "1778238061787-1771599023714-Generated_Image_February_20__2026_-_3_49PM.jpeg",
+          "url": "https://bat5elmxofxdroan.public.blob.vercel-storage.com/tenant-assets/8cd8d078-420c-4f7b-9f32-1235271bc160/1778254401377-7780b737-6034-412e-ad34-872afd43037c-1778238061787-1771599023714-Generated_Image_February_20__2026_-_3_49PM.jpg"
         },
+        "label": "Our Philosophy",
+        "content": "Radice—Italian for 'root'—is a commitment to origin. We collaborate with a dedicated network of local farmers, growers, and artisans to source ingredients at their absolute peak, translating the ephemeral beauty of the seasons onto the plate.",
+        "headline": "The Essence of Season",
         "imagePosition": "left"
       },
+      "type": "philosophy-section",
       "settings": {}
     },
     {
       "id": "home-menu-preview",
-      "type": "menu-display",
       "data": {
-        "title": "The Autumn Menu",
-        "description": "A preview of our current tasting menu, celebrating the harvest and the transition to cooler days.",
         "items": [
           {
             "id": "item-1",
@@ -64,22 +61,25 @@
             "description": "Braised Veal, Parmesan Brodo, White Truffle"
           }
         ],
-        "footnote": "The full ten-course tasting menu is available for exploration."
+        "title": "The Autumn Menu",
+        "footnote": "The full ten-course tasting menu is available for exploration.",
+        "description": "A preview of our current tasting menu, celebrating the harvest and the transition to cooler days."
       },
+      "type": "menu-display",
       "settings": {}
     },
     {
       "id": "home-cta",
-      "type": "cta-banner",
       "data": {
         "headline": "An Invitation to the Table",
         "primaryCta": {
           "id": "cta-home-res",
-          "label": "Make a Reservation",
           "href": "/reservations",
+          "label": "Make a Reservation",
           "variant": "primary"
         }
       },
+      "type": "cta-banner",
       "settings": {}
     }
   ]
