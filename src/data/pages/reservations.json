@@ -1,34 +1,45 @@
 {
   "id": "reservations-page",
-  "slug": "reservations",
   "meta": {
     "title": "Reservations | Radice",
     "description": "Book your table at Radice. Find information on our booking policies, dress code, and dietary accommodations."
   },
+  "slug": "reservations",
   "sections": [
     {
       "id": "res-intro",
-      "type": "text-block",
       "data": {
-        "headline": "Reserve Your Table",
         "content": "<p>We welcome you to join us for an evening at Radice. Reservations are available up to 60 days in advance and are exclusively released online via the portal below. For parties larger than six, please inquire about our private dining options.</p><p><em>A placeholder for a booking widget like Tock or Resy would be embedded here.</em></p>",
+        "headline": "Reserve Your Table",
         "alignment": "center"
       },
+      "type": "text-block",
       "settings": {}
     },
     {
       "id": "res-info",
-      "type": "info-grid",
       "data": {
-        "headline": "Before You Arrive",
         "items": [
-          { "id": "info-1", "title": "Dietary Restrictions", "content": "We are pleased to accommodate most dietary restrictions with at least 48 hours advance notice. Please make a note at the time of booking. Unfortunately, we cannot guarantee accommodations for severe allergies or restrictions without prior notice." },
-          { "id": "info-2", "title": "Dress Code", "content": "Our dress code is smart elegant. We kindly request no shorts, t-shirts, or athletic wear. Jackets are recommended but not required for gentlemen." },
-          { "id": "info-3", "title": "Cancellation Policy", "content": "Due to the intimate nature of our restaurant, a fee of $100 per guest will be charged for cancellations made within 24 hours of the reservation time. We appreciate your understanding." }
-        ]
+          {
+            "id": "info-1",
+            "title": "Dietary Restrictions",
+            "content": "We are pleased to accommodate most dietary restrictions with at least 48 hours advance notice. Please make a note at the time of booking. Unfortunately, we cannot guarantee accommodations for severe allergies or restrictions without prior notice."
+          },
+          {
+            "id": "info-2",
+            "title": "Dress Code",
+            "content": "Our dress code is smart elegant. We kindly request no shorts, t-shirts, or athletic wear. Jackets are recommended but not required for gentlemen."
+          },
+          {
+            "id": "info-3",
+            "title": "Cancellation Policy",
+            "content": "Due to the intimate nature of our restaurant, a fee of $100 per guest will be charged for cancellations made within 24 hours of the reservation time. We appreciate your understanding."
+          }
+        ],
+        "headline": "Before You Arrive"
       },
+      "type": "info-grid",
       "settings": {}
     }
   ]
 }
-
