@@ -120,3 +120,11 @@ html { scroll-behavior: smooth; }
 [data-section-id]:hover [data-jp-section-overlay] > div,
 [data-section-id][data-jp-selected] [data-jp-section-overlay] > div { opacity: 1; }
 
+/* Page transitions — CSS View Transitions API (SPA, React Router viewTransition prop) */
+@media (prefers-reduced-motion: no-preference) {
+  ::view-transition-old(root) { animation: 220ms ease-out both vt-fade-out; }
+  ::view-transition-new(root) { animation: 220ms ease-in  both vt-fade-in;  }
+  @keyframes vt-fade-out { from { opacity: 1; } to { opacity: 0; } }
+  @keyframes vt-fade-in  { from { opacity: 0; } to { opacity: 1; } }
+}
+

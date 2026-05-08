@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import { isInAppPathHref } from '@/lib/isInAppPathHref';
 import type { FooterData, FooterSettings } from './types';
 
 export const Footer: React.FC<{ data: FooterData; settings: FooterSettings }> = ({ data }) => {
@@ -19,11 +21,11 @@ export const Footer: React.FC<{ data: FooterData; settings: FooterSettings }> = 
       <div className="mx-auto max-w-[1280px] px-6 py-24 md:px-12">
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-12">
           <div className="lg:col-span-4">
-            <a href="/" aria-label="Radice Home">
+            <Link to="/" viewTransition aria-label="Radice Home">
               <span className="font-display text-3xl font-bold tracking-tight text-[var(--local-text)]" data-jp-field="logoText">
                 {data.logoText}
               </span>
-            </a>
+            </Link>
             {data.tagline && (
               <p className="mt-4 text-sm leading-relaxed text-[var(--local-text-muted)]" data-jp-field="tagline">
                 {data.tagline}
@@ -70,9 +72,15 @@ export const Footer: React.FC<{ data: FooterData; settings: FooterSettings }> = 
               <ul className="mt-4 space-y-2 text-sm">
                 {navItems.map((item, idx) => (
                   <li key={item.id || `fnav-${idx}`} data-jp-item-id={item.id || `fnav-${idx}`} data-jp-item-field="menu">
-                    <a href={item.href} className="text-[var(--local-text-muted)] transition hover:text-[var(--local-primary)]">
-                      {item.label}
-                    </a>
+                    {isInAppPathHref(item.href) ? (
+                      <Link to={item.href} viewTransition className="text-[var(--local-text-muted)] transition hover:text-[var(--local-primary)]">
+                        {item.label}
+                      </Link>
+                    ) : (
+                      <a href={item.href} className="text-[var(--local-text-muted)] transition hover:text-[var(--local-primary)]">
+                        {item.label}
+                      </a>
+                    )}
                   </li>
                 ))}
               </ul>

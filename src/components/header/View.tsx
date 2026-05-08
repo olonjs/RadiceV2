@@ -1,7 +1,9 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { Menu, Moon, Sun } from 'lucide-react';
+import { isInAppPathHref } from '@/lib/isInAppPathHref';
 import type { HeaderData, HeaderSettings } from './types';
 
 export const Header: React.FC<{ data: HeaderData; settings: HeaderSettings }> = ({ data }) => {
@@ -48,26 +50,38 @@ export const Header: React.FC<{ data: HeaderData; settings: HeaderSettings }> = 
       className={`sticky top-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-[var(--local-bg)]/80 backdrop-blur-md border-b border-[var(--local-border)]' : 'bg-transparent'}`}
     >
       <div className="mx-auto flex h-24 max-w-[1280px] items-center justify-between px-6 md:px-12">
-        <a href="/" className="flex items-center" aria-label="Radice Home">
+        <Link to="/" viewTransition className="flex items-center" aria-label="Radice Home">
           <span className="font-display text-3xl font-bold tracking-tight text-[var(--local-text)]" data-jp-field="logoText">
             {data.logoText}
           </span>
-        </a>
+        </Link>
 
         <nav className="hidden items-center gap-1 lg:flex">
-          {navItems.filter(item => !item.isCta).map((item, idx) => (
-            <a key={item.id || `nav-${idx}`} href={item.href} className={navItemClass + ' px-4 py-2'}>
-              {item.label}
-            </a>
-          ))}
+          {navItems.filter(item => !item.isCta).map((item, idx) =>
+            isInAppPathHref(item.href) ? (
+              <Link key={item.id || `nav-${idx}`} to={item.href} viewTransition className={navItemClass + ' px-4 py-2'}>
+                {item.label}
+              </Link>
+            ) : (
+              <a key={item.id || `nav-${idx}`} href={item.href} className={navItemClass + ' px-4 py-2'}>
+                {item.label}
+              </a>
+            )
+          )}
         </nav>
 
         <div className="hidden items-center gap-2 lg:flex">
-          {navItems.filter(item => item.isCta).map((item, idx) => (
-            <a key={item.id || `cta-${idx}`} href={item.href} className={ctaButtonClass}>
-              {item.label}
-            </a>
-          ))}
+          {navItems.filter(item => item.isCta).map((item, idx) =>
+            isInAppPathHref(item.href) ? (
+              <Link key={item.id || `cta-${idx}`} to={item.href} viewTransition className={ctaButtonClass}>
+                {item.label}
+              </Link>
+            ) : (
+              <a key={item.id || `cta-${idx}`} href={item.href} className={ctaButtonClass}>
+                {item.label}
+              </a>
+            )
+          )}
           <Button type="button" variant="ghost" onClick={toggleTheme} size="icon" className="h-10 w-10 rounded-none hover:bg-[var(--local-bg)]">
             {theme === 'dark' ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
           </Button>
@@ -86,11 +100,17 @@ export const Header: React.FC<{ data: HeaderData; settings: HeaderSettings }> = 
             </SheetTrigger>
             <SheetContent className="w-full border-none bg-[var(--background)] text-[var(--foreground)]">
               <nav className="mt-16 flex flex-col items-center justify-center gap-8 text-center">
-                {navItems.map((item, idx) => (
-                  <a key={item.id || `mobile-${idx}`} href={item.href} className={`font-display text-3xl ${item.isCta ? 'text-[var(--primary)]' : ''}`}>
-                    {item.label}
-                  </a>
-                ))}
+                {navItems.map((item, idx) =>
+                  isInAppPathHref(item.href) ? (
+                    <Link key={item.id || `mobile-${idx}`} to={item.href} viewTransition className={`font-display text-3xl ${item.isCta ? 'text-[var(--primary)]' : ''}`}>
+                      {item.label}
+                    </Link>
+                  ) : (
+                    <a key={item.id || `mobile-${idx}`} href={item.href} className={`font-display text-3xl ${item.isCta ? 'text-[var(--primary)]' : ''}`}>
+                      {item.label}
+                    </a>
+                  )
+                )}
               </nav>
             </SheetContent>
           </Sheet>

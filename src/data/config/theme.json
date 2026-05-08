@@ -46,7 +46,7 @@
         "mono": "'Hanken Grotesk', sans-serif"
       },
       "wordmark": {
-        "fontFamily": "'Bodoni Moda', serif",
+        "fontFamily": "' Moda', serif",
         "weight": "700",
         "tracking": "-0.02em"
       }

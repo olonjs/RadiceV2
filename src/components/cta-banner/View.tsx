@@ -1,6 +1,8 @@
 import React from 'react';
-import type { CtaBannerData, CtaBannerSettings } from './types';
+import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
+import { isInAppPathHref } from '@/lib/isInAppPathHref';
+import type { CtaBannerData, CtaBannerSettings } from './types';
 
 export const CtaBanner: React.FC<{ data: CtaBannerData; settings: CtaBannerSettings }> = ({ data }) => {
   return (
@@ -19,8 +21,12 @@ export const CtaBanner: React.FC<{ data: CtaBannerData; settings: CtaBannerSetti
             {data.headline}
           </h2>
           {data.primaryCta.label && (
-             <Button asChild variant="default" className="h-auto shrink-0 rounded-none border border-[var(--local-text)] bg-[var(--local-text)] px-8 py-4 text-xs uppercase tracking-[0.1em] text-[var(--background)] transition-colors hover:border-[var(--local-primary)] hover:bg-[var(--local-primary)] hover:text-[var(--local-primary-foreground)]">
-               <a href={data.primaryCta.href}>{data.primaryCta.label}</a>
+            <Button asChild variant="default" className="h-auto shrink-0 rounded-none border border-[var(--local-text)] bg-[var(--local-text)] px-8 py-4 text-xs uppercase tracking-[0.1em] text-[var(--background)] transition-colors hover:border-[var(--local-primary)] hover:bg-[var(--local-primary)] hover:text-[var(--local-primary-foreground)]">
+              {isInAppPathHref(data.primaryCta.href) ? (
+                <Link to={data.primaryCta.href} viewTransition>{data.primaryCta.label}</Link>
+              ) : (
+                <a href={data.primaryCta.href}>{data.primaryCta.label}</a>
+              )}
             </Button>
           )}
         </div>
