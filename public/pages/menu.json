@@ -1,27 +1,24 @@
 {
   "id": "menu-page",
-  "slug": "menu",
   "meta": {
     "title": "Menu | Radice",
     "description": "Explore the seasonal tasting menus at Radice, featuring 'Il Viaggio' and 'La Stagione', with optional wine pairings."
   },
+  "slug": "menu",
   "sections": [
     {
       "id": "menu-intro",
-      "type": "text-block",
       "data": {
-        "headline": "The Culinary Journey",
         "content": "<p>Our menus are a reflection of time and place, offered in two distinct narrative formats. Each is designed to be a complete, multi-sensory experience, unfolding over several hours. We invite you to trust our kitchen as we guide you through a story told in flavor, texture, and aroma.</p>",
+        "headline": "The Culinary Journey",
         "alignment": "center"
       },
+      "type": "text-block",
       "settings": {}
     },
     {
       "id": "menu-viaggio",
-      "type": "menu-display",
       "data": {
-        "title": "Il Viaggio — The Journey",
-        "description": "A comprehensive, ten-course exploration of Chef Rossi's signature techniques and philosophical concepts. This is the definitive Radice experience.",
         "items": [
           {
             "id": "v-1",
@@ -74,16 +71,16 @@
             "description": "Mignardises"
           }
         ],
-        "footnote": "Menu: $295 per guest. Wine Pairing: $175. Non-Alcoholic Pairing: $110."
+        "title": "Il Viaggio — The Journey",
+        "footnote": "Menu: $295 per guest. Wine Pairing: $175. Non-Alcoholic Pairing: $110.",
+        "description": "A comprehensive, ten-course exploration of Chef Rossi's signature techniques and philosophical concepts. This is the definitive Radice experience."
       },
+      "type": "menu-display",
       "settings": {}
     },
     {
       "id": "menu-stagione",
-      "type": "menu-display",
       "data": {
-        "title": "La Stagione — The Season",
-        "description": "A concise, six-course menu focusing entirely on the most exceptional ingredients of the current season. A snapshot of the now.",
         "items": [
           {
             "id": "s-1",
@@ -116,8 +113,11 @@
             "description": "Espresso, Mascarpone, Amaro"
           }
         ],
-        "footnote": "Menu: $215 per guest. Wine Pairing: $125."
+        "title": "La Stagione — The Season",
+        "footnote": "Menu: $215 per guest. Wine Pairing: $125.",
+        "description": "A concise, six-course menu focusing entirely on the most exceptional ingredients of the current season. A snapshot of the now."
       },
+      "type": "menu-display",
       "settings": {}
     }
   ]
