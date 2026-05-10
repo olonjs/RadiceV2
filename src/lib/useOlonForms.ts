@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from 'react';
-import type { FormState } from '@olonjs/core';
+import type { FormState } from '@olonjs/core/runtime';
 
 const API_BASE =
   (import.meta.env.VITE_OLONJS_CLOUD_URL as string | undefined) ??

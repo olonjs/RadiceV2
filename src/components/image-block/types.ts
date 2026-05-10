@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { BaseSectionSettingsSchema } from '@olonjs/core';
+import { BaseSectionSettingsSchema } from '@olonjs/core/runtime';
 import { ImageBlockSchema } from './schema';
 
 export type ImageBlockData = z.infer<typeof ImageBlockSchema>;

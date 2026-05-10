@@ -1,5 +1,5 @@
 import type { CSSProperties } from 'react';
-import type { DeployStep, StepState } from '@olonjs/core';
+import type { DeployStep, StepState } from '@olonjs/core/runtime';
 
 interface DeployNodeProps {
   step: DeployStep;

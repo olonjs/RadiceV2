@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { BaseSectionData, BaseArrayItem } from '@olonjs/core';
+import { BaseSectionData, BaseArrayItem } from '@olonjs/core/runtime';
 
 const MenuItemSchema = BaseArrayItem.extend({
   name: z.string().describe('ui:text'),

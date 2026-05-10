@@ -1,4 +1,4 @@
-import type { AddSectionConfig } from '@olonjs/core';
+import type { AddSectionConfig } from '@olonjs/core/runtime';
 
 const addableSectionTypes = [
   'editorial-hero',

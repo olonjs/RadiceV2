@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { BaseSectionData, CtaSchema, ImageSelectionSchema } from '@olonjs/core';
+import { BaseSectionData, CtaSchema, ImageSelectionSchema } from '@olonjs/core/runtime';
 
 export const EditorialHeroSchema = BaseSectionData.extend({
   label: z.string().optional().describe('ui:text'),

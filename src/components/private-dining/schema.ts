@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { BaseSectionData, BaseArrayItem, ImageSelectionSchema, CtaSchema } from '@olonjs/core';
+import { BaseSectionData, BaseArrayItem, ImageSelectionSchema, CtaSchema } from '@olonjs/core/runtime';
 
 const PrivateSpaceSchema = BaseArrayItem.extend({
   name: z.string().describe('ui:text'),

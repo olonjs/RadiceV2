@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { BaseSectionSettingsSchema } from '@olonjs/core';
+import { BaseSectionSettingsSchema } from '@olonjs/core/runtime';
 import { FooterSchema } from './schema';
 
 export type FooterData = z.infer<typeof FooterSchema>;

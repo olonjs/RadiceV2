@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { BaseSectionData } from '@olonjs/core';
+import { BaseSectionData } from '@olonjs/core/runtime';
 
 const FooterMenuItemSchema = z.object({
   id: z.string().optional(),

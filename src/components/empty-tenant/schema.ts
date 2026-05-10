@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { BaseSectionData } from '@olonjs/core';
+import { BaseSectionData } from '@olonjs/core/runtime';
 
 export const EmptyTenantSchema = BaseSectionData.extend({
   title: z.string().optional().describe('ui:text'),

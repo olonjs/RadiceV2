@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { BaseSectionSettingsSchema } from '@olonjs/core';
+import { BaseSectionSettingsSchema } from '@olonjs/core/runtime';
 import { ReservationCtaSchema } from './schema';
 
 export type ReservationCtaData = z.infer<typeof ReservationCtaSchema>;

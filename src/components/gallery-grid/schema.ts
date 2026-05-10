@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { BaseSectionData, BaseArrayItem, ImageSelectionSchema } from '@olonjs/core';
+import { BaseSectionData, BaseArrayItem, ImageSelectionSchema } from '@olonjs/core/runtime';
 
 const GalleryItemSchema = BaseArrayItem.extend({
   image: ImageSelectionSchema.describe('ui:image-picker'),

@@ -11,7 +11,7 @@ import { ChefProfile } from '@/components/chef-profile';
 import { CtaBanner } from '@/components/cta-banner';
 import { GalleryGrid } from '@/components/gallery-grid';
 
-import type { SectionType } from '@olonjs/core';
+import type { SectionType } from '@olonjs/core/runtime';
 import type { SectionComponentPropsMap } from '@/types';
 
 export const ComponentRegistry: {

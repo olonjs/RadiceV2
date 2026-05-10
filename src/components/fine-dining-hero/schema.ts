@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { BaseSectionData, BaseArrayItem, ImageSelectionSchema, CtaSchema } from '@olonjs/core';
+import { BaseSectionData, BaseArrayItem, ImageSelectionSchema, CtaSchema } from '@olonjs/core/runtime';
 
 const AwardItemSchema = BaseArrayItem.extend({
   title: z.string().describe('ui:text'),

@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { BaseSectionData, ImageSelectionSchema } from '@olonjs/core';
+import { BaseSectionData, ImageSelectionSchema } from '@olonjs/core/runtime';
 
 export const PhilosophySectionSchema = BaseSectionData.extend({
   label: z.string().optional().describe('ui:text'),

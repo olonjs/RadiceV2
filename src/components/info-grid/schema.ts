@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { BaseSectionData, BaseArrayItem } from '@olonjs/core';
+import { BaseSectionData, BaseArrayItem } from '@olonjs/core/runtime';
 
 const InfoItemSchema = BaseArrayItem.extend({
   title: z.string().describe('ui:text'),

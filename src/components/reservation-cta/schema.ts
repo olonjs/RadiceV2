@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { BaseSectionData, CtaSchema } from '@olonjs/core';
+import { BaseSectionData, CtaSchema } from '@olonjs/core/runtime';
 
 export const ReservationCtaSchema = BaseSectionData.extend({
   title: z.string().describe('ui:text'),

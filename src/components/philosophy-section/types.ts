@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { BaseSectionSettingsSchema } from '@olonjs/core';
+import { BaseSectionSettingsSchema } from '@olonjs/core/runtime';
 import { PhilosophySectionSchema } from './schema';
 
 export type PhilosophySectionData = z.infer<typeof PhilosophySectionSchema>;

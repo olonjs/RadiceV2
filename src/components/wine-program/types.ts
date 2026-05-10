@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { BaseSectionSettingsSchema } from '@olonjs/core';
+import { BaseSectionSettingsSchema } from '@olonjs/core/runtime';
 import { WineProgramSchema } from './schema';
 
 export type WineProgramData = z.infer<typeof WineProgramSchema>;
