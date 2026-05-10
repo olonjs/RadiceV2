@@ -3,18 +3,21 @@
  * Data from getHydratedData (file-backed or draft); assets from public/assets/images.
  * Supports Hybrid Persistence: Local Filesystem (Dev) or Cloud Bridge (Prod).
  */
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { JsonPagesEngine } from '@olonjs/core';
-import type { JsonPagesConfig, LibraryImageEntry, ProjectState } from '@olonjs/core';
-import { normalizeBasePath, withBasePath } from '@olonjs/core';
+import { lazy, Suspense, useCallback, useEffect, useMemo, useRef, useState } from 'react';
+// ADR-0009: visitor route imports the runtime-only engine statically.
+// The full @olonjs/core (Studio admin) is loaded on demand only when the
+// URL targets /admin (see LazyJsonPagesEngine below).
+import { OlonJSEngine } from '@olonjs/core/runtime';
+import type { JsonPagesConfig, LibraryImageEntry, ProjectState } from '@olonjs/core/runtime';
+import { normalizeBasePath, withBasePath } from '@olonjs/core/runtime';
 import { ComponentRegistry } from '@/lib/ComponentRegistry';
 import { SECTION_SCHEMAS, SECTION_SUBMISSION_SCHEMAS } from '@/lib/schemas';
 import { addSectionConfig } from '@/lib/addSectionConfig';
 import { getHydratedData } from '@/lib/draftStorage';
 import type { SiteConfig, ThemeConfig, MenuConfig, PageConfig } from '@/types';
-import type { DeployPhase, StepId } from '@olonjs/core';
-import { DEPLOY_STEPS } from '@olonjs/core';
-import { startCloudSaveStream } from '@olonjs/core';
+import type { DeployPhase, StepId } from '@olonjs/core/runtime';
+import { DEPLOY_STEPS } from '@olonjs/core/runtime';
+import { startCloudSaveStream } from '@olonjs/core/runtime';
 import siteData from '@/data/config/site.json';
 import themeData from '@/data/config/theme.json';
 import menuData from '@/data/config/menu.json';
@@ -24,7 +27,7 @@ import { EmptyTenantView } from '@/components/empty-tenant';
 import { Skeleton } from '@/components/ui/skeleton';
 import { ThemeProvider } from '@/components/ThemeProvider';
 import { useOlonForms } from '@/lib/useOlonForms';
-import { OlonFormsContext } from '@olonjs/core';
+import { OlonFormsContext } from '@olonjs/core/runtime';
 import { iconMap } from '@/lib/IconResolver';
 
 import tenantCss from './index.css?inline';
@@ -417,6 +420,19 @@ function setTenantPreviewReady(ready: boolean): void {
     document.body.dataset.previewReady = ready ? '1' : '0';
   }
 }
+
+/**
+ * Engine selector. Visitors get OlonJSEngine (~28 KB gz of @olonjs/core,
+ * statically imported above); /admin paths get the full JsonPagesEngine
+ * via dynamic import — Vite emits a separate chunk so the visitor never
+ * downloads Studio admin code. See ADR-0009.
+ */
+const isAdminPath =
+  typeof window !== 'undefined' && window.location.pathname.startsWith('/admin');
+
+const LazyJsonPagesEngine = lazy(() =>
+  import('@olonjs/core').then((m) => ({ default: m.JsonPagesEngine })),
+);
 
 function App() {
   const { states: formStates } = useOlonForms();
@@ -1085,7 +1101,17 @@ function App() {
           </div>
         </div>
       ) : null}
-     {shouldRenderEngine ? (isTenantEmpty ? <EmptyTenantView /> : <JsonPagesEngine config={config} />) : null}
+     {shouldRenderEngine ? (
+        isTenantEmpty ? (
+          <EmptyTenantView />
+        ) : isAdminPath ? (
+          <Suspense fallback={null}>
+            <LazyJsonPagesEngine config={config} />
+          </Suspense>
+        ) : (
+          <OlonJSEngine config={config} />
+        )
+      ) : null}
       {isCloudMode && (contentMode === 'error' || contentFallback?.reasonCode === 'CLOUD_REFRESH_FAILED') ? (
         <div
           role="status"
