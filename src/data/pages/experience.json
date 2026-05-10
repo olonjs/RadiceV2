@@ -1,21 +1,11 @@
 {
   "id": "experience-page",
+  "slug": "experience",
   "meta": {
     "title": "The Experience | Radice",
     "description": "Learn about the dining experience at Radice, from the architectural ambiance to our philosophy of choreographed, intuitive service."
   },
-  "slug": "experience",
   "sections": [
-    {
-      "id": "exp-intro",
-      "data": {
-        "content": "<p>The experience at Radice is a carefully choreographed symphony of details. It is more than a meal; it is a dedicated moment in time, designed to engage all the senses and remove you from the everyday.</p>",
-        "headline": "Space, Time, and Sensation",
-        "alignment": "center"
-      },
-      "type": "text-block",
-      "settings": {}
-    },
     {
       "id": "exp-ambiance",
       "data": {
@@ -23,10 +13,10 @@
           "alt": "1778236542307-1771598125734-Firefly_Flux_a_michelin_green_star_restaurant_interior__detail__fine_dining__954770.jpg",
           "url": "https://bat5elmxofxdroan.public.blob.vercel-storage.com/tenant-assets/8cd8d078-420c-4f7b-9f32-1235271bc160/1778254513805-7308957d-e752-4209-b0d9-55e1182e38b3-1778236542307-1771598125734-Firefly_Flux_a_michelin_green_star_restaurant_interior__detail__fine_dining__954770.jpg"
         },
-        "label": "The Ambiance",
+        "label": "Experience",
         "content": "Our dining room is an exercise in quiet confidence. Designed by architect Matteo Bianchi, the space combines natural stone, raw linen, and soft, dramatic lighting to create an atmosphere that is both intimate and architectural. It is a tranquil canvas, designed to focus attention on the table and the company you share.",
         "headline": "Architectural Serenity",
-        "imagePosition": "right"
+        "imagePosition": "left"
       },
       "type": "philosophy-section",
       "settings": {}

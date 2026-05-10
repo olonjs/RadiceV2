@@ -1,10 +1,10 @@
 {
   "id": "home-page",
+  "slug": "home",
   "meta": {
     "title": "Radice | Contemporary Fine Dining",
     "description": "Experience Radice, a two-Michelin-star restaurant in Chicago, offering seasonal tasting menus rooted in Italian terroir and modern technique."
   },
-  "slug": "home",
   "sections": [
     {
       "id": "home-hero",

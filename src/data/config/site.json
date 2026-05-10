@@ -34,7 +34,7 @@
       "menu": {
         "$ref": "../config/menu.json#/main"
       },
-      "logoText": "Radice"
+      "logoText": "RADICE"
     },
     "type": "header",
     "settings": {}
