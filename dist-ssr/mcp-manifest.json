@@ -1,0 +1,112 @@
+{
+  "version": "1.0.0",
+  "kind": "olonjs-mcp-manifest-index",
+  "generatedAt": "2026-06-09T20:44:03.152Z",
+  "pages": [
+    {
+      "slug": "chef",
+      "title": "Chef Elara Rossi | Radice",
+      "description": "Meet Executive Chef Elara Rossi, the visionary behind the two-Michelin-star cuisine at Radice.",
+      "manifestHref": "/mcp-manifests/chef.json",
+      "contractHref": "/schemas/chef.schema.json",
+      "sectionTypes": [
+        "header",
+        "footer",
+        "chef-profile"
+      ]
+    },
+    {
+      "slug": "contact",
+      "title": "Contact | Radice",
+      "description": "Find our location, hours of operation, and contact information for reservations and general inquiries.",
+      "manifestHref": "/mcp-manifests/contact.json",
+      "contractHref": "/schemas/contact.schema.json",
+      "sectionTypes": [
+        "header",
+        "footer",
+        "info-grid",
+        "image-block"
+      ]
+    },
+    {
+      "slug": "experience",
+      "title": "The Experience | Radice",
+      "description": "Learn about the dining experience at Radice, from the architectural ambiance to our philosophy of choreographed, intuitive service.",
+      "manifestHref": "/mcp-manifests/experience.json",
+      "contractHref": "/schemas/experience.schema.json",
+      "sectionTypes": [
+        "header",
+        "footer",
+        "philosophy-section",
+        "gallery-grid"
+      ]
+    },
+    {
+      "slug": "home",
+      "title": "Radice | Contemporary Fine Dining",
+      "description": "Experience Radice, a two-Michelin-star restaurant in Chicago, offering seasonal tasting menus rooted in Italian terroir and modern technique.",
+      "manifestHref": "/mcp-manifests/home.json",
+      "contractHref": "/schemas/home.schema.json",
+      "sectionTypes": [
+        "header",
+        "footer",
+        "editorial-hero",
+        "philosophy-section",
+        "menu-display",
+        "cta-banner"
+      ]
+    },
+    {
+      "slug": "menu",
+      "title": "Menu | Radice",
+      "description": "Explore the seasonal tasting menus at Radice, featuring 'Il Viaggio' and 'La Stagione', with optional wine pairings.",
+      "manifestHref": "/mcp-manifests/menu.json",
+      "contractHref": "/schemas/menu.schema.json",
+      "sectionTypes": [
+        "header",
+        "footer",
+        "text-block",
+        "menu-display"
+      ]
+    },
+    {
+      "slug": "philosophy",
+      "title": "Philosophy | Radice",
+      "description": "Discover the culinary philosophy of Radice, centered on seasonality, terroir, and a deep respect for ingredients.",
+      "manifestHref": "/mcp-manifests/philosophy.json",
+      "contractHref": "/schemas/philosophy.schema.json",
+      "sectionTypes": [
+        "header",
+        "footer",
+        "philosophy-section"
+      ]
+    },
+    {
+      "slug": "private-dining",
+      "title": "Private Dining | Radice",
+      "description": "Host your bespoke event in our exclusive private dining spaces, The Cantina and The Studio.",
+      "manifestHref": "/mcp-manifests/private-dining.json",
+      "contractHref": "/schemas/private-dining.schema.json",
+      "sectionTypes": [
+        "header",
+        "footer",
+        "philosophy-section",
+        "info-grid",
+        "cta-banner"
+      ]
+    },
+    {
+      "slug": "reservations",
+      "title": "Reservations | Radice",
+      "description": "Book your table at Radice. Find information on our booking policies, dress code, and dietary accommodations.",
+      "manifestHref": "/mcp-manifests/reservations.json",
+      "contractHref": "/schemas/reservations.schema.json",
+      "sectionTypes": [
+        "header",
+        "footer",
+        "text-block",
+        "info-grid"
+      ]
+    }
+  ]
+}

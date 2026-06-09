@@ -1,0 +1,430 @@
+{
+  "version": "1.0.0",
+  "kind": "olonjs-page-contract",
+  "slug": "private-dining",
+  "title": "Private Dining | Radice",
+  "description": "Host your bespoke event in our exclusive private dining spaces, The Cantina and The Studio.",
+  "manifestHref": "/mcp-manifests/private-dining.json",
+  "systemPrompt": "You are operating the \"Private Dining | Radice\" page in OlonJS Studio. Use only the declared tools and keep mutations valid against the section schema.",
+  "sectionTypes": [
+    "header",
+    "footer",
+    "philosophy-section",
+    "info-grid",
+    "cta-banner"
+  ],
+  "sectionInstances": [
+    {
+      "id": "global-header",
+      "type": "header",
+      "scope": "global",
+      "label": "header"
+    },
+    {
+      "id": "global-footer",
+      "type": "footer",
+      "scope": "global",
+      "label": "footer"
+    },
+    {
+      "id": "pd-intro",
+      "type": "philosophy-section",
+      "scope": "local",
+      "label": "Bespoke Events"
+    },
+    {
+      "id": "pd-info",
+      "type": "info-grid",
+      "scope": "local",
+      "label": "info-grid"
+    },
+    {
+      "id": "pd-cta",
+      "type": "cta-banner",
+      "scope": "local",
+      "label": "cta-banner"
+    }
+  ],
+  "sectionSchemas": {
+    "header": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "anchorId": {
+          "type": "string",
+          "description": "ui:text"
+        },
+        "logoText": {
+          "type": "string",
+          "description": "ui:text",
+          "default": "Radice"
+        },
+        "menu": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "label": {
+                "type": "string",
+                "description": "ui:text"
+              },
+              "href": {
+                "type": "string",
+                "description": "ui:text"
+              },
+              "isCta": {
+                "type": "boolean",
+                "description": "ui:checkbox"
+              }
+            },
+            "additionalProperties": false,
+            "required": [
+              "label",
+              "href"
+            ]
+          },
+          "description": "ui:list"
+        }
+      },
+      "additionalProperties": false
+    },
+    "footer": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "anchorId": {
+          "type": "string",
+          "description": "ui:text"
+        },
+        "logoText": {
+          "type": "string",
+          "description": "ui:text",
+          "default": "Radice"
+        },
+        "tagline": {
+          "type": "string",
+          "description": "ui:text"
+        },
+        "address": {
+          "type": "string",
+          "description": "ui:textarea"
+        },
+        "phone": {
+          "type": "string",
+          "description": "ui:text"
+        },
+        "email": {
+          "type": "string",
+          "description": "ui:text"
+        },
+        "copyright": {
+          "type": "string",
+          "description": "ui:text",
+          "default": "© 2024 Radice. All rights reserved."
+        },
+        "menu": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "label": {
+                "type": "string",
+                "description": "ui:text"
+              },
+              "href": {
+                "type": "string",
+                "description": "ui:text"
+              }
+            },
+            "additionalProperties": false,
+            "required": [
+              "label",
+              "href"
+            ]
+          },
+          "description": "ui:list"
+        },
+        "socialLinks": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "platform": {
+                "type": "string",
+                "description": "ui:text"
+              },
+              "url": {
+                "type": "string",
+                "description": "ui:text"
+              }
+            },
+            "additionalProperties": false,
+            "required": [
+              "platform",
+              "url"
+            ]
+          },
+          "description": "ui:list"
+        }
+      },
+      "additionalProperties": false
+    },
+    "philosophy-section": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "anchorId": {
+          "type": "string",
+          "description": "ui:text"
+        },
+        "label": {
+          "type": "string",
+          "description": "ui:text"
+        },
+        "headline": {
+          "type": "string",
+          "description": "ui:text"
+        },
+        "content": {
+          "type": "string",
+          "description": "ui:textarea"
+        },
+        "image": {
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string"
+            },
+            "alt": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "url"
+          ],
+          "description": "ui:image-picker"
+        },
+        "imagePosition": {
+          "type": "string",
+          "enum": [
+            "left",
+            "right"
+          ],
+          "description": "ui:select",
+          "default": "right"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "headline",
+        "content"
+      ]
+    },
+    "info-grid": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "anchorId": {
+          "type": "string",
+          "description": "ui:text"
+        },
+        "headline": {
+          "type": "string",
+          "description": "ui:text"
+        },
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "title": {
+                "type": "string",
+                "description": "ui:text"
+              },
+              "content": {
+                "type": "string",
+                "description": "ui:textarea"
+              }
+            },
+            "additionalProperties": false,
+            "required": [
+              "title",
+              "content"
+            ]
+          },
+          "description": "ui:list"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "items"
+      ]
+    },
+    "cta-banner": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "anchorId": {
+          "type": "string",
+          "description": "ui:text"
+        },
+        "headline": {
+          "type": "string",
+          "description": "ui:text"
+        },
+        "primaryCta": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string"
+            },
+            "label": {
+              "type": "string",
+              "description": "ui:text"
+            },
+            "href": {
+              "type": "string",
+              "description": "ui:text"
+            },
+            "variant": {
+              "type": "string",
+              "enum": [
+                "primary",
+                "secondary",
+                "accent"
+              ],
+              "description": "ui:select",
+              "default": "primary"
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "label",
+            "href"
+          ]
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "headline",
+        "primaryCta"
+      ]
+    }
+  },
+  "tools": [
+    {
+      "name": "update-section",
+      "description": "Update a section field in the Studio draft. Does not persist — call save when all updates are complete. Use sectionType to select the matching schema from sectionSchemas.",
+      "inputSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "slug": {
+            "type": "string",
+            "description": "Canonical page slug currently open in Studio."
+          },
+          "sectionId": {
+            "type": "string",
+            "description": "Concrete section instance id inside the current draft."
+          },
+          "sectionType": {
+            "type": "string",
+            "description": "Section type being updated (for example \"hero\" or \"header\"). Used to select the correct validation schema."
+          },
+          "scope": {
+            "type": "string",
+            "enum": [
+              "local",
+              "global"
+            ],
+            "default": "local"
+          },
+          "data": {
+            "type": "object",
+            "description": "Full replacement payload validated against the schema declared for sectionType."
+          },
+          "itemPath": {
+            "type": "array",
+            "description": "Optional root-to-leaf selection path for targeted field mutation.",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "fieldKey": {
+                  "type": "string"
+                },
+                "itemId": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "fieldKey"
+              ]
+            }
+          },
+          "value": {
+            "description": "Value written to the final field targeted by itemPath."
+          },
+          "fieldKey": {
+            "type": "string",
+            "description": "Shorthand for a top-level scalar field update when itemPath is omitted."
+          }
+        },
+        "required": [
+          "sectionId"
+        ],
+        "oneOf": [
+          {
+            "required": [
+              "data"
+            ]
+          },
+          {
+            "required": [
+              "itemPath",
+              "value"
+            ]
+          },
+          {
+            "required": [
+              "fieldKey",
+              "value"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "save",
+      "description": "Persist all pending draft changes using the active save mode (local file, hot save, or save2repo). Call once after all update-section calls are complete.",
+      "inputSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {}
+      }
+    }
+  ]
+}

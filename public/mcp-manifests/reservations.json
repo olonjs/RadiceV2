@@ -1,0 +1,73 @@
+{
+  "version": "1.0.0",
+  "kind": "olonjs-page-mcp-manifest",
+  "generatedAt": "2026-06-09T20:45:18.360Z",
+  "slug": "reservations",
+  "title": "Reservations | Radice",
+  "description": "Book your table at Radice. Find information on our booking policies, dress code, and dietary accommodations.",
+  "contractHref": "/schemas/reservations.schema.json",
+  "transport": {
+    "kind": "window-message",
+    "requestType": "olonjs:webmcp:tool-call",
+    "resultType": "olonjs:webmcp:tool-result",
+    "target": "window"
+  },
+  "capabilities": {
+    "resources": [
+      {
+        "uri": "olon://pages/reservations",
+        "name": "Reservations | Radice Data",
+        "mimeType": "application/json",
+        "description": "Structured content for the reservations page."
+      },
+      {
+        "uri": "olon://pages",
+        "name": "Site Map",
+        "mimeType": "application/json",
+        "description": "Structured content for the map of this site"
+      }
+    ]
+  },
+  "sectionTypes": [
+    "header",
+    "footer",
+    "text-block",
+    "info-grid"
+  ],
+  "sectionInstances": [
+    {
+      "id": "global-header",
+      "type": "header",
+      "scope": "global",
+      "label": "header"
+    },
+    {
+      "id": "global-footer",
+      "type": "footer",
+      "scope": "global",
+      "label": "footer"
+    },
+    {
+      "id": "res-intro",
+      "type": "text-block",
+      "scope": "local",
+      "label": "text-block"
+    },
+    {
+      "id": "res-info",
+      "type": "info-grid",
+      "scope": "local",
+      "label": "info-grid"
+    }
+  ],
+  "tools": [
+    {
+      "name": "update-section",
+      "description": "Update a section field in the Studio draft. Does not persist — call save when all updates are complete. Use sectionType to select the matching schema from sectionSchemas."
+    },
+    {
+      "name": "save",
+      "description": "Persist all pending draft changes using the active save mode (local file, hot save, or save2repo). Call once after all update-section calls are complete."
+    }
+  ]
+}
