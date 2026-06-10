@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- ========================================== -->
+  <!-- GLOBAL AGENT DISCOVERY NODES               -->
+  <!-- ========================================== -->
+  <url>
+    <loc>http://localhost:5173/llms.txt</loc>
+    <lastmod>2026-06-10T07:32:31Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>http://localhost:5173/mcp-manifest.json</loc>
+    <lastmod>2026-06-10T07:32:31Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <!-- ========================================== -->
+  <!-- PAGE: CHEF                                 -->
+  <!-- ========================================== -->
+  <!-- Human UI -->
+  <url>
+    <loc>http://localhost:5173/chef</loc>
+    <lastmod>2026-05-08T15:45:30Z</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Machine Payload -->
+  <url>
+    <loc>http://localhost:5173/chef.json</loc>
+    <lastmod>2026-05-08T15:45:30Z</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Machine Contract (Schema) -->
+  <url>
+    <loc>http://localhost:5173/schemas/chef.schema.json</loc>
+    <lastmod>2026-06-10T07:32:31Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- ========================================== -->
+  <!-- PAGE: CONTACT                              -->
+  <!-- ========================================== -->
+  <!-- Human UI -->
+  <url>
+    <loc>http://localhost:5173/contact</loc>
+    <lastmod>2026-05-08T15:45:30Z</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Machine Payload -->
+  <url>
+    <loc>http://localhost:5173/contact.json</loc>
+    <lastmod>2026-05-08T15:45:30Z</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Machine Contract (Schema) -->
+  <url>
+    <loc>http://localhost:5173/schemas/contact.schema.json</loc>
+    <lastmod>2026-06-10T07:32:31Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- ========================================== -->
+  <!-- PAGE: EXPERIENCE                           -->
+  <!-- ========================================== -->
+  <!-- Human UI -->
+  <url>
+    <loc>http://localhost:5173/experience</loc>
+    <lastmod>2026-05-08T17:15:19Z</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Machine Payload -->
+  <url>
+    <loc>http://localhost:5173/experience.json</loc>
+    <lastmod>2026-05-08T17:15:19Z</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Machine Contract (Schema) -->
+  <url>
+    <loc>http://localhost:5173/schemas/experience.schema.json</loc>
+    <lastmod>2026-06-10T07:32:31Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- ========================================== -->
+  <!-- PAGE: HOME                                 -->
+  <!-- ========================================== -->
+  <!-- Human UI -->
+  <url>
+    <loc>http://localhost:5173/</loc>
+    <lastmod>2026-05-08T17:13:10Z</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Machine Payload -->
+  <url>
+    <loc>http://localhost:5173/home.json</loc>
+    <lastmod>2026-05-08T17:13:10Z</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Machine Contract (Schema) -->
+  <url>
+    <loc>http://localhost:5173/schemas/home.schema.json</loc>
+    <lastmod>2026-06-10T07:32:31Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- ========================================== -->
+  <!-- PAGE: MENU                                 -->
+  <!-- ========================================== -->
+  <!-- Human UI -->
+  <url>
+    <loc>http://localhost:5173/menu</loc>
+    <lastmod>2026-05-08T15:45:30Z</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Machine Payload -->
+  <url>
+    <loc>http://localhost:5173/menu.json</loc>
+    <lastmod>2026-05-08T15:45:30Z</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Machine Contract (Schema) -->
+  <url>
+    <loc>http://localhost:5173/schemas/menu.schema.json</loc>
+    <lastmod>2026-06-10T07:32:31Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- ========================================== -->
+  <!-- PAGE: PHILOSOPHY                           -->
+  <!-- ========================================== -->
+  <!-- Human UI -->
+  <url>
+    <loc>http://localhost:5173/philosophy</loc>
+    <lastmod>2026-05-08T15:45:30Z</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Machine Payload -->
+  <url>
+    <loc>http://localhost:5173/philosophy.json</loc>
+    <lastmod>2026-05-08T15:45:30Z</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Machine Contract (Schema) -->
+  <url>
+    <loc>http://localhost:5173/schemas/philosophy.schema.json</loc>
+    <lastmod>2026-06-10T07:32:31Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- ========================================== -->
+  <!-- PAGE: PRIVATE-DINING                       -->
+  <!-- ========================================== -->
+  <!-- Human UI -->
+  <url>
+    <loc>http://localhost:5173/private-dining</loc>
+    <lastmod>2026-05-08T15:45:30Z</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Machine Payload -->
+  <url>
+    <loc>http://localhost:5173/private-dining.json</loc>
+    <lastmod>2026-05-08T15:45:30Z</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Machine Contract (Schema) -->
+  <url>
+    <loc>http://localhost:5173/schemas/private-dining.schema.json</loc>
+    <lastmod>2026-06-10T07:32:31Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- ========================================== -->
+  <!-- PAGE: RESERVATIONS                         -->
+  <!-- ========================================== -->
+  <!-- Human UI -->
+  <url>
+    <loc>http://localhost:5173/reservations</loc>
+    <lastmod>2026-05-08T15:45:30Z</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Machine Payload -->
+  <url>
+    <loc>http://localhost:5173/reservations.json</loc>
+    <lastmod>2026-05-08T15:45:30Z</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Machine Contract (Schema) -->
+  <url>
+    <loc>http://localhost:5173/schemas/reservations.schema.json</loc>
+    <lastmod>2026-06-10T07:32:31Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+</urlset>

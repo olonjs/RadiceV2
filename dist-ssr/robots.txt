@@ -1,0 +1,18 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+
+User-agent: GPTBot
+User-agent: ChatGPT-User
+User-agent: ClaudeBot
+User-agent: Claude-Web
+User-agent: PerplexityBot
+User-agent: OAI-SearchBot
+Allow: /
+Allow: /*.json
+Allow: /schemas/
+Allow: /llms.txt
+Allow: /mcp-manifest.json
+Disallow: /api/
+
+Sitemap: http://localhost:5173/sitemap.xml

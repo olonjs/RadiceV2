@@ -26,7 +26,6 @@ const root = path.resolve(__dirname, '..');
 const pagesDir = path.resolve(root, 'src/data/pages');
 const publicDir = path.resolve(root, 'public');
 const distDir = path.resolve(root, 'dist');
-const distSsrDir = path.resolve(root, 'dist-ssr');
 
 async function writeTargets(relativePath, content) {
   const targets = [
@@ -42,15 +41,6 @@ async function writeTargets(relativePath, content) {
 
 async function writeJsonTargets(relativePath, value) {
   await writeTargets(relativePath, `${JSON.stringify(value, null, 2)}\n`);
-}
-
-// Schemas go to dist-ssr ONLY: committed (dist-ssr is not gitignored) so provisioning can read
-// them from the repo, but NOT served as static files — so /schemas/* falls through to the
-// blob rewrite, and provision/hotSave own the served contract.
-async function writeSsrJson(relativePath, value) {
-  const target = path.resolve(distSsrDir, relativePath);
-  await fs.mkdir(path.dirname(target), { recursive: true });
-  await fs.writeFile(target, `${JSON.stringify(value, null, 2)}\n`, 'utf-8');
 }
 
 function escapeHtmlAttribute(value) {
@@ -154,10 +144,9 @@ for (const { slug } of targets) {
     slug,
     pageConfig,
     schemas: webMcpBuildState.schemas,
-    submissionSchemas: webMcpBuildState.submissionSchemas,
     siteConfig: webMcpBuildState.siteConfig,
   });
-  await writeSsrJson(`schemas/${slug}.schema.json`, contract);
+  await writeJsonTargets(`schemas/${slug}.schema.json`, contract);
   const pageManifest = buildPageManifest({
     slug,
     pageConfig,
