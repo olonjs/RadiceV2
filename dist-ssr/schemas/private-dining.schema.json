@@ -308,16 +308,6 @@
             "href": {
               "type": "string",
               "description": "ui:text"
-            },
-            "variant": {
-              "type": "string",
-              "enum": [
-                "primary",
-                "secondary",
-                "accent"
-              ],
-              "description": "ui:select",
-              "default": "primary"
             }
           },
           "additionalProperties": false,
@@ -329,8 +319,7 @@
       },
       "additionalProperties": false,
       "required": [
-        "headline",
-        "primaryCta"
+        "headline"
       ]
     }
   },

@@ -36373,7 +36373,7 @@ objectType({
   theme: enumType(["dark", "light", "accent"]).default("dark").describe("ui:select"),
   container: enumType(["boxed", "fluid"]).default("boxed").describe("ui:select")
 });
-const Mo = objectType({
+objectType({
   id: stringType().optional(),
   label: stringType().describe("ui:text"),
   href: stringType().describe("ui:text"),
@@ -42324,7 +42324,7 @@ const EditorialHero = ({ data }) => {
     }
   );
 };
-const LocalCtaSchema = objectType({
+const LocalCtaSchema$1 = objectType({
   id: stringType().optional(),
   label: stringType().describe("ui:text"),
   href: stringType().describe("ui:text")
@@ -42333,7 +42333,7 @@ const EditorialHeroSchema = No.extend({
   label: stringType().optional().describe("ui:text"),
   headline: stringType().describe("ui:textarea"),
   subheadline: stringType().optional().describe("ui:textarea"),
-  primaryCta: LocalCtaSchema.optional(),
+  primaryCta: LocalCtaSchema$1.optional(),
   backgroundImage: zo.optional()
 });
 const TextBlock = ({ data }) => {
@@ -42552,14 +42552,19 @@ const CtaBanner = ({ data }) => {
       className: "relative z-0 bg-[var(--local-bg)]",
       children: /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "mx-auto max-w-[1280px] px-6 py-24 sm:py-32 md:px-12", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-col items-center justify-between gap-8 text-center md:flex-row md:text-left", children: [
         /* @__PURE__ */ jsxRuntimeExports.jsx("h2", { className: "font-display text-[clamp(2rem,5vw,3rem)] font-semibold leading-tight tracking-tight text-[var(--local-text)]", "data-jp-field": "headline", children: data.headline }),
-        data.primaryCta.label && /* @__PURE__ */ jsxRuntimeExports.jsx(Button, { asChild: true, variant: "default", className: "h-auto shrink-0 rounded-none border border-[var(--local-text)] bg-[var(--local-text)] px-8 py-4 text-xs uppercase tracking-[0.1em] text-[var(--background)] transition-colors hover:border-[var(--local-primary)] hover:bg-[var(--local-primary)] hover:text-[var(--local-primary-foreground)]", children: isInAppPathHref(data.primaryCta.href) ? /* @__PURE__ */ jsxRuntimeExports.jsx(Link, { to: data.primaryCta.href, viewTransition: true, children: data.primaryCta.label }) : /* @__PURE__ */ jsxRuntimeExports.jsx("a", { href: data.primaryCta.href, children: data.primaryCta.label }) })
+        data.primaryCta && data.primaryCta.label && /* @__PURE__ */ jsxRuntimeExports.jsx(Button, { asChild: true, variant: "default", className: "h-auto shrink-0 rounded-none border border-[var(--local-text)] bg-[var(--local-text)] px-8 py-4 text-xs uppercase tracking-[0.1em] text-[var(--background)] transition-colors hover:border-[var(--local-primary)] hover:bg-[var(--local-primary)] hover:text-[var(--local-primary-foreground)]", children: isInAppPathHref(data.primaryCta.href) ? /* @__PURE__ */ jsxRuntimeExports.jsx(Link, { to: data.primaryCta.href, viewTransition: true, children: data.primaryCta.label }) : /* @__PURE__ */ jsxRuntimeExports.jsx("a", { href: data.primaryCta.href, children: data.primaryCta.label }) })
       ] }) })
     }
   );
 };
+const LocalCtaSchema = objectType({
+  id: stringType().optional(),
+  label: stringType().describe("ui:text"),
+  href: stringType().describe("ui:text")
+});
 const CtaBannerSchema = No.extend({
   headline: stringType().describe("ui:text"),
-  primaryCta: Mo
+  primaryCta: LocalCtaSchema.optional()
 });
 const GalleryGrid = ({ data }) => {
   return /* @__PURE__ */ jsxRuntimeExports.jsx(
@@ -42675,7 +42680,7 @@ const __vite_glob_0_2 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
 const id$4 = "home-page";
 const slug$4 = "home";
 const meta$4 = { "title": "Radice | Contemporary Fine Dining", "description": "Experience Radice, a two-Michelin-star restaurant in Chicago, offering seasonal tasting menus rooted in Italian terroir and modern technique." };
-const sections$4 = [{ "id": "home-hero", "data": { "label": "A Two-Michelin-Star Experience", "headline": "Cuisine as<br>Narrative", "primaryCta": { "id": "cta-home-hero", "href": "/menu", "label": "Explore the Menu", "variant": "primary" }, "subheadline": "At Radice, we believe every ingredient has a story. Our tasting menus are a journey through the seasons, a dialogue between the earth and the hand.", "backgroundImage": { "alt": "1778249988071-Generated_Image_May_08__2026_-_4_19PM.jpg", "url": "https://bat5elmxofxdroan.public.blob.vercel-storage.com/tenant-assets/8cd8d078-420c-4f7b-9f32-1235271bc160/1778254370170-6dedfe15-e89d-4fd9-a947-a67087861892-1778249988071-Generated_Image_May_08__2026_-_4_19PM.jpg" } }, "type": "editorial-hero", "settings": {} }, { "id": "home-philosophy", "data": { "image": { "alt": "1778238061787-1771599023714-Generated_Image_February_20__2026_-_3_49PM.jpeg", "url": "https://bat5elmxofxdroan.public.blob.vercel-storage.com/tenant-assets/8cd8d078-420c-4f7b-9f32-1235271bc160/1778254401377-7780b737-6034-412e-ad34-872afd43037c-1778238061787-1771599023714-Generated_Image_February_20__2026_-_3_49PM.jpg" }, "label": "Our Philosophy", "content": "Radice—Italian for 'root'—is a commitment to origin. We collaborate with a dedicated network of local farmers, growers, and artisans to source ingredients at their absolute peak, translating the ephemeral beauty of the seasons onto the plate.", "headline": "The Essence of Season", "imagePosition": "left" }, "type": "philosophy-section", "settings": {} }, { "id": "home-menu-preview", "data": { "items": [{ "id": "item-1", "name": "Forest Floor", "description": "Foraged Mushrooms, Pine Dashi, Cured Egg Yolk" }, { "id": "item-2", "name": "Scallop Crudo", "description": "Fermented Apple, Burnt Dill Oil, Horseradish" }, { "id": "item-3", "name": "Agnolotti del Plin", "description": "Braised Veal, Parmesan Brodo, White Truffle" }], "title": "The Autumn Menu", "footnote": "The full ten-course tasting menu is available for exploration.", "description": "A preview of our current tasting menu, celebrating the harvest and the transition to cooler days." }, "type": "menu-display", "settings": {} }, { "id": "home-cta", "data": { "headline": "An Invitation to the Table", "primaryCta": { "id": "cta-home-res", "href": "/reservations", "label": "Make a Reservation", "variant": "primary" } }, "type": "cta-banner", "settings": {} }];
+const sections$4 = [{ "id": "home-hero", "data": { "label": "A Two-Michelin-Star Experience", "headline": "Cuisine as Narrative", "primaryCta": { "id": "cta-home-hero", "href": "/menu", "label": "Explore the Menu", "variant": "primary" }, "subheadline": "At Radice, we believe every ingredient has a story. Our tasting menus are a journey through the seasons, a dialogue between the earth and the hand.", "backgroundImage": { "url": "/assets/images/1778236491175-1771598312886-Firefly_a_tasting_menu_photo_with_multiple_plates_for_a_michelin_green_star_restaurant__detai_954770.jpg", "alt": "1778236491175-1771598312886-Firefly_a_tasting_menu_photo_with_multiple_plates_for_a_michelin_green_star_restaurant__detai_954770.jpg" } }, "type": "editorial-hero", "settings": {} }, { "id": "home-philosophy", "data": { "image": { "alt": "1778238061787-1771599023714-Generated_Image_February_20__2026_-_3_49PM.jpeg", "url": "https://bat5elmxofxdroan.public.blob.vercel-storage.com/tenant-assets/8cd8d078-420c-4f7b-9f32-1235271bc160/1778254401377-7780b737-6034-412e-ad34-872afd43037c-1778238061787-1771599023714-Generated_Image_February_20__2026_-_3_49PM.jpg" }, "label": "Our Philosophy", "content": "Radice—Italian for 'root'—is a commitment to origin. We collaborate with a dedicated network of local farmers, growers, and artisans to source ingredients at their absolute peak, translating the ephemeral beauty of the seasons onto the plate.", "headline": "The Essence of Season", "imagePosition": "left" }, "type": "philosophy-section", "settings": {} }, { "id": "home-menu-preview", "data": { "items": [{ "id": "item-1", "name": "Forest Floor", "description": "Foraged Mushrooms, Pine Dashi, Cured Egg Yolk" }, { "id": "item-2", "name": "Scallop Crudo", "description": "Fermented Apple, Burnt Dill Oil, Horseradish" }, { "id": "item-3", "name": "Agnolotti del Plin", "description": "Braised Veal, Parmesan Brodo, White Truffle" }], "title": "The Autumn Menu", "footnote": "The full ten-course tasting menu is available for exploration.", "description": "A preview of our current tasting menu, celebrating the harvest and the transition to cooler days." }, "type": "menu-display", "settings": {} }, { "id": "home-cta", "data": { "headline": "An Invitation to the Table", "primaryCta": { "id": "cta-home-res", "href": "/reservations", "label": "Make a Reservation", "variant": "primary" } }, "type": "cta-banner", "settings": {} }];
 const home = {
   id: id$4,
   slug: slug$4,

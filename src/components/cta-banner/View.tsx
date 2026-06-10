@@ -20,7 +20,7 @@ export const CtaBanner: React.FC<{ data: CtaBannerData; settings: CtaBannerSetti
           <h2 className="font-display text-[clamp(2rem,5vw,3rem)] font-semibold leading-tight tracking-tight text-[var(--local-text)]" data-jp-field="headline">
             {data.headline}
           </h2>
-          {data.primaryCta.label && (
+          {data.primaryCta && data.primaryCta.label && (
             <Button asChild variant="default" className="h-auto shrink-0 rounded-none border border-[var(--local-text)] bg-[var(--local-text)] px-8 py-4 text-xs uppercase tracking-[0.1em] text-[var(--background)] transition-colors hover:border-[var(--local-primary)] hover:bg-[var(--local-primary)] hover:text-[var(--local-primary-foreground)]">
               {isInAppPathHref(data.primaryCta.href) ? (
                 <Link to={data.primaryCta.href} viewTransition>{data.primaryCta.label}</Link>
