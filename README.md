@@ -1,6 +1,6 @@
 
-# Radice: Premium Fine Dining Starter for OlonJS
-
+# Radice: Premium Fine Dining Starter for Olon
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/olonjs/RadiceV2&integration-ids=oac_1AZc2aypKrBOmV0Ce0BBYLRu)
 <div align="center">
   <!-- SOSTITUISCI QUESTO LINK CON L'IMMAGINE SPLIT-SCREEN (Sito vs Inspector) -->
   <img src="public/assets/images/template_preview.jpg" alt="Radice Template Cover" width="100%" />
@@ -10,10 +10,12 @@
 
 Powered by **[OlonJS](https://olon.it)**, it completely eliminates the friction of traditional headless CMS setups. No API keys to copy-paste, no complex data fetching to write. Just a strict, contract-first architecture that is 100% visually editable and natively ready for Agentic AI.
 
+
+
+
+## 🚀 The "Zero-Config" Vercel Experience 
+
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/olonjs/RadiceV2&integration-ids=oac_1AZc2aypKrBOmV0Ce0BBYLRu)
-
-
-## 🚀 The "Zero-Config" Vercel Experience
 
 Clicking the **Deploy** button above triggers the OlonJS Vercel Integration. 
 In less than 60 seconds, Vercel will:

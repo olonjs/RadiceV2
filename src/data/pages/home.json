@@ -10,7 +10,7 @@
       "id": "home-hero",
       "data": {
         "label": "A Two-Michelin-Star Experience",
-        "headline": "Cuisine as<br>Narrative",
+        "headline": "Cuisine as Narrative",
         "primaryCta": {
           "id": "cta-home-hero",
           "href": "/menu",
@@ -19,8 +19,8 @@
         },
         "subheadline": "At Radice, we believe every ingredient has a story. Our tasting menus are a journey through the seasons, a dialogue between the earth and the hand.",
         "backgroundImage": {
-          "alt": "1778249988071-Generated_Image_May_08__2026_-_4_19PM.jpg",
-          "url": "https://bat5elmxofxdroan.public.blob.vercel-storage.com/tenant-assets/8cd8d078-420c-4f7b-9f32-1235271bc160/1778254370170-6dedfe15-e89d-4fd9-a947-a67087861892-1778249988071-Generated_Image_May_08__2026_-_4_19PM.jpg"
+          "url": "/assets/images/1778236491175-1771598312886-Firefly_a_tasting_menu_photo_with_multiple_plates_for_a_michelin_green_star_restaurant__detai_954770.jpg",
+          "alt": "1778236491175-1771598312886-Firefly_a_tasting_menu_photo_with_multiple_plates_for_a_michelin_green_star_restaurant__detai_954770.jpg"
         }
       },
       "type": "editorial-hero",
