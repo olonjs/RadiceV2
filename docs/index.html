@@ -1,0 +1,1050 @@
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Geist:wght@300;400;500&display=swap');
+
+:root {
+  --bg: #0B0907;
+  --bg-card: #130F0D;
+  --bg-elevated: #1E1814;
+  --bg-overlay: #241D17;
+  --fg: #F2EDE6;
+  --fg-muted: #9A8D80;
+  --fg-placeholder: #5C5248;
+  --primary: #5B3F9A;
+  --primary-fg: #EDE8F8;
+  --primary-light: #B8A4E0;
+  --primary-50: #EDE8F8;
+  --primary-100: #CEC1F0;
+  --primary-300: #A48ED5;
+  --primary-600: #5B3F9A;
+  --primary-800: #3D2770;
+  --accent: #E2D5B0;
+  --accent-fg: #0B0907;
+  --border: #2E271F;
+  --border-strong: #4A3D30;
+  --ring: #5B3F9A;
+  --font-display: 'Merriweather', Georgia, serif;
+  --font-body: 'Geist', 'Inter', system-ui, sans-serif;
+  --r-sm: 4px;
+  --r-md: 8px;
+  --r-lg: 12px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body, .docs-root {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.65;
+  min-height: 100vh;
+}
+
+.docs-root {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  grid-template-rows: 56px 1fr;
+  min-height: 600px;
+}
+
+.topbar {
+  grid-column: 1 / -1;
+  grid-row: 1;
+  background: var(--bg-card);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  padding: 0 24px;
+  gap: 16px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.logo-mark {
+  width: 28px;
+  height: 28px;
+  background: var(--primary);
+  border-radius: var(--r-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.logo-mark svg { display: block; }
+
+.topbar-title {
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--fg);
+  letter-spacing: -0.02em;
+}
+
+.topbar-sep {
+  width: 1px;
+  height: 18px;
+  background: var(--border-strong);
+}
+
+.topbar-sub {
+  font-size: 13px;
+  color: var(--fg-muted);
+  font-weight: 300;
+}
+
+.topbar-badge {
+  margin-left: auto;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: 9999px;
+  padding: 3px 10px;
+  font-size: 11px;
+  color: var(--primary-light);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.sidebar {
+  grid-column: 1;
+  grid-row: 2;
+  background: var(--bg-card);
+  border-right: 1px solid var(--border);
+  padding: 20px 0;
+  overflow-y: auto;
+  position: sticky;
+  top: 56px;
+  height: calc(600px - 56px);
+}
+
+.sidebar-section {
+  padding: 0 16px 8px;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--fg-placeholder);
+  font-weight: 500;
+  margin-top: 8px;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 7px 16px;
+  cursor: pointer;
+  font-size: 13px;
+  color: var(--fg-muted);
+  border-left: 2px solid transparent;
+  transition: all 0.15s ease;
+  user-select: none;
+  position: relative;
+}
+
+.nav-item:hover {
+  color: var(--fg);
+  background: var(--bg-elevated);
+}
+
+.nav-item.active {
+  color: var(--primary-light);
+  border-left-color: var(--primary);
+  background: rgba(91, 63, 154, 0.12);
+}
+
+.nav-num {
+  font-size: 10px;
+  color: var(--fg-placeholder);
+  min-width: 18px;
+  font-variant-numeric: tabular-nums;
+}
+
+.nav-item.active .nav-num {
+  color: var(--primary-300);
+}
+
+.main {
+  grid-column: 2;
+  grid-row: 2;
+  overflow-y: auto;
+  height: calc(600px - 56px);
+  padding: 40px 48px;
+}
+
+.chapter { display: none; }
+.chapter.active { display: block; }
+
+.chapter-eyebrow {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--primary-300);
+  font-weight: 500;
+  margin-bottom: 12px;
+}
+
+.chapter-title {
+  font-family: var(--font-display);
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--fg);
+  line-height: 1.2;
+  letter-spacing: -0.03em;
+  margin-bottom: 6px;
+}
+
+.chapter-tagline {
+  font-size: 15px;
+  color: var(--fg-muted);
+  margin-bottom: 32px;
+  line-height: 1.6;
+  font-weight: 300;
+}
+
+.divider {
+  height: 1px;
+  background: var(--border);
+  margin: 28px 0;
+}
+
+.prose p {
+  font-size: 14px;
+  color: var(--fg-muted);
+  line-height: 1.75;
+  margin-bottom: 16px;
+}
+
+.prose strong {
+  color: var(--fg);
+  font-weight: 500;
+}
+
+.callout {
+  background: rgba(91, 63, 154, 0.1);
+  border-left: 3px solid var(--primary);
+  border-radius: 0 var(--r-md) var(--r-md) 0;
+  padding: 12px 16px;
+  margin: 20px 0;
+  font-size: 13px;
+  color: var(--primary-light);
+  line-height: 1.6;
+}
+
+.callout b { color: var(--primary-50); }
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 12px;
+  margin: 20px 0;
+}
+
+.card {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  padding: 16px;
+}
+
+.card-icon {
+  font-size: 18px;
+  color: var(--primary-300);
+  margin-bottom: 8px;
+}
+
+.card-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--fg-placeholder);
+  margin-bottom: 4px;
+}
+
+.card-value {
+  font-size: 14px;
+  color: var(--fg);
+  font-weight: 500;
+}
+
+.card-desc {
+  font-size: 12px;
+  color: var(--fg-muted);
+  margin-top: 4px;
+  line-height: 1.5;
+}
+
+.code-block {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  padding: 14px 16px;
+  font-family: 'Geist Mono', 'Courier New', monospace;
+  font-size: 12px;
+  color: var(--accent);
+  margin: 16px 0;
+  overflow-x: auto;
+  line-height: 1.7;
+}
+
+.code-block .cm { color: var(--fg-placeholder); }
+.code-block .ck { color: var(--primary-300); }
+.code-block .cv { color: #86EFAC; }
+.code-block .cs { color: #FCD34D; }
+
+.layer-chain {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin: 20px 0;
+}
+
+.layer {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  padding: 10px 14px;
+  font-size: 13px;
+}
+
+.layer-num {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--primary);
+  color: var(--primary-fg);
+  font-size: 11px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.layer-name {
+  color: var(--fg);
+  font-weight: 500;
+  flex: 1;
+}
+
+.layer-detail {
+  color: var(--fg-muted);
+  font-size: 12px;
+}
+
+.layer-connector {
+  width: 2px;
+  height: 8px;
+  background: var(--border-strong);
+  margin-left: 22px;
+}
+
+.arch-svg {
+  width: 100%;
+  margin: 20px 0;
+}
+
+.table-wrap {
+  overflow-x: auto;
+  margin: 16px 0;
+}
+
+table.doc-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.doc-table th {
+  text-align: left;
+  padding: 8px 12px;
+  background: var(--bg-elevated);
+  color: var(--fg-muted);
+  font-weight: 500;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  border-bottom: 1px solid var(--border-strong);
+}
+
+.doc-table td {
+  padding: 8px 12px;
+  color: var(--fg-muted);
+  border-bottom: 1px solid var(--border);
+  font-size: 13px;
+}
+
+.doc-table td:first-child {
+  color: var(--accent);
+  font-family: 'Geist Mono', monospace;
+  font-size: 12px;
+}
+
+.pill {
+  display: inline-block;
+  background: rgba(91, 63, 154, 0.15);
+  border: 1px solid rgba(91, 63, 154, 0.4);
+  border-radius: 9999px;
+  padding: 2px 10px;
+  font-size: 11px;
+  color: var(--primary-light);
+  font-weight: 500;
+}
+
+.nav-footer {
+  display: flex;
+  gap: 10px;
+  margin-top: 36px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+}
+
+.btn-nav {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  padding: 8px 14px;
+  font-size: 13px;
+  color: var(--fg-muted);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.btn-nav:hover {
+  border-color: var(--primary);
+  color: var(--primary-light);
+}
+
+.btn-nav.disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.color-swatch-row {
+  display: flex;
+  gap: 8px;
+  margin: 12px 0;
+  flex-wrap: wrap;
+}
+
+.swatch {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--r-md);
+  position: relative;
+  flex-shrink: 0;
+}
+
+.swatch-label {
+  font-size: 10px;
+  color: var(--fg-muted);
+  margin-top: 4px;
+  text-align: center;
+  width: 36px;
+}
+
+.schema-field {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  padding: 6px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 13px;
+}
+
+.schema-field:last-child { border-bottom: none; }
+
+.field-name {
+  font-family: 'Geist Mono', monospace;
+  color: var(--accent);
+  font-size: 12px;
+  min-width: 100px;
+}
+
+.field-type {
+  color: var(--primary-300);
+  font-size: 11px;
+  font-family: monospace;
+}
+
+.field-hint {
+  color: var(--fg-placeholder);
+  font-size: 11px;
+  margin-left: auto;
+}
+
+.field-opt {
+  color: var(--fg-muted);
+  font-size: 11px;
+  font-style: italic;
+}
+
+.capsule-files {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.file-card {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  padding: 12px 14px;
+}
+
+.file-name {
+  font-family: 'Geist Mono', monospace;
+  font-size: 13px;
+  color: var(--accent);
+  margin-bottom: 4px;
+}
+
+.file-role {
+  font-size: 12px;
+  color: var(--fg-muted);
+}
+
+.jwt-flow {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 16px 0;
+}
+
+.jwt-step {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  font-size: 13px;
+}
+
+.jwt-step-num {
+  width: 20px;
+  height: 20px;
+  background: var(--bg-overlay);
+  border: 1px solid var(--border-strong);
+  border-radius: 50%;
+  font-size: 10px;
+  color: var(--fg-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.jwt-step-text { color: var(--fg); flex: 1; }
+.jwt-step-badge {
+  font-size: 10px;
+  padding: 2px 8px;
+  border-radius: 9999px;
+}
+.jwt-step-badge.ok {
+  background: rgba(20, 83, 45, 0.3);
+  color: #86EFAC;
+  border: 1px solid rgba(134,239,172,0.3);
+}
+.jwt-step-badge.warn {
+  background: rgba(120, 53, 15, 0.3);
+  color: #FCD34D;
+  border: 1px solid rgba(252,211,77,0.3);
+}
+
+.progress-bar {
+  display: flex;
+  gap: 3px;
+  margin-bottom: 28px;
+}
+
+.progress-dot {
+  height: 3px;
+  border-radius: 9999px;
+  transition: all 0.2s;
+}
+
+.email-preview {
+  background: #1a1410;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  margin: 16px 0;
+}
+
+.email-header {
+  background: var(--bg-overlay);
+  padding: 10px 14px;
+  font-size: 12px;
+  color: var(--fg-muted);
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  border-bottom: 1px solid var(--border);
+}
+
+.email-dot { width: 8px; height: 8px; border-radius: 50%; }
+
+.email-body {
+  padding: 16px;
+  font-size: 13px;
+  color: var(--fg);
+}
+
+.email-logo {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--primary-light);
+  margin-bottom: 12px;
+}
+
+.email-field {
+  display: flex;
+  gap: 8px;
+  margin: 6px 0;
+  font-size: 12px;
+}
+
+.email-field-k { color: var(--fg-muted); min-width: 60px; }
+.email-field-v { color: var(--fg); }
+</style>
+
+
+
+<div class="docs-root">
+
+  <header class="topbar">
+    <div class="logo-mark" aria-hidden="true">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+        <circle cx="8" cy="8" r="5" stroke="#EDE8F8" stroke-width="1.5"/>
+        <circle cx="8" cy="8" r="2" fill="#EDE8F8"/>
+      </svg>
+    </div>
+    <span class="topbar-title">RadiceV2</span>
+    <div class="topbar-sep"></div>
+    <span class="topbar-sub">RadiceV2 / OlonJS documentation site — 10 chapters covering engine, capsules, schemas, theming, forms, email pipeline, and admin security</span>
+    <span class="topbar-badge">v1.0</span>
+  </header>
+
+  <nav class="sidebar" aria-label="Chapter navigation">
+    <div class="sidebar-section">Getting started</div>
+    <div class="nav-item active" onclick="show(0)" id="nav-0"><span class="nav-num">00</span> Overview</div>
+    <div class="nav-item" onclick="show(1)" id="nav-1"><span class="nav-num">01</span> Engine & Entry Point</div>
+    <div class="nav-item" onclick="show(2)" id="nav-2"><span class="nav-num">02</span> Page & Site Config JSON</div>
+    <div class="sidebar-section">Components</div>
+    <div class="nav-item" onclick="show(3)" id="nav-3"><span class="nav-num">03</span> Capsule</div>
+    <div class="nav-item" onclick="show(4)" id="nav-4"><span class="nav-num">04</span> ComponentRegistry</div>
+    <div class="nav-item" onclick="show(5)" id="nav-5"><span class="nav-num">05</span> Zod Schema</div>
+    <div class="sidebar-section">Theming</div>
+    <div class="nav-item" onclick="show(6)" id="nav-6"><span class="nav-num">06</span> ThemeProvider</div>
+    <div class="nav-item" onclick="show(7)" id="nav-7"><span class="nav-num">07</span> CSS Token Bridge</div>
+    <div class="sidebar-section">Platform</div>
+    <div class="nav-item" onclick="show(8)" id="nav-8"><span class="nav-num">08</span> OlonJS Forms</div>
+    <div class="nav-item" onclick="show(9)" id="nav-9"><span class="nav-num">09</span> Email Pipeline</div>
+    <div class="nav-item" onclick="show(10)" id="nav-10"><span class="nav-num">10</span> Admin Middleware</div>
+  </nav>
+
+  <main class="main" id="main-area">
+
+    <!-- CHAPTER 0: Overview -->
+    <article class="chapter active" id="ch-0">
+      <div class="chapter-eyebrow">Introduction</div>
+      <h1 class="chapter-title">RadiceV2 / OlonJS</h1>
+      <p class="chapter-tagline">A production-ready, contract-first restaurant website built on the OlonJS framework — every section is schema-validated, visually editable, and AI-accessible.</p>
+      <div id="progress-root" class="progress-bar"></div>
+      <div class="divider"></div>
+      <div class="card-grid">
+        <div class="card">
+          <div class="card-icon" aria-hidden="true"><i class="ti ti-components"></i></div>
+          <div class="card-label">Architecture</div>
+          <div class="card-value">Capsule-based</div>
+          <div class="card-desc">Self-contained section components with 4-file structure</div>
+        </div>
+        <div class="card">
+          <div class="card-icon" aria-hidden="true"><i class="ti ti-shield-check"></i></div>
+          <div class="card-label">Data layer</div>
+          <div class="card-value">Zod contracts</div>
+          <div class="card-desc">Every field validated before rendering, types derived automatically</div>
+        </div>
+        <div class="card">
+          <div class="card-icon" aria-hidden="true"><i class="ti ti-moon"></i></div>
+          <div class="card-label">Theming</div>
+          <div class="card-value">4-layer CSS chain</div>
+          <div class="card-desc">Global tokens → Tailwind → local vars → utilities</div>
+        </div>
+        <div class="card">
+          <div class="card-icon" aria-hidden="true"><i class="ti ti-lock"></i></div>
+          <div class="card-label">Security</div>
+          <div class="card-value">ECDSA JWT</div>
+          <div class="card-desc">Edge-level auth guard on the /admin panel</div>
+        </div>
+      </div>
+      <div class="callout">
+        <b>OlonJS core contract:</b> the Studio interface is a reference client of the contract layer, not the product. The product is the agent-accessible content contract system exposed via <code>olon://</code> URIs.
+      </div>
+      <div class="divider"></div>
+      <p style="font-size:13px; color: var(--fg-muted);">Select a chapter in the sidebar to begin. Chapters are ordered from engine boot to security layer.</p>
+      <div class="nav-footer">
+        <button class="btn-nav disabled">← Previous</button>
+        <button class="btn-nav" onclick="show(1)">Engine & Entry Point →</button>
+      </div>
+    </article>
+
+    <!-- CHAPTER 1: Engine -->
+    <article class="chapter" id="ch-1">
+      <div class="chapter-eyebrow">Chapter 01</div>
+      <h1 class="chapter-title">OlonJS Engine & App Entry Point</h1>
+      <p class="chapter-tagline"><code>App.tsx</code> is the maître d' — it gathers all ingredients (components, schemas, configs) and hands them to <code>OlonJSEngine</code>, which runs the show.</p>
+      <div class="divider"></div>
+      <div class="prose">
+        <p>The engine provides routing, the Visual Inspector (<code>/admin</code>), preview mode, and cloud save. As the tenant, you supply four things:</p>
+      </div>
+      <div class="table-wrap">
+        <table class="doc-table">
+          <thead><tr><th>Prop</th><th>What it is</th><th>Source</th></tr></thead>
+          <tbody>
+            <tr><td>componentRegistry</td><td>type string → React component map</td><td>ComponentRegistry.tsx</td></tr>
+            <tr><td>schemas</td><td>Zod validation contracts</td><td>schemas.ts</td></tr>
+            <tr><td>siteConfig</td><td>Site-wide identity & settings</td><td>site.json</td></tr>
+            <tr><td>themeConfig</td><td>Colors, fonts, spacing tokens</td><td>theme.json</td></tr>
+            <tr><td>pages</td><td>Record of slug → section arrays</td><td>getFilePages()</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="callout">
+        <b>The split:</b> you own what the site contains. OlonJS owns how it works. This means zero CMS plumbing for the tenant.
+      </div>
+      <div class="code-block"><span class="ck">return</span> (
+  &lt;<span class="cv">ThemeProvider</span>&gt;
+    &lt;<span class="cv">OlonJSEngine</span>
+      <span class="ck">componentRegistry</span>={<span class="cs">ComponentRegistry</span>}
+      <span class="ck">schemas</span>={<span class="cs">SECTION_SCHEMAS</span>}
+      <span class="ck">siteConfig</span>={<span class="cs">siteConfig</span>}
+      <span class="ck">themeConfig</span>={<span class="cs">themeConfig</span>}
+      <span class="ck">pages</span>={<span class="cs">filePages</span>}
+    /&gt;
+  &lt;/<span class="cv">ThemeProvider</span>&gt;
+);</div>
+      <div class="nav-footer">
+        <button class="btn-nav" onclick="show(0)">← Overview</button>
+        <button class="btn-nav" onclick="show(2)">Page & Site Config →</button>
+      </div>
+    </article>
+
+    <!-- CHAPTER 2: Config JSON -->
+    <article class="chapter" id="ch-2">
+      <div class="chapter-eyebrow">Chapter 02</div>
+      <h1 class="chapter-title">Page & Site Config JSON</h1>
+      <p class="chapter-tagline">All content lives in JSON files under <code>src/data/</code>. The Visual Inspector writes back to these same files — they are the single source of truth.</p>
+      <div class="divider"></div>
+      <div class="table-wrap">
+        <table class="doc-table">
+          <thead><tr><th>File</th><th>Purpose</th><th>Analogy</th></tr></thead>
+          <tbody>
+            <tr><td>config/site.json</td><td>Global site identity</td><td>Business card</td></tr>
+            <tr><td>config/theme.json</td><td>Design tokens</td><td>Interior design spec</td></tr>
+            <tr><td>config/menu.json</td><td>Navigation links</td><td>Entrance signage</td></tr>
+            <tr><td>pages/*.json</td><td>Per-page section arrays</td><td>Stage direction scripts</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="prose">
+        <p>Each page JSON is an ordered array of sections. Each section has a <strong>type</strong> string (resolved via ComponentRegistry), a <strong>data</strong> object, and optional <strong>settings</strong>.</p>
+      </div>
+      <div class="code-block">{
+  <span class="ck">"sections"</span>: [
+    {
+      <span class="ck">"type"</span>: <span class="cs">"editorial-hero"</span>,
+      <span class="ck">"data"</span>: { <span class="ck">"headline"</span>: <span class="cs">"Welcome to Radice"</span> }
+    },
+    {
+      <span class="ck">"type"</span>: <span class="cs">"awards-accolades"</span>,
+      <span class="ck">"data"</span>: { <span class="ck">"title"</span>: <span class="cs">"Our Recognition"</span>, <span class="ck">"awards"</span>: [...] }
+    }
+  ]
+}</div>
+      <div class="callout">
+        <b>Adding a page:</b> drop a new <code>.json</code> file into <code>src/data/pages/</code>. <code>getFilePages()</code> picks it up automatically. No changes to <code>App.tsx</code> needed.
+      </div>
+      <div class="nav-footer">
+        <button class="btn-nav" onclick="show(1)">← Engine</button>
+        <button class="btn-nav" onclick="show(3)">Capsule →</button>
+      </div>
+    </article>
+
+    <!-- CHAPTER 3: Capsule -->
+    <article class="chapter" id="ch-3">
+      <div class="chapter-eyebrow">Chapter 03</div>
+      <h1 class="chapter-title">Capsule (Section Component)</h1>
+      <p class="chapter-tagline">A Capsule is a self-contained LEGO brick: one folder, four files, one job. Every section on every page is a Capsule.</p>
+      <div class="divider"></div>
+      <div class="capsule-files">
+        <div class="file-card">
+          <div class="file-name">View.tsx</div>
+          <div class="file-role">Renders the HTML. Receives typed <code>data</code> and <code>settings</code> props.</div>
+        </div>
+        <div class="file-card">
+          <div class="file-name">schema.ts</div>
+          <div class="file-role">Zod contract. Declares required fields and <code>ui:*</code> editor hints.</div>
+        </div>
+        <div class="file-card">
+          <div class="file-name">types.ts</div>
+          <div class="file-role">TypeScript types derived from schema via <code>z.infer</code>.</div>
+        </div>
+        <div class="file-card">
+          <div class="file-name">index.ts</div>
+          <div class="file-role">Barrel export. Single public entry point for the whole Capsule.</div>
+        </div>
+      </div>
+      <div class="prose">
+        <p>The four files are coupled. Adding a field requires updating schema → types are auto-derived → View uses the new field. Forget schema and the Visual Inspector won't show an editor for it.</p>
+      </div>
+      <div class="callout">
+        <b>To create a Capsule:</b> make the folder, write schema → types → View → index. Then register in ComponentRegistry and schemas.ts. Two lines each.
+      </div>
+      <div class="nav-footer">
+        <button class="btn-nav" onclick="show(2)">← Config JSON</button>
+        <button class="btn-nav" onclick="show(4)">ComponentRegistry →</button>
+      </div>
+    </article>
+
+    <!-- CHAPTER 4: ComponentRegistry -->
+    <article class="chapter" id="ch-4">
+      <div class="chapter-eyebrow">Chapter 04</div>
+      <h1 class="chapter-title">ComponentRegistry</h1>
+      <p class="chapter-tagline">The phone book. Maps every <code>"type"</code> string from page JSON to the React component that renders it.</p>
+      <div class="divider"></div>
+      <div class="code-block"><span class="cm">// src/lib/ComponentRegistry.tsx</span>
+<span class="ck">export const</span> <span class="cv">ComponentRegistry</span> = {
+  <span class="cs">'header'</span>:         Header,
+  <span class="cs">'editorial-hero'</span>: EditorialHero,
+  <span class="cs">'chef-profile'</span>:   ChefProfile,
+  <span class="cs">'awards-accolades'</span>: AwardsAccolades,
+  <span class="cs">'gallery-grid'</span>:   GalleryGrid,
+  <span class="cm">// ← add one line per Capsule</span>
+};</div>
+      <div class="prose">
+        <p>A companion file <code>src/lib/schemas.ts</code> uses the same keys to register Zod schemas. Both files must be kept in sync with every Capsule.</p>
+      </div>
+      <div class="table-wrap">
+        <table class="doc-table">
+          <thead><tr><th>File</th><th>Registers</th><th>Purpose</th></tr></thead>
+          <tbody>
+            <tr><td>ComponentRegistry.tsx</td><td>React component</td><td>What to render</td></tr>
+            <tr><td>schemas.ts</td><td>Zod schema</td><td>What data is valid</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="callout">
+        <b>Debug checklist</b> when a section doesn't appear: (1) type string spelled correctly in JSON? (2) registered in ComponentRegistry? (3) schema registered in schemas.ts?
+      </div>
+      <div class="nav-footer">
+        <button class="btn-nav" onclick="show(3)">← Capsule</button>
+        <button class="btn-nav" onclick="show(5)">Zod Schema →</button>
+      </div>
+    </article>
+
+    <!-- CHAPTER 5: Zod Schema -->
+    <article class="chapter" id="ch-5">
+      <div class="chapter-eyebrow">Chapter 05</div>
+      <h1 class="chapter-title">Zod Schema (Data Contract)</h1>
+      <p class="chapter-tagline">The schema is the customs officer at the door and the Visual Inspector's UI spec — both in one file.</p>
+      <div class="divider"></div>
+      <div class="prose"><p>Every schema extends <code>BaseSectionData</code> and adds Capsule-specific fields. The <code>.describe('ui:...')</code> hint drives the editor widget shown in the Visual Inspector.</p></div>
+      <div style="background: var(--bg-elevated); border: 1px solid var(--border); border-radius: var(--r-lg); padding: 14px 16px; margin: 16px 0;">
+        <div style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--fg-placeholder); margin-bottom: 10px;">ChefProfileSchema — field breakdown</div>
+        <div class="schema-field"><span class="field-name">name</span><span class="field-type">z.string()</span><span class="field-opt">required</span><span class="field-hint">ui:text → single-line input</span></div>
+        <div class="schema-field"><span class="field-name">title</span><span class="field-type">z.string()</span><span class="field-opt">required</span><span class="field-hint">ui:text → single-line input</span></div>
+        <div class="schema-field"><span class="field-name">bio</span><span class="field-type">z.string()</span><span class="field-opt">required</span><span class="field-hint">ui:textarea → multi-line</span></div>
+        <div class="schema-field"><span class="field-name">quote</span><span class="field-type">z.string()</span><span class="field-opt">.optional()</span><span class="field-hint">ui:textarea → multi-line</span></div>
+        <div class="schema-field"><span class="field-name">image</span><span class="field-type">ImageSelectionSchema</span><span class="field-opt">.optional()</span><span class="field-hint">ui:image → image picker</span></div>
+      </div>
+      <div class="callout">
+        <b>Single source of truth:</b> the schema drives TypeScript types (<code>z.infer</code>) AND the Visual Inspector editor widgets. Write once, both worlds update automatically.
+      </div>
+      <div class="nav-footer">
+        <button class="btn-nav" onclick="show(4)">← ComponentRegistry</button>
+        <button class="btn-nav" onclick="show(6)">ThemeProvider →</button>
+      </div>
+    </article>
+
+    <!-- CHAPTER 6: ThemeProvider -->
+    <article class="chapter" id="ch-6">
+      <div class="chapter-eyebrow">Chapter 06</div>
+      <h1 class="chapter-title">ThemeProvider (Light/Dark Mode)</h1>
+      <p class="chapter-tagline">One <code>data-theme</code> attribute on <code>&lt;html&gt;</code> switches the entire site. ThemeProvider is wired to localStorage and OS preference.</p>
+      <div class="divider"></div>
+      <div class="prose"><p>On first visit it checks: (1) existing <code>data-theme</code> on the DOM, (2) <code>localStorage</code>, (3) <code>prefers-color-scheme</code>. On toggle it writes both the attribute and localStorage atomically via a single <code>useEffect</code>.</p></div>
+      <div style="background: var(--bg-elevated); border: 1px solid var(--border); border-radius: var(--r-lg); padding: 14px 16px; margin: 16px 0;">
+        <div style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--fg-placeholder); margin-bottom: 10px;">useTheme() API</div>
+        <div class="schema-field"><span class="field-name">theme</span><span class="field-type">'dark' | 'light'</span><span class="field-hint">current active theme</span></div>
+        <div class="schema-field"><span class="field-name">toggleTheme</span><span class="field-type">() =&gt; void</span><span class="field-hint">flip between modes</span></div>
+        <div class="schema-field"><span class="field-name">setTheme</span><span class="field-type">(t: Theme) =&gt; void</span><span class="field-hint">force a specific mode</span></div>
+      </div>
+      <div class="callout">
+        <b>Note:</b> the Header component manages its own local toggle and writes <code>data-theme</code> directly. Both approaches flip the same attribute and produce identical results.
+      </div>
+      <div class="nav-footer">
+        <button class="btn-nav" onclick="show(5)">← Zod Schema</button>
+        <button class="btn-nav" onclick="show(7)">CSS Token Bridge →</button>
+      </div>
+    </article>
+
+    <!-- CHAPTER 7: CSS Token Bridge -->
+    <article class="chapter" id="ch-7">
+      <div class="chapter-eyebrow">Chapter 07</div>
+      <h1 class="chapter-title">Local CSS Token Bridge</h1>
+      <p class="chapter-tagline">A four-layer relay race from <code>theme.json</code> to individual pixels. Change the brand color once — every section updates.</p>
+      <div class="divider"></div>
+      <div class="layer-chain">
+        <div class="layer"><div class="layer-num">1</div><span class="layer-name">Engine → <code>:root</code></span><span class="layer-detail">Writes global tokens: <code>--primary</code>, <code>--background</code>, …</span></div>
+        <div class="layer-connector"></div>
+        <div class="layer"><div class="layer-num">2</div><span class="layer-name">Tailwind <code>@theme</code></span><span class="layer-detail">Maps tokens to utility classes: <code>bg-primary</code>, <code>text-foreground</code></span></div>
+        <div class="layer-connector"></div>
+        <div class="layer"><div class="layer-num">3</div><span class="layer-name">Capsule <code>&lt;section&gt;</code></span><span class="layer-detail">Re-maps to <code>--local-bg</code>, <code>--local-text</code>, <code>--local-primary</code></span></div>
+        <div class="layer-connector"></div>
+        <div class="layer"><div class="layer-num">4</div><span class="layer-name">Element utilities</span><span class="layer-detail"><code>text-[var(--local-text)]</code> — references nearest ancestor local var</span></div>
+      </div>
+      <div class="callout">
+        <b>Why <code>--local-*</code>?</b> Isolation: an inverted section (e.g. reservation CTA) just remaps <code>--local-bg: var(--primary)</code> at layer 3 — inner elements need not know. Also: direct DevTools override per section.
+      </div>
+      <div class="nav-footer">
+        <button class="btn-nav" onclick="show(6)">← ThemeProvider</button>
+        <button class="btn-nav" onclick="show(8)">OlonJS Forms →</button>
+      </div>
+    </article>
+
+    <!-- CHAPTER 8: Forms -->
+    <article class="chapter" id="ch-8">
+      <div class="chapter-eyebrow">Chapter 08</div>
+      <h1 class="chapter-title">OlonJS Forms</h1>
+      <p class="chapter-tagline">Contact and reservation forms with zero server-side code. Add <code>data-olon-recipient</code> to a <code>&lt;form&gt;</code> and the OlonJS Cloud handles delivery.</p>
+      <div class="divider"></div>
+      <div class="table-wrap">
+        <table class="doc-table">
+          <thead><tr><th>Piece</th><th>Role</th></tr></thead>
+          <tbody>
+            <tr><td>FormSubmissionSchema</td><td>Declares fields the form collects (Zod)</td></tr>
+            <tr><td>data-olon-recipient</td><td>Email delivery address on the &lt;form&gt; element</td></tr>
+            <tr><td>useFormState(id)</td><td>Returns live status: idle / submitting / success / error</td></tr>
+            <tr><td>useOlonForms</td><td>Wired once in App.tsx — intercepts all matching forms</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="callout">
+        <b>Adding a form:</b> (1) extend schema with <code>WithFormRecipient</code>, (2) add <code>data-olon-recipient</code> attribute, (3) render status via <code>useFormState</code>. <code>useOlonForms</code> auto-detects new forms — no changes to <code>App.tsx</code>.
+      </div>
+      <div class="code-block"><span class="ck">const</span> { status, message } = <span class="cv">useFormState</span>(formId);
+
+&lt;<span class="cv">form</span> <span class="ck">id</span>={formId} <span class="ck">data-olon-recipient</span>={<span class="cs">data.recipientEmail</span>}&gt;
+  &lt;<span class="cv">input</span> <span class="ck">name</span>=<span class="cs">"email"</span> <span class="ck">type</span>=<span class="cs">"email"</span> <span class="ck">required</span> /&gt;
+  &lt;<span class="cv">button</span> <span class="ck">type</span>=<span class="cs">"submit"</span>&gt;Send&lt;/<span class="cv">button</span>&gt;
+&lt;/<span class="cv">form</span>&gt;</div>
+      <div class="nav-footer">
+        <button class="btn-nav" onclick="show(7)">← CSS Token Bridge</button>
+        <button class="btn-nav" onclick="show(9)">Email Pipeline →</button>
+      </div>
+    </article>
+
+    <!-- CHAPTER 9: Email Pipeline -->
+    <article class="chapter" id="ch-9">
+      <div class="chapter-eyebrow">Chapter 09</div>
+      <h1 class="chapter-title">Email Baking Pipeline</h1>
+      <p class="chapter-tagline">A build-time script pre-renders React email templates into static HTML, injecting brand tokens from <code>site.json</code> and <code>theme.json</code>.</p>
+      <div class="divider"></div>
+      <div class="prose"><p>Run <code>npx tsx scripts/bake-email.tsx</code> once. Output lands in <code>email-templates/</code> as complete, self-contained HTML. The OlonJS Cloud uses these as branded shells and injects dynamic form data at send time.</p></div>
+      <div class="email-preview">
+        <div class="email-header">
+          <div class="email-dot" style="background:#FF5F57"></div>
+          <div class="email-dot" style="background:#FFBD2E"></div>
+          <div class="email-dot" style="background:#28C940"></div>
+          <span style="margin-left:6px;">lead-notification.html</span>
+        </div>
+        <div class="email-body">
+          <div class="email-logo">Radice</div>
+          <div style="font-size:14px; color: var(--fg-muted); margin-bottom:10px;">New contact form submission</div>
+          <div class="email-field"><span class="email-field-k">Name</span><span class="email-field-v">Marco Rossi</span></div>
+          <div class="email-field"><span class="email-field-k">Email</span><span class="email-field-v">m.rossi@example.com</span></div>
+          <div class="email-field"><span class="email-field-k">Message</span><span class="email-field-v">Table for 4, Friday 8pm</span></div>
+          <div class="email-field"><span class="email-field-k">Page</span><span class="email-field-v">/contact</span></div>
+        </div>
+      </div>
+      <div class="callout">
+        <b>To add a template:</b> create <code>src/emails/BookingConfirmedEmail.tsx</code>, run the script. Auto-discovered, output at <code>email-templates/booking-confirmed.html</code>. No registration needed.
+      </div>
+      <div class="nav-footer">
+        <button class="btn-nav" onclick="show(8)">← OlonJS Forms</button>
+        <button class="btn-nav" onclick="show(10)">Admin Middleware →</button>
+      </div>
+    </article>
+
+    <!-- CHAPTER 10: Admin Middleware -->
+    <article class="chapter" id="ch-10">
+      <div class="chapter-eyebrow">Chapter 10</div>
+      <h1 class="chapter-title">Admin Middleware (JWT Auth Guard)</h1>
+      <p class="chapter-tagline">Vercel Edge middleware intercepts every <code>/admin</code> request and verifies a short-lived ECDSA JWT before anything reaches the app.</p>
+      <div class="divider"></div>
+      <div class="jwt-flow">
+        <div class="jwt-step"><div class="jwt-step-num">1</div><div class="jwt-step-text">Session cookie present?</div><span class="jwt-step-badge ok">signature check (no expiry)</span></div>
+        <div class="jwt-step"><div class="jwt-step-num">2</div><div class="jwt-step-text">Bearer token in Authorization header?</div><span class="jwt-step-badge ok">full check + expiry</span></div>
+        <div class="jwt-step"><div class="jwt-step-num">3</div><div class="jwt-step-text">Valid Bearer → set session cookie</div><span class="jwt-step-badge ok">Max-Age: 1h</span></div>
+        <div class="jwt-step"><div class="jwt-step-num">4</div><div class="jwt-step-text">Neither valid</div><span class="jwt-step-badge warn">401 Unauthorized</span></div>
+      </div>
+      <div class="prose">
+        <p>The private key lives only in the OlonJS Cloud. <code>ADMIN_PUBLIC_KEY</code> in your Vercel env can verify tokens but never create them. JWT verification checks: (1) subject claim <code>admin-access</code>, (2) expiry, (3) ECDSA P-256 signature via <code>crypto.subtle</code>.</p>
+      </div>
+      <div class="callout">
+        <b>Local dev:</b> middleware only activates when <code>VERCEL_ENV</code> is set. Local development is always open — no credentials needed.
+      </div>
+      <div class="nav-footer">
+        <button class="btn-nav" onclick="show(9)">← Email Pipeline</button>
+        <button class="btn-nav disabled">End of docs ✓</button>
+      </div>
+    </article>
+
+  </main>
+</div>
+
+<script>
+const TOTAL = 11;
+let current = 0;
+
+function show(n) {
+  document.getElementById('ch-' + current).classList.remove('active');
+  document.getElementById('nav-' + current).classList.remove('active');
+  current = n;
+  document.getElementById('ch-' + n).classList.add('active');
+  document.getElementById('nav-' + n).classList.add('active');
+  document.getElementById('main-area').scrollTop = 0;
+  renderProgress();
+}
+
+function renderProgress() {
+  const bar = document.getElementById('progress-root');
+  if (!bar) return;
+  bar.innerHTML = '';
+  for (let i = 0; i < TOTAL; i++) {
+    const dot = document.createElement('div');
+    dot.className = 'progress-dot';
+    const active = i === current;
+    const done = i < current;
+    dot.style.flex = active ? '3' : '1';
+    dot.style.background = active ? '#5B3F9A' : done ? '#3D2770' : '#2E271F';
+    bar.appendChild(dot);
+  }
+}
+
+renderProgress();
+</script>
