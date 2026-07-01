@@ -79,7 +79,7 @@ var hasRequiredReact_production;
 function requireReact_production() {
   if (hasRequiredReact_production) return react_production;
   hasRequiredReact_production = 1;
-  var REACT_ELEMENT_TYPE = Symbol.for("react.transitional.element"), REACT_PORTAL_TYPE = Symbol.for("react.portal"), REACT_FRAGMENT_TYPE = Symbol.for("react.fragment"), REACT_STRICT_MODE_TYPE = Symbol.for("react.strict_mode"), REACT_PROFILER_TYPE = Symbol.for("react.profiler"), REACT_CONSUMER_TYPE = Symbol.for("react.consumer"), REACT_CONTEXT_TYPE = Symbol.for("react.context"), REACT_FORWARD_REF_TYPE = Symbol.for("react.forward_ref"), REACT_SUSPENSE_TYPE = Symbol.for("react.suspense"), REACT_MEMO_TYPE = Symbol.for("react.memo"), REACT_LAZY_TYPE = Symbol.for("react.lazy"), REACT_ACTIVITY_TYPE = Symbol.for("react.activity"), MAYBE_ITERATOR_SYMBOL = Symbol.iterator;
+  var REACT_ELEMENT_TYPE = Symbol.for("react.transitional.element"), REACT_PORTAL_TYPE = Symbol.for("react.portal"), REACT_FRAGMENT_TYPE = Symbol.for("react.fragment"), REACT_STRICT_MODE_TYPE = Symbol.for("react.strict_mode"), REACT_PROFILER_TYPE = Symbol.for("react.profiler"), REACT_CONSUMER_TYPE = Symbol.for("react.consumer"), REACT_CONTEXT_TYPE = Symbol.for("react.context"), REACT_FORWARD_REF_TYPE = Symbol.for("react.forward_ref"), REACT_SUSPENSE_TYPE = Symbol.for("react.suspense"), REACT_MEMO_TYPE = Symbol.for("react.memo"), REACT_LAZY_TYPE2 = Symbol.for("react.lazy"), REACT_ACTIVITY_TYPE = Symbol.for("react.activity"), MAYBE_ITERATOR_SYMBOL = Symbol.iterator;
   function getIteratorFn(maybeIterable) {
     if (null === maybeIterable || "object" !== typeof maybeIterable) return null;
     maybeIterable = MAYBE_ITERATOR_SYMBOL && maybeIterable[MAYBE_ITERATOR_SYMBOL] || maybeIterable["@@iterator"];
@@ -197,7 +197,7 @@ function requireReact_production() {
             case REACT_PORTAL_TYPE:
               invokeCallback = true;
               break;
-            case REACT_LAZY_TYPE:
+            case REACT_LAZY_TYPE2:
               return invokeCallback = children._init, mapIntoArray(
                 invokeCallback(children._payload),
                 array,
@@ -408,7 +408,7 @@ function requireReact_production() {
   react_production.isValidElement = isValidElement;
   react_production.lazy = function(ctor) {
     return {
-      $$typeof: REACT_LAZY_TYPE,
+      $$typeof: REACT_LAZY_TYPE2,
       _payload: { _status: -1, _result: ctor },
       _init: lazyInitializer
     };
@@ -496,7 +496,7 @@ function requireReact_production() {
   react_production.useTransition = function() {
     return ReactSharedInternals.H.useTransition();
   };
-  react_production.version = "19.2.6";
+  react_production.version = "19.2.7";
   return react_production;
 }
 var react_development = { exports: {} };
@@ -616,7 +616,7 @@ function requireReact_development() {
               return type;
             case REACT_MEMO_TYPE:
               return innerType = type.displayName || null, null !== innerType ? innerType : getComponentNameFromType(type.type) || "Memo";
-            case REACT_LAZY_TYPE:
+            case REACT_LAZY_TYPE2:
               innerType = type._payload;
               type = type._init;
               try {
@@ -628,7 +628,7 @@ function requireReact_development() {
       }
       function getTaskName(type) {
         if (type === REACT_FRAGMENT_TYPE) return "<>";
-        if ("object" === typeof type && null !== type && type.$$typeof === REACT_LAZY_TYPE)
+        if ("object" === typeof type && null !== type && type.$$typeof === REACT_LAZY_TYPE2)
           return "<...>";
         try {
           var name2 = getComponentNameFromType(type);
@@ -726,7 +726,7 @@ function requireReact_development() {
         return newKey;
       }
       function validateChildKeys(node) {
-        isValidElement(node) ? node._store && (node._store.validated = 1) : "object" === typeof node && null !== node && node.$$typeof === REACT_LAZY_TYPE && ("fulfilled" === node._payload.status ? isValidElement(node._payload.value) && node._payload.value._store && (node._payload.value._store.validated = 1) : node._store && (node._store.validated = 1));
+        isValidElement(node) ? node._store && (node._store.validated = 1) : "object" === typeof node && null !== node && node.$$typeof === REACT_LAZY_TYPE2 && ("fulfilled" === node._payload.status ? isValidElement(node._payload.value) && node._payload.value._store && (node._payload.value._store.validated = 1) : node._store && (node._store.validated = 1));
       }
       function isValidElement(object) {
         return "object" === typeof object && null !== object && object.$$typeof === REACT_ELEMENT_TYPE;
@@ -781,7 +781,7 @@ function requireReact_development() {
                 case REACT_PORTAL_TYPE:
                   invokeCallback = true;
                   break;
-                case REACT_LAZY_TYPE:
+                case REACT_LAZY_TYPE2:
                   return invokeCallback = children._init, mapIntoArray(
                     invokeCallback(children._payload),
                     array,
@@ -980,7 +980,7 @@ function requireReact_development() {
         }
       }
       "undefined" !== typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ && "function" === typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart && __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart(Error());
-      var REACT_ELEMENT_TYPE = Symbol.for("react.transitional.element"), REACT_PORTAL_TYPE = Symbol.for("react.portal"), REACT_FRAGMENT_TYPE = Symbol.for("react.fragment"), REACT_STRICT_MODE_TYPE = Symbol.for("react.strict_mode"), REACT_PROFILER_TYPE = Symbol.for("react.profiler"), REACT_CONSUMER_TYPE = Symbol.for("react.consumer"), REACT_CONTEXT_TYPE = Symbol.for("react.context"), REACT_FORWARD_REF_TYPE = Symbol.for("react.forward_ref"), REACT_SUSPENSE_TYPE = Symbol.for("react.suspense"), REACT_SUSPENSE_LIST_TYPE = Symbol.for("react.suspense_list"), REACT_MEMO_TYPE = Symbol.for("react.memo"), REACT_LAZY_TYPE = Symbol.for("react.lazy"), REACT_ACTIVITY_TYPE = Symbol.for("react.activity"), MAYBE_ITERATOR_SYMBOL = Symbol.iterator, didWarnStateUpdateForUnmountedComponent = {}, ReactNoopUpdateQueue = {
+      var REACT_ELEMENT_TYPE = Symbol.for("react.transitional.element"), REACT_PORTAL_TYPE = Symbol.for("react.portal"), REACT_FRAGMENT_TYPE = Symbol.for("react.fragment"), REACT_STRICT_MODE_TYPE = Symbol.for("react.strict_mode"), REACT_PROFILER_TYPE = Symbol.for("react.profiler"), REACT_CONSUMER_TYPE = Symbol.for("react.consumer"), REACT_CONTEXT_TYPE = Symbol.for("react.context"), REACT_FORWARD_REF_TYPE = Symbol.for("react.forward_ref"), REACT_SUSPENSE_TYPE = Symbol.for("react.suspense"), REACT_SUSPENSE_LIST_TYPE = Symbol.for("react.suspense_list"), REACT_MEMO_TYPE = Symbol.for("react.memo"), REACT_LAZY_TYPE2 = Symbol.for("react.lazy"), REACT_ACTIVITY_TYPE = Symbol.for("react.activity"), MAYBE_ITERATOR_SYMBOL = Symbol.iterator, didWarnStateUpdateForUnmountedComponent = {}, ReactNoopUpdateQueue = {
         isMounted: function() {
           return false;
         },
@@ -1338,7 +1338,7 @@ function requireReact_development() {
       exports.lazy = function(ctor) {
         ctor = { _status: -1, _result: ctor };
         var lazyType = {
-          $$typeof: REACT_LAZY_TYPE,
+          $$typeof: REACT_LAZY_TYPE2,
           _payload: ctor,
           _init: lazyInitializer
         }, ioInfo = {
@@ -1477,7 +1477,7 @@ function requireReact_development() {
       exports.useTransition = function() {
         return resolveDispatcher().useTransition();
       };
-      exports.version = "19.2.6";
+      exports.version = "19.2.7";
       "undefined" !== typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ && "function" === typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop && __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop(Error());
     })();
   })(react_development, react_development.exports);
@@ -1544,7 +1544,7 @@ function requireReactJsxRuntime_development() {
             return type;
           case REACT_MEMO_TYPE:
             return innerType = type.displayName || null, null !== innerType ? innerType : getComponentNameFromType(type.type) || "Memo";
-          case REACT_LAZY_TYPE:
+          case REACT_LAZY_TYPE2:
             innerType = type._payload;
             type = type._init;
             try {
@@ -1578,7 +1578,7 @@ function requireReactJsxRuntime_development() {
     }
     function getTaskName(type) {
       if (type === REACT_FRAGMENT_TYPE) return "<>";
-      if ("object" === typeof type && null !== type && type.$$typeof === REACT_LAZY_TYPE)
+      if ("object" === typeof type && null !== type && type.$$typeof === REACT_LAZY_TYPE2)
         return "<...>";
       try {
         var name2 = getComponentNameFromType(type);
@@ -1712,23 +1712,23 @@ function requireReactJsxRuntime_development() {
       );
     }
     function validateChildKeys(node) {
-      isValidElement(node) ? node._store && (node._store.validated = 1) : "object" === typeof node && null !== node && node.$$typeof === REACT_LAZY_TYPE && ("fulfilled" === node._payload.status ? isValidElement(node._payload.value) && node._payload.value._store && (node._payload.value._store.validated = 1) : node._store && (node._store.validated = 1));
+      isValidElement(node) ? node._store && (node._store.validated = 1) : "object" === typeof node && null !== node && node.$$typeof === REACT_LAZY_TYPE2 && ("fulfilled" === node._payload.status ? isValidElement(node._payload.value) && node._payload.value._store && (node._payload.value._store.validated = 1) : node._store && (node._store.validated = 1));
     }
     function isValidElement(object) {
       return "object" === typeof object && null !== object && object.$$typeof === REACT_ELEMENT_TYPE;
     }
-    var React2 = requireReact(), REACT_ELEMENT_TYPE = Symbol.for("react.transitional.element"), REACT_PORTAL_TYPE = Symbol.for("react.portal"), REACT_FRAGMENT_TYPE = Symbol.for("react.fragment"), REACT_STRICT_MODE_TYPE = Symbol.for("react.strict_mode"), REACT_PROFILER_TYPE = Symbol.for("react.profiler"), REACT_CONSUMER_TYPE = Symbol.for("react.consumer"), REACT_CONTEXT_TYPE = Symbol.for("react.context"), REACT_FORWARD_REF_TYPE = Symbol.for("react.forward_ref"), REACT_SUSPENSE_TYPE = Symbol.for("react.suspense"), REACT_SUSPENSE_LIST_TYPE = Symbol.for("react.suspense_list"), REACT_MEMO_TYPE = Symbol.for("react.memo"), REACT_LAZY_TYPE = Symbol.for("react.lazy"), REACT_ACTIVITY_TYPE = Symbol.for("react.activity"), REACT_CLIENT_REFERENCE = Symbol.for("react.client.reference"), ReactSharedInternals = React2.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE, hasOwnProperty = Object.prototype.hasOwnProperty, isArrayImpl = Array.isArray, createTask = console.createTask ? console.createTask : function() {
+    var React3 = requireReact(), REACT_ELEMENT_TYPE = Symbol.for("react.transitional.element"), REACT_PORTAL_TYPE = Symbol.for("react.portal"), REACT_FRAGMENT_TYPE = Symbol.for("react.fragment"), REACT_STRICT_MODE_TYPE = Symbol.for("react.strict_mode"), REACT_PROFILER_TYPE = Symbol.for("react.profiler"), REACT_CONSUMER_TYPE = Symbol.for("react.consumer"), REACT_CONTEXT_TYPE = Symbol.for("react.context"), REACT_FORWARD_REF_TYPE = Symbol.for("react.forward_ref"), REACT_SUSPENSE_TYPE = Symbol.for("react.suspense"), REACT_SUSPENSE_LIST_TYPE = Symbol.for("react.suspense_list"), REACT_MEMO_TYPE = Symbol.for("react.memo"), REACT_LAZY_TYPE2 = Symbol.for("react.lazy"), REACT_ACTIVITY_TYPE = Symbol.for("react.activity"), REACT_CLIENT_REFERENCE = Symbol.for("react.client.reference"), ReactSharedInternals = React3.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE, hasOwnProperty = Object.prototype.hasOwnProperty, isArrayImpl = Array.isArray, createTask = console.createTask ? console.createTask : function() {
       return null;
     };
-    React2 = {
+    React3 = {
       react_stack_bottom_frame: function(callStackForError) {
         return callStackForError();
       }
     };
     var specialPropKeyWarningShown;
     var didWarnAboutElementRef = {};
-    var unknownOwnerDebugStack = React2.react_stack_bottom_frame.bind(
-      React2,
+    var unknownOwnerDebugStack = React3.react_stack_bottom_frame.bind(
+      React3,
       UnknownOwner
     )();
     var unknownOwnerDebugTask = createTask(getTaskName(UnknownOwner));
@@ -1788,7 +1788,7 @@ var hasRequiredReactDom_production;
 function requireReactDom_production() {
   if (hasRequiredReactDom_production) return reactDom_production;
   hasRequiredReactDom_production = 1;
-  var React2 = requireReact();
+  var React3 = requireReact();
   function formatProdErrorMessage(code) {
     var url = "https://react.dev/errors/" + code;
     if (1 < arguments.length) {
@@ -1827,7 +1827,7 @@ function requireReactDom_production() {
       implementation
     };
   }
-  var ReactSharedInternals = React2.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE;
+  var ReactSharedInternals = React3.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE;
   function getCrossOriginStringAs(as, input) {
     if ("font" === as) return "";
     if ("string" === typeof input)
@@ -1928,7 +1928,7 @@ function requireReactDom_production() {
   reactDom_production.useFormStatus = function() {
     return ReactSharedInternals.H.useHostTransitionStatus();
   };
-  reactDom_production.version = "19.2.6";
+  reactDom_production.version = "19.2.7";
   return reactDom_production;
 }
 var reactDom_development = {};
@@ -1990,7 +1990,7 @@ function requireReactDom_development() {
       return dispatcher;
     }
     "undefined" !== typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ && "function" === typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart && __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart(Error());
-    var React2 = requireReact(), Internals = {
+    var React3 = requireReact(), Internals = {
       d: {
         f: noop,
         r: function() {
@@ -2008,7 +2008,7 @@ function requireReactDom_development() {
       },
       p: 0,
       findDOMNode: null
-    }, REACT_PORTAL_TYPE = Symbol.for("react.portal"), ReactSharedInternals = React2.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE;
+    }, REACT_PORTAL_TYPE = Symbol.for("react.portal"), ReactSharedInternals = React3.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE;
     "function" === typeof Map && null != Map.prototype && "function" === typeof Map.prototype.forEach && "function" === typeof Set && null != Set.prototype && "function" === typeof Set.prototype.clear && "function" === typeof Set.prototype.forEach || console.error(
       "React depends on Map and Set built-in types. Make sure that you load a polyfill in older browsers. https://reactjs.org/link/react-polyfills"
     );
@@ -2179,7 +2179,7 @@ function requireReactDom_development() {
     reactDom_development.useFormStatus = function() {
       return resolveDispatcher().useHostTransitionStatus();
     };
-    reactDom_development.version = "19.2.6";
+    reactDom_development.version = "19.2.7";
     "undefined" !== typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ && "function" === typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop && __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop(Error());
   })();
   return reactDom_development;
@@ -2222,7 +2222,7 @@ var hasRequiredReactDomServerLegacy_node_production;
 function requireReactDomServerLegacy_node_production() {
   if (hasRequiredReactDomServerLegacy_node_production) return reactDomServerLegacy_node_production;
   hasRequiredReactDomServerLegacy_node_production = 1;
-  var React2 = requireReact(), ReactDOM2 = requireReactDom(), REACT_ELEMENT_TYPE = Symbol.for("react.transitional.element"), REACT_PORTAL_TYPE = Symbol.for("react.portal"), REACT_FRAGMENT_TYPE = Symbol.for("react.fragment"), REACT_STRICT_MODE_TYPE = Symbol.for("react.strict_mode"), REACT_PROFILER_TYPE = Symbol.for("react.profiler"), REACT_CONSUMER_TYPE = Symbol.for("react.consumer"), REACT_CONTEXT_TYPE = Symbol.for("react.context"), REACT_FORWARD_REF_TYPE = Symbol.for("react.forward_ref"), REACT_SUSPENSE_TYPE = Symbol.for("react.suspense"), REACT_SUSPENSE_LIST_TYPE = Symbol.for("react.suspense_list"), REACT_MEMO_TYPE = Symbol.for("react.memo"), REACT_LAZY_TYPE = Symbol.for("react.lazy"), REACT_SCOPE_TYPE = Symbol.for("react.scope"), REACT_ACTIVITY_TYPE = Symbol.for("react.activity"), REACT_LEGACY_HIDDEN_TYPE = Symbol.for("react.legacy_hidden"), REACT_MEMO_CACHE_SENTINEL = Symbol.for("react.memo_cache_sentinel"), REACT_VIEW_TRANSITION_TYPE = Symbol.for("react.view_transition"), MAYBE_ITERATOR_SYMBOL = Symbol.iterator;
+  var React3 = requireReact(), ReactDOM = requireReactDom(), REACT_ELEMENT_TYPE = Symbol.for("react.transitional.element"), REACT_PORTAL_TYPE = Symbol.for("react.portal"), REACT_FRAGMENT_TYPE = Symbol.for("react.fragment"), REACT_STRICT_MODE_TYPE = Symbol.for("react.strict_mode"), REACT_PROFILER_TYPE = Symbol.for("react.profiler"), REACT_CONSUMER_TYPE = Symbol.for("react.consumer"), REACT_CONTEXT_TYPE = Symbol.for("react.context"), REACT_FORWARD_REF_TYPE = Symbol.for("react.forward_ref"), REACT_SUSPENSE_TYPE = Symbol.for("react.suspense"), REACT_SUSPENSE_LIST_TYPE = Symbol.for("react.suspense_list"), REACT_MEMO_TYPE = Symbol.for("react.memo"), REACT_LAZY_TYPE2 = Symbol.for("react.lazy"), REACT_SCOPE_TYPE = Symbol.for("react.scope"), REACT_ACTIVITY_TYPE = Symbol.for("react.activity"), REACT_LEGACY_HIDDEN_TYPE = Symbol.for("react.legacy_hidden"), REACT_MEMO_CACHE_SENTINEL = Symbol.for("react.memo_cache_sentinel"), REACT_VIEW_TRANSITION_TYPE = Symbol.for("react.view_transition"), MAYBE_ITERATOR_SYMBOL = Symbol.iterator;
   function getIteratorFn(maybeIterable) {
     if (null === maybeIterable || "object" !== typeof maybeIterable) return null;
     maybeIterable = MAYBE_ITERATOR_SYMBOL && maybeIterable[MAYBE_ITERATOR_SYMBOL] || maybeIterable["@@iterator"];
@@ -2395,7 +2395,7 @@ function requireReactDomServerLegacy_node_production() {
   function sanitizeURL(url) {
     return isJavaScriptProtocol.test("" + url) ? "javascript:throw new Error('React has blocked a javascript: URL as a security precaution.')" : url;
   }
-  var ReactSharedInternals = React2.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE, ReactDOMSharedInternals = ReactDOM2.__DOM_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE, sharedNotPendingObject = {
+  var ReactSharedInternals = React3.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE, ReactDOMSharedInternals = ReactDOM.__DOM_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE, sharedNotPendingObject = {
     pending: false,
     data: null,
     method: null,
@@ -2751,7 +2751,7 @@ function requireReactDomServerLegacy_node_production() {
   }
   function flattenOptionChildren(children) {
     var content = "";
-    React2.Children.forEach(children, function(child) {
+    React3.Children.forEach(children, function(child) {
       null != child && (content += child);
     });
     return content;
@@ -4394,7 +4394,7 @@ function requireReactDomServerLegacy_node_production() {
           return type;
         case REACT_MEMO_TYPE:
           return innerType = type.displayName || null, null !== innerType ? innerType : getComponentNameFromType(type.type) || "Memo";
-        case REACT_LAZY_TYPE:
+        case REACT_LAZY_TYPE2:
           innerType = type._payload;
           type = type._init;
           try {
@@ -4917,7 +4917,7 @@ function requireReactDomServerLegacy_node_production() {
           return describeNativeComponentFrame(type.render, false);
         case REACT_MEMO_TYPE:
           return describeNativeComponentFrame(type.type, false);
-        case REACT_LAZY_TYPE:
+        case REACT_LAZY_TYPE2:
           var lazyComponent = type, payload = lazyComponent._payload;
           lazyComponent = lazyComponent._init;
           try {
@@ -5749,7 +5749,7 @@ function requireReactDomServerLegacy_node_production() {
             renderNodeDestructive(request, task, type, -1);
             task.keyPath = props;
             return;
-          case REACT_LAZY_TYPE:
+          case REACT_LAZY_TYPE2:
             newProps = type._init;
             type = newProps(type._payload);
             if (12 === request.status) throw null;
@@ -5933,7 +5933,7 @@ function requireReactDomServerLegacy_node_production() {
             throw Error(
               "Portals are not currently supported by the server renderer. Render them conditionally so that they only appear on the client render."
             );
-          case REACT_LAZY_TYPE:
+          case REACT_LAZY_TYPE2:
             childNodes = node._init;
             node = childNodes(node._payload);
             if (12 === request.status) throw null;
@@ -7094,7 +7094,7 @@ function requireReactDomServerLegacy_node_production() {
       'The server used "renderToString" which does not support Suspense. If you intended for this Suspense boundary to render the fallback content on the server consider throwing an Error somewhere within the Suspense boundary. If you intended to have the server wait for the suspended component please switch to "renderToPipeableStream" which supports Suspense on the server'
     );
   };
-  reactDomServerLegacy_node_production.version = "19.2.6";
+  reactDomServerLegacy_node_production.version = "19.2.7";
   return reactDomServerLegacy_node_production;
 }
 var reactDomServer_node_production = {};
@@ -7111,7 +7111,7 @@ var hasRequiredReactDomServer_node_production;
 function requireReactDomServer_node_production() {
   if (hasRequiredReactDomServer_node_production) return reactDomServer_node_production;
   hasRequiredReactDomServer_node_production = 1;
-  var util2 = require$$0, crypto = require$$1, async_hooks = require$$2, React2 = requireReact(), ReactDOM2 = requireReactDom(), stream = require$$5, REACT_ELEMENT_TYPE = Symbol.for("react.transitional.element"), REACT_PORTAL_TYPE = Symbol.for("react.portal"), REACT_FRAGMENT_TYPE = Symbol.for("react.fragment"), REACT_STRICT_MODE_TYPE = Symbol.for("react.strict_mode"), REACT_PROFILER_TYPE = Symbol.for("react.profiler"), REACT_CONSUMER_TYPE = Symbol.for("react.consumer"), REACT_CONTEXT_TYPE = Symbol.for("react.context"), REACT_FORWARD_REF_TYPE = Symbol.for("react.forward_ref"), REACT_SUSPENSE_TYPE = Symbol.for("react.suspense"), REACT_SUSPENSE_LIST_TYPE = Symbol.for("react.suspense_list"), REACT_MEMO_TYPE = Symbol.for("react.memo"), REACT_LAZY_TYPE = Symbol.for("react.lazy"), REACT_SCOPE_TYPE = Symbol.for("react.scope"), REACT_ACTIVITY_TYPE = Symbol.for("react.activity"), REACT_LEGACY_HIDDEN_TYPE = Symbol.for("react.legacy_hidden"), REACT_MEMO_CACHE_SENTINEL = Symbol.for("react.memo_cache_sentinel"), REACT_VIEW_TRANSITION_TYPE = Symbol.for("react.view_transition"), MAYBE_ITERATOR_SYMBOL = Symbol.iterator;
+  var util2 = require$$0, crypto = require$$1, async_hooks = require$$2, React3 = requireReact(), ReactDOM = requireReactDom(), stream = require$$5, REACT_ELEMENT_TYPE = Symbol.for("react.transitional.element"), REACT_PORTAL_TYPE = Symbol.for("react.portal"), REACT_FRAGMENT_TYPE = Symbol.for("react.fragment"), REACT_STRICT_MODE_TYPE = Symbol.for("react.strict_mode"), REACT_PROFILER_TYPE = Symbol.for("react.profiler"), REACT_CONSUMER_TYPE = Symbol.for("react.consumer"), REACT_CONTEXT_TYPE = Symbol.for("react.context"), REACT_FORWARD_REF_TYPE = Symbol.for("react.forward_ref"), REACT_SUSPENSE_TYPE = Symbol.for("react.suspense"), REACT_SUSPENSE_LIST_TYPE = Symbol.for("react.suspense_list"), REACT_MEMO_TYPE = Symbol.for("react.memo"), REACT_LAZY_TYPE2 = Symbol.for("react.lazy"), REACT_SCOPE_TYPE = Symbol.for("react.scope"), REACT_ACTIVITY_TYPE = Symbol.for("react.activity"), REACT_LEGACY_HIDDEN_TYPE = Symbol.for("react.legacy_hidden"), REACT_MEMO_CACHE_SENTINEL = Symbol.for("react.memo_cache_sentinel"), REACT_VIEW_TRANSITION_TYPE = Symbol.for("react.view_transition"), MAYBE_ITERATOR_SYMBOL = Symbol.iterator;
   function getIteratorFn(maybeIterable) {
     if (null === maybeIterable || "object" !== typeof maybeIterable) return null;
     maybeIterable = MAYBE_ITERATOR_SYMBOL && maybeIterable[MAYBE_ITERATOR_SYMBOL] || maybeIterable["@@iterator"];
@@ -7307,7 +7307,7 @@ function requireReactDomServer_node_production() {
   function sanitizeURL(url) {
     return isJavaScriptProtocol.test("" + url) ? "javascript:throw new Error('React has blocked a javascript: URL as a security precaution.')" : url;
   }
-  var ReactSharedInternals = React2.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE, ReactDOMSharedInternals = ReactDOM2.__DOM_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE, sharedNotPendingObject = {
+  var ReactSharedInternals = React3.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE, ReactDOMSharedInternals = ReactDOM.__DOM_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE, sharedNotPendingObject = {
     pending: false,
     data: null,
     method: null,
@@ -7861,7 +7861,7 @@ function requireReactDomServer_node_production() {
   }
   function flattenOptionChildren(children) {
     var content = "";
-    React2.Children.forEach(children, function(child) {
+    React3.Children.forEach(children, function(child) {
       null != child && (content += child);
     });
     return content;
@@ -9456,7 +9456,7 @@ function requireReactDomServer_node_production() {
           return type;
         case REACT_MEMO_TYPE:
           return innerType = type.displayName || null, null !== innerType ? innerType : getComponentNameFromType(type.type) || "Memo";
-        case REACT_LAZY_TYPE:
+        case REACT_LAZY_TYPE2:
           innerType = type._payload;
           type = type._init;
           try {
@@ -9990,7 +9990,7 @@ function requireReactDomServer_node_production() {
           return describeNativeComponentFrame(type.render, false);
         case REACT_MEMO_TYPE:
           return describeNativeComponentFrame(type.type, false);
-        case REACT_LAZY_TYPE:
+        case REACT_LAZY_TYPE2:
           var lazyComponent = type, payload = lazyComponent._payload;
           lazyComponent = lazyComponent._init;
           try {
@@ -10930,7 +10930,7 @@ function requireReactDomServer_node_production() {
             renderNodeDestructive(request, task, type, -1);
             task.keyPath = props;
             return;
-          case REACT_LAZY_TYPE:
+          case REACT_LAZY_TYPE2:
             newProps = type._init;
             type = newProps(type._payload);
             if (12 === request.status) throw null;
@@ -11120,7 +11120,7 @@ function requireReactDomServer_node_production() {
             throw Error(
               "Portals are not currently supported by the server renderer. Render them conditionally so that they only appear on the client render."
             );
-          case REACT_LAZY_TYPE:
+          case REACT_LAZY_TYPE2:
             childNodes = node._init;
             node = childNodes(node._payload);
             if (12 === request.status) throw null;
@@ -12276,10 +12276,10 @@ function requireReactDomServer_node_production() {
     };
   }
   function ensureCorrectIsomorphicReactVersion() {
-    var isomorphicReactPackageVersion = React2.version;
-    if ("19.2.6" !== isomorphicReactPackageVersion)
+    var isomorphicReactPackageVersion = React3.version;
+    if ("19.2.7" !== isomorphicReactPackageVersion)
       throw Error(
-        'Incompatible React versions: The "react" and "react-dom" packages must have the exact same version. Instead got:\n  - react:      ' + (isomorphicReactPackageVersion + "\n  - react-dom:  19.2.6\nLearn more: https://react.dev/warnings/version-mismatch")
+        'Incompatible React versions: The "react" and "react-dom" packages must have the exact same version. Instead got:\n  - react:      ' + (isomorphicReactPackageVersion + "\n  - react-dom:  19.2.7\nLearn more: https://react.dev/warnings/version-mismatch")
       );
   }
   ensureCorrectIsomorphicReactVersion();
@@ -12802,7 +12802,7 @@ function requireReactDomServer_node_production() {
       }
     };
   };
-  reactDomServer_node_production.version = "19.2.6";
+  reactDomServer_node_production.version = "19.2.7";
   return reactDomServer_node_production;
 }
 var reactDomServerLegacy_node_development = {};
@@ -12872,7 +12872,7 @@ function requireReactDomServerLegacy_node_development() {
             return describeElementType(type.render);
           case REACT_MEMO_TYPE:
             return describeElementType(type.type);
-          case REACT_LAZY_TYPE:
+          case REACT_LAZY_TYPE2:
             var payload = type._payload;
             type = type._init;
             try {
@@ -13803,7 +13803,7 @@ function requireReactDomServerLegacy_node_development() {
     }
     function flattenOptionChildren(children) {
       var content = "";
-      React2.Children.forEach(children, function(child) {
+      React3.Children.forEach(children, function(child) {
         null != child && (content += child, didWarnInvalidOptionChildren || "string" === typeof child || "number" === typeof child || "bigint" === typeof child || (didWarnInvalidOptionChildren = true, console.error(
           "Cannot infer the option value of complex children. Pass a `value` prop or use a plain string as children to <option>."
         )));
@@ -15475,7 +15475,7 @@ function requireReactDomServerLegacy_node_development() {
             return type;
           case REACT_MEMO_TYPE:
             return innerType = type.displayName || null, null !== innerType ? innerType : getComponentNameFromType(type.type) || "Memo";
-          case REACT_LAZY_TYPE:
+          case REACT_LAZY_TYPE2:
             innerType = type._payload;
             type = type._init;
             try {
@@ -16016,7 +16016,7 @@ function requireReactDomServerLegacy_node_development() {
             return describeNativeComponentFrame(type.render, false);
           case REACT_MEMO_TYPE:
             return describeNativeComponentFrame(type.type, false);
-          case REACT_LAZY_TYPE:
+          case REACT_LAZY_TYPE2:
             var lazyComponent = type, payload = lazyComponent._payload;
             lazyComponent = lazyComponent._init;
             try {
@@ -16326,7 +16326,7 @@ function requireReactDomServerLegacy_node_development() {
               stack
             };
             break;
-          case REACT_LAZY_TYPE:
+          case REACT_LAZY_TYPE2:
             pushServerComponentStack(task, node._debugInfo);
             break;
           default:
@@ -17284,7 +17284,7 @@ function requireReactDomServerLegacy_node_development() {
               renderNodeDestructive(request, task, newChildren, -1);
               task.keyPath = prevKeyPath$jscomp$6;
               return;
-            case REACT_LAZY_TYPE:
+            case REACT_LAZY_TYPE2:
               var Component = callLazyInitInDEV(type);
               if (12 === request.status) throw null;
               renderElement(request, task, keyPath, Component, props, ref);
@@ -17511,7 +17511,7 @@ function requireReactDomServerLegacy_node_development() {
               throw Error(
                 "Portals are not currently supported by the server renderer. Render them conditionally so that they only appear on the client render."
               );
-            case REACT_LAZY_TYPE:
+            case REACT_LAZY_TYPE2:
               type = callLazyInitInDEV(node);
               if (12 === request.status) throw null;
               renderNodeDestructive(request, task, type, childIndex);
@@ -18858,7 +18858,7 @@ function requireReactDomServerLegacy_node_development() {
         );
       return result;
     }
-    var React2 = requireReact(), ReactDOM2 = requireReactDom(), REACT_ELEMENT_TYPE = Symbol.for("react.transitional.element"), REACT_PORTAL_TYPE = Symbol.for("react.portal"), REACT_FRAGMENT_TYPE = Symbol.for("react.fragment"), REACT_STRICT_MODE_TYPE = Symbol.for("react.strict_mode"), REACT_PROFILER_TYPE = Symbol.for("react.profiler"), REACT_CONSUMER_TYPE = Symbol.for("react.consumer"), REACT_CONTEXT_TYPE = Symbol.for("react.context"), REACT_FORWARD_REF_TYPE = Symbol.for("react.forward_ref"), REACT_SUSPENSE_TYPE = Symbol.for("react.suspense"), REACT_SUSPENSE_LIST_TYPE = Symbol.for("react.suspense_list"), REACT_MEMO_TYPE = Symbol.for("react.memo"), REACT_LAZY_TYPE = Symbol.for("react.lazy"), REACT_SCOPE_TYPE = Symbol.for("react.scope"), REACT_ACTIVITY_TYPE = Symbol.for("react.activity"), REACT_LEGACY_HIDDEN_TYPE = Symbol.for("react.legacy_hidden"), REACT_MEMO_CACHE_SENTINEL = Symbol.for("react.memo_cache_sentinel"), REACT_VIEW_TRANSITION_TYPE = Symbol.for("react.view_transition"), MAYBE_ITERATOR_SYMBOL = Symbol.iterator, isArrayImpl = Array.isArray, jsxPropsParents = /* @__PURE__ */ new WeakMap(), jsxChildrenParents = /* @__PURE__ */ new WeakMap(), CLIENT_REFERENCE_TAG = Symbol.for("react.client.reference"), assign = Object.assign, hasOwnProperty = Object.prototype.hasOwnProperty, VALID_ATTRIBUTE_NAME_REGEX = RegExp(
+    var React3 = requireReact(), ReactDOM = requireReactDom(), REACT_ELEMENT_TYPE = Symbol.for("react.transitional.element"), REACT_PORTAL_TYPE = Symbol.for("react.portal"), REACT_FRAGMENT_TYPE = Symbol.for("react.fragment"), REACT_STRICT_MODE_TYPE = Symbol.for("react.strict_mode"), REACT_PROFILER_TYPE = Symbol.for("react.profiler"), REACT_CONSUMER_TYPE = Symbol.for("react.consumer"), REACT_CONTEXT_TYPE = Symbol.for("react.context"), REACT_FORWARD_REF_TYPE = Symbol.for("react.forward_ref"), REACT_SUSPENSE_TYPE = Symbol.for("react.suspense"), REACT_SUSPENSE_LIST_TYPE = Symbol.for("react.suspense_list"), REACT_MEMO_TYPE = Symbol.for("react.memo"), REACT_LAZY_TYPE2 = Symbol.for("react.lazy"), REACT_SCOPE_TYPE = Symbol.for("react.scope"), REACT_ACTIVITY_TYPE = Symbol.for("react.activity"), REACT_LEGACY_HIDDEN_TYPE = Symbol.for("react.legacy_hidden"), REACT_MEMO_CACHE_SENTINEL = Symbol.for("react.memo_cache_sentinel"), REACT_VIEW_TRANSITION_TYPE = Symbol.for("react.view_transition"), MAYBE_ITERATOR_SYMBOL = Symbol.iterator, isArrayImpl = Array.isArray, jsxPropsParents = /* @__PURE__ */ new WeakMap(), jsxChildrenParents = /* @__PURE__ */ new WeakMap(), CLIENT_REFERENCE_TAG = Symbol.for("react.client.reference"), assign = Object.assign, hasOwnProperty = Object.prototype.hasOwnProperty, VALID_ATTRIBUTE_NAME_REGEX = RegExp(
       "^[:A-Z_a-z\\u00C0-\\u00D6\\u00D8-\\u00F6\\u00F8-\\u02FF\\u0370-\\u037D\\u037F-\\u1FFF\\u200C-\\u200D\\u2070-\\u218F\\u2C00-\\u2FEF\\u3001-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFFD][:A-Z_a-z\\u00C0-\\u00D6\\u00D8-\\u00F6\\u00F8-\\u02FF\\u0370-\\u037D\\u037F-\\u1FFF\\u200C-\\u200D\\u2070-\\u218F\\u2C00-\\u2FEF\\u3001-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFFD\\-.0-9\\u00B7\\u0300-\\u036F\\u203F-\\u2040]*$"
     ), illegalAttributeNameCache = {}, validatedAttributeNameCache = {}, unitlessNumbers = new Set(
       "animationIterationCount aspectRatio borderImageOutset borderImageSlice borderImageWidth boxFlex boxFlexGroup boxOrdinalGroup columnCount columns flex flexGrow flexPositive flexShrink flexNegative flexOrder gridArea gridRow gridRowEnd gridRowSpan gridRowStart gridColumn gridColumnEnd gridColumnSpan gridColumnStart fontWeight lineClamp lineHeight opacity order orphans scale tabSize widows zIndex zoom fillOpacity floodOpacity stopOpacity strokeDasharray strokeDashoffset strokeMiterlimit strokeOpacity strokeWidth MozAnimationIterationCount MozBoxFlex MozBoxFlexGroup MozLineClamp msAnimationIterationCount msFlex msZoom msFlexGrow msFlexNegative msFlexOrder msFlexPositive msFlexShrink msGridColumn msGridColumnSpan msGridRow msGridRowSpan WebkitAnimationIterationCount WebkitBoxFlex WebKitBoxFlexGroup WebkitBoxOrdinalGroup WebkitColumnCount WebkitColumns WebkitFlex WebkitFlexGrow WebkitFlexPositive WebkitFlexShrink WebkitLineClamp".split(
@@ -19506,7 +19506,7 @@ function requireReactDomServerLegacy_node_development() {
       "^(aria)-[:A-Z_a-z\\u00C0-\\u00D6\\u00D8-\\u00F6\\u00F8-\\u02FF\\u0370-\\u037D\\u037F-\\u1FFF\\u200C-\\u200D\\u2070-\\u218F\\u2C00-\\u2FEF\\u3001-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFFD\\-.0-9\\u00B7\\u0300-\\u036F\\u203F-\\u2040]*$"
     ), rARIACamel = RegExp(
       "^(aria)[A-Z][:A-Z_a-z\\u00C0-\\u00D6\\u00D8-\\u00F6\\u00F8-\\u02FF\\u0370-\\u037D\\u037F-\\u1FFF\\u200C-\\u200D\\u2070-\\u218F\\u2C00-\\u2FEF\\u3001-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFFD\\-.0-9\\u00B7\\u0300-\\u036F\\u203F-\\u2040]*$"
-    ), badVendoredStyleNamePattern = /^(?:webkit|moz|o)[A-Z]/, msPattern$1 = /^-ms-/, hyphenPattern = /-(.)/g, badStyleValueWithSemicolonPattern = /;\s*$/, warnedStyleNames = {}, warnedStyleValues = {}, warnedForNaNValue = false, warnedForInfinityValue = false, matchHtmlRegExp = /["'&<>]/, uppercasePattern = /([A-Z])/g, msPattern = /^ms-/, isJavaScriptProtocol = /^[\u0000-\u001F ]*j[\r\n\t]*a[\r\n\t]*v[\r\n\t]*a[\r\n\t]*s[\r\n\t]*c[\r\n\t]*r[\r\n\t]*i[\r\n\t]*p[\r\n\t]*t[\r\n\t]*:/i, ReactSharedInternals = React2.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE, ReactDOMSharedInternals = ReactDOM2.__DOM_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE, NotPending = Object.freeze({
+    ), badVendoredStyleNamePattern = /^(?:webkit|moz|o)[A-Z]/, msPattern$1 = /^-ms-/, hyphenPattern = /-(.)/g, badStyleValueWithSemicolonPattern = /;\s*$/, warnedStyleNames = {}, warnedStyleValues = {}, warnedForNaNValue = false, warnedForInfinityValue = false, matchHtmlRegExp = /["'&<>]/, uppercasePattern = /([A-Z])/g, msPattern = /^ms-/, isJavaScriptProtocol = /^[\u0000-\u001F ]*j[\r\n\t]*a[\r\n\t]*v[\r\n\t]*a[\r\n\t]*s[\r\n\t]*c[\r\n\t]*r[\r\n\t]*i[\r\n\t]*p[\r\n\t]*t[\r\n\t]*:/i, ReactSharedInternals = React3.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE, ReactDOMSharedInternals = ReactDOM.__DOM_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE, NotPending = Object.freeze({
       pending: false,
       data: null,
       method: null,
@@ -19905,7 +19905,7 @@ function requireReactDomServerLegacy_node_development() {
         'The server used "renderToString" which does not support Suspense. If you intended for this Suspense boundary to render the fallback content on the server consider throwing an Error somewhere within the Suspense boundary. If you intended to have the server wait for the suspended component please switch to "renderToPipeableStream" which supports Suspense on the server'
       );
     };
-    reactDomServerLegacy_node_development.version = "19.2.6";
+    reactDomServerLegacy_node_development.version = "19.2.7";
   })();
   return reactDomServerLegacy_node_development;
 }
@@ -19976,7 +19976,7 @@ function requireReactDomServer_node_development() {
             return describeElementType(type.render);
           case REACT_MEMO_TYPE:
             return describeElementType(type.type);
-          case REACT_LAZY_TYPE:
+          case REACT_LAZY_TYPE2:
             var payload = type._payload;
             type = type._init;
             try {
@@ -21075,7 +21075,7 @@ function requireReactDomServer_node_development() {
     }
     function flattenOptionChildren(children) {
       var content = "";
-      React2.Children.forEach(children, function(child) {
+      React3.Children.forEach(children, function(child) {
         null != child && (content += child, didWarnInvalidOptionChildren || "string" === typeof child || "number" === typeof child || "bigint" === typeof child || (didWarnInvalidOptionChildren = true, console.error(
           "Cannot infer the option value of complex children. Pass a `value` prop or use a plain string as children to <option>."
         )));
@@ -22624,7 +22624,7 @@ function requireReactDomServer_node_development() {
             return type;
           case REACT_MEMO_TYPE:
             return innerType = type.displayName || null, null !== innerType ? innerType : getComponentNameFromType(type.type) || "Memo";
-          case REACT_LAZY_TYPE:
+          case REACT_LAZY_TYPE2:
             innerType = type._payload;
             type = type._init;
             try {
@@ -23172,7 +23172,7 @@ function requireReactDomServer_node_development() {
             return describeNativeComponentFrame(type.render, false);
           case REACT_MEMO_TYPE:
             return describeNativeComponentFrame(type.type, false);
-          case REACT_LAZY_TYPE:
+          case REACT_LAZY_TYPE2:
             var lazyComponent = type, payload = lazyComponent._payload;
             lazyComponent = lazyComponent._init;
             try {
@@ -23613,7 +23613,7 @@ function requireReactDomServer_node_development() {
               stack
             };
             break;
-          case REACT_LAZY_TYPE:
+          case REACT_LAZY_TYPE2:
             pushServerComponentStack(task, node._debugInfo);
             break;
           default:
@@ -24557,7 +24557,7 @@ function requireReactDomServer_node_development() {
               renderNodeDestructive(request, task, newChildren, -1);
               task.keyPath = prevKeyPath$jscomp$6;
               return;
-            case REACT_LAZY_TYPE:
+            case REACT_LAZY_TYPE2:
               var Component = callLazyInitInDEV(type);
               if (12 === request.status) throw null;
               renderElement(request, task, keyPath, Component, props, ref);
@@ -24790,7 +24790,7 @@ function requireReactDomServer_node_development() {
               throw Error(
                 "Portals are not currently supported by the server renderer. Render them conditionally so that they only appear on the client render."
               );
-            case REACT_LAZY_TYPE:
+            case REACT_LAZY_TYPE2:
               type = callLazyInitInDEV(node);
               if (12 === request.status) throw null;
               renderNodeDestructive(request, task, type, childIndex);
@@ -26171,10 +26171,10 @@ function requireReactDomServer_node_development() {
       };
     }
     function ensureCorrectIsomorphicReactVersion() {
-      var isomorphicReactPackageVersion = React2.version;
-      if ("19.2.6" !== isomorphicReactPackageVersion)
+      var isomorphicReactPackageVersion = React3.version;
+      if ("19.2.7" !== isomorphicReactPackageVersion)
         throw Error(
-          'Incompatible React versions: The "react" and "react-dom" packages must have the exact same version. Instead got:\n  - react:      ' + (isomorphicReactPackageVersion + "\n  - react-dom:  19.2.6\nLearn more: https://react.dev/warnings/version-mismatch")
+          'Incompatible React versions: The "react" and "react-dom" packages must have the exact same version. Instead got:\n  - react:      ' + (isomorphicReactPackageVersion + "\n  - react-dom:  19.2.7\nLearn more: https://react.dev/warnings/version-mismatch")
         );
     }
     function createDrainHandler(destination, request) {
@@ -26281,7 +26281,7 @@ function requireReactDomServer_node_development() {
         }
       };
     }
-    var util2 = require$$0, crypto = require$$1, async_hooks = require$$2, React2 = requireReact(), ReactDOM2 = requireReactDom(), stream = require$$5, REACT_ELEMENT_TYPE = Symbol.for("react.transitional.element"), REACT_PORTAL_TYPE = Symbol.for("react.portal"), REACT_FRAGMENT_TYPE = Symbol.for("react.fragment"), REACT_STRICT_MODE_TYPE = Symbol.for("react.strict_mode"), REACT_PROFILER_TYPE = Symbol.for("react.profiler"), REACT_CONSUMER_TYPE = Symbol.for("react.consumer"), REACT_CONTEXT_TYPE = Symbol.for("react.context"), REACT_FORWARD_REF_TYPE = Symbol.for("react.forward_ref"), REACT_SUSPENSE_TYPE = Symbol.for("react.suspense"), REACT_SUSPENSE_LIST_TYPE = Symbol.for("react.suspense_list"), REACT_MEMO_TYPE = Symbol.for("react.memo"), REACT_LAZY_TYPE = Symbol.for("react.lazy"), REACT_SCOPE_TYPE = Symbol.for("react.scope"), REACT_ACTIVITY_TYPE = Symbol.for("react.activity"), REACT_LEGACY_HIDDEN_TYPE = Symbol.for("react.legacy_hidden"), REACT_MEMO_CACHE_SENTINEL = Symbol.for("react.memo_cache_sentinel"), REACT_VIEW_TRANSITION_TYPE = Symbol.for("react.view_transition"), MAYBE_ITERATOR_SYMBOL = Symbol.iterator, isArrayImpl = Array.isArray, jsxPropsParents = /* @__PURE__ */ new WeakMap(), jsxChildrenParents = /* @__PURE__ */ new WeakMap(), CLIENT_REFERENCE_TAG = Symbol.for("react.client.reference"), scheduleMicrotask = queueMicrotask, currentView = null, writtenBytes = 0, destinationHasCapacity$1 = true, textEncoder = new util2.TextEncoder(), assign = Object.assign, hasOwnProperty = Object.prototype.hasOwnProperty, VALID_ATTRIBUTE_NAME_REGEX = RegExp(
+    var util2 = require$$0, crypto = require$$1, async_hooks = require$$2, React3 = requireReact(), ReactDOM = requireReactDom(), stream = require$$5, REACT_ELEMENT_TYPE = Symbol.for("react.transitional.element"), REACT_PORTAL_TYPE = Symbol.for("react.portal"), REACT_FRAGMENT_TYPE = Symbol.for("react.fragment"), REACT_STRICT_MODE_TYPE = Symbol.for("react.strict_mode"), REACT_PROFILER_TYPE = Symbol.for("react.profiler"), REACT_CONSUMER_TYPE = Symbol.for("react.consumer"), REACT_CONTEXT_TYPE = Symbol.for("react.context"), REACT_FORWARD_REF_TYPE = Symbol.for("react.forward_ref"), REACT_SUSPENSE_TYPE = Symbol.for("react.suspense"), REACT_SUSPENSE_LIST_TYPE = Symbol.for("react.suspense_list"), REACT_MEMO_TYPE = Symbol.for("react.memo"), REACT_LAZY_TYPE2 = Symbol.for("react.lazy"), REACT_SCOPE_TYPE = Symbol.for("react.scope"), REACT_ACTIVITY_TYPE = Symbol.for("react.activity"), REACT_LEGACY_HIDDEN_TYPE = Symbol.for("react.legacy_hidden"), REACT_MEMO_CACHE_SENTINEL = Symbol.for("react.memo_cache_sentinel"), REACT_VIEW_TRANSITION_TYPE = Symbol.for("react.view_transition"), MAYBE_ITERATOR_SYMBOL = Symbol.iterator, isArrayImpl = Array.isArray, jsxPropsParents = /* @__PURE__ */ new WeakMap(), jsxChildrenParents = /* @__PURE__ */ new WeakMap(), CLIENT_REFERENCE_TAG = Symbol.for("react.client.reference"), scheduleMicrotask = queueMicrotask, currentView = null, writtenBytes = 0, destinationHasCapacity$1 = true, textEncoder = new util2.TextEncoder(), assign = Object.assign, hasOwnProperty = Object.prototype.hasOwnProperty, VALID_ATTRIBUTE_NAME_REGEX = RegExp(
       "^[:A-Z_a-z\\u00C0-\\u00D6\\u00D8-\\u00F6\\u00F8-\\u02FF\\u0370-\\u037D\\u037F-\\u1FFF\\u200C-\\u200D\\u2070-\\u218F\\u2C00-\\u2FEF\\u3001-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFFD][:A-Z_a-z\\u00C0-\\u00D6\\u00D8-\\u00F6\\u00F8-\\u02FF\\u0370-\\u037D\\u037F-\\u1FFF\\u200C-\\u200D\\u2070-\\u218F\\u2C00-\\u2FEF\\u3001-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFFD\\-.0-9\\u00B7\\u0300-\\u036F\\u203F-\\u2040]*$"
     ), illegalAttributeNameCache = {}, validatedAttributeNameCache = {}, unitlessNumbers = new Set(
       "animationIterationCount aspectRatio borderImageOutset borderImageSlice borderImageWidth boxFlex boxFlexGroup boxOrdinalGroup columnCount columns flex flexGrow flexPositive flexShrink flexNegative flexOrder gridArea gridRow gridRowEnd gridRowSpan gridRowStart gridColumn gridColumnEnd gridColumnSpan gridColumnStart fontWeight lineClamp lineHeight opacity order orphans scale tabSize widows zIndex zoom fillOpacity floodOpacity stopOpacity strokeDasharray strokeDashoffset strokeMiterlimit strokeOpacity strokeWidth MozAnimationIterationCount MozBoxFlex MozBoxFlexGroup MozLineClamp msAnimationIterationCount msFlex msZoom msFlexGrow msFlexNegative msFlexOrder msFlexPositive msFlexShrink msGridColumn msGridColumnSpan msGridRow msGridRowSpan WebkitAnimationIterationCount WebkitBoxFlex WebKitBoxFlexGroup WebkitBoxOrdinalGroup WebkitColumnCount WebkitColumns WebkitFlex WebkitFlexGrow WebkitFlexPositive WebkitFlexShrink WebkitLineClamp".split(
@@ -26929,7 +26929,7 @@ function requireReactDomServer_node_development() {
       "^(aria)-[:A-Z_a-z\\u00C0-\\u00D6\\u00D8-\\u00F6\\u00F8-\\u02FF\\u0370-\\u037D\\u037F-\\u1FFF\\u200C-\\u200D\\u2070-\\u218F\\u2C00-\\u2FEF\\u3001-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFFD\\-.0-9\\u00B7\\u0300-\\u036F\\u203F-\\u2040]*$"
     ), rARIACamel = RegExp(
       "^(aria)[A-Z][:A-Z_a-z\\u00C0-\\u00D6\\u00D8-\\u00F6\\u00F8-\\u02FF\\u0370-\\u037D\\u037F-\\u1FFF\\u200C-\\u200D\\u2070-\\u218F\\u2C00-\\u2FEF\\u3001-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFFD\\-.0-9\\u00B7\\u0300-\\u036F\\u203F-\\u2040]*$"
-    ), badVendoredStyleNamePattern = /^(?:webkit|moz|o)[A-Z]/, msPattern$1 = /^-ms-/, hyphenPattern = /-(.)/g, badStyleValueWithSemicolonPattern = /;\s*$/, warnedStyleNames = {}, warnedStyleValues = {}, warnedForNaNValue = false, warnedForInfinityValue = false, matchHtmlRegExp = /["'&<>]/, uppercasePattern = /([A-Z])/g, msPattern = /^ms-/, isJavaScriptProtocol = /^[\u0000-\u001F ]*j[\r\n\t]*a[\r\n\t]*v[\r\n\t]*a[\r\n\t]*s[\r\n\t]*c[\r\n\t]*r[\r\n\t]*i[\r\n\t]*p[\r\n\t]*t[\r\n\t]*:/i, ReactSharedInternals = React2.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE, ReactDOMSharedInternals = ReactDOM2.__DOM_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE, NotPending = Object.freeze({
+    ), badVendoredStyleNamePattern = /^(?:webkit|moz|o)[A-Z]/, msPattern$1 = /^-ms-/, hyphenPattern = /-(.)/g, badStyleValueWithSemicolonPattern = /;\s*$/, warnedStyleNames = {}, warnedStyleValues = {}, warnedForNaNValue = false, warnedForInfinityValue = false, matchHtmlRegExp = /["'&<>]/, uppercasePattern = /([A-Z])/g, msPattern = /^ms-/, isJavaScriptProtocol = /^[\u0000-\u001F ]*j[\r\n\t]*a[\r\n\t]*v[\r\n\t]*a[\r\n\t]*s[\r\n\t]*c[\r\n\t]*r[\r\n\t]*i[\r\n\t]*p[\r\n\t]*t[\r\n\t]*:/i, ReactSharedInternals = React3.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE, ReactDOMSharedInternals = ReactDOM.__DOM_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE, NotPending = Object.freeze({
       pending: false,
       data: null,
       method: null,
@@ -27787,7 +27787,7 @@ function requireReactDomServer_node_development() {
         }
       };
     };
-    reactDomServer_node_development.version = "19.2.6";
+    reactDomServer_node_development.version = "19.2.7";
   })();
   return reactDomServer_node_development;
 }
@@ -27815,12 +27815,12 @@ function requireServer_node() {
 var server_nodeExports = requireServer_node();
 var reactExports = requireReact();
 const React = /* @__PURE__ */ getDefaultExportFromCjs(reactExports);
-const React$1 = /* @__PURE__ */ _mergeNamespaces({
+const React2 = /* @__PURE__ */ _mergeNamespaces({
   __proto__: null,
   default: React
 }, [reactExports]);
 /**
- * @remix-run/router v1.23.2
+ * @remix-run/router v1.23.3
  *
  * Copyright (c) Remix Software Inc.
  *
@@ -27830,18 +27830,13 @@ const React$1 = /* @__PURE__ */ _mergeNamespaces({
  * @license MIT
  */
 function _extends$2() {
-  _extends$2 = Object.assign ? Object.assign.bind() : function(target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i];
-      for (var key in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
-          target[key] = source[key];
-        }
-      }
+  return _extends$2 = Object.assign ? Object.assign.bind() : function(n) {
+    for (var e = 1; e < arguments.length; e++) {
+      var t = arguments[e];
+      for (var r2 in t) ({}).hasOwnProperty.call(t, r2) && (n[r2] = t[r2]);
     }
-    return target;
-  };
-  return _extends$2.apply(this, arguments);
+    return n;
+  }, _extends$2.apply(null, arguments);
 }
 var Action;
 (function(Action2) {
@@ -27996,7 +27991,7 @@ function resolvePath(to2, fromPathname) {
     } else {
       if (toPathname.includes("//")) {
         let oldPathname = toPathname;
-        toPathname = toPathname.replace(/\/\/+/g, "/");
+        toPathname = removeDoubleSlashes(toPathname);
         warning(false, "Pathnames cannot have embedded double slashes - normalizing " + (oldPathname + " -> " + toPathname));
       }
       if (toPathname.startsWith("/")) {
@@ -28077,7 +28072,8 @@ function resolveTo(toArg, routePathnames, locationPathname, isPathRelative) {
   }
   return path;
 }
-const joinPaths = (paths) => paths.join("/").replace(/\/\/+/g, "/");
+const removeDoubleSlashes = (path) => path.replace(/\/\/+/g, "/");
+const joinPaths = (paths) => removeDoubleSlashes(paths.join("/"));
 const normalizeSearch = (search) => !search || search === "?" ? "" : search.startsWith("?") ? search : "?" + search;
 const normalizeHash = (hash) => !hash || hash === "#" ? "" : hash.startsWith("#") ? hash : "#" + hash;
 const validMutationMethodsArr = ["post", "put", "patch", "delete"];
@@ -28085,7 +28081,7 @@ new Set(validMutationMethodsArr);
 const validRequestMethodsArr = ["get", ...validMutationMethodsArr];
 new Set(validRequestMethodsArr);
 /**
- * React Router v6.30.3
+ * React Router v6.30.4
  *
  * Copyright (c) Remix Software Inc.
  *
@@ -28095,18 +28091,13 @@ new Set(validRequestMethodsArr);
  * @license MIT
  */
 function _extends$1() {
-  _extends$1 = Object.assign ? Object.assign.bind() : function(target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i];
-      for (var key in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
-          target[key] = source[key];
-        }
-      }
+  return _extends$1 = Object.assign ? Object.assign.bind() : function(n) {
+    for (var e = 1; e < arguments.length; e++) {
+      var t = arguments[e];
+      for (var r2 in t) ({}).hasOwnProperty.call(t, r2) && (n[r2] = t[r2]);
     }
-    return target;
-  };
-  return _extends$1.apply(this, arguments);
+    return n;
+  }, _extends$1.apply(null, arguments);
 }
 const DataRouterContext = /* @__PURE__ */ reactExports.createContext(null);
 if (process.env.NODE_ENV !== "production") {
@@ -28380,9 +28371,8 @@ function Router(_ref5) {
 new Promise(() => {
 });
 var reactDomExports = requireReactDom();
-const ReactDOM = /* @__PURE__ */ getDefaultExportFromCjs(reactDomExports);
 /**
- * React Router DOM v6.30.3
+ * React Router DOM v6.30.4
  *
  * Copyright (c) Remix Software Inc.
  *
@@ -28392,30 +28382,22 @@ const ReactDOM = /* @__PURE__ */ getDefaultExportFromCjs(reactDomExports);
  * @license MIT
  */
 function _extends() {
-  _extends = Object.assign ? Object.assign.bind() : function(target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i];
-      for (var key in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
-          target[key] = source[key];
-        }
-      }
+  return _extends = Object.assign ? Object.assign.bind() : function(n) {
+    for (var e = 1; e < arguments.length; e++) {
+      var t = arguments[e];
+      for (var r2 in t) ({}).hasOwnProperty.call(t, r2) && (n[r2] = t[r2]);
     }
-    return target;
-  };
-  return _extends.apply(this, arguments);
+    return n;
+  }, _extends.apply(null, arguments);
 }
-function _objectWithoutPropertiesLoose(source, excluded) {
-  if (source == null) return {};
-  var target = {};
-  var sourceKeys = Object.keys(source);
-  var key, i;
-  for (i = 0; i < sourceKeys.length; i++) {
-    key = sourceKeys[i];
-    if (excluded.indexOf(key) >= 0) continue;
-    target[key] = source[key];
+function _objectWithoutPropertiesLoose(r2, e) {
+  if (null == r2) return {};
+  var t = {};
+  for (var n in r2) if ({}.hasOwnProperty.call(r2, n)) {
+    if (-1 !== e.indexOf(n)) continue;
+    t[n] = r2[n];
   }
-  return target;
+  return t;
 }
 const defaultMethod = "get";
 const defaultEncType = "application/x-www-form-urlencoded";
@@ -28832,10 +28814,10 @@ function useFormAction(action, _temp2) {
     path.search = location.search;
     let params = new URLSearchParams(path.search);
     let indexValues = params.getAll("index");
-    let hasNakedIndexParam = indexValues.some((v2) => v2 === "");
+    let hasNakedIndexParam = indexValues.some((v) => v === "");
     if (hasNakedIndexParam) {
       params.delete("index");
-      indexValues.filter((v2) => v2).forEach((v2) => params.append("index", v2));
+      indexValues.filter((v) => v).forEach((v) => params.append("index", v));
       let qs = params.toString();
       path.search = qs ? "?" + qs : "";
     }
@@ -32503,7 +32485,7 @@ const enumType = ZodEnum.create;
 ZodPromise.create;
 ZodOptional.create;
 ZodNullable.create;
-var xe = { exports: {} }, le = {};
+var we = { exports: {} }, de = {};
 /**
  * @license React
  * react-jsx-runtime.production.js
@@ -32513,12 +32495,12 @@ var xe = { exports: {} }, le = {};
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  */
-var Ue;
-function $t() {
-  if (Ue) return le;
-  Ue = 1;
+var Ge;
+function Lt() {
+  if (Ge) return de;
+  Ge = 1;
   var e = Symbol.for("react.transitional.element"), t = Symbol.for("react.fragment");
-  function r2(o, n, s) {
+  function o(r2, n, s) {
     var a = null;
     if (s !== void 0 && (a = "" + s), n.key !== void 0 && (a = "" + n.key), "key" in n) {
       s = {};
@@ -32527,15 +32509,15 @@ function $t() {
     } else s = n;
     return n = s.ref, {
       $$typeof: e,
-      type: o,
+      type: r2,
       key: a,
       ref: n !== void 0 ? n : null,
       props: s
     };
   }
-  return le.Fragment = t, le.jsx = r2, le.jsxs = r2, le;
+  return de.Fragment = t, de.jsx = o, de.jsxs = o, de;
 }
-var ce = {};
+var ue = {};
 /**
  * @license React
  * react-jsx-runtime.development.js
@@ -32545,24 +32527,24 @@ var ce = {};
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  */
-var Ge;
-function Mt() {
-  return Ge || (Ge = 1, process.env.NODE_ENV !== "production" && (function() {
+var Ve;
+function Dt() {
+  return Ve || (Ve = 1, process.env.NODE_ENV !== "production" && (function() {
     function e(i) {
       if (i == null) return null;
       if (typeof i == "function")
         return i.$$typeof === Y ? null : i.displayName || i.name || null;
       if (typeof i == "string") return i;
       switch (i) {
-        case C:
+        case E:
           return "Fragment";
         case W:
           return "Profiler";
-        case F:
+        case R:
           return "StrictMode";
-        case T:
+        case _:
           return "Suspense";
-        case L:
+        case $:
           return "SuspenseList";
         case J:
           return "Activity";
@@ -32571,18 +32553,18 @@ function Mt() {
         switch (typeof i.tag == "number" && console.error(
           "Received an unexpected object in getComponentNameFromType(). This is likely a bug in React. Please file an issue."
         ), i.$$typeof) {
-          case j:
+          case C:
             return "Portal";
-          case O:
+          case T:
             return i.displayName || "Context";
-          case E:
-            return (i._context.displayName || "Context") + ".Consumer";
           case k:
+            return (i._context.displayName || "Context") + ".Consumer";
+          case j:
             var x = i.render;
             return i = i.displayName, i || (i = x.displayName || x.name || "", i = i !== "" ? "ForwardRef(" + i + ")" : "ForwardRef"), i;
-          case d:
+          case m:
             return x = i.displayName || null, x !== null ? x : e(i.type) || "Memo";
-          case S:
+          case A:
             x = i._payload, i = i._init;
             try {
               return e(i(x));
@@ -32594,7 +32576,7 @@ function Mt() {
     function t(i) {
       return "" + i;
     }
-    function r2(i) {
+    function o(i) {
       try {
         t(i);
         var x = false;
@@ -32603,17 +32585,17 @@ function Mt() {
       }
       if (x) {
         x = console;
-        var R = x.error, P = typeof Symbol == "function" && Symbol.toStringTag && i[Symbol.toStringTag] || i.constructor.name || "Object";
-        return R.call(
+        var O = x.error, z = typeof Symbol == "function" && Symbol.toStringTag && i[Symbol.toStringTag] || i.constructor.name || "Object";
+        return O.call(
           x,
           "The provided key is an unsupported type %s. This value must be coerced to a string before using it here.",
-          P
+          z
         ), t(i);
       }
     }
-    function o(i) {
-      if (i === C) return "<>";
-      if (typeof i == "object" && i !== null && i.$$typeof === S)
+    function r2(i) {
+      if (i === E) return "<>";
+      if (typeof i == "object" && i !== null && i.$$typeof === A)
         return "<...>";
       try {
         var x = e(i);
@@ -32637,32 +32619,32 @@ function Mt() {
       return i.key !== void 0;
     }
     function c(i, x) {
-      function R() {
+      function O() {
         B || (B = true, console.error(
           "%s: `key` is not a prop. Trying to access it will result in `undefined` being returned. If you need to access the same value within the child component, you should pass it as a different prop. (https://react.dev/link/special-props)",
           x
         ));
       }
-      R.isReactWarning = true, Object.defineProperty(i, "key", {
-        get: R,
+      O.isReactWarning = true, Object.defineProperty(i, "key", {
+        get: O,
         configurable: true
       });
     }
     function l() {
       var i = e(this.type);
-      return G[i] || (G[i] = true, console.error(
+      return F[i] || (F[i] = true, console.error(
         "Accessing element.ref was removed in React 19. ref is now a regular prop. It will be removed from the JSX Element type in a future release."
       )), i = this.props.ref, i !== void 0 ? i : null;
     }
-    function m(i, x, R, P, N, $) {
-      var _ = R.ref;
+    function d(i, x, O, z, M, L) {
+      var P = O.ref;
       return i = {
-        $$typeof: A,
+        $$typeof: S,
         type: i,
         key: x,
-        props: R,
-        _owner: P
-      }, (_ !== void 0 ? _ : null) !== null ? Object.defineProperty(i, "ref", {
+        props: O,
+        _owner: z
+      }, (P !== void 0 ? P : null) !== null ? Object.defineProperty(i, "ref", {
         enumerable: false,
         get: l
       }) : Object.defineProperty(i, "ref", { enumerable: false, value: null }), i._store = {}, Object.defineProperty(i._store, "validated", {
@@ -32679,143 +32661,143 @@ function Mt() {
         configurable: false,
         enumerable: false,
         writable: true,
-        value: N
+        value: M
       }), Object.defineProperty(i, "_debugTask", {
         configurable: false,
         enumerable: false,
         writable: true,
-        value: $
+        value: L
       }), Object.freeze && (Object.freeze(i.props), Object.freeze(i)), i;
     }
-    function b(i, x, R, P, N, $) {
-      var _ = x.children;
-      if (_ !== void 0)
-        if (P)
-          if (Z(_)) {
-            for (P = 0; P < _.length; P++)
-              h(_[P]);
-            Object.freeze && Object.freeze(_);
+    function g(i, x, O, z, M, L) {
+      var P = x.children;
+      if (P !== void 0)
+        if (z)
+          if (K(P)) {
+            for (z = 0; z < P.length; z++)
+              h(P[z]);
+            Object.freeze && Object.freeze(P);
           } else
             console.error(
               "React.jsx: Static children should always be an array. You are likely explicitly calling React.jsxs or React.jsxDEV. Use the Babel transform instead."
             );
-        else h(_);
+        else h(P);
       if (X2.call(x, "key")) {
-        _ = e(i);
-        var H = Object.keys(x).filter(function(pe) {
-          return pe !== "key";
+        P = e(i);
+        var H = Object.keys(x).filter(function(he) {
+          return he !== "key";
         });
-        P = 0 < H.length ? "{key: someKey, " + H.join(": ..., ") + ": ...}" : "{key: someKey}", g[_ + P] || (H = 0 < H.length ? "{" + H.join(": ..., ") + ": ...}" : "{}", console.error(
+        z = 0 < H.length ? "{key: someKey, " + H.join(": ..., ") + ": ...}" : "{key: someKey}", y[P + z] || (H = 0 < H.length ? "{" + H.join(": ..., ") + ": ...}" : "{}", console.error(
           `A props object containing a "key" prop is being spread into JSX:
   let props = %s;
   <%s {...props} />
 React keys must be passed directly to JSX without using spread:
   let props = %s;
   <%s key={someKey} {...props} />`,
+          z,
           P,
-          _,
           H,
-          _
-        ), g[_ + P] = true);
+          P
+        ), y[P + z] = true);
       }
-      if (_ = null, R !== void 0 && (r2(R), _ = "" + R), a(x) && (r2(x.key), _ = "" + x.key), "key" in x) {
-        R = {};
-        for (var z in x)
-          z !== "key" && (R[z] = x[z]);
-      } else R = x;
-      return _ && c(
-        R,
+      if (P = null, O !== void 0 && (o(O), P = "" + O), a(x) && (o(x.key), P = "" + x.key), "key" in x) {
+        O = {};
+        for (var N in x)
+          N !== "key" && (O[N] = x[N]);
+      } else O = x;
+      return P && c(
+        O,
         typeof i == "function" ? i.displayName || i.name || "Unknown" : i
-      ), m(
+      ), d(
         i,
-        _,
-        R,
+        P,
+        O,
         n(),
-        N,
-        $
+        M,
+        L
       );
     }
     function h(i) {
-      y(i) ? i._store && (i._store.validated = 1) : typeof i == "object" && i !== null && i.$$typeof === S && (i._payload.status === "fulfilled" ? y(i._payload.value) && i._payload.value._store && (i._payload.value._store.validated = 1) : i._store && (i._store.validated = 1));
+      b(i) ? i._store && (i._store.validated = 1) : typeof i == "object" && i !== null && i.$$typeof === A && (i._payload.status === "fulfilled" ? b(i._payload.value) && i._payload.value._store && (i._payload.value._store.validated = 1) : i._store && (i._store.validated = 1));
     }
-    function y(i) {
-      return typeof i == "object" && i !== null && i.$$typeof === A;
+    function b(i) {
+      return typeof i == "object" && i !== null && i.$$typeof === S;
     }
-    var w = React, A = Symbol.for("react.transitional.element"), j = Symbol.for("react.portal"), C = Symbol.for("react.fragment"), F = Symbol.for("react.strict_mode"), W = Symbol.for("react.profiler"), E = Symbol.for("react.consumer"), O = Symbol.for("react.context"), k = Symbol.for("react.forward_ref"), T = Symbol.for("react.suspense"), L = Symbol.for("react.suspense_list"), d = Symbol.for("react.memo"), S = Symbol.for("react.lazy"), J = Symbol.for("react.activity"), Y = Symbol.for("react.client.reference"), V = w.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE, X2 = Object.prototype.hasOwnProperty, Z = Array.isArray, D = console.createTask ? console.createTask : function() {
+    var v = React, S = Symbol.for("react.transitional.element"), C = Symbol.for("react.portal"), E = Symbol.for("react.fragment"), R = Symbol.for("react.strict_mode"), W = Symbol.for("react.profiler"), k = Symbol.for("react.consumer"), T = Symbol.for("react.context"), j = Symbol.for("react.forward_ref"), _ = Symbol.for("react.suspense"), $ = Symbol.for("react.suspense_list"), m = Symbol.for("react.memo"), A = Symbol.for("react.lazy"), J = Symbol.for("react.activity"), Y = Symbol.for("react.client.reference"), V = v.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE, X2 = Object.prototype.hasOwnProperty, K = Array.isArray, G = console.createTask ? console.createTask : function() {
       return null;
     };
-    w = {
+    v = {
       react_stack_bottom_frame: function(i) {
         return i();
       }
     };
-    var B, G = {}, se = w.react_stack_bottom_frame.bind(
-      w,
+    var B, F = {}, q = v.react_stack_bottom_frame.bind(
+      v,
       s
-    )(), ae = D(o(s)), g = {};
-    ce.Fragment = C, ce.jsx = function(i, x, R) {
-      var P = 1e4 > V.recentlyCreatedOwnerStacks++;
-      return b(
+    )(), Q = G(r2(s)), y = {};
+    ue.Fragment = E, ue.jsx = function(i, x, O) {
+      var z = 1e4 > V.recentlyCreatedOwnerStacks++;
+      return g(
         i,
         x,
-        R,
+        O,
         false,
-        P ? Error("react-stack-top-frame") : se,
-        P ? D(o(i)) : ae
+        z ? Error("react-stack-top-frame") : q,
+        z ? G(r2(i)) : Q
       );
-    }, ce.jsxs = function(i, x, R) {
-      var P = 1e4 > V.recentlyCreatedOwnerStacks++;
-      return b(
+    }, ue.jsxs = function(i, x, O) {
+      var z = 1e4 > V.recentlyCreatedOwnerStacks++;
+      return g(
         i,
         x,
-        R,
+        O,
         true,
-        P ? Error("react-stack-top-frame") : se,
-        P ? D(o(i)) : ae
+        z ? Error("react-stack-top-frame") : q,
+        z ? G(r2(i)) : Q
       );
     };
-  })()), ce;
+  })()), ue;
 }
-var Ve;
-function Lt() {
-  return Ve || (Ve = 1, process.env.NODE_ENV === "production" ? xe.exports = $t() : xe.exports = Mt()), xe.exports;
+var Je;
+function Ft() {
+  return Je || (Je = 1, process.env.NODE_ENV === "production" ? we.exports = Lt() : we.exports = Dt()), we.exports;
 }
-var u = Lt();
-function fe(e) {
+var u = Ft();
+function ae(e) {
   return typeof e == "object" && e !== null;
 }
-function Se(e) {
-  if (!fe(e)) return false;
+function Re(e) {
+  if (!ae(e)) return false;
   const t = Object.getPrototypeOf(e);
   return t === Object.prototype || t === null;
 }
-function Dt(e) {
-  return fe(e) && typeof e.$ref == "string" && e.$ref.trim().length > 0;
+function Wt(e) {
+  return ae(e) && typeof e.$ref == "string" && e.$ref.trim().length > 0;
 }
-function Ft(e) {
+function Bt(e) {
   return e.replace(/~1/g, "/").replace(/~0/g, "~");
 }
-function Je(e, t) {
+function Ye(e, t) {
   if (!t || t === "#") return e;
-  const r2 = t.startsWith("#") ? t.slice(1) : t;
-  if (!r2 || r2 === "/") return e;
-  let o = e;
-  for (const n of r2.replace(/^\//, "").split("/")) {
-    const s = Ft(n);
-    if (Array.isArray(o)) {
+  const o = t.startsWith("#") ? t.slice(1) : t;
+  if (!o || o === "/") return e;
+  let r2 = e;
+  for (const n of o.replace(/^\//, "").split("/")) {
+    const s = Bt(n);
+    if (Array.isArray(r2)) {
       const a = Number(s);
-      if (!Number.isInteger(a) || a < 0 || a >= o.length) return;
-      o = o[a];
+      if (!Number.isInteger(a) || a < 0 || a >= r2.length) return;
+      r2 = r2[a];
       continue;
     }
-    if (!fe(o) || !(s in o)) return;
-    o = o[s];
+    if (!ae(r2) || !(s in r2)) return;
+    r2 = r2[s];
   }
-  return o;
+  return r2;
 }
-function ie(e) {
-  const o = e.trim().replace(/\\/g, "/").replace(/^\/+/, "").split("/"), n = [];
-  for (const s of o)
+function ce(e) {
+  const r2 = e.trim().replace(/\\/g, "/").replace(/^\/+/, "").split("/"), n = [];
+  for (const s of r2)
     if (!(!s || s === ".")) {
       if (s === "..") {
         n.length > 0 && n.pop();
@@ -32825,135 +32807,187 @@ function ie(e) {
     }
   return n.join("/");
 }
-function Wt(e) {
-  const t = ie(e), r2 = t.lastIndexOf("/");
-  return r2 === -1 ? "" : t.slice(0, r2);
+function Ut(e) {
+  const t = ce(e), o = t.lastIndexOf("/");
+  return o === -1 ? "" : t.slice(0, o);
 }
-function Bt(e, t) {
-  const r2 = /* @__PURE__ */ new Set(), o = ie(e);
-  o && r2.add(o);
-  const n = Wt(t), s = ie(n ? `${n}/${e}` : e);
-  return s && r2.add(s), Array.from(r2);
+function Gt(e, t) {
+  const o = /* @__PURE__ */ new Set(), r2 = ce(e);
+  r2 && o.add(r2);
+  const n = Ut(t), s = ce(n ? `${n}/${e}` : e);
+  return s && o.add(s), Array.from(o);
 }
-function me(e) {
-  return Array.isArray(e) ? e.map((t) => me(t)) : Se(e) ? Object.fromEntries(
-    Object.entries(e).map(([t, r2]) => [t, me(r2)])
+function pe(e) {
+  return Array.isArray(e) ? e.map((t) => pe(t)) : Re(e) ? Object.fromEntries(
+    Object.entries(e).map(([t, o]) => [t, pe(o)])
   ) : e;
 }
-function de(e, t, r2) {
-  for (const o of t) {
-    const n = ie(o);
-    n && e.set(n, r2);
+function le(e, t, o) {
+  for (const r2 of t) {
+    const n = ce(r2);
+    n && e.set(n, o);
   }
 }
-function Ut({
+function Vt(e, t) {
+  const o = {};
+  for (const [r2, n] of Object.entries(e ?? {})) {
+    const s = t == null ? void 0 : t[r2];
+    if (!s)
+      throw new Error(`[JsonPages] Missing collection schema for "${r2}".`);
+    try {
+      o[r2] = s.parse(n);
+    } catch (a) {
+      const c = a instanceof Error && a.message ? `: ${a.message}` : "";
+      throw new Error(`[JsonPages] Invalid collection "${r2}"${c}`);
+    }
+  }
+  return o;
+}
+function Jt(e, t) {
+  if (!e) return null;
+  const o = t[e.source];
+  if (!ae(o)) return null;
+  const r2 = o[e.paramValue];
+  return r2 === void 0 ? null : {
+    ...e,
+    currentItem: r2
+  };
+}
+function Yt({
   pages: e,
   siteConfig: t,
-  themeConfig: r2,
-  menuConfig: o,
-  refDocuments: n
+  themeConfig: o,
+  menuConfig: r2,
+  collections: n,
+  refDocuments: s
 }) {
-  const s = /* @__PURE__ */ new Map();
-  for (const [a, c] of Object.entries(n ?? {}))
-    de(s, [a], c);
-  de(s, ["site.json", "config/site.json", "src/data/config/site.json"], t), de(s, ["theme.json", "config/theme.json", "src/data/config/theme.json"], r2), de(s, ["menu.json", "config/menu.json", "src/data/config/menu.json"], o);
-  for (const [a, c] of Object.entries(e)) {
-    const l = a.replace(/^\/+|\/+$/g, "") || "home";
-    de(s, [`pages/${l}.json`, `src/data/pages/${l}.json`], c);
+  const a = /* @__PURE__ */ new Map();
+  for (const [c, l] of Object.entries(s ?? {}))
+    le(a, [c], l);
+  le(a, ["site.json", "config/site.json", "src/data/config/site.json"], t), le(a, ["theme.json", "config/theme.json", "src/data/config/theme.json"], o), le(a, ["menu.json", "config/menu.json", "src/data/config/menu.json"], r2);
+  for (const [c, l] of Object.entries(e)) {
+    const d = c.replace(/^\/+|\/+$/g, "") || "home";
+    le(a, [`pages/${d}.json`, `src/data/pages/${d}.json`], l);
   }
-  return s;
+  for (const [c, l] of Object.entries(n ?? {})) {
+    const d = c.replace(/^\/+|\/+$/g, "");
+    d && le(a, [
+      `collections/${d}/${d}.json`,
+      `src/data/collections/${d}/${d}.json`
+    ], l);
+  }
+  return a;
 }
-function Gt(e, t, r2) {
-  const [o, n = ""] = e.split("#"), s = n ? `/${n.replace(/^\//, "")}` : "";
-  if (!o) {
-    const a = ie(t), c = r2.documents.get(a);
-    if (c === void 0) return null;
-    const l = Je(c, s);
-    return l === void 0 ? null : { value: l, documentPath: a };
+function qt(e, t, o) {
+  var a, c, l;
+  if (e.trim() === "collection:current") {
+    const d = (a = o.collectionContext) == null ? void 0 : a.currentItem;
+    if (d === void 0) return null;
+    const g = ((c = o.collectionContext) == null ? void 0 : c.source) ?? "current";
+    return (l = o.collectionContext) == null || l.paramValue, {
+      value: d,
+      documentPath: `collections/${g}/${g}.json`
+    };
   }
-  for (const a of Bt(o, t)) {
-    const c = r2.documents.get(a);
-    if (c === void 0) continue;
-    const l = Je(c, s);
-    if (l !== void 0)
-      return { value: l, documentPath: a };
+  const [r2, n = ""] = e.split("#"), s = n ? `/${n.replace(/^\//, "")}` : "";
+  if (!r2) {
+    const d = ce(t), g = o.documents.get(d);
+    if (g === void 0) return null;
+    const h = Ye(g, s);
+    return h === void 0 ? null : { value: h, documentPath: d };
+  }
+  for (const d of Gt(r2, t)) {
+    const g = o.documents.get(d);
+    if (g === void 0) continue;
+    const h = Ye(g, s);
+    if (h !== void 0)
+      return { value: h, documentPath: d };
   }
   return null;
 }
-function re(e, t, r2) {
+function ne(e, t, o) {
   if (Array.isArray(e))
-    return e.map((o) => re(o, t, r2));
-  if (!Se(e))
+    return e.map((r2) => ne(r2, t, o));
+  if (!Re(e))
     return e;
-  if (Dt(e)) {
-    const o = `${ie(t)}::${e.$ref}`;
-    if (r2.stack.includes(o))
-      return console.warn("[JsonPages] Circular $ref skipped", e.$ref), me(e);
-    if (r2.cache.has(o)) {
-      const l = me(r2.cache.get(o)), m = Object.entries(e).filter(([h]) => h !== "$ref");
-      if (m.length === 0) return l;
-      const b = Object.fromEntries(
-        m.map(([h, y]) => [h, re(y, t, r2)])
+  if (Wt(e)) {
+    const r2 = `${ce(t)}::${e.$ref}`;
+    if (o.stack.includes(r2))
+      return console.warn("[JsonPages] Circular $ref skipped", e.$ref), pe(e);
+    if (o.cache.has(r2)) {
+      const l = pe(o.cache.get(r2)), d = Object.entries(e).filter(([h]) => h !== "$ref");
+      if (d.length === 0) return l;
+      const g = Object.fromEntries(
+        d.map(([h, b]) => [h, ne(b, t, o)])
       );
-      return Se(l) ? { ...l, ...b } : l;
+      return Re(l) ? { ...l, ...g } : l;
     }
-    const n = Gt(e.$ref, t, r2);
+    const n = qt(e.$ref, t, o);
     if (!n)
       return console.warn("[JsonPages] Unresolved $ref", e.$ref), Object.fromEntries(
-        Object.entries(e).map(([l, m]) => [l, re(m, t, r2)])
+        Object.entries(e).map(([l, d]) => [l, ne(d, t, o)])
       );
-    r2.stack.push(o);
-    const s = re(n.value, n.documentPath, r2);
-    r2.stack.pop(), r2.cache.set(o, me(s));
+    o.stack.push(r2);
+    const s = ne(n.value, n.documentPath, o);
+    o.stack.pop(), o.cache.set(r2, pe(s));
     const a = Object.entries(e).filter(([l]) => l !== "$ref");
     if (a.length === 0) return s;
     const c = Object.fromEntries(
-      a.map(([l, m]) => [l, re(m, t, r2)])
+      a.map(([l, d]) => [l, ne(d, t, o)])
     );
-    return Se(s) ? { ...s, ...c } : s;
+    return Re(s) ? { ...s, ...c } : s;
   }
   return Object.fromEntries(
-    Object.entries(e).map(([o, n]) => [o, re(n, t, r2)])
+    Object.entries(e).map(([r2, n]) => [r2, ne(n, t, o)])
   );
 }
-function ve(e, t, r2) {
-  return re(e, t, {
-    documents: r2,
+function ke(e, t, o, r2) {
+  return ne(e, t, {
+    documents: o,
     cache: /* @__PURE__ */ new Map(),
-    stack: []
+    stack: [],
+    collectionContext: r2
   });
 }
-function Vt(e) {
-  return fe(e) && typeof e.label == "string" && typeof e.href == "string";
+function Ht(e) {
+  return ae(e) && typeof e.label == "string" && typeof e.href == "string";
 }
-function Jt(e) {
-  if (!fe(e)) return null;
+function Zt(e) {
+  if (!ae(e)) return null;
   const t = e.menu;
-  return Array.isArray(t) && t.every(Vt) ? t : null;
+  return Array.isArray(t) && t.every(Ht) ? t : null;
 }
-function Yt(e, t) {
-  return Jt(e) ?? (Array.isArray(t) ? t : []);
+function je(e, t) {
+  const o = Zt(e.data);
+  if (o) return o;
+  if (e.type === "header") return Array.isArray(t) ? t : [];
 }
-function _e(e, t) {
-  if (e.type === "header")
-    return Yt(e.data, t);
-}
-function st(e) {
-  const t = Ut(e);
+function De(e) {
+  const t = Vt(e.collections, e.collectionSchemas), o = Jt(e.collectionContext, t), r2 = Yt({
+    ...e,
+    collections: t
+  });
   return {
     pages: Object.fromEntries(
-      Object.entries(e.pages).map(([r2, o]) => [
-        r2,
-        ve(o, `pages/${r2.replace(/^\/+|\/+$/g, "") || "home"}.json`, t)
+      Object.entries(e.pages).map(([n, s]) => [
+        n,
+        ke(
+          s,
+          `pages/${n.replace(/^\/+|\/+$/g, "") || "home"}.json`,
+          r2,
+          o
+        )
       ])
     ),
-    siteConfig: ve(e.siteConfig, "config/site.json", t),
-    themeConfig: ve(e.themeConfig, "config/theme.json", t),
-    menuConfig: ve(e.menuConfig, "config/menu.json", t)
+    siteConfig: ke(e.siteConfig, "config/site.json", r2),
+    themeConfig: ke(e.themeConfig, "config/theme.json", r2),
+    menuConfig: ke(e.menuConfig, "config/menu.json", r2),
+    collections: t,
+    collectionContext: o
   };
 }
-const at = reactExports.createContext(void 0), Qt = ({ config: e, children: t }) => /* @__PURE__ */ u.jsx(
-  at.Provider,
+const it = reactExports.createContext(void 0), rr = ({ config: e, children: t }) => /* @__PURE__ */ u.jsx(
+  it.Provider,
   {
     value: {
       registry: e.registry,
@@ -32966,30 +33000,30 @@ const at = reactExports.createContext(void 0), Qt = ({ config: e, children: t })
     children: t
   }
 );
-function er() {
-  const e = reactExports.useContext(at);
+function or() {
+  const e = reactExports.useContext(it);
   if (e === void 0)
     throw new Error("useConfig must be used within ConfigProvider");
   return e;
 }
 reactExports.createContext({});
-const dt = reactExports.createContext(void 0), ir = ({ mode: e, children: t }) => (reactExports.useEffect(() => {
+const ut = reactExports.createContext(void 0), dr = ({ mode: e, children: t }) => (reactExports.useEffect(() => {
   if (e !== "studio") return;
-  const r2 = new MutationObserver((o) => {
-    o.forEach((n) => {
+  const o = new MutationObserver((r2) => {
+    r2.forEach((n) => {
       n.addedNodes.forEach((s) => {
         s instanceof HTMLElement && s.hasAttribute("data-radix-portal") && s.setAttribute("data-jp-studio-portal", "true");
       });
     });
   });
-  return r2.observe(document.body, { childList: true }), () => r2.disconnect();
-}, [e]), /* @__PURE__ */ u.jsx(dt.Provider, { value: { mode: e }, children: t })), lr = () => {
-  const e = reactExports.useContext(dt);
+  return o.observe(document.body, { childList: true }), () => o.disconnect();
+}, [e]), /* @__PURE__ */ u.jsx(ut.Provider, { value: { mode: e }, children: t })), ur = () => {
+  const e = reactExports.useContext(ut);
   if (e === void 0)
     throw new Error("useStudio must be used within a StudioProvider");
   return e;
 };
-function cr(e, t) {
+function mr(e, t) {
   return t.header != null && e["global-header"] !== false;
 }
 /**
@@ -32998,14 +33032,14 @@ function cr(e, t) {
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
  */
-const dr = (e) => e.replace(/([a-z0-9])([A-Z])/g, "$1-$2").toLowerCase(), ut = (...e) => e.filter((t, r2, o) => !!t && t.trim() !== "" && o.indexOf(t) === r2).join(" ").trim();
+const fr = (e) => e.replace(/([a-z0-9])([A-Z])/g, "$1-$2").toLowerCase(), mt = (...e) => e.filter((t, o, r2) => !!t && t.trim() !== "" && r2.indexOf(t) === o).join(" ").trim();
 /**
  * @license lucide-react v0.474.0 - ISC
  *
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
  */
-var ur = {
+var pr = {
   xmlns: "http://www.w3.org/2000/svg",
   width: 24,
   height: 24,
@@ -33022,12 +33056,12 @@ var ur = {
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
  */
-const mr = reactExports.forwardRef(
+const gr = reactExports.forwardRef(
   ({
     color: e = "currentColor",
     size: t = 24,
-    strokeWidth: r2 = 2,
-    absoluteStrokeWidth: o,
+    strokeWidth: o = 2,
+    absoluteStrokeWidth: r2,
     className: n = "",
     children: s,
     iconNode: a,
@@ -33036,16 +33070,16 @@ const mr = reactExports.forwardRef(
     "svg",
     {
       ref: l,
-      ...ur,
+      ...pr,
       width: t,
       height: t,
       stroke: e,
-      strokeWidth: o ? Number(r2) * 24 / Number(t) : r2,
-      className: ut("lucide", n),
+      strokeWidth: r2 ? Number(o) * 24 / Number(t) : o,
+      className: mt("lucide", n),
       ...c
     },
     [
-      ...a.map(([m, b]) => reactExports.createElement(m, b)),
+      ...a.map(([d, g]) => reactExports.createElement(d, g)),
       ...Array.isArray(s) ? s : [s]
     ]
   )
@@ -33056,16 +33090,16 @@ const mr = reactExports.forwardRef(
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
  */
-const De = (e, t) => {
-  const r2 = reactExports.forwardRef(
-    ({ className: o, ...n }, s) => reactExports.createElement(mr, {
+const Fe = (e, t) => {
+  const o = reactExports.forwardRef(
+    ({ className: r2, ...n }, s) => reactExports.createElement(gr, {
       ref: s,
       iconNode: t,
-      className: ut(`lucide-${dr(e)}`, o),
+      className: mt(`lucide-${fr(e)}`, r2),
       ...n
     })
   );
-  return r2.displayName = `${e}`, r2;
+  return o.displayName = `${e}`, o;
 };
 /**
  * @license lucide-react v0.474.0 - ISC
@@ -33073,21 +33107,21 @@ const De = (e, t) => {
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
  */
-const fr = [["path", { d: "m6 9 6 6 6-6", key: "qrunsl" }]], pr = De("ChevronDown", fr);
+const hr = [["path", { d: "m6 9 6 6 6-6", key: "qrunsl" }]], br = Fe("ChevronDown", hr);
 /**
  * @license lucide-react v0.474.0 - ISC
  *
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
  */
-const br = [["path", { d: "m18 15-6-6-6 6", key: "153udz" }]], hr = De("ChevronUp", br);
+const yr = [["path", { d: "m18 15-6-6-6 6", key: "153udz" }]], vr = Fe("ChevronUp", yr);
 /**
  * @license lucide-react v0.474.0 - ISC
  *
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
  */
-const gr = [
+const xr = [
   [
     "path",
     {
@@ -33097,128 +33131,128 @@ const gr = [
   ],
   ["path", { d: "M12 9v4", key: "juzpu7" }],
   ["path", { d: "M12 17h.01", key: "p32p05" }]
-], yr = De("TriangleAlert", gr);
-function mt(e) {
-  var t, r2, o = "";
-  if (typeof e == "string" || typeof e == "number") o += e;
+], wr = Fe("TriangleAlert", xr);
+function ft(e) {
+  var t, o, r2 = "";
+  if (typeof e == "string" || typeof e == "number") r2 += e;
   else if (typeof e == "object") if (Array.isArray(e)) {
     var n = e.length;
-    for (t = 0; t < n; t++) e[t] && (r2 = mt(e[t])) && (o && (o += " "), o += r2);
-  } else for (r2 in e) e[r2] && (o && (o += " "), o += r2);
-  return o;
-}
-function xr() {
-  for (var e, t, r2 = 0, o = "", n = arguments.length; r2 < n; r2++) (e = arguments[r2]) && (t = mt(e)) && (o && (o += " "), o += t);
-  return o;
-}
-const vr = (e, t) => {
-  const r2 = new Array(e.length + t.length);
-  for (let o = 0; o < e.length; o++)
-    r2[o] = e[o];
-  for (let o = 0; o < t.length; o++)
-    r2[e.length + o] = t[o];
+    for (t = 0; t < n; t++) e[t] && (o = ft(e[t])) && (r2 && (r2 += " "), r2 += o);
+  } else for (o in e) e[o] && (r2 && (r2 += " "), r2 += o);
   return r2;
-}, wr = (e, t) => ({
+}
+function kr() {
+  for (var e, t, o = 0, r2 = "", n = arguments.length; o < n; o++) (e = arguments[o]) && (t = ft(e)) && (r2 && (r2 += " "), r2 += t);
+  return r2;
+}
+const jr = (e, t) => {
+  const o = new Array(e.length + t.length);
+  for (let r2 = 0; r2 < e.length; r2++)
+    o[r2] = e[r2];
+  for (let r2 = 0; r2 < t.length; r2++)
+    o[e.length + r2] = t[r2];
+  return o;
+}, Sr = (e, t) => ({
   classGroupId: e,
   validator: t
-}), ft = (e = /* @__PURE__ */ new Map(), t = null, r2) => ({
+}), pt = (e = /* @__PURE__ */ new Map(), t = null, o) => ({
   nextPart: e,
   validators: t,
-  classGroupId: r2
-}), Ce = "-", He = [], kr = "arbitrary..", jr = (e) => {
-  const t = Sr(e), {
-    conflictingClassGroups: r2,
-    conflictingClassGroupModifiers: o
+  classGroupId: o
+}), Ae = "-", He = [], Cr = "arbitrary..", Er = (e) => {
+  const t = Rr(e), {
+    conflictingClassGroups: o,
+    conflictingClassGroupModifiers: r2
   } = e;
   return {
     getClassGroupId: (a) => {
       if (a.startsWith("[") && a.endsWith("]"))
-        return Er(a);
-      const c = a.split(Ce), l = c[0] === "" && c.length > 1 ? 1 : 0;
-      return pt(c, l, t);
+        return Tr(a);
+      const c = a.split(Ae), l = c[0] === "" && c.length > 1 ? 1 : 0;
+      return gt(c, l, t);
     },
     getConflictingClassGroupIds: (a, c) => {
       if (c) {
-        const l = o[a], m = r2[a];
-        return l ? m ? vr(m, l) : l : m || He;
+        const l = r2[a], d = o[a];
+        return l ? d ? jr(d, l) : l : d || He;
       }
-      return r2[a] || He;
+      return o[a] || He;
     }
   };
-}, pt = (e, t, r2) => {
+}, gt = (e, t, o) => {
   if (e.length - t === 0)
-    return r2.classGroupId;
-  const n = e[t], s = r2.nextPart.get(n);
+    return o.classGroupId;
+  const n = e[t], s = o.nextPart.get(n);
   if (s) {
-    const m = pt(e, t + 1, s);
-    if (m) return m;
+    const d = gt(e, t + 1, s);
+    if (d) return d;
   }
-  const a = r2.validators;
+  const a = o.validators;
   if (a === null)
     return;
-  const c = t === 0 ? e.join(Ce) : e.slice(t).join(Ce), l = a.length;
-  for (let m = 0; m < l; m++) {
-    const b = a[m];
-    if (b.validator(c))
-      return b.classGroupId;
+  const c = t === 0 ? e.join(Ae) : e.slice(t).join(Ae), l = a.length;
+  for (let d = 0; d < l; d++) {
+    const g = a[d];
+    if (g.validator(c))
+      return g.classGroupId;
   }
-}, Er = (e) => e.slice(1, -1).indexOf(":") === -1 ? void 0 : (() => {
-  const t = e.slice(1, -1), r2 = t.indexOf(":"), o = t.slice(0, r2);
-  return o ? kr + o : void 0;
-})(), Sr = (e) => {
+}, Tr = (e) => e.slice(1, -1).indexOf(":") === -1 ? void 0 : (() => {
+  const t = e.slice(1, -1), o = t.indexOf(":"), r2 = t.slice(0, o);
+  return r2 ? Cr + r2 : void 0;
+})(), Rr = (e) => {
   const {
     theme: t,
-    classGroups: r2
+    classGroups: o
   } = e;
-  return Cr(r2, t);
-}, Cr = (e, t) => {
-  const r2 = ft();
-  for (const o in e) {
-    const n = e[o];
-    Fe(n, r2, o, t);
+  return Ar(o, t);
+}, Ar = (e, t) => {
+  const o = pt();
+  for (const r2 in e) {
+    const n = e[r2];
+    We(n, o, r2, t);
   }
-  return r2;
-}, Fe = (e, t, r2, o) => {
+  return o;
+}, We = (e, t, o, r2) => {
   const n = e.length;
   for (let s = 0; s < n; s++) {
     const a = e[s];
-    Tr(a, t, r2, o);
+    _r(a, t, o, r2);
   }
-}, Tr = (e, t, r2, o) => {
+}, _r = (e, t, o, r2) => {
   if (typeof e == "string") {
-    Rr(e, t, r2);
+    Or(e, t, o);
     return;
   }
   if (typeof e == "function") {
-    Ar(e, t, r2, o);
+    Pr(e, t, o, r2);
     return;
   }
-  _r(e, t, r2, o);
-}, Rr = (e, t, r2) => {
-  const o = e === "" ? t : bt(t, e);
-  o.classGroupId = r2;
-}, Ar = (e, t, r2, o) => {
-  if (Or(e)) {
-    Fe(e(o), t, r2, o);
+  zr(e, t, o, r2);
+}, Or = (e, t, o) => {
+  const r2 = e === "" ? t : ht(t, e);
+  r2.classGroupId = o;
+}, Pr = (e, t, o, r2) => {
+  if (Nr(e)) {
+    We(e(r2), t, o, r2);
     return;
   }
-  t.validators === null && (t.validators = []), t.validators.push(wr(r2, e));
-}, _r = (e, t, r2, o) => {
+  t.validators === null && (t.validators = []), t.validators.push(Sr(o, e));
+}, zr = (e, t, o, r2) => {
   const n = Object.entries(e), s = n.length;
   for (let a = 0; a < s; a++) {
     const [c, l] = n[a];
-    Fe(l, bt(t, c), r2, o);
+    We(l, ht(t, c), o, r2);
   }
-}, bt = (e, t) => {
-  let r2 = e;
-  const o = t.split(Ce), n = o.length;
+}, ht = (e, t) => {
+  let o = e;
+  const r2 = t.split(Ae), n = r2.length;
   for (let s = 0; s < n; s++) {
-    const a = o[s];
-    let c = r2.nextPart.get(a);
-    c || (c = ft(), r2.nextPart.set(a, c)), r2 = c;
+    const a = r2[s];
+    let c = o.nextPart.get(a);
+    c || (c = pt(), o.nextPart.set(a, c)), o = c;
   }
-  return r2;
-}, Or = (e) => "isThemeGetter" in e && e.isThemeGetter === true, Pr = (e) => {
+  return o;
+}, Nr = (e) => "isThemeGetter" in e && e.isThemeGetter === true, Ir = (e) => {
   if (e < 1)
     return {
       get: () => {
@@ -33226,178 +33260,178 @@ const vr = (e, t) => {
       set: () => {
       }
     };
-  let t = 0, r2 = /* @__PURE__ */ Object.create(null), o = /* @__PURE__ */ Object.create(null);
+  let t = 0, o = /* @__PURE__ */ Object.create(null), r2 = /* @__PURE__ */ Object.create(null);
   const n = (s, a) => {
-    r2[s] = a, t++, t > e && (t = 0, o = r2, r2 = /* @__PURE__ */ Object.create(null));
+    o[s] = a, t++, t > e && (t = 0, r2 = o, o = /* @__PURE__ */ Object.create(null));
   };
   return {
     get(s) {
-      let a = r2[s];
+      let a = o[s];
       if (a !== void 0)
         return a;
-      if ((a = o[s]) !== void 0)
+      if ((a = r2[s]) !== void 0)
         return n(s, a), a;
     },
     set(s, a) {
-      s in r2 ? r2[s] = a : n(s, a);
+      s in o ? o[s] = a : n(s, a);
     }
   };
-}, $e = "!", qe = ":", zr = [], Xe = (e, t, r2, o, n) => ({
+}, Me = "!", Ze = ":", $r = [], Xe = (e, t, o, r2, n) => ({
   modifiers: e,
   hasImportantModifier: t,
-  baseClassName: r2,
-  maybePostfixModifierPosition: o,
+  baseClassName: o,
+  maybePostfixModifierPosition: r2,
   isExternal: n
-}), Nr = (e) => {
+}), Mr = (e) => {
   const {
     prefix: t,
-    experimentalParseClassName: r2
+    experimentalParseClassName: o
   } = e;
-  let o = (n) => {
+  let r2 = (n) => {
     const s = [];
-    let a = 0, c = 0, l = 0, m;
-    const b = n.length;
-    for (let j = 0; j < b; j++) {
-      const C = n[j];
+    let a = 0, c = 0, l = 0, d;
+    const g = n.length;
+    for (let C = 0; C < g; C++) {
+      const E = n[C];
       if (a === 0 && c === 0) {
-        if (C === qe) {
-          s.push(n.slice(l, j)), l = j + 1;
+        if (E === Ze) {
+          s.push(n.slice(l, C)), l = C + 1;
           continue;
         }
-        if (C === "/") {
-          m = j;
+        if (E === "/") {
+          d = C;
           continue;
         }
       }
-      C === "[" ? a++ : C === "]" ? a-- : C === "(" ? c++ : C === ")" && c--;
+      E === "[" ? a++ : E === "]" ? a-- : E === "(" ? c++ : E === ")" && c--;
     }
     const h = s.length === 0 ? n : n.slice(l);
-    let y = h, w = false;
-    h.endsWith($e) ? (y = h.slice(0, -1), w = true) : (
+    let b = h, v = false;
+    h.endsWith(Me) ? (b = h.slice(0, -1), v = true) : (
       /**
        * In Tailwind CSS v3 the important modifier was at the start of the base class name. This is still supported for legacy reasons.
        * @see https://github.com/dcastil/tailwind-merge/issues/513#issuecomment-2614029864
        */
-      h.startsWith($e) && (y = h.slice(1), w = true)
+      h.startsWith(Me) && (b = h.slice(1), v = true)
     );
-    const A = m && m > l ? m - l : void 0;
-    return Xe(s, w, y, A);
+    const S = d && d > l ? d - l : void 0;
+    return Xe(s, v, b, S);
   };
   if (t) {
-    const n = t + qe, s = o;
-    o = (a) => a.startsWith(n) ? s(a.slice(n.length)) : Xe(zr, false, a, void 0, true);
+    const n = t + Ze, s = r2;
+    r2 = (a) => a.startsWith(n) ? s(a.slice(n.length)) : Xe($r, false, a, void 0, true);
   }
-  if (r2) {
-    const n = o;
-    o = (s) => r2({
+  if (o) {
+    const n = r2;
+    r2 = (s) => o({
       className: s,
       parseClassName: n
     });
   }
-  return o;
-}, Ir = (e) => {
+  return r2;
+}, Lr = (e) => {
   const t = /* @__PURE__ */ new Map();
-  return e.orderSensitiveModifiers.forEach((r2, o) => {
-    t.set(r2, 1e6 + o);
-  }), (r2) => {
-    const o = [];
+  return e.orderSensitiveModifiers.forEach((o, r2) => {
+    t.set(o, 1e6 + r2);
+  }), (o) => {
+    const r2 = [];
     let n = [];
-    for (let s = 0; s < r2.length; s++) {
-      const a = r2[s], c = a[0] === "[", l = t.has(a);
-      c || l ? (n.length > 0 && (n.sort(), o.push(...n), n = []), o.push(a)) : n.push(a);
+    for (let s = 0; s < o.length; s++) {
+      const a = o[s], c = a[0] === "[", l = t.has(a);
+      c || l ? (n.length > 0 && (n.sort(), r2.push(...n), n = []), r2.push(a)) : n.push(a);
     }
-    return n.length > 0 && (n.sort(), o.push(...n)), o;
+    return n.length > 0 && (n.sort(), r2.push(...n)), r2;
   };
-}, $r = (e) => ({
-  cache: Pr(e.cacheSize),
-  parseClassName: Nr(e),
-  sortModifiers: Ir(e),
-  ...jr(e)
-}), Mr = /\s+/, Lr = (e, t) => {
+}, Dr = (e) => ({
+  cache: Ir(e.cacheSize),
+  parseClassName: Mr(e),
+  sortModifiers: Lr(e),
+  ...Er(e)
+}), Fr = /\s+/, Wr = (e, t) => {
   const {
-    parseClassName: r2,
-    getClassGroupId: o,
+    parseClassName: o,
+    getClassGroupId: r2,
     getConflictingClassGroupIds: n,
     sortModifiers: s
-  } = t, a = [], c = e.trim().split(Mr);
+  } = t, a = [], c = e.trim().split(Fr);
   let l = "";
-  for (let m = c.length - 1; m >= 0; m -= 1) {
-    const b = c[m], {
+  for (let d = c.length - 1; d >= 0; d -= 1) {
+    const g = c[d], {
       isExternal: h,
-      modifiers: y,
-      hasImportantModifier: w,
-      baseClassName: A,
-      maybePostfixModifierPosition: j
-    } = r2(b);
+      modifiers: b,
+      hasImportantModifier: v,
+      baseClassName: S,
+      maybePostfixModifierPosition: C
+    } = o(g);
     if (h) {
-      l = b + (l.length > 0 ? " " + l : l);
+      l = g + (l.length > 0 ? " " + l : l);
       continue;
     }
-    let C = !!j, F = o(C ? A.substring(0, j) : A);
-    if (!F) {
-      if (!C) {
-        l = b + (l.length > 0 ? " " + l : l);
+    let E = !!C, R = r2(E ? S.substring(0, C) : S);
+    if (!R) {
+      if (!E) {
+        l = g + (l.length > 0 ? " " + l : l);
         continue;
       }
-      if (F = o(A), !F) {
-        l = b + (l.length > 0 ? " " + l : l);
+      if (R = r2(S), !R) {
+        l = g + (l.length > 0 ? " " + l : l);
         continue;
       }
-      C = false;
+      E = false;
     }
-    const W = y.length === 0 ? "" : y.length === 1 ? y[0] : s(y).join(":"), E = w ? W + $e : W, O = E + F;
-    if (a.indexOf(O) > -1)
+    const W = b.length === 0 ? "" : b.length === 1 ? b[0] : s(b).join(":"), k = v ? W + Me : W, T = k + R;
+    if (a.indexOf(T) > -1)
       continue;
-    a.push(O);
-    const k = n(F, C);
-    for (let T = 0; T < k.length; ++T) {
-      const L = k[T];
-      a.push(E + L);
+    a.push(T);
+    const j = n(R, E);
+    for (let _ = 0; _ < j.length; ++_) {
+      const $ = j[_];
+      a.push(k + $);
     }
-    l = b + (l.length > 0 ? " " + l : l);
+    l = g + (l.length > 0 ? " " + l : l);
   }
   return l;
-}, Dr = (...e) => {
-  let t = 0, r2, o, n = "";
+}, Br = (...e) => {
+  let t = 0, o, r2, n = "";
   for (; t < e.length; )
-    (r2 = e[t++]) && (o = ht(r2)) && (n && (n += " "), n += o);
+    (o = e[t++]) && (r2 = bt(o)) && (n && (n += " "), n += r2);
   return n;
-}, ht = (e) => {
+}, bt = (e) => {
   if (typeof e == "string")
     return e;
-  let t, r2 = "";
-  for (let o = 0; o < e.length; o++)
-    e[o] && (t = ht(e[o])) && (r2 && (r2 += " "), r2 += t);
-  return r2;
-}, Fr = (e, ...t) => {
-  let r2, o, n, s;
+  let t, o = "";
+  for (let r2 = 0; r2 < e.length; r2++)
+    e[r2] && (t = bt(e[r2])) && (o && (o += " "), o += t);
+  return o;
+}, Ur = (e, ...t) => {
+  let o, r2, n, s;
   const a = (l) => {
-    const m = t.reduce((b, h) => h(b), e());
-    return r2 = $r(m), o = r2.cache.get, n = r2.cache.set, s = c, c(l);
+    const d = t.reduce((g, h) => h(g), e());
+    return o = Dr(d), r2 = o.cache.get, n = o.cache.set, s = c, c(l);
   }, c = (l) => {
-    const m = o(l);
-    if (m)
-      return m;
-    const b = Lr(l, r2);
-    return n(l, b), b;
+    const d = r2(l);
+    if (d)
+      return d;
+    const g = Wr(l, o);
+    return n(l, g), g;
   };
-  return s = a, (...l) => s(Dr(...l));
-}, Wr = [], M = (e) => {
-  const t = (r2) => r2[e] || Wr;
+  return s = a, (...l) => s(Br(...l));
+}, Gr = [], D = (e) => {
+  const t = (o) => o[e] || Gr;
   return t.isThemeGetter = true, t;
-}, gt = /^\[(?:(\w[\w-]*):)?(.+)\]$/i, yt = /^\((?:(\w[\w-]*):)?(.+)\)$/i, Br = /^\d+(?:\.\d+)?\/\d+(?:\.\d+)?$/, Ur = /^(\d+(\.\d+)?)?(xs|sm|md|lg|xl)$/, Gr = /\d+(%|px|r?em|[sdl]?v([hwib]|min|max)|pt|pc|in|cm|mm|cap|ch|ex|r?lh|cq(w|h|i|b|min|max))|\b(calc|min|max|clamp)\(.+\)|^0$/, Vr = /^(rgba?|hsla?|hwb|(ok)?(lab|lch)|color-mix)\(.+\)$/, Jr = /^(inset_)?-?((\d+)?\.?(\d+)[a-z]+|0)_-?((\d+)?\.?(\d+)[a-z]+|0)/, Yr = /^(url|image|image-set|cross-fade|element|(repeating-)?(linear|radial|conic)-gradient)\(.+\)$/, K = (e) => Br.test(e), v = (e) => !!e && !Number.isNaN(Number(e)), Q = (e) => !!e && Number.isInteger(Number(e)), Pe = (e) => e.endsWith("%") && v(e.slice(0, -1)), q = (e) => Ur.test(e), xt = () => true, Hr = (e) => (
+}, yt = /^\[(?:(\w[\w-]*):)?(.+)\]$/i, vt = /^\((?:(\w[\w-]*):)?(.+)\)$/i, Vr = /^\d+(?:\.\d+)?\/\d+(?:\.\d+)?$/, Jr = /^(\d+(\.\d+)?)?(xs|sm|md|lg|xl)$/, Yr = /\d+(%|px|r?em|[sdl]?v([hwib]|min|max)|pt|pc|in|cm|mm|cap|ch|ex|r?lh|cq(w|h|i|b|min|max))|\b(calc|min|max|clamp)\(.+\)|^0$/, qr = /^(rgba?|hsla?|hwb|(ok)?(lab|lch)|color-mix)\(.+\)$/, Hr = /^(inset_)?-?((\d+)?\.?(\d+)[a-z]+|0)_-?((\d+)?\.?(\d+)[a-z]+|0)/, Zr = /^(url|image|image-set|cross-fade|element|(repeating-)?(linear|radial|conic)-gradient)\(.+\)$/, ee = (e) => Vr.test(e), w = (e) => !!e && !Number.isNaN(Number(e)), te = (e) => !!e && Number.isInteger(Number(e)), Ne = (e) => e.endsWith("%") && w(e.slice(0, -1)), Z = (e) => Jr.test(e), xt = () => true, Xr = (e) => (
   // `colorFunctionRegex` check is necessary because color functions can have percentages in them which which would be incorrectly classified as lengths.
   // For example, `hsl(0 0% 0%)` would be classified as a length without this check.
   // I could also use lookbehind assertion in `lengthUnitRegex` but that isn't supported widely enough.
-  Gr.test(e) && !Vr.test(e)
-), We = () => false, qr = (e) => Jr.test(e), Xr = (e) => Yr.test(e), Zr = (e) => !f(e) && !p(e), Kr = (e) => ee(e, kt, We), f = (e) => gt.test(e), te = (e) => ee(e, jt, Hr), Ze = (e) => ee(e, ao, v), Qr = (e) => ee(e, St, xt), eo = (e) => ee(e, Et, We), Ke = (e) => ee(e, vt, We), to = (e) => ee(e, wt, Xr), ke = (e) => ee(e, Ct, qr), p = (e) => yt.test(e), ue = (e) => ne(e, jt), ro = (e) => ne(e, Et), Qe = (e) => ne(e, vt), oo = (e) => ne(e, kt), no = (e) => ne(e, wt), je = (e) => ne(e, Ct, true), so = (e) => ne(e, St, true), ee = (e, t, r2) => {
-  const o = gt.exec(e);
-  return o ? o[1] ? t(o[1]) : r2(o[2]) : false;
-}, ne = (e, t, r2 = false) => {
-  const o = yt.exec(e);
-  return o ? o[1] ? t(o[1]) : r2 : false;
-}, vt = (e) => e === "position" || e === "percentage", wt = (e) => e === "image" || e === "url", kt = (e) => e === "length" || e === "size" || e === "bg-size", jt = (e) => e === "length", ao = (e) => e === "number", Et = (e) => e === "family-name", St = (e) => e === "number" || e === "weight", Ct = (e) => e === "shadow", io = () => {
-  const e = M("color"), t = M("font"), r2 = M("text"), o = M("font-weight"), n = M("tracking"), s = M("leading"), a = M("breakpoint"), c = M("container"), l = M("spacing"), m = M("radius"), b = M("shadow"), h = M("inset-shadow"), y = M("text-shadow"), w = M("drop-shadow"), A = M("blur"), j = M("perspective"), C = M("aspect"), F = M("ease"), W = M("animate"), E = () => ["auto", "avoid", "all", "avoid-page", "page", "left", "right", "column"], O = () => [
+  Yr.test(e) && !qr.test(e)
+), Be = () => false, Kr = (e) => Hr.test(e), Qr = (e) => Zr.test(e), eo = (e) => !f(e) && !p(e), to = (e) => re(e, jt, Be), f = (e) => yt.test(e), oe = (e) => re(e, St, Xr), Ke = (e) => re(e, co, w), ro = (e) => re(e, Et, xt), oo = (e) => re(e, Ct, Be), Qe = (e) => re(e, wt, Be), no = (e) => re(e, kt, Qr), Ce = (e) => re(e, Tt, Kr), p = (e) => vt.test(e), me = (e) => ie(e, St), so = (e) => ie(e, Ct), et = (e) => ie(e, wt), ao = (e) => ie(e, jt), io = (e) => ie(e, kt), Ee = (e) => ie(e, Tt, true), lo = (e) => ie(e, Et, true), re = (e, t, o) => {
+  const r2 = yt.exec(e);
+  return r2 ? r2[1] ? t(r2[1]) : o(r2[2]) : false;
+}, ie = (e, t, o = false) => {
+  const r2 = vt.exec(e);
+  return r2 ? r2[1] ? t(r2[1]) : o : false;
+}, wt = (e) => e === "position" || e === "percentage", kt = (e) => e === "image" || e === "url", jt = (e) => e === "length" || e === "size" || e === "bg-size", St = (e) => e === "length", co = (e) => e === "number", Ct = (e) => e === "family-name", Et = (e) => e === "number" || e === "weight", Tt = (e) => e === "shadow", uo = () => {
+  const e = D("color"), t = D("font"), o = D("text"), r2 = D("font-weight"), n = D("tracking"), s = D("leading"), a = D("breakpoint"), c = D("container"), l = D("spacing"), d = D("radius"), g = D("shadow"), h = D("inset-shadow"), b = D("text-shadow"), v = D("drop-shadow"), S = D("blur"), C = D("perspective"), E = D("aspect"), R = D("ease"), W = D("animate"), k = () => ["auto", "avoid", "all", "avoid-page", "page", "left", "right", "column"], T = () => [
     "center",
     "top",
     "bottom",
@@ -33415,51 +33449,51 @@ const vr = (e, t) => {
     "bottom-left",
     // Deprecated since Tailwind CSS v4.1.0, see https://github.com/tailwindlabs/tailwindcss/pull/17378
     "left-bottom"
-  ], k = () => [...O(), p, f], T = () => ["auto", "hidden", "clip", "visible", "scroll"], L = () => ["auto", "contain", "none"], d = () => [p, f, l], S = () => [K, "full", "auto", ...d()], J = () => [Q, "none", "subgrid", p, f], Y = () => ["auto", {
-    span: ["full", Q, p, f]
-  }, Q, p, f], V = () => [Q, "auto", p, f], X2 = () => ["auto", "min", "max", "fr", p, f], Z = () => ["start", "end", "center", "between", "around", "evenly", "stretch", "baseline", "center-safe", "end-safe"], D = () => ["start", "end", "center", "stretch", "center-safe", "end-safe"], B = () => ["auto", ...d()], G = () => [K, "auto", "full", "dvw", "dvh", "lvw", "lvh", "svw", "svh", "min", "max", "fit", ...d()], se = () => [K, "screen", "full", "dvw", "lvw", "svw", "min", "max", "fit", ...d()], ae = () => [K, "screen", "full", "lh", "dvh", "lvh", "svh", "min", "max", "fit", ...d()], g = () => [e, p, f], i = () => [...O(), Qe, Ke, {
+  ], j = () => [...T(), p, f], _ = () => ["auto", "hidden", "clip", "visible", "scroll"], $ = () => ["auto", "contain", "none"], m = () => [p, f, l], A = () => [ee, "full", "auto", ...m()], J = () => [te, "none", "subgrid", p, f], Y = () => ["auto", {
+    span: ["full", te, p, f]
+  }, te, p, f], V = () => [te, "auto", p, f], X2 = () => ["auto", "min", "max", "fr", p, f], K = () => ["start", "end", "center", "between", "around", "evenly", "stretch", "baseline", "center-safe", "end-safe"], G = () => ["start", "end", "center", "stretch", "center-safe", "end-safe"], B = () => ["auto", ...m()], F = () => [ee, "auto", "full", "dvw", "dvh", "lvw", "lvh", "svw", "svh", "min", "max", "fit", ...m()], q = () => [ee, "screen", "full", "dvw", "lvw", "svw", "min", "max", "fit", ...m()], Q = () => [ee, "screen", "full", "lh", "dvh", "lvh", "svh", "min", "max", "fit", ...m()], y = () => [e, p, f], i = () => [...T(), et, Qe, {
     position: [p, f]
   }], x = () => ["no-repeat", {
     repeat: ["", "x", "y", "space", "round"]
-  }], R = () => ["auto", "cover", "contain", oo, Kr, {
+  }], O = () => ["auto", "cover", "contain", ao, to, {
     size: [p, f]
-  }], P = () => [Pe, ue, te], N = () => [
+  }], z = () => [Ne, me, oe], M = () => [
     // Deprecated since Tailwind CSS v4.0.0
     "",
     "none",
     "full",
-    m,
+    d,
     p,
     f
-  ], $ = () => ["", v, ue, te], _ = () => ["solid", "dashed", "dotted", "double"], H = () => ["normal", "multiply", "screen", "overlay", "darken", "lighten", "color-dodge", "color-burn", "hard-light", "soft-light", "difference", "exclusion", "hue", "saturation", "color", "luminosity"], z = () => [v, Pe, Qe, Ke], pe = () => [
+  ], L = () => ["", w, me, oe], P = () => ["solid", "dashed", "dotted", "double"], H = () => ["normal", "multiply", "screen", "overlay", "darken", "lighten", "color-dodge", "color-burn", "hard-light", "soft-light", "difference", "exclusion", "hue", "saturation", "color", "luminosity"], N = () => [w, Ne, et, Qe], he = () => [
     // Deprecated since Tailwind CSS v4.0.0
     "",
     "none",
-    A,
+    S,
     p,
     f
-  ], be = () => ["none", v, p, f], he = () => ["none", v, p, f], Ae = () => [v, p, f], ge = () => [K, "full", ...d()];
+  ], be = () => ["none", w, p, f], ye = () => ["none", w, p, f], Pe = () => [w, p, f], ve = () => [ee, "full", ...m()];
   return {
     cacheSize: 500,
     theme: {
       animate: ["spin", "ping", "pulse", "bounce"],
       aspect: ["video"],
-      blur: [q],
-      breakpoint: [q],
+      blur: [Z],
+      breakpoint: [Z],
       color: [xt],
-      container: [q],
-      "drop-shadow": [q],
+      container: [Z],
+      "drop-shadow": [Z],
       ease: ["in", "out", "in-out"],
-      font: [Zr],
+      font: [eo],
       "font-weight": ["thin", "extralight", "light", "normal", "medium", "semibold", "bold", "extrabold", "black"],
-      "inset-shadow": [q],
+      "inset-shadow": [Z],
       leading: ["none", "tight", "snug", "normal", "relaxed", "loose"],
       perspective: ["dramatic", "near", "normal", "midrange", "distant", "none"],
-      radius: [q],
-      shadow: [q],
-      spacing: ["px", v],
-      text: [q],
-      "text-shadow": [q],
+      radius: [Z],
+      shadow: [Z],
+      spacing: ["px", w],
+      text: [Z],
+      "text-shadow": [Z],
       tracking: ["tighter", "tight", "normal", "wide", "wider", "widest"]
     },
     classGroups: {
@@ -33471,7 +33505,7 @@ const vr = (e, t) => {
        * @see https://tailwindcss.com/docs/aspect-ratio
        */
       aspect: [{
-        aspect: ["auto", "square", K, f, p, C]
+        aspect: ["auto", "square", ee, f, p, E]
       }],
       /**
        * Container
@@ -33484,21 +33518,21 @@ const vr = (e, t) => {
        * @see https://tailwindcss.com/docs/columns
        */
       columns: [{
-        columns: [v, f, p, c]
+        columns: [w, f, p, c]
       }],
       /**
        * Break After
        * @see https://tailwindcss.com/docs/break-after
        */
       "break-after": [{
-        "break-after": E()
+        "break-after": k()
       }],
       /**
        * Break Before
        * @see https://tailwindcss.com/docs/break-before
        */
       "break-before": [{
-        "break-before": E()
+        "break-before": k()
       }],
       /**
        * Break Inside
@@ -33562,49 +33596,49 @@ const vr = (e, t) => {
        * @see https://tailwindcss.com/docs/object-position
        */
       "object-position": [{
-        object: k()
+        object: j()
       }],
       /**
        * Overflow
        * @see https://tailwindcss.com/docs/overflow
        */
       overflow: [{
-        overflow: T()
+        overflow: _()
       }],
       /**
        * Overflow X
        * @see https://tailwindcss.com/docs/overflow
        */
       "overflow-x": [{
-        "overflow-x": T()
+        "overflow-x": _()
       }],
       /**
        * Overflow Y
        * @see https://tailwindcss.com/docs/overflow
        */
       "overflow-y": [{
-        "overflow-y": T()
+        "overflow-y": _()
       }],
       /**
        * Overscroll Behavior
        * @see https://tailwindcss.com/docs/overscroll-behavior
        */
       overscroll: [{
-        overscroll: L()
+        overscroll: $()
       }],
       /**
        * Overscroll Behavior X
        * @see https://tailwindcss.com/docs/overscroll-behavior
        */
       "overscroll-x": [{
-        "overscroll-x": L()
+        "overscroll-x": $()
       }],
       /**
        * Overscroll Behavior Y
        * @see https://tailwindcss.com/docs/overscroll-behavior
        */
       "overscroll-y": [{
-        "overscroll-y": L()
+        "overscroll-y": $()
       }],
       /**
        * Position
@@ -33616,21 +33650,21 @@ const vr = (e, t) => {
        * @see https://tailwindcss.com/docs/top-right-bottom-left
        */
       inset: [{
-        inset: S()
+        inset: A()
       }],
       /**
        * Inset Inline
        * @see https://tailwindcss.com/docs/top-right-bottom-left
        */
       "inset-x": [{
-        "inset-x": S()
+        "inset-x": A()
       }],
       /**
        * Inset Block
        * @see https://tailwindcss.com/docs/top-right-bottom-left
        */
       "inset-y": [{
-        "inset-y": S()
+        "inset-y": A()
       }],
       /**
        * Inset Inline Start
@@ -33638,12 +33672,12 @@ const vr = (e, t) => {
        * @todo class group will be renamed to `inset-s` in next major release
        */
       start: [{
-        "inset-s": S(),
+        "inset-s": A(),
         /**
          * @deprecated since Tailwind CSS v4.2.0 in favor of `inset-s-*` utilities.
          * @see https://github.com/tailwindlabs/tailwindcss/pull/19613
          */
-        start: S()
+        start: A()
       }],
       /**
        * Inset Inline End
@@ -33651,54 +33685,54 @@ const vr = (e, t) => {
        * @todo class group will be renamed to `inset-e` in next major release
        */
       end: [{
-        "inset-e": S(),
+        "inset-e": A(),
         /**
          * @deprecated since Tailwind CSS v4.2.0 in favor of `inset-e-*` utilities.
          * @see https://github.com/tailwindlabs/tailwindcss/pull/19613
          */
-        end: S()
+        end: A()
       }],
       /**
        * Inset Block Start
        * @see https://tailwindcss.com/docs/top-right-bottom-left
        */
       "inset-bs": [{
-        "inset-bs": S()
+        "inset-bs": A()
       }],
       /**
        * Inset Block End
        * @see https://tailwindcss.com/docs/top-right-bottom-left
        */
       "inset-be": [{
-        "inset-be": S()
+        "inset-be": A()
       }],
       /**
        * Top
        * @see https://tailwindcss.com/docs/top-right-bottom-left
        */
       top: [{
-        top: S()
+        top: A()
       }],
       /**
        * Right
        * @see https://tailwindcss.com/docs/top-right-bottom-left
        */
       right: [{
-        right: S()
+        right: A()
       }],
       /**
        * Bottom
        * @see https://tailwindcss.com/docs/top-right-bottom-left
        */
       bottom: [{
-        bottom: S()
+        bottom: A()
       }],
       /**
        * Left
        * @see https://tailwindcss.com/docs/top-right-bottom-left
        */
       left: [{
-        left: S()
+        left: A()
       }],
       /**
        * Visibility
@@ -33710,7 +33744,7 @@ const vr = (e, t) => {
        * @see https://tailwindcss.com/docs/z-index
        */
       z: [{
-        z: [Q, "auto", p, f]
+        z: [te, "auto", p, f]
       }],
       // ------------------------
       // --- Flexbox and Grid ---
@@ -33720,7 +33754,7 @@ const vr = (e, t) => {
        * @see https://tailwindcss.com/docs/flex-basis
        */
       basis: [{
-        basis: [K, "full", "auto", c, ...d()]
+        basis: [ee, "full", "auto", c, ...m()]
       }],
       /**
        * Flex Direction
@@ -33741,28 +33775,28 @@ const vr = (e, t) => {
        * @see https://tailwindcss.com/docs/flex
        */
       flex: [{
-        flex: [v, K, "auto", "initial", "none", f]
+        flex: [w, ee, "auto", "initial", "none", f]
       }],
       /**
        * Flex Grow
        * @see https://tailwindcss.com/docs/flex-grow
        */
       grow: [{
-        grow: ["", v, p, f]
+        grow: ["", w, p, f]
       }],
       /**
        * Flex Shrink
        * @see https://tailwindcss.com/docs/flex-shrink
        */
       shrink: [{
-        shrink: ["", v, p, f]
+        shrink: ["", w, p, f]
       }],
       /**
        * Order
        * @see https://tailwindcss.com/docs/order
        */
       order: [{
-        order: [Q, "first", "last", "none", p, f]
+        order: [te, "first", "last", "none", p, f]
       }],
       /**
        * Grid Template Columns
@@ -33846,56 +33880,56 @@ const vr = (e, t) => {
        * @see https://tailwindcss.com/docs/gap
        */
       gap: [{
-        gap: d()
+        gap: m()
       }],
       /**
        * Gap X
        * @see https://tailwindcss.com/docs/gap
        */
       "gap-x": [{
-        "gap-x": d()
+        "gap-x": m()
       }],
       /**
        * Gap Y
        * @see https://tailwindcss.com/docs/gap
        */
       "gap-y": [{
-        "gap-y": d()
+        "gap-y": m()
       }],
       /**
        * Justify Content
        * @see https://tailwindcss.com/docs/justify-content
        */
       "justify-content": [{
-        justify: [...Z(), "normal"]
+        justify: [...K(), "normal"]
       }],
       /**
        * Justify Items
        * @see https://tailwindcss.com/docs/justify-items
        */
       "justify-items": [{
-        "justify-items": [...D(), "normal"]
+        "justify-items": [...G(), "normal"]
       }],
       /**
        * Justify Self
        * @see https://tailwindcss.com/docs/justify-self
        */
       "justify-self": [{
-        "justify-self": ["auto", ...D()]
+        "justify-self": ["auto", ...G()]
       }],
       /**
        * Align Content
        * @see https://tailwindcss.com/docs/align-content
        */
       "align-content": [{
-        content: ["normal", ...Z()]
+        content: ["normal", ...K()]
       }],
       /**
        * Align Items
        * @see https://tailwindcss.com/docs/align-items
        */
       "align-items": [{
-        items: [...D(), {
+        items: [...G(), {
           baseline: ["", "last"]
         }]
       }],
@@ -33904,7 +33938,7 @@ const vr = (e, t) => {
        * @see https://tailwindcss.com/docs/align-self
        */
       "align-self": [{
-        self: ["auto", ...D(), {
+        self: ["auto", ...G(), {
           baseline: ["", "last"]
         }]
       }],
@@ -33913,21 +33947,21 @@ const vr = (e, t) => {
        * @see https://tailwindcss.com/docs/place-content
        */
       "place-content": [{
-        "place-content": Z()
+        "place-content": K()
       }],
       /**
        * Place Items
        * @see https://tailwindcss.com/docs/place-items
        */
       "place-items": [{
-        "place-items": [...D(), "baseline"]
+        "place-items": [...G(), "baseline"]
       }],
       /**
        * Place Self
        * @see https://tailwindcss.com/docs/place-self
        */
       "place-self": [{
-        "place-self": ["auto", ...D()]
+        "place-self": ["auto", ...G()]
       }],
       // Spacing
       /**
@@ -33935,77 +33969,77 @@ const vr = (e, t) => {
        * @see https://tailwindcss.com/docs/padding
        */
       p: [{
-        p: d()
+        p: m()
       }],
       /**
        * Padding Inline
        * @see https://tailwindcss.com/docs/padding
        */
       px: [{
-        px: d()
+        px: m()
       }],
       /**
        * Padding Block
        * @see https://tailwindcss.com/docs/padding
        */
       py: [{
-        py: d()
+        py: m()
       }],
       /**
        * Padding Inline Start
        * @see https://tailwindcss.com/docs/padding
        */
       ps: [{
-        ps: d()
+        ps: m()
       }],
       /**
        * Padding Inline End
        * @see https://tailwindcss.com/docs/padding
        */
       pe: [{
-        pe: d()
+        pe: m()
       }],
       /**
        * Padding Block Start
        * @see https://tailwindcss.com/docs/padding
        */
       pbs: [{
-        pbs: d()
+        pbs: m()
       }],
       /**
        * Padding Block End
        * @see https://tailwindcss.com/docs/padding
        */
       pbe: [{
-        pbe: d()
+        pbe: m()
       }],
       /**
        * Padding Top
        * @see https://tailwindcss.com/docs/padding
        */
       pt: [{
-        pt: d()
+        pt: m()
       }],
       /**
        * Padding Right
        * @see https://tailwindcss.com/docs/padding
        */
       pr: [{
-        pr: d()
+        pr: m()
       }],
       /**
        * Padding Bottom
        * @see https://tailwindcss.com/docs/padding
        */
       pb: [{
-        pb: d()
+        pb: m()
       }],
       /**
        * Padding Left
        * @see https://tailwindcss.com/docs/padding
        */
       pl: [{
-        pl: d()
+        pl: m()
       }],
       /**
        * Margin
@@ -34089,7 +34123,7 @@ const vr = (e, t) => {
        * @see https://tailwindcss.com/docs/margin#adding-space-between-children
        */
       "space-x": [{
-        "space-x": d()
+        "space-x": m()
       }],
       /**
        * Space Between X Reverse
@@ -34101,7 +34135,7 @@ const vr = (e, t) => {
        * @see https://tailwindcss.com/docs/margin#adding-space-between-children
        */
       "space-y": [{
-        "space-y": d()
+        "space-y": m()
       }],
       /**
        * Space Between Y Reverse
@@ -34116,56 +34150,56 @@ const vr = (e, t) => {
        * @see https://tailwindcss.com/docs/width#setting-both-width-and-height
        */
       size: [{
-        size: G()
+        size: F()
       }],
       /**
        * Inline Size
        * @see https://tailwindcss.com/docs/width
        */
       "inline-size": [{
-        inline: ["auto", ...se()]
+        inline: ["auto", ...q()]
       }],
       /**
        * Min-Inline Size
        * @see https://tailwindcss.com/docs/min-width
        */
       "min-inline-size": [{
-        "min-inline": ["auto", ...se()]
+        "min-inline": ["auto", ...q()]
       }],
       /**
        * Max-Inline Size
        * @see https://tailwindcss.com/docs/max-width
        */
       "max-inline-size": [{
-        "max-inline": ["none", ...se()]
+        "max-inline": ["none", ...q()]
       }],
       /**
        * Block Size
        * @see https://tailwindcss.com/docs/height
        */
       "block-size": [{
-        block: ["auto", ...ae()]
+        block: ["auto", ...Q()]
       }],
       /**
        * Min-Block Size
        * @see https://tailwindcss.com/docs/min-height
        */
       "min-block-size": [{
-        "min-block": ["auto", ...ae()]
+        "min-block": ["auto", ...Q()]
       }],
       /**
        * Max-Block Size
        * @see https://tailwindcss.com/docs/max-height
        */
       "max-block-size": [{
-        "max-block": ["none", ...ae()]
+        "max-block": ["none", ...Q()]
       }],
       /**
        * Width
        * @see https://tailwindcss.com/docs/width
        */
       w: [{
-        w: [c, "screen", ...G()]
+        w: [c, "screen", ...F()]
       }],
       /**
        * Min-Width
@@ -34177,7 +34211,7 @@ const vr = (e, t) => {
           "screen",
           /** Deprecated. @see https://github.com/tailwindlabs/tailwindcss.com/issues/2027#issuecomment-2620152757 */
           "none",
-          ...G()
+          ...F()
         ]
       }],
       /**
@@ -34195,7 +34229,7 @@ const vr = (e, t) => {
           {
             screen: [a]
           },
-          ...G()
+          ...F()
         ]
       }],
       /**
@@ -34203,21 +34237,21 @@ const vr = (e, t) => {
        * @see https://tailwindcss.com/docs/height
        */
       h: [{
-        h: ["screen", "lh", ...G()]
+        h: ["screen", "lh", ...F()]
       }],
       /**
        * Min-Height
        * @see https://tailwindcss.com/docs/min-height
        */
       "min-h": [{
-        "min-h": ["screen", "lh", "none", ...G()]
+        "min-h": ["screen", "lh", "none", ...F()]
       }],
       /**
        * Max-Height
        * @see https://tailwindcss.com/docs/max-height
        */
       "max-h": [{
-        "max-h": ["screen", "lh", ...G()]
+        "max-h": ["screen", "lh", ...F()]
       }],
       // ------------------
       // --- Typography ---
@@ -34227,7 +34261,7 @@ const vr = (e, t) => {
        * @see https://tailwindcss.com/docs/font-size
        */
       "font-size": [{
-        text: ["base", r2, ue, te]
+        text: ["base", o, me, oe]
       }],
       /**
        * Font Smoothing
@@ -34244,21 +34278,21 @@ const vr = (e, t) => {
        * @see https://tailwindcss.com/docs/font-weight
        */
       "font-weight": [{
-        font: [o, so, Qr]
+        font: [r2, lo, ro]
       }],
       /**
        * Font Stretch
        * @see https://tailwindcss.com/docs/font-stretch
        */
       "font-stretch": [{
-        "font-stretch": ["ultra-condensed", "extra-condensed", "condensed", "semi-condensed", "normal", "semi-expanded", "expanded", "extra-expanded", "ultra-expanded", Pe, f]
+        "font-stretch": ["ultra-condensed", "extra-condensed", "condensed", "semi-condensed", "normal", "semi-expanded", "expanded", "extra-expanded", "ultra-expanded", Ne, f]
       }],
       /**
        * Font Family
        * @see https://tailwindcss.com/docs/font-family
        */
       "font-family": [{
-        font: [ro, eo, t]
+        font: [so, oo, t]
       }],
       /**
        * Font Feature Settings
@@ -34309,7 +34343,7 @@ const vr = (e, t) => {
        * @see https://tailwindcss.com/docs/line-clamp
        */
       "line-clamp": [{
-        "line-clamp": [v, "none", p, Ze]
+        "line-clamp": [w, "none", p, Ke]
       }],
       /**
        * Line Height
@@ -34319,7 +34353,7 @@ const vr = (e, t) => {
         leading: [
           /** Deprecated since Tailwind CSS v4.0.0. @see https://github.com/tailwindlabs/tailwindcss.com/issues/2027#issuecomment-2620152757 */
           s,
-          ...d()
+          ...m()
         ]
       }],
       /**
@@ -34356,14 +34390,14 @@ const vr = (e, t) => {
        * @see https://v3.tailwindcss.com/docs/placeholder-color
        */
       "placeholder-color": [{
-        placeholder: g()
+        placeholder: y()
       }],
       /**
        * Text Color
        * @see https://tailwindcss.com/docs/text-color
        */
       "text-color": [{
-        text: g()
+        text: y()
       }],
       /**
        * Text Decoration
@@ -34375,28 +34409,28 @@ const vr = (e, t) => {
        * @see https://tailwindcss.com/docs/text-decoration-style
        */
       "text-decoration-style": [{
-        decoration: [..._(), "wavy"]
+        decoration: [...P(), "wavy"]
       }],
       /**
        * Text Decoration Thickness
        * @see https://tailwindcss.com/docs/text-decoration-thickness
        */
       "text-decoration-thickness": [{
-        decoration: [v, "from-font", "auto", p, te]
+        decoration: [w, "from-font", "auto", p, oe]
       }],
       /**
        * Text Decoration Color
        * @see https://tailwindcss.com/docs/text-decoration-color
        */
       "text-decoration-color": [{
-        decoration: g()
+        decoration: y()
       }],
       /**
        * Text Underline Offset
        * @see https://tailwindcss.com/docs/text-underline-offset
        */
       "underline-offset": [{
-        "underline-offset": [v, "auto", p, f]
+        "underline-offset": [w, "auto", p, f]
       }],
       /**
        * Text Transform
@@ -34420,7 +34454,7 @@ const vr = (e, t) => {
        * @see https://tailwindcss.com/docs/text-indent
        */
       indent: [{
-        indent: d()
+        indent: m()
       }],
       /**
        * Vertical Alignment
@@ -34507,7 +34541,7 @@ const vr = (e, t) => {
        * @see https://tailwindcss.com/docs/background-size
        */
       "bg-size": [{
-        bg: R()
+        bg: O()
       }],
       /**
        * Background Image
@@ -34517,59 +34551,59 @@ const vr = (e, t) => {
         bg: ["none", {
           linear: [{
             to: ["t", "tr", "r", "br", "b", "bl", "l", "tl"]
-          }, Q, p, f],
+          }, te, p, f],
           radial: ["", p, f],
-          conic: [Q, p, f]
-        }, no, to]
+          conic: [te, p, f]
+        }, io, no]
       }],
       /**
        * Background Color
        * @see https://tailwindcss.com/docs/background-color
        */
       "bg-color": [{
-        bg: g()
+        bg: y()
       }],
       /**
        * Gradient Color Stops From Position
        * @see https://tailwindcss.com/docs/gradient-color-stops
        */
       "gradient-from-pos": [{
-        from: P()
+        from: z()
       }],
       /**
        * Gradient Color Stops Via Position
        * @see https://tailwindcss.com/docs/gradient-color-stops
        */
       "gradient-via-pos": [{
-        via: P()
+        via: z()
       }],
       /**
        * Gradient Color Stops To Position
        * @see https://tailwindcss.com/docs/gradient-color-stops
        */
       "gradient-to-pos": [{
-        to: P()
+        to: z()
       }],
       /**
        * Gradient Color Stops From
        * @see https://tailwindcss.com/docs/gradient-color-stops
        */
       "gradient-from": [{
-        from: g()
+        from: y()
       }],
       /**
        * Gradient Color Stops Via
        * @see https://tailwindcss.com/docs/gradient-color-stops
        */
       "gradient-via": [{
-        via: g()
+        via: y()
       }],
       /**
        * Gradient Color Stops To
        * @see https://tailwindcss.com/docs/gradient-color-stops
        */
       "gradient-to": [{
-        to: g()
+        to: y()
       }],
       // ---------------
       // --- Borders ---
@@ -34579,189 +34613,189 @@ const vr = (e, t) => {
        * @see https://tailwindcss.com/docs/border-radius
        */
       rounded: [{
-        rounded: N()
+        rounded: M()
       }],
       /**
        * Border Radius Start
        * @see https://tailwindcss.com/docs/border-radius
        */
       "rounded-s": [{
-        "rounded-s": N()
+        "rounded-s": M()
       }],
       /**
        * Border Radius End
        * @see https://tailwindcss.com/docs/border-radius
        */
       "rounded-e": [{
-        "rounded-e": N()
+        "rounded-e": M()
       }],
       /**
        * Border Radius Top
        * @see https://tailwindcss.com/docs/border-radius
        */
       "rounded-t": [{
-        "rounded-t": N()
+        "rounded-t": M()
       }],
       /**
        * Border Radius Right
        * @see https://tailwindcss.com/docs/border-radius
        */
       "rounded-r": [{
-        "rounded-r": N()
+        "rounded-r": M()
       }],
       /**
        * Border Radius Bottom
        * @see https://tailwindcss.com/docs/border-radius
        */
       "rounded-b": [{
-        "rounded-b": N()
+        "rounded-b": M()
       }],
       /**
        * Border Radius Left
        * @see https://tailwindcss.com/docs/border-radius
        */
       "rounded-l": [{
-        "rounded-l": N()
+        "rounded-l": M()
       }],
       /**
        * Border Radius Start Start
        * @see https://tailwindcss.com/docs/border-radius
        */
       "rounded-ss": [{
-        "rounded-ss": N()
+        "rounded-ss": M()
       }],
       /**
        * Border Radius Start End
        * @see https://tailwindcss.com/docs/border-radius
        */
       "rounded-se": [{
-        "rounded-se": N()
+        "rounded-se": M()
       }],
       /**
        * Border Radius End End
        * @see https://tailwindcss.com/docs/border-radius
        */
       "rounded-ee": [{
-        "rounded-ee": N()
+        "rounded-ee": M()
       }],
       /**
        * Border Radius End Start
        * @see https://tailwindcss.com/docs/border-radius
        */
       "rounded-es": [{
-        "rounded-es": N()
+        "rounded-es": M()
       }],
       /**
        * Border Radius Top Left
        * @see https://tailwindcss.com/docs/border-radius
        */
       "rounded-tl": [{
-        "rounded-tl": N()
+        "rounded-tl": M()
       }],
       /**
        * Border Radius Top Right
        * @see https://tailwindcss.com/docs/border-radius
        */
       "rounded-tr": [{
-        "rounded-tr": N()
+        "rounded-tr": M()
       }],
       /**
        * Border Radius Bottom Right
        * @see https://tailwindcss.com/docs/border-radius
        */
       "rounded-br": [{
-        "rounded-br": N()
+        "rounded-br": M()
       }],
       /**
        * Border Radius Bottom Left
        * @see https://tailwindcss.com/docs/border-radius
        */
       "rounded-bl": [{
-        "rounded-bl": N()
+        "rounded-bl": M()
       }],
       /**
        * Border Width
        * @see https://tailwindcss.com/docs/border-width
        */
       "border-w": [{
-        border: $()
+        border: L()
       }],
       /**
        * Border Width Inline
        * @see https://tailwindcss.com/docs/border-width
        */
       "border-w-x": [{
-        "border-x": $()
+        "border-x": L()
       }],
       /**
        * Border Width Block
        * @see https://tailwindcss.com/docs/border-width
        */
       "border-w-y": [{
-        "border-y": $()
+        "border-y": L()
       }],
       /**
        * Border Width Inline Start
        * @see https://tailwindcss.com/docs/border-width
        */
       "border-w-s": [{
-        "border-s": $()
+        "border-s": L()
       }],
       /**
        * Border Width Inline End
        * @see https://tailwindcss.com/docs/border-width
        */
       "border-w-e": [{
-        "border-e": $()
+        "border-e": L()
       }],
       /**
        * Border Width Block Start
        * @see https://tailwindcss.com/docs/border-width
        */
       "border-w-bs": [{
-        "border-bs": $()
+        "border-bs": L()
       }],
       /**
        * Border Width Block End
        * @see https://tailwindcss.com/docs/border-width
        */
       "border-w-be": [{
-        "border-be": $()
+        "border-be": L()
       }],
       /**
        * Border Width Top
        * @see https://tailwindcss.com/docs/border-width
        */
       "border-w-t": [{
-        "border-t": $()
+        "border-t": L()
       }],
       /**
        * Border Width Right
        * @see https://tailwindcss.com/docs/border-width
        */
       "border-w-r": [{
-        "border-r": $()
+        "border-r": L()
       }],
       /**
        * Border Width Bottom
        * @see https://tailwindcss.com/docs/border-width
        */
       "border-w-b": [{
-        "border-b": $()
+        "border-b": L()
       }],
       /**
        * Border Width Left
        * @see https://tailwindcss.com/docs/border-width
        */
       "border-w-l": [{
-        "border-l": $()
+        "border-l": L()
       }],
       /**
        * Divide Width X
        * @see https://tailwindcss.com/docs/border-width#between-children
        */
       "divide-x": [{
-        "divide-x": $()
+        "divide-x": L()
       }],
       /**
        * Divide Width X Reverse
@@ -34773,7 +34807,7 @@ const vr = (e, t) => {
        * @see https://tailwindcss.com/docs/border-width#between-children
        */
       "divide-y": [{
-        "divide-y": $()
+        "divide-y": L()
       }],
       /**
        * Divide Width Y Reverse
@@ -34785,126 +34819,126 @@ const vr = (e, t) => {
        * @see https://tailwindcss.com/docs/border-style
        */
       "border-style": [{
-        border: [..._(), "hidden", "none"]
+        border: [...P(), "hidden", "none"]
       }],
       /**
        * Divide Style
        * @see https://tailwindcss.com/docs/border-style#setting-the-divider-style
        */
       "divide-style": [{
-        divide: [..._(), "hidden", "none"]
+        divide: [...P(), "hidden", "none"]
       }],
       /**
        * Border Color
        * @see https://tailwindcss.com/docs/border-color
        */
       "border-color": [{
-        border: g()
+        border: y()
       }],
       /**
        * Border Color Inline
        * @see https://tailwindcss.com/docs/border-color
        */
       "border-color-x": [{
-        "border-x": g()
+        "border-x": y()
       }],
       /**
        * Border Color Block
        * @see https://tailwindcss.com/docs/border-color
        */
       "border-color-y": [{
-        "border-y": g()
+        "border-y": y()
       }],
       /**
        * Border Color Inline Start
        * @see https://tailwindcss.com/docs/border-color
        */
       "border-color-s": [{
-        "border-s": g()
+        "border-s": y()
       }],
       /**
        * Border Color Inline End
        * @see https://tailwindcss.com/docs/border-color
        */
       "border-color-e": [{
-        "border-e": g()
+        "border-e": y()
       }],
       /**
        * Border Color Block Start
        * @see https://tailwindcss.com/docs/border-color
        */
       "border-color-bs": [{
-        "border-bs": g()
+        "border-bs": y()
       }],
       /**
        * Border Color Block End
        * @see https://tailwindcss.com/docs/border-color
        */
       "border-color-be": [{
-        "border-be": g()
+        "border-be": y()
       }],
       /**
        * Border Color Top
        * @see https://tailwindcss.com/docs/border-color
        */
       "border-color-t": [{
-        "border-t": g()
+        "border-t": y()
       }],
       /**
        * Border Color Right
        * @see https://tailwindcss.com/docs/border-color
        */
       "border-color-r": [{
-        "border-r": g()
+        "border-r": y()
       }],
       /**
        * Border Color Bottom
        * @see https://tailwindcss.com/docs/border-color
        */
       "border-color-b": [{
-        "border-b": g()
+        "border-b": y()
       }],
       /**
        * Border Color Left
        * @see https://tailwindcss.com/docs/border-color
        */
       "border-color-l": [{
-        "border-l": g()
+        "border-l": y()
       }],
       /**
        * Divide Color
        * @see https://tailwindcss.com/docs/divide-color
        */
       "divide-color": [{
-        divide: g()
+        divide: y()
       }],
       /**
        * Outline Style
        * @see https://tailwindcss.com/docs/outline-style
        */
       "outline-style": [{
-        outline: [..._(), "none", "hidden"]
+        outline: [...P(), "none", "hidden"]
       }],
       /**
        * Outline Offset
        * @see https://tailwindcss.com/docs/outline-offset
        */
       "outline-offset": [{
-        "outline-offset": [v, p, f]
+        "outline-offset": [w, p, f]
       }],
       /**
        * Outline Width
        * @see https://tailwindcss.com/docs/outline-width
        */
       "outline-w": [{
-        outline: ["", v, ue, te]
+        outline: ["", w, me, oe]
       }],
       /**
        * Outline Color
        * @see https://tailwindcss.com/docs/outline-color
        */
       "outline-color": [{
-        outline: g()
+        outline: y()
       }],
       // ---------------
       // --- Effects ---
@@ -34918,9 +34952,9 @@ const vr = (e, t) => {
           // Deprecated since Tailwind CSS v4.0.0
           "",
           "none",
-          b,
-          je,
-          ke
+          g,
+          Ee,
+          Ce
         ]
       }],
       /**
@@ -34928,28 +34962,28 @@ const vr = (e, t) => {
        * @see https://tailwindcss.com/docs/box-shadow#setting-the-shadow-color
        */
       "shadow-color": [{
-        shadow: g()
+        shadow: y()
       }],
       /**
        * Inset Box Shadow
        * @see https://tailwindcss.com/docs/box-shadow#adding-an-inset-shadow
        */
       "inset-shadow": [{
-        "inset-shadow": ["none", h, je, ke]
+        "inset-shadow": ["none", h, Ee, Ce]
       }],
       /**
        * Inset Box Shadow Color
        * @see https://tailwindcss.com/docs/box-shadow#setting-the-inset-shadow-color
        */
       "inset-shadow-color": [{
-        "inset-shadow": g()
+        "inset-shadow": y()
       }],
       /**
        * Ring Width
        * @see https://tailwindcss.com/docs/box-shadow#adding-a-ring
        */
       "ring-w": [{
-        ring: $()
+        ring: L()
       }],
       /**
        * Ring Width Inset
@@ -34963,7 +34997,7 @@ const vr = (e, t) => {
        * @see https://tailwindcss.com/docs/box-shadow#setting-the-ring-color
        */
       "ring-color": [{
-        ring: g()
+        ring: y()
       }],
       /**
        * Ring Offset Width
@@ -34972,7 +35006,7 @@ const vr = (e, t) => {
        * @see https://github.com/tailwindlabs/tailwindcss/blob/v4.0.0/packages/tailwindcss/src/utilities.ts#L4158
        */
       "ring-offset-w": [{
-        "ring-offset": [v, te]
+        "ring-offset": [w, oe]
       }],
       /**
        * Ring Offset Color
@@ -34981,42 +35015,42 @@ const vr = (e, t) => {
        * @see https://github.com/tailwindlabs/tailwindcss/blob/v4.0.0/packages/tailwindcss/src/utilities.ts#L4158
        */
       "ring-offset-color": [{
-        "ring-offset": g()
+        "ring-offset": y()
       }],
       /**
        * Inset Ring Width
        * @see https://tailwindcss.com/docs/box-shadow#adding-an-inset-ring
        */
       "inset-ring-w": [{
-        "inset-ring": $()
+        "inset-ring": L()
       }],
       /**
        * Inset Ring Color
        * @see https://tailwindcss.com/docs/box-shadow#setting-the-inset-ring-color
        */
       "inset-ring-color": [{
-        "inset-ring": g()
+        "inset-ring": y()
       }],
       /**
        * Text Shadow
        * @see https://tailwindcss.com/docs/text-shadow
        */
       "text-shadow": [{
-        "text-shadow": ["none", y, je, ke]
+        "text-shadow": ["none", b, Ee, Ce]
       }],
       /**
        * Text Shadow Color
        * @see https://tailwindcss.com/docs/text-shadow#setting-the-shadow-color
        */
       "text-shadow-color": [{
-        "text-shadow": g()
+        "text-shadow": y()
       }],
       /**
        * Opacity
        * @see https://tailwindcss.com/docs/opacity
        */
       opacity: [{
-        opacity: [v, p, f]
+        opacity: [w, p, f]
       }],
       /**
        * Mix Blend Mode
@@ -35051,106 +35085,106 @@ const vr = (e, t) => {
        * @see https://tailwindcss.com/docs/mask-image
        */
       "mask-image-linear-pos": [{
-        "mask-linear": [v]
+        "mask-linear": [w]
       }],
       "mask-image-linear-from-pos": [{
-        "mask-linear-from": z()
+        "mask-linear-from": N()
       }],
       "mask-image-linear-to-pos": [{
-        "mask-linear-to": z()
+        "mask-linear-to": N()
       }],
       "mask-image-linear-from-color": [{
-        "mask-linear-from": g()
+        "mask-linear-from": y()
       }],
       "mask-image-linear-to-color": [{
-        "mask-linear-to": g()
+        "mask-linear-to": y()
       }],
       "mask-image-t-from-pos": [{
-        "mask-t-from": z()
+        "mask-t-from": N()
       }],
       "mask-image-t-to-pos": [{
-        "mask-t-to": z()
+        "mask-t-to": N()
       }],
       "mask-image-t-from-color": [{
-        "mask-t-from": g()
+        "mask-t-from": y()
       }],
       "mask-image-t-to-color": [{
-        "mask-t-to": g()
+        "mask-t-to": y()
       }],
       "mask-image-r-from-pos": [{
-        "mask-r-from": z()
+        "mask-r-from": N()
       }],
       "mask-image-r-to-pos": [{
-        "mask-r-to": z()
+        "mask-r-to": N()
       }],
       "mask-image-r-from-color": [{
-        "mask-r-from": g()
+        "mask-r-from": y()
       }],
       "mask-image-r-to-color": [{
-        "mask-r-to": g()
+        "mask-r-to": y()
       }],
       "mask-image-b-from-pos": [{
-        "mask-b-from": z()
+        "mask-b-from": N()
       }],
       "mask-image-b-to-pos": [{
-        "mask-b-to": z()
+        "mask-b-to": N()
       }],
       "mask-image-b-from-color": [{
-        "mask-b-from": g()
+        "mask-b-from": y()
       }],
       "mask-image-b-to-color": [{
-        "mask-b-to": g()
+        "mask-b-to": y()
       }],
       "mask-image-l-from-pos": [{
-        "mask-l-from": z()
+        "mask-l-from": N()
       }],
       "mask-image-l-to-pos": [{
-        "mask-l-to": z()
+        "mask-l-to": N()
       }],
       "mask-image-l-from-color": [{
-        "mask-l-from": g()
+        "mask-l-from": y()
       }],
       "mask-image-l-to-color": [{
-        "mask-l-to": g()
+        "mask-l-to": y()
       }],
       "mask-image-x-from-pos": [{
-        "mask-x-from": z()
+        "mask-x-from": N()
       }],
       "mask-image-x-to-pos": [{
-        "mask-x-to": z()
+        "mask-x-to": N()
       }],
       "mask-image-x-from-color": [{
-        "mask-x-from": g()
+        "mask-x-from": y()
       }],
       "mask-image-x-to-color": [{
-        "mask-x-to": g()
+        "mask-x-to": y()
       }],
       "mask-image-y-from-pos": [{
-        "mask-y-from": z()
+        "mask-y-from": N()
       }],
       "mask-image-y-to-pos": [{
-        "mask-y-to": z()
+        "mask-y-to": N()
       }],
       "mask-image-y-from-color": [{
-        "mask-y-from": g()
+        "mask-y-from": y()
       }],
       "mask-image-y-to-color": [{
-        "mask-y-to": g()
+        "mask-y-to": y()
       }],
       "mask-image-radial": [{
         "mask-radial": [p, f]
       }],
       "mask-image-radial-from-pos": [{
-        "mask-radial-from": z()
+        "mask-radial-from": N()
       }],
       "mask-image-radial-to-pos": [{
-        "mask-radial-to": z()
+        "mask-radial-to": N()
       }],
       "mask-image-radial-from-color": [{
-        "mask-radial-from": g()
+        "mask-radial-from": y()
       }],
       "mask-image-radial-to-color": [{
-        "mask-radial-to": g()
+        "mask-radial-to": y()
       }],
       "mask-image-radial-shape": [{
         "mask-radial": ["circle", "ellipse"]
@@ -35162,22 +35196,22 @@ const vr = (e, t) => {
         }]
       }],
       "mask-image-radial-pos": [{
-        "mask-radial-at": O()
+        "mask-radial-at": T()
       }],
       "mask-image-conic-pos": [{
-        "mask-conic": [v]
+        "mask-conic": [w]
       }],
       "mask-image-conic-from-pos": [{
-        "mask-conic-from": z()
+        "mask-conic-from": N()
       }],
       "mask-image-conic-to-pos": [{
-        "mask-conic-to": z()
+        "mask-conic-to": N()
       }],
       "mask-image-conic-from-color": [{
-        "mask-conic-from": g()
+        "mask-conic-from": y()
       }],
       "mask-image-conic-to-color": [{
-        "mask-conic-to": g()
+        "mask-conic-to": y()
       }],
       /**
        * Mask Mode
@@ -35212,7 +35246,7 @@ const vr = (e, t) => {
        * @see https://tailwindcss.com/docs/mask-size
        */
       "mask-size": [{
-        mask: R()
+        mask: O()
       }],
       /**
        * Mask Type
@@ -35249,21 +35283,21 @@ const vr = (e, t) => {
        * @see https://tailwindcss.com/docs/blur
        */
       blur: [{
-        blur: pe()
+        blur: he()
       }],
       /**
        * Brightness
        * @see https://tailwindcss.com/docs/brightness
        */
       brightness: [{
-        brightness: [v, p, f]
+        brightness: [w, p, f]
       }],
       /**
        * Contrast
        * @see https://tailwindcss.com/docs/contrast
        */
       contrast: [{
-        contrast: [v, p, f]
+        contrast: [w, p, f]
       }],
       /**
        * Drop Shadow
@@ -35274,9 +35308,9 @@ const vr = (e, t) => {
           // Deprecated since Tailwind CSS v4.0.0
           "",
           "none",
-          w,
-          je,
-          ke
+          v,
+          Ee,
+          Ce
         ]
       }],
       /**
@@ -35284,42 +35318,42 @@ const vr = (e, t) => {
        * @see https://tailwindcss.com/docs/filter-drop-shadow#setting-the-shadow-color
        */
       "drop-shadow-color": [{
-        "drop-shadow": g()
+        "drop-shadow": y()
       }],
       /**
        * Grayscale
        * @see https://tailwindcss.com/docs/grayscale
        */
       grayscale: [{
-        grayscale: ["", v, p, f]
+        grayscale: ["", w, p, f]
       }],
       /**
        * Hue Rotate
        * @see https://tailwindcss.com/docs/hue-rotate
        */
       "hue-rotate": [{
-        "hue-rotate": [v, p, f]
+        "hue-rotate": [w, p, f]
       }],
       /**
        * Invert
        * @see https://tailwindcss.com/docs/invert
        */
       invert: [{
-        invert: ["", v, p, f]
+        invert: ["", w, p, f]
       }],
       /**
        * Saturate
        * @see https://tailwindcss.com/docs/saturate
        */
       saturate: [{
-        saturate: [v, p, f]
+        saturate: [w, p, f]
       }],
       /**
        * Sepia
        * @see https://tailwindcss.com/docs/sepia
        */
       sepia: [{
-        sepia: ["", v, p, f]
+        sepia: ["", w, p, f]
       }],
       /**
        * Backdrop Filter
@@ -35339,63 +35373,63 @@ const vr = (e, t) => {
        * @see https://tailwindcss.com/docs/backdrop-blur
        */
       "backdrop-blur": [{
-        "backdrop-blur": pe()
+        "backdrop-blur": he()
       }],
       /**
        * Backdrop Brightness
        * @see https://tailwindcss.com/docs/backdrop-brightness
        */
       "backdrop-brightness": [{
-        "backdrop-brightness": [v, p, f]
+        "backdrop-brightness": [w, p, f]
       }],
       /**
        * Backdrop Contrast
        * @see https://tailwindcss.com/docs/backdrop-contrast
        */
       "backdrop-contrast": [{
-        "backdrop-contrast": [v, p, f]
+        "backdrop-contrast": [w, p, f]
       }],
       /**
        * Backdrop Grayscale
        * @see https://tailwindcss.com/docs/backdrop-grayscale
        */
       "backdrop-grayscale": [{
-        "backdrop-grayscale": ["", v, p, f]
+        "backdrop-grayscale": ["", w, p, f]
       }],
       /**
        * Backdrop Hue Rotate
        * @see https://tailwindcss.com/docs/backdrop-hue-rotate
        */
       "backdrop-hue-rotate": [{
-        "backdrop-hue-rotate": [v, p, f]
+        "backdrop-hue-rotate": [w, p, f]
       }],
       /**
        * Backdrop Invert
        * @see https://tailwindcss.com/docs/backdrop-invert
        */
       "backdrop-invert": [{
-        "backdrop-invert": ["", v, p, f]
+        "backdrop-invert": ["", w, p, f]
       }],
       /**
        * Backdrop Opacity
        * @see https://tailwindcss.com/docs/backdrop-opacity
        */
       "backdrop-opacity": [{
-        "backdrop-opacity": [v, p, f]
+        "backdrop-opacity": [w, p, f]
       }],
       /**
        * Backdrop Saturate
        * @see https://tailwindcss.com/docs/backdrop-saturate
        */
       "backdrop-saturate": [{
-        "backdrop-saturate": [v, p, f]
+        "backdrop-saturate": [w, p, f]
       }],
       /**
        * Backdrop Sepia
        * @see https://tailwindcss.com/docs/backdrop-sepia
        */
       "backdrop-sepia": [{
-        "backdrop-sepia": ["", v, p, f]
+        "backdrop-sepia": ["", w, p, f]
       }],
       // --------------
       // --- Tables ---
@@ -35412,21 +35446,21 @@ const vr = (e, t) => {
        * @see https://tailwindcss.com/docs/border-spacing
        */
       "border-spacing": [{
-        "border-spacing": d()
+        "border-spacing": m()
       }],
       /**
        * Border Spacing X
        * @see https://tailwindcss.com/docs/border-spacing
        */
       "border-spacing-x": [{
-        "border-spacing-x": d()
+        "border-spacing-x": m()
       }],
       /**
        * Border Spacing Y
        * @see https://tailwindcss.com/docs/border-spacing
        */
       "border-spacing-y": [{
-        "border-spacing-y": d()
+        "border-spacing-y": m()
       }],
       /**
        * Table Layout
@@ -35464,21 +35498,21 @@ const vr = (e, t) => {
        * @see https://tailwindcss.com/docs/transition-duration
        */
       duration: [{
-        duration: [v, "initial", p, f]
+        duration: [w, "initial", p, f]
       }],
       /**
        * Transition Timing Function
        * @see https://tailwindcss.com/docs/transition-timing-function
        */
       ease: [{
-        ease: ["linear", "initial", F, p, f]
+        ease: ["linear", "initial", R, p, f]
       }],
       /**
        * Transition Delay
        * @see https://tailwindcss.com/docs/transition-delay
        */
       delay: [{
-        delay: [v, p, f]
+        delay: [w, p, f]
       }],
       /**
        * Animation
@@ -35502,14 +35536,14 @@ const vr = (e, t) => {
        * @see https://tailwindcss.com/docs/perspective
        */
       perspective: [{
-        perspective: [j, p, f]
+        perspective: [C, p, f]
       }],
       /**
        * Perspective Origin
        * @see https://tailwindcss.com/docs/perspective-origin
        */
       "perspective-origin": [{
-        "perspective-origin": k()
+        "perspective-origin": j()
       }],
       /**
        * Rotate
@@ -35544,28 +35578,28 @@ const vr = (e, t) => {
        * @see https://tailwindcss.com/docs/scale
        */
       scale: [{
-        scale: he()
+        scale: ye()
       }],
       /**
        * Scale X
        * @see https://tailwindcss.com/docs/scale
        */
       "scale-x": [{
-        "scale-x": he()
+        "scale-x": ye()
       }],
       /**
        * Scale Y
        * @see https://tailwindcss.com/docs/scale
        */
       "scale-y": [{
-        "scale-y": he()
+        "scale-y": ye()
       }],
       /**
        * Scale Z
        * @see https://tailwindcss.com/docs/scale
        */
       "scale-z": [{
-        "scale-z": he()
+        "scale-z": ye()
       }],
       /**
        * Scale 3D
@@ -35577,21 +35611,21 @@ const vr = (e, t) => {
        * @see https://tailwindcss.com/docs/skew
        */
       skew: [{
-        skew: Ae()
+        skew: Pe()
       }],
       /**
        * Skew X
        * @see https://tailwindcss.com/docs/skew
        */
       "skew-x": [{
-        "skew-x": Ae()
+        "skew-x": Pe()
       }],
       /**
        * Skew Y
        * @see https://tailwindcss.com/docs/skew
        */
       "skew-y": [{
-        "skew-y": Ae()
+        "skew-y": Pe()
       }],
       /**
        * Transform
@@ -35605,7 +35639,7 @@ const vr = (e, t) => {
        * @see https://tailwindcss.com/docs/transform-origin
        */
       "transform-origin": [{
-        origin: k()
+        origin: j()
       }],
       /**
        * Transform Style
@@ -35619,28 +35653,28 @@ const vr = (e, t) => {
        * @see https://tailwindcss.com/docs/translate
        */
       translate: [{
-        translate: ge()
+        translate: ve()
       }],
       /**
        * Translate X
        * @see https://tailwindcss.com/docs/translate
        */
       "translate-x": [{
-        "translate-x": ge()
+        "translate-x": ve()
       }],
       /**
        * Translate Y
        * @see https://tailwindcss.com/docs/translate
        */
       "translate-y": [{
-        "translate-y": ge()
+        "translate-y": ve()
       }],
       /**
        * Translate Z
        * @see https://tailwindcss.com/docs/translate
        */
       "translate-z": [{
-        "translate-z": ge()
+        "translate-z": ve()
       }],
       /**
        * Translate None
@@ -35655,7 +35689,7 @@ const vr = (e, t) => {
        * @see https://tailwindcss.com/docs/accent-color
        */
       accent: [{
-        accent: g()
+        accent: y()
       }],
       /**
        * Appearance
@@ -35669,7 +35703,7 @@ const vr = (e, t) => {
        * @see https://tailwindcss.com/docs/just-in-time-mode#caret-color-utilities
        */
       "caret-color": [{
-        caret: g()
+        caret: y()
       }],
       /**
        * Color Scheme
@@ -35718,154 +35752,154 @@ const vr = (e, t) => {
        * @see https://tailwindcss.com/docs/scroll-margin
        */
       "scroll-m": [{
-        "scroll-m": d()
+        "scroll-m": m()
       }],
       /**
        * Scroll Margin Inline
        * @see https://tailwindcss.com/docs/scroll-margin
        */
       "scroll-mx": [{
-        "scroll-mx": d()
+        "scroll-mx": m()
       }],
       /**
        * Scroll Margin Block
        * @see https://tailwindcss.com/docs/scroll-margin
        */
       "scroll-my": [{
-        "scroll-my": d()
+        "scroll-my": m()
       }],
       /**
        * Scroll Margin Inline Start
        * @see https://tailwindcss.com/docs/scroll-margin
        */
       "scroll-ms": [{
-        "scroll-ms": d()
+        "scroll-ms": m()
       }],
       /**
        * Scroll Margin Inline End
        * @see https://tailwindcss.com/docs/scroll-margin
        */
       "scroll-me": [{
-        "scroll-me": d()
+        "scroll-me": m()
       }],
       /**
        * Scroll Margin Block Start
        * @see https://tailwindcss.com/docs/scroll-margin
        */
       "scroll-mbs": [{
-        "scroll-mbs": d()
+        "scroll-mbs": m()
       }],
       /**
        * Scroll Margin Block End
        * @see https://tailwindcss.com/docs/scroll-margin
        */
       "scroll-mbe": [{
-        "scroll-mbe": d()
+        "scroll-mbe": m()
       }],
       /**
        * Scroll Margin Top
        * @see https://tailwindcss.com/docs/scroll-margin
        */
       "scroll-mt": [{
-        "scroll-mt": d()
+        "scroll-mt": m()
       }],
       /**
        * Scroll Margin Right
        * @see https://tailwindcss.com/docs/scroll-margin
        */
       "scroll-mr": [{
-        "scroll-mr": d()
+        "scroll-mr": m()
       }],
       /**
        * Scroll Margin Bottom
        * @see https://tailwindcss.com/docs/scroll-margin
        */
       "scroll-mb": [{
-        "scroll-mb": d()
+        "scroll-mb": m()
       }],
       /**
        * Scroll Margin Left
        * @see https://tailwindcss.com/docs/scroll-margin
        */
       "scroll-ml": [{
-        "scroll-ml": d()
+        "scroll-ml": m()
       }],
       /**
        * Scroll Padding
        * @see https://tailwindcss.com/docs/scroll-padding
        */
       "scroll-p": [{
-        "scroll-p": d()
+        "scroll-p": m()
       }],
       /**
        * Scroll Padding Inline
        * @see https://tailwindcss.com/docs/scroll-padding
        */
       "scroll-px": [{
-        "scroll-px": d()
+        "scroll-px": m()
       }],
       /**
        * Scroll Padding Block
        * @see https://tailwindcss.com/docs/scroll-padding
        */
       "scroll-py": [{
-        "scroll-py": d()
+        "scroll-py": m()
       }],
       /**
        * Scroll Padding Inline Start
        * @see https://tailwindcss.com/docs/scroll-padding
        */
       "scroll-ps": [{
-        "scroll-ps": d()
+        "scroll-ps": m()
       }],
       /**
        * Scroll Padding Inline End
        * @see https://tailwindcss.com/docs/scroll-padding
        */
       "scroll-pe": [{
-        "scroll-pe": d()
+        "scroll-pe": m()
       }],
       /**
        * Scroll Padding Block Start
        * @see https://tailwindcss.com/docs/scroll-padding
        */
       "scroll-pbs": [{
-        "scroll-pbs": d()
+        "scroll-pbs": m()
       }],
       /**
        * Scroll Padding Block End
        * @see https://tailwindcss.com/docs/scroll-padding
        */
       "scroll-pbe": [{
-        "scroll-pbe": d()
+        "scroll-pbe": m()
       }],
       /**
        * Scroll Padding Top
        * @see https://tailwindcss.com/docs/scroll-padding
        */
       "scroll-pt": [{
-        "scroll-pt": d()
+        "scroll-pt": m()
       }],
       /**
        * Scroll Padding Right
        * @see https://tailwindcss.com/docs/scroll-padding
        */
       "scroll-pr": [{
-        "scroll-pr": d()
+        "scroll-pr": m()
       }],
       /**
        * Scroll Padding Bottom
        * @see https://tailwindcss.com/docs/scroll-padding
        */
       "scroll-pb": [{
-        "scroll-pb": d()
+        "scroll-pb": m()
       }],
       /**
        * Scroll Padding Left
        * @see https://tailwindcss.com/docs/scroll-padding
        */
       "scroll-pl": [{
-        "scroll-pl": d()
+        "scroll-pl": m()
       }],
       /**
        * Scroll Snap Align
@@ -35943,21 +35977,21 @@ const vr = (e, t) => {
        * @see https://tailwindcss.com/docs/fill
        */
       fill: [{
-        fill: ["none", ...g()]
+        fill: ["none", ...y()]
       }],
       /**
        * Stroke Width
        * @see https://tailwindcss.com/docs/stroke-width
        */
       "stroke-w": [{
-        stroke: [v, ue, te, Ze]
+        stroke: [w, me, oe, Ke]
       }],
       /**
        * Stroke
        * @see https://tailwindcss.com/docs/stroke
        */
       stroke: [{
-        stroke: ["none", ...g()]
+        stroke: ["none", ...y()]
       }],
       // ---------------------
       // --- Accessibility ---
@@ -36025,23 +36059,23 @@ const vr = (e, t) => {
     },
     orderSensitiveModifiers: ["*", "**", "after", "backdrop", "before", "details-content", "file", "first-letter", "first-line", "marker", "placeholder", "selection"]
   };
-}, lo = /* @__PURE__ */ Fr(io);
-function Me(...e) {
-  return lo(xr(e));
+}, mo = /* @__PURE__ */ Ur(uo);
+function Le(...e) {
+  return mo(kr(e));
 }
-class co extends reactExports.Component {
+class fo extends reactExports.Component {
   constructor(t) {
     super(t), this.state = { hasError: false };
   }
   static getDerivedStateFromError() {
     return { hasError: true };
   }
-  componentDidCatch(t, r2) {
-    console.error(`[JsonPages] Component Crash [${this.props.type}]:`, t, r2);
+  componentDidCatch(t, o) {
+    console.error(`[JsonPages] Component Crash [${this.props.type}]:`, t, o);
   }
   render() {
     return this.state.hasError ? /* @__PURE__ */ u.jsxs("div", { className: "p-8 m-4 bg-amber-500/5 border-2 border-dashed border-amber-500/20 rounded-xl flex flex-col items-center text-center gap-3", children: [
-      /* @__PURE__ */ u.jsx(yr, { className: "text-amber-500", size: 32 }),
+      /* @__PURE__ */ u.jsx(wr, { className: "text-amber-500", size: 32 }),
       /* @__PURE__ */ u.jsxs("div", { className: "space-y-1", children: [
         /* @__PURE__ */ u.jsx("h4", { className: "text-sm font-bold text-amber-200 uppercase tracking-tight", children: "Component Error" }),
         /* @__PURE__ */ u.jsxs("p", { className: "text-xs text-amber-500/70 font-mono", children: [
@@ -36053,54 +36087,54 @@ class co extends reactExports.Component {
     ] }) : this.props.children;
   }
 }
-const uo = ({ type: e, scope: t, isSelected: r2, sectionId: o, sectionIndex: n = 0, totalSections: s = 0, onReorder: a }) => {
+const po = ({ type: e, scope: t, isSelected: o, sectionId: r2, sectionIndex: n = 0, totalSections: s = 0, onReorder: a }) => {
   const c = typeof n == "number" && n > 0 && a, l = typeof n == "number" && n < s - 1 && a;
   return /* @__PURE__ */ u.jsx(
     "div",
     {
       "data-jp-section-overlay": true,
       "aria-hidden": true,
-      className: Me(
+      className: Le(
         "absolute inset-0 pointer-events-none transition-all duration-200 z-[50]",
         "border-2 border-transparent group-hover:border-blue-400/50 group-hover:border-dashed",
-        r2 && "border-2 border-blue-600 border-solid bg-blue-500/5"
+        o && "border-2 border-blue-600 border-solid bg-blue-500/5"
       ),
       children: /* @__PURE__ */ u.jsxs(
         "div",
         {
-          className: Me(
+          className: Le(
             "absolute top-0 right-0 flex flex-nowrap items-center gap-1 pl-1 pr-2 py-1 text-[9px] font-black uppercase tracking-widest transition-opacity pointer-events-auto",
             "bg-blue-600 text-white",
-            r2 || "group-hover:opacity-100 opacity-0"
+            o || "group-hover:opacity-100 opacity-0"
           ),
           children: [
-            a && o != null && /* @__PURE__ */ u.jsxs("span", { className: "shrink-0 flex items-center gap-0.5", children: [
+            a && r2 != null && /* @__PURE__ */ u.jsxs("span", { className: "shrink-0 flex items-center gap-0.5", children: [
               /* @__PURE__ */ u.jsx(
                 "button",
                 {
                   type: "button",
-                  onClick: (m) => {
-                    m.stopPropagation(), c && a(o, n - 1);
+                  onClick: (d) => {
+                    d.stopPropagation(), c && a(r2, n - 1);
                   },
                   disabled: !c,
                   className: "inline-flex items-center justify-center min-w-[18px] min-h-[18px] rounded bg-white/20 hover:bg-white/30 disabled:opacity-30 disabled:pointer-events-none",
                   title: "Move section up",
                   "aria-label": "Move section up",
-                  children: /* @__PURE__ */ u.jsx(hr, { size: 12, strokeWidth: 2.5 })
+                  children: /* @__PURE__ */ u.jsx(vr, { size: 12, strokeWidth: 2.5 })
                 }
               ),
               /* @__PURE__ */ u.jsx(
                 "button",
                 {
                   type: "button",
-                  onClick: (m) => {
-                    m.stopPropagation(), l && a(o, n + 2);
+                  onClick: (d) => {
+                    d.stopPropagation(), l && a(r2, n + 2);
                   },
                   disabled: !l,
                   className: "inline-flex items-center justify-center min-w-[18px] min-h-[18px] rounded bg-white/20 hover:bg-white/30 disabled:opacity-30 disabled:pointer-events-none",
                   title: "Move section down",
                   "aria-label": "Move section down",
-                  children: /* @__PURE__ */ u.jsx(pr, { size: 12, strokeWidth: 2.5 })
+                  children: /* @__PURE__ */ u.jsx(br, { size: 12, strokeWidth: 2.5 })
                 }
               )
             ] }),
@@ -36112,135 +36146,135 @@ const uo = ({ type: e, scope: t, isSelected: r2, sectionId: o, sectionIndex: n =
       )
     }
   );
-}, Ee = ({
+}, Te = ({
   section: e,
   menu: t,
-  selectedId: r2,
-  reorderable: o,
+  selectedId: o,
+  reorderable: r2,
   sectionIndex: n,
   totalSections: s,
   onReorder: a
 }) => {
-  const { mode: c } = lr(), { registry: l, overlayDisabledSectionTypes: m } = er(), b = c === "studio", h = b && r2 === e.id, y = l[e.type], w = e.type === "header" || e.type === "footer" ? "global" : "local", A = Array.isArray(m) ? m.includes(e.type) : false, j = e.type === "header" && typeof e.settings == "object" && e.settings !== null && "sticky" in e.settings && !!e.settings.sticky;
-  if (!y)
+  const { mode: c } = ur(), { registry: l, overlayDisabledSectionTypes: d } = or(), g = c === "studio", h = g && o === e.id, b = l[e.type], v = e.type === "header" || e.type === "footer" ? "global" : "local", S = Array.isArray(d) ? d.includes(e.type) : false, C = e.type === "header" && typeof e.settings == "object" && e.settings !== null && "sticky" in e.settings && !!e.settings.sticky;
+  if (!b)
     return /* @__PURE__ */ u.jsxs("div", { className: "p-6 m-4 bg-red-500/10 text-red-400 border border-red-500/20 rounded-lg text-sm font-mono", children: [
       /* @__PURE__ */ u.jsx("strong", { children: "Missing Component:" }),
       " ",
       e.type
     ] });
-  const C = () => {
-    const W = y;
-    return e.type === "header" && t ? /* @__PURE__ */ u.jsx(W, { data: e.data, settings: e.settings, menu: t }) : /* @__PURE__ */ u.jsx(W, { data: e.data, settings: e.settings });
-  }, F = typeof e.data == "object" && e.data !== null && "anchorId" in e.data ? String(e.data.anchorId ?? "") : void 0;
+  const E = () => {
+    const W = b;
+    return t ? /* @__PURE__ */ u.jsx(W, { data: e.data, settings: e.settings, menu: t }) : /* @__PURE__ */ u.jsx(W, { data: e.data, settings: e.settings });
+  }, R = typeof e.data == "object" && e.data !== null && "anchorId" in e.data ? String(e.data.anchorId ?? "") : void 0;
   return /* @__PURE__ */ u.jsxs(
     "div",
     {
-      id: F || void 0,
-      "data-section-id": b ? e.id : void 0,
-      "data-section-type": b ? e.type : void 0,
-      "data-section-scope": b ? w : void 0,
-      ...b && h ? { "data-jp-selected": true } : {},
-      className: Me(
+      id: R || void 0,
+      "data-section-id": g ? e.id : void 0,
+      "data-section-type": g ? e.type : void 0,
+      "data-section-scope": g ? v : void 0,
+      ...g && h ? { "data-jp-selected": true } : {},
+      className: Le(
         "relative w-full",
-        b && !A && "group cursor-pointer",
-        b && j ? "sticky top-0 z-[60]" : e.type === "header" ? "relative" : "relative z-0",
+        g && !S && "group cursor-pointer",
+        g && C ? "sticky top-0 z-[60]" : e.type === "header" ? "relative" : "relative z-0",
         h && "z-[70]"
       ),
       children: [
-        /* @__PURE__ */ u.jsx("div", { className: e.type === "header" ? "relative" : "relative z-0", children: /* @__PURE__ */ u.jsx(co, { type: e.type, children: C() }) }),
-        b && !A && /* @__PURE__ */ u.jsx(
-          uo,
+        /* @__PURE__ */ u.jsx("div", { className: e.type === "header" ? "relative" : "relative z-0", children: /* @__PURE__ */ u.jsx(fo, { type: e.type, children: E() }) }),
+        g && !S && /* @__PURE__ */ u.jsx(
+          po,
           {
             type: e.type,
-            scope: w,
+            scope: v,
             isSelected: !!h,
-            sectionId: o && w === "local" ? e.id : void 0,
-            sectionIndex: o && w === "local" ? n : void 0,
-            totalSections: o && w === "local" ? s : void 0,
-            onReorder: o && w === "local" ? a : void 0
+            sectionId: r2 && v === "local" ? e.id : void 0,
+            sectionIndex: r2 && v === "local" ? n : void 0,
+            totalSections: r2 && v === "local" ? s : void 0,
+            onReorder: r2 && v === "local" ? a : void 0
           }
         )
       ]
     }
   );
-}, mo = (e) => {
+}, go = (e) => {
   reactExports.useEffect(() => {
     document.title = e.title;
     let t = document.querySelector('meta[name="description"]');
     t || (t = document.createElement("meta"), t.setAttribute("name", "description"), document.head.appendChild(t)), t.setAttribute("content", e.description);
   }, [e.title, e.description]);
-}, fo = "application/json", po = ({
+}, ho = "application/json", bo = ({
   pageConfig: e,
   siteConfig: t,
-  menuConfig: r2,
-  selectedId: o,
+  menuConfig: o,
+  selectedId: r2,
   onReorder: n,
   scrollToSectionId: s,
   onActiveSectionChange: a
 }) => {
-  mo(e.meta);
-  const [c, l] = reactExports.useState(null), m = reactExports.useRef({}), b = reactExports.useRef(a);
-  b.current = a;
-  const h = cr(e, t), y = h ? t.header ?? null : null, w = t.footer ?? null, A = (E) => {
-    var O;
-    (O = b.current) == null || O.call(b, E);
+  go(e.meta);
+  const [c, l] = reactExports.useState(null), d = reactExports.useRef({}), g = reactExports.useRef(a);
+  g.current = a;
+  const h = mr(e, t), b = h ? t.header ?? null : null, v = t.footer ?? null, S = (k) => {
+    var T;
+    (T = g.current) == null || T.call(g, k);
   };
   reactExports.useEffect(() => {
     if (!s) return;
-    const E = m.current[s];
-    E && E.scrollIntoView({ behavior: "smooth", block: "center" });
+    const k = d.current[s];
+    k && k.scrollIntoView({ behavior: "smooth", block: "center" });
   }, [s]), reactExports.useEffect(() => {
-    if (!b.current) return;
-    const O = [
-      ...y ? [y.id] : [],
-      ...e.sections.map((d) => d.id),
-      ...w ? [w.id] : []
-    ], k = new IntersectionObserver(
-      (d) => {
-        d.forEach((S) => {
+    if (!g.current) return;
+    const T = [
+      ...b ? [b.id] : [],
+      ...e.sections.map((m) => m.id),
+      ...v ? [v.id] : []
+    ], j = new IntersectionObserver(
+      (m) => {
+        m.forEach((A) => {
           var J;
-          if (S.isIntersecting && S.intersectionRatio > 0.5) {
-            const Y = S.target.getAttribute("data-section-id");
-            Y && ((J = b.current) == null || J.call(b, Y));
+          if (A.isIntersecting && A.intersectionRatio > 0.5) {
+            const Y = A.target.getAttribute("data-section-id");
+            Y && ((J = g.current) == null || J.call(g, Y));
           }
         });
       },
       { threshold: [0, 0.5, 1], rootMargin: "-20% 0px -20% 0px" }
     );
-    let T = false;
-    const L = requestAnimationFrame(() => {
-      T || O.forEach((d) => {
-        const S = m.current[d];
-        S && k.observe(S);
+    let _ = false;
+    const $ = requestAnimationFrame(() => {
+      _ || T.forEach((m) => {
+        const A = d.current[m];
+        A && j.observe(A);
       });
     });
     return () => {
-      T = true, cancelAnimationFrame(L), k.disconnect();
+      _ = true, cancelAnimationFrame($), j.disconnect();
     };
-  }, [w, y, e.sections, e["global-header"], h]);
-  const j = (E, O) => {
-    E.preventDefault(), E.dataTransfer.dropEffect = "move", l(O);
-  }, C = () => {
+  }, [v, b, e.sections, e["global-header"], h]);
+  const C = (k, T) => {
+    k.preventDefault(), k.dataTransfer.dropEffect = "move", l(T);
+  }, E = () => {
     l(null);
-  }, F = (E, O) => {
-    if (E.preventDefault(), l(null), !!n)
+  }, R = (k, T) => {
+    if (k.preventDefault(), l(null), !!n)
       try {
-        const k = E.dataTransfer.getData(fo), { sectionId: T } = JSON.parse(k);
-        typeof T == "string" && n(T, O);
+        const j = k.dataTransfer.getData(ho), { sectionId: _ } = JSON.parse(j);
+        typeof _ == "string" && n(_, T);
       } catch {
       }
   }, W = () => {
-    const E = typeof n == "function", O = e.sections.map((k, T) => {
-      const L = c === T;
-      return E ? /* @__PURE__ */ u.jsxs(
+    const k = typeof n == "function", T = e.sections.map((j, _) => {
+      const $ = c === _;
+      return k ? /* @__PURE__ */ u.jsxs(
         "div",
         {
-          ref: (d) => {
-            m.current[k.id] = d;
+          ref: (m) => {
+            d.current[j.id] = m;
           },
-          "data-section-id": k.id,
+          "data-section-id": j.id,
           style: { position: "relative" },
-          onMouseEnter: () => A(k.id),
+          onMouseEnter: () => S(j.id),
           children: [
             /* @__PURE__ */ u.jsx(
               "div",
@@ -36254,52 +36288,52 @@ const uo = ({ type: e, scope: t, isSelected: r2, sectionId: o, sectionIndex: n =
                   height: 12,
                   zIndex: 55,
                   pointerEvents: "auto",
-                  backgroundColor: L ? "rgba(59, 130, 246, 0.4)" : "transparent",
-                  borderTop: L ? "2px solid rgb(96, 165, 250)" : "2px solid transparent"
+                  backgroundColor: $ ? "rgba(59, 130, 246, 0.4)" : "transparent",
+                  borderTop: $ ? "2px solid rgb(96, 165, 250)" : "2px solid transparent"
                 },
-                onDragOver: (d) => j(d, T),
-                onDragLeave: C,
-                onDrop: (d) => F(d, T)
+                onDragOver: (m) => C(m, _),
+                onDragLeave: E,
+                onDrop: (m) => R(m, _)
               }
             ),
             /* @__PURE__ */ u.jsx(
-              Ee,
+              Te,
               {
-                section: k,
-                menu: _e(k, r2.main ?? []),
-                selectedId: o,
+                section: j,
+                menu: je(j, o.main ?? []),
+                selectedId: r2,
                 reorderable: true,
-                sectionIndex: T,
+                sectionIndex: _,
                 totalSections: e.sections.length,
                 onReorder: n
               }
             )
           ]
         },
-        k.id
+        j.id
       ) : /* @__PURE__ */ u.jsx(
         "div",
         {
-          ref: (d) => {
-            m.current[k.id] = d;
+          ref: (m) => {
+            d.current[j.id] = m;
           },
-          "data-section-id": k.id,
-          onMouseEnter: () => A(k.id),
+          "data-section-id": j.id,
+          onMouseEnter: () => S(j.id),
           children: /* @__PURE__ */ u.jsx(
-            Ee,
+            Te,
             {
-              section: k,
-              menu: _e(k, r2.main ?? []),
-              selectedId: o
+              section: j,
+              menu: je(j, o.main ?? []),
+              selectedId: r2
             }
           )
         },
-        k.id
+        j.id
       );
     });
-    if (E && O.length > 0) {
-      const k = e.sections.length, T = c === k;
-      O.push(
+    if (k && T.length > 0) {
+      const j = e.sections.length, _ = c === j;
+      T.push(
         /* @__PURE__ */ u.jsx(
           "div",
           {
@@ -36312,60 +36346,70 @@ const uo = ({ type: e, scope: t, isSelected: r2, sectionId: o, sectionIndex: n =
               minHeight: 24,
               zIndex: 55,
               pointerEvents: "auto",
-              backgroundColor: T ? "rgba(59, 130, 246, 0.4)" : "transparent",
-              borderTop: T ? "2px solid rgb(96, 165, 250)" : "2px solid transparent"
+              backgroundColor: _ ? "rgba(59, 130, 246, 0.4)" : "transparent",
+              borderTop: _ ? "2px solid rgb(96, 165, 250)" : "2px solid transparent"
             },
-            onDragOver: (L) => j(L, k),
-            onDragLeave: C,
-            onDrop: (L) => F(L, k)
+            onDragOver: ($) => C($, j),
+            onDragLeave: E,
+            onDrop: ($) => R($, j)
           },
           "jp-drop-after-last"
         )
       );
     }
-    return O;
+    return T;
   };
   return /* @__PURE__ */ u.jsxs("div", { className: "min-h-screen flex flex-col bg-[var(--color-background)]", children: [
-    y != null && /* @__PURE__ */ u.jsx(
+    b != null && /* @__PURE__ */ u.jsx(
       "div",
       {
-        ref: (E) => {
-          m.current[y.id] = E;
+        ref: (k) => {
+          d.current[b.id] = k;
         },
-        "data-section-id": y.id,
-        onMouseEnter: () => A(y.id),
+        "data-section-id": b.id,
+        onMouseEnter: () => S(b.id),
         children: /* @__PURE__ */ u.jsx(
-          Ee,
+          Te,
           {
-            section: y,
-            menu: _e(y, r2.main ?? []),
-            selectedId: o
+            section: b,
+            menu: je(b, o.main ?? []),
+            selectedId: r2
           }
         )
       }
     ),
     /* @__PURE__ */ u.jsx("main", { className: "flex-1", children: W() }),
-    w != null && /* @__PURE__ */ u.jsx(
+    v != null && /* @__PURE__ */ u.jsx(
       "div",
       {
-        ref: (E) => {
-          m.current[w.id] = E;
+        ref: (k) => {
+          d.current[v.id] = k;
         },
-        "data-section-id": w.id,
-        onMouseEnter: () => A(w.id),
-        children: /* @__PURE__ */ u.jsx(Ee, { section: w, selectedId: o })
+        "data-section-id": v.id,
+        onMouseEnter: () => S(v.id),
+        children: /* @__PURE__ */ u.jsx(
+          Te,
+          {
+            section: v,
+            menu: je(v, o.main ?? []),
+            selectedId: r2
+          }
+        )
       }
     )
   ] });
 };
-const zo = objectType({
+const Mo = objectType({
   url: stringType(),
   alt: stringType().optional()
-}).describe("ui:image-picker"), No = objectType({
+}).describe("ui:image-picker"), Lo = objectType({
   id: stringType().optional(),
   anchorId: stringType().optional().describe("ui:text")
-}), Io = objectType({
+}), Do = objectType({
   id: stringType().optional()
+});
+objectType({
+  id: stringType()
 });
 objectType({
   paddingTop: enumType(["none", "sm", "md", "lg", "xl", "2xl"]).default("md").describe("ui:select"),
@@ -36472,7 +36516,7 @@ const cva = (base, config) => (props) => {
   }, []);
   return cx(base, getVariantClassNames, getCompoundVariantClassNames, props === null || props === void 0 ? void 0 : props.class, props === null || props === void 0 ? void 0 : props.className);
 };
-function setRef(ref, value) {
+function setRef$1(ref, value) {
   if (typeof ref === "function") {
     return ref(value);
   } else if (ref !== null && ref !== void 0) {
@@ -36483,7 +36527,7 @@ function composeRefs(...refs) {
   return (node) => {
     let hasCleanup = false;
     const cleanups = refs.map((ref) => {
-      const cleanup = setRef(ref, node);
+      const cleanup = setRef$1(ref, node);
       if (!hasCleanup && typeof cleanup == "function") {
         hasCleanup = true;
       }
@@ -36496,7 +36540,7 @@ function composeRefs(...refs) {
           if (typeof cleanup == "function") {
             cleanup();
           } else {
-            setRef(refs[i], null);
+            setRef$1(refs[i], null);
           }
         }
       };
@@ -36507,51 +36551,71 @@ function useComposedRefs(...refs) {
   return reactExports.useCallback(composeRefs(...refs), refs);
 }
 // @__NO_SIDE_EFFECTS__
-function createSlot$2(ownerName) {
-  const SlotClone = /* @__PURE__ */ createSlotClone$2(ownerName);
+function createSlot(ownerName) {
   const Slot2 = reactExports.forwardRef((props, forwardedRef) => {
-    const { children, ...slotProps } = props;
-    const childrenArray = reactExports.Children.toArray(children);
-    const slottable = childrenArray.find(isSlottable$2);
-    if (slottable) {
-      const newElement = slottable.props.children;
-      const newChildren = childrenArray.map((child) => {
-        if (child === slottable) {
-          if (reactExports.Children.count(newElement) > 1) return reactExports.Children.only(null);
-          return reactExports.isValidElement(newElement) ? newElement.props.children : null;
-        } else {
-          return child;
-        }
-      });
-      return /* @__PURE__ */ jsxRuntimeExports.jsx(SlotClone, { ...slotProps, ref: forwardedRef, children: reactExports.isValidElement(newElement) ? reactExports.cloneElement(newElement, void 0, newChildren) : null });
+    let { children, ...slotProps } = props;
+    let slottableElement = null;
+    let hasSlottable = false;
+    const newChildren = [];
+    if (isLazyComponent(children) && typeof use === "function") {
+      children = use(children._payload);
     }
-    return /* @__PURE__ */ jsxRuntimeExports.jsx(SlotClone, { ...slotProps, ref: forwardedRef, children });
+    reactExports.Children.forEach(children, (maybeSlottable) => {
+      var _a;
+      if (isSlottable(maybeSlottable)) {
+        hasSlottable = true;
+        const slottable = maybeSlottable;
+        let child = "child" in slottable.props ? slottable.props.child : slottable.props.children;
+        if (isLazyComponent(child) && typeof use === "function") {
+          child = use(child._payload);
+        }
+        slottableElement = getSlottableElementFromSlottable(slottable, child);
+        newChildren.push((_a = slottableElement == null ? void 0 : slottableElement.props) == null ? void 0 : _a.children);
+      } else {
+        newChildren.push(maybeSlottable);
+      }
+    });
+    if (slottableElement) {
+      slottableElement = reactExports.cloneElement(slottableElement, void 0, newChildren);
+    } else if (
+      // A `Slottable` was found but it didn't resolve to a single element (e.g.
+      // it wrapped multiple elements, text, or a render-prop `child` that
+      // wasn't an element). Don't fall back to treating the `Slottable` wrapper
+      // itself as the slot target — throw a descriptive error below instead.
+      !hasSlottable && reactExports.Children.count(children) === 1 && reactExports.isValidElement(children)
+    ) {
+      slottableElement = children;
+    }
+    const slottableElementRef = slottableElement ? getElementRef$1(slottableElement) : void 0;
+    const composedRef = useComposedRefs(forwardedRef, slottableElementRef);
+    if (!slottableElement) {
+      if (children || children === 0) {
+        throw new Error(
+          hasSlottable ? createSlottableError(ownerName) : createSlotError(ownerName)
+        );
+      }
+      return children;
+    }
+    const mergedProps = mergeProps(slotProps, slottableElement.props ?? {});
+    if (slottableElement.type !== reactExports.Fragment) {
+      mergedProps.ref = forwardedRef ? composedRef : slottableElementRef;
+    }
+    return reactExports.cloneElement(slottableElement, mergedProps);
   });
   Slot2.displayName = `${ownerName}.Slot`;
   return Slot2;
 }
-// @__NO_SIDE_EFFECTS__
-function createSlotClone$2(ownerName) {
-  const SlotClone = reactExports.forwardRef((props, forwardedRef) => {
-    const { children, ...slotProps } = props;
-    if (reactExports.isValidElement(children)) {
-      const childrenRef = getElementRef$3(children);
-      const props2 = mergeProps$2(slotProps, children.props);
-      if (children.type !== reactExports.Fragment) {
-        props2.ref = forwardedRef ? composeRefs(forwardedRef, childrenRef) : childrenRef;
-      }
-      return reactExports.cloneElement(children, props2);
-    }
-    return reactExports.Children.count(children) > 1 ? reactExports.Children.only(null) : null;
-  });
-  SlotClone.displayName = `${ownerName}.SlotClone`;
-  return SlotClone;
-}
-var SLOTTABLE_IDENTIFIER$2 = Symbol("radix.slottable");
-function isSlottable$2(child) {
-  return reactExports.isValidElement(child) && typeof child.type === "function" && "__radixId" in child.type && child.type.__radixId === SLOTTABLE_IDENTIFIER$2;
-}
-function mergeProps$2(slotProps, childProps) {
+var Slot$1 = /* @__PURE__ */ createSlot("Slot");
+var SLOTTABLE_IDENTIFIER = Symbol.for("radix.slottable");
+var getSlottableElementFromSlottable = (slottable, child) => {
+  if ("child" in slottable.props) {
+    const child2 = slottable.props.child;
+    if (!reactExports.isValidElement(child2)) return null;
+    return reactExports.cloneElement(child2, void 0, slottable.props.children(child2.props.children));
+  }
+  return reactExports.isValidElement(child) ? child : null;
+};
+function mergeProps(slotProps, childProps) {
   const overrideProps = { ...childProps };
   for (const propName in childProps) {
     const slotPropValue = slotProps[propName];
@@ -36575,7 +36639,7 @@ function mergeProps$2(slotProps, childProps) {
   }
   return { ...slotProps, ...overrideProps };
 }
-function getElementRef$3(element) {
+function getElementRef$1(element) {
   var _a, _b;
   let getter = (_a = Object.getOwnPropertyDescriptor(element.props, "ref")) == null ? void 0 : _a.get;
   let mayWarn = getter && "isReactWarning" in getter && getter.isReactWarning;
@@ -36589,6 +36653,23 @@ function getElementRef$3(element) {
   }
   return element.props.ref || element.ref;
 }
+function isSlottable(child) {
+  return reactExports.isValidElement(child) && typeof child.type === "function" && "__radixId" in child.type && child.type.__radixId === SLOTTABLE_IDENTIFIER;
+}
+var REACT_LAZY_TYPE = Symbol.for("react.lazy");
+function isLazyComponent(element) {
+  return element != null && typeof element === "object" && "$$typeof" in element && element.$$typeof === REACT_LAZY_TYPE && "_payload" in element && isPromiseLike(element._payload);
+}
+function isPromiseLike(value) {
+  return typeof value === "object" && value !== null && "then" in value;
+}
+var createSlotError = (ownerName) => {
+  return `${ownerName} failed to slot onto its children. Expected a single React element child or \`Slottable\`.`;
+};
+var createSlottableError = (ownerName) => {
+  return `${ownerName} failed to slot onto its \`Slottable\`. Expected \`Slottable\` to receive a single React element child.`;
+};
+var use = React2[" use ".trim().toString()];
 var NODES = [
   "a",
   "button",
@@ -36609,7 +36690,7 @@ var NODES = [
   "ul"
 ];
 var Primitive = NODES.reduce((primitive, node) => {
-  const Slot2 = /* @__PURE__ */ createSlot$2(`Primitive.${node}`);
+  const Slot2 = /* @__PURE__ */ createSlot(`Primitive.${node}`);
   const Node2 = reactExports.forwardRef((props, forwardedRef) => {
     const { asChild, ...primitiveProps } = props;
     const Comp = asChild ? Slot2 : node;
@@ -36624,26 +36705,11 @@ var Primitive = NODES.reduce((primitive, node) => {
 function dispatchDiscreteCustomEvent(target, event) {
   if (target) reactDomExports.flushSync(() => target.dispatchEvent(event));
 }
-function createContext2(rootComponentName, defaultContext) {
-  const Context = reactExports.createContext(defaultContext);
-  const Provider = (props) => {
-    const { children, ...context } = props;
-    const value = reactExports.useMemo(() => context, Object.values(context));
-    return /* @__PURE__ */ jsxRuntimeExports.jsx(Context.Provider, { value, children });
-  };
-  Provider.displayName = rootComponentName + "Provider";
-  function useContext2(consumerName) {
-    const context = reactExports.useContext(Context);
-    if (context) return context;
-    if (defaultContext !== void 0) return defaultContext;
-    throw new Error(`\`${consumerName}\` must be used within \`${rootComponentName}\``);
-  }
-  return [Provider, useContext2];
-}
 function createContextScope(scopeName, createContextScopeDeps = []) {
   let defaultContexts = [];
   function createContext3(rootComponentName, defaultContext) {
     const BaseContext = reactExports.createContext(defaultContext);
+    BaseContext.displayName = rootComponentName + "Context";
     const index = defaultContexts.length;
     defaultContexts = [...defaultContexts, defaultContext];
     const Provider = (props) => {
@@ -36709,7 +36775,30 @@ function composeEventHandlers(originalEventHandler, ourEventHandler, { checkForD
 }
 var useLayoutEffect2 = (globalThis == null ? void 0 : globalThis.document) ? reactExports.useLayoutEffect : () => {
 };
-var useInsertionEffect = React$1[" useInsertionEffect ".trim().toString()] || useLayoutEffect2;
+var useReactEffectEvent = React2[" useEffectEvent ".trim().toString()];
+var useReactInsertionEffect = React2[" useInsertionEffect ".trim().toString()];
+function useEffectEvent(callback) {
+  if (typeof useReactEffectEvent === "function") {
+    return useReactEffectEvent(callback);
+  }
+  const ref = reactExports.useRef(() => {
+    throw new Error("Cannot call an event handler while rendering.");
+  });
+  if (typeof useReactInsertionEffect === "function") {
+    useReactInsertionEffect(() => {
+      ref.current = callback;
+    });
+  } else {
+    useLayoutEffect2(() => {
+      ref.current = callback;
+    });
+  }
+  return reactExports.useMemo(() => ((...args) => {
+    var _a;
+    return (_a = ref.current) == null ? void 0 : _a.call(ref, ...args);
+  }), []);
+}
+var useInsertionEffect = React2[" useInsertionEffect ".trim().toString()] || useLayoutEffect2;
 function useControllableState({
   prop,
   defaultProp,
@@ -36785,7 +36874,7 @@ var Presence = (props) => {
   const { present, children } = props;
   const presence = usePresence(present);
   const child = typeof children === "function" ? children({ present: presence.isPresent }) : reactExports.Children.only(children);
-  const ref = useComposedRefs(presence.ref, getElementRef$2(child));
+  const ref = useStableComposedRefs(presence.ref, getElementRef(child));
   const forceMount = typeof children === "function";
   return forceMount || presence.isPresent ? reactExports.cloneElement(child, { ref }) : null;
 };
@@ -36881,10 +36970,44 @@ function usePresence(present) {
     }, [])
   };
 }
+function setRef(ref, value) {
+  if (typeof ref === "function") {
+    return ref(value);
+  } else if (ref !== null && ref !== void 0) {
+    ref.current = value;
+  }
+}
+function useStableComposedRefs(...refs) {
+  const refsRef = reactExports.useRef(refs);
+  refsRef.current = refs;
+  return reactExports.useCallback((node) => {
+    const currentRefs = refsRef.current;
+    let hasCleanup = false;
+    const cleanups = currentRefs.map((ref) => {
+      const cleanup = setRef(ref, node);
+      if (!hasCleanup && typeof cleanup === "function") {
+        hasCleanup = true;
+      }
+      return cleanup;
+    });
+    if (hasCleanup) {
+      return () => {
+        for (let i = 0; i < cleanups.length; i++) {
+          const cleanup = cleanups[i];
+          if (typeof cleanup === "function") {
+            cleanup();
+          } else {
+            setRef(currentRefs[i], null);
+          }
+        }
+      };
+    }
+  }, []);
+}
 function getAnimationName(styles) {
   return (styles == null ? void 0 : styles.animationName) || "none";
 }
-function getElementRef$2(element) {
+function getElementRef(element) {
   var _a, _b;
   let getter = (_a = Object.getOwnPropertyDescriptor(element.props, "ref")) == null ? void 0 : _a.get;
   let mayWarn = getter && "isReactWarning" in getter && getter.isReactWarning;
@@ -36898,7 +37021,7 @@ function getElementRef$2(element) {
   }
   return element.props.ref || element.ref;
 }
-var useReactId = React$1[" useId ".trim().toString()] || (() => void 0);
+var useReactId = React2[" useId ".trim().toString()] || (() => void 0);
 var count$1 = 0;
 function useId(deterministicId) {
   const [id2, setId] = reactExports.useState(useReactId());
@@ -36912,22 +37035,10 @@ function useCallbackRef$1(callback) {
   reactExports.useEffect(() => {
     callbackRef.current = callback;
   });
-  return reactExports.useMemo(() => (...args) => {
+  return reactExports.useMemo(() => ((...args) => {
     var _a;
     return (_a = callbackRef.current) == null ? void 0 : _a.call(callbackRef, ...args);
-  }, []);
-}
-function useEscapeKeydown(onEscapeKeyDownProp, ownerDocument = globalThis == null ? void 0 : globalThis.document) {
-  const onEscapeKeyDown = useCallbackRef$1(onEscapeKeyDownProp);
-  reactExports.useEffect(() => {
-    const handleKeyDown = (event) => {
-      if (event.key === "Escape") {
-        onEscapeKeyDown(event);
-      }
-    };
-    ownerDocument.addEventListener("keydown", handleKeyDown, { capture: true });
-    return () => ownerDocument.removeEventListener("keydown", handleKeyDown, { capture: true });
-  }, [onEscapeKeyDown, ownerDocument]);
+  }), []);
 }
 var DISMISSABLE_LAYER_NAME = "DismissableLayer";
 var CONTEXT_UPDATE = "dismissableLayer.update";
@@ -36937,12 +37048,19 @@ var originalBodyPointerEvents;
 var DismissableLayerContext = reactExports.createContext({
   layers: /* @__PURE__ */ new Set(),
   layersWithOutsidePointerEventsDisabled: /* @__PURE__ */ new Set(),
-  branches: /* @__PURE__ */ new Set()
+  branches: /* @__PURE__ */ new Set(),
+  // Outside elements that belong to a layer's own dismiss affordance (eg, a
+  // dialog overlay). Pressing them should dismiss the layer regardless of
+  // whether or not they stop propagation.
+  //
+  // See https://github.com/radix-ui/primitives/issues/3346
+  dismissableSurfaces: /* @__PURE__ */ new Set()
 });
 var DismissableLayer = reactExports.forwardRef(
   (props, forwardedRef) => {
     const {
       disableOutsidePointerEvents = false,
+      deferPointerDownOutside = false,
       onEscapeKeyDown,
       onPointerDownOutside,
       onFocusOutside,
@@ -36954,22 +37072,39 @@ var DismissableLayer = reactExports.forwardRef(
     const [node, setNode] = reactExports.useState(null);
     const ownerDocument = (node == null ? void 0 : node.ownerDocument) ?? (globalThis == null ? void 0 : globalThis.document);
     const [, force] = reactExports.useState({});
-    const composedRefs = useComposedRefs(forwardedRef, (node2) => setNode(node2));
+    const composedRefs = useComposedRefs(forwardedRef, setNode);
     const layers = Array.from(context.layers);
     const [highestLayerWithOutsidePointerEventsDisabled] = [...context.layersWithOutsidePointerEventsDisabled].slice(-1);
     const highestLayerWithOutsidePointerEventsDisabledIndex = layers.indexOf(highestLayerWithOutsidePointerEventsDisabled);
     const index = node ? layers.indexOf(node) : -1;
     const isBodyPointerEventsDisabled = context.layersWithOutsidePointerEventsDisabled.size > 0;
     const isPointerEventsEnabled = index >= highestLayerWithOutsidePointerEventsDisabledIndex;
-    const pointerDownOutside = usePointerDownOutside((event) => {
-      const target = event.target;
-      const isPointerDownOnBranch = [...context.branches].some((branch) => branch.contains(target));
-      if (!isPointerEventsEnabled || isPointerDownOnBranch) return;
-      onPointerDownOutside == null ? void 0 : onPointerDownOutside(event);
-      onInteractOutside == null ? void 0 : onInteractOutside(event);
-      if (!event.defaultPrevented) onDismiss == null ? void 0 : onDismiss();
-    }, ownerDocument);
+    const isDeferredPointerDownOutsideRef = reactExports.useRef(false);
+    const pointerDownOutside = usePointerDownOutside(
+      (event) => {
+        const target = event.target;
+        if (!(target instanceof Node)) {
+          return;
+        }
+        const isPointerDownOnBranch = [...context.branches].some(
+          (branch) => branch.contains(target)
+        );
+        if (!isPointerEventsEnabled || isPointerDownOnBranch) return;
+        onPointerDownOutside == null ? void 0 : onPointerDownOutside(event);
+        onInteractOutside == null ? void 0 : onInteractOutside(event);
+        if (!event.defaultPrevented) onDismiss == null ? void 0 : onDismiss();
+      },
+      {
+        ownerDocument,
+        deferPointerDownOutside,
+        isDeferredPointerDownOutsideRef,
+        dismissableSurfaces: context.dismissableSurfaces
+      }
+    );
     const focusOutside = useFocusOutside((event) => {
+      if (deferPointerDownOutside && isDeferredPointerDownOutsideRef.current) {
+        return;
+      }
       const target = event.target;
       const isFocusInBranch = [...context.branches].some((branch) => branch.contains(target));
       if (isFocusInBranch) return;
@@ -36977,15 +37112,24 @@ var DismissableLayer = reactExports.forwardRef(
       onInteractOutside == null ? void 0 : onInteractOutside(event);
       if (!event.defaultPrevented) onDismiss == null ? void 0 : onDismiss();
     }, ownerDocument);
-    useEscapeKeydown((event) => {
-      const isHighestLayer = index === context.layers.size - 1;
-      if (!isHighestLayer) return;
+    const isHighestLayer = node ? index === layers.length - 1 : false;
+    const handleKeyDown = useEffectEvent((event) => {
+      if (event.key !== "Escape") {
+        return;
+      }
       onEscapeKeyDown == null ? void 0 : onEscapeKeyDown(event);
       if (!event.defaultPrevented && onDismiss) {
         event.preventDefault();
         onDismiss();
       }
-    }, ownerDocument);
+    });
+    reactExports.useEffect(() => {
+      if (!isHighestLayer) {
+        return;
+      }
+      ownerDocument.addEventListener("keydown", handleKeyDown, { capture: true });
+      return () => ownerDocument.removeEventListener("keydown", handleKeyDown, { capture: true });
+    }, [ownerDocument, isHighestLayer]);
     reactExports.useEffect(() => {
       if (!node) return;
       if (disableOutsidePointerEvents) {
@@ -36998,8 +37142,11 @@ var DismissableLayer = reactExports.forwardRef(
       context.layers.add(node);
       dispatchUpdate();
       return () => {
-        if (disableOutsidePointerEvents && context.layersWithOutsidePointerEventsDisabled.size === 1) {
-          ownerDocument.body.style.pointerEvents = originalBodyPointerEvents;
+        if (disableOutsidePointerEvents) {
+          context.layersWithOutsidePointerEventsDisabled.delete(node);
+          if (context.layersWithOutsidePointerEventsDisabled.size === 0) {
+            ownerDocument.body.style.pointerEvents = originalBodyPointerEvents;
+          }
         }
       };
     }, [node, ownerDocument, disableOutsidePointerEvents, context]);
@@ -37053,35 +37200,108 @@ var DismissableLayerBranch = reactExports.forwardRef((props, forwardedRef) => {
   return /* @__PURE__ */ jsxRuntimeExports.jsx(Primitive.div, { ...props, ref: composedRefs });
 });
 DismissableLayerBranch.displayName = BRANCH_NAME;
-function usePointerDownOutside(onPointerDownOutside, ownerDocument = globalThis == null ? void 0 : globalThis.document) {
+function useDismissableLayerSurface() {
+  const context = reactExports.useContext(DismissableLayerContext);
+  const [node, setNode] = reactExports.useState(null);
+  reactExports.useEffect(() => {
+    if (!node) {
+      return;
+    }
+    context.dismissableSurfaces.add(node);
+    return () => {
+      context.dismissableSurfaces.delete(node);
+    };
+  }, [node, context.dismissableSurfaces]);
+  return setNode;
+}
+function usePointerDownOutside(onPointerDownOutside, args) {
+  const {
+    ownerDocument = globalThis == null ? void 0 : globalThis.document,
+    deferPointerDownOutside = false,
+    isDeferredPointerDownOutsideRef,
+    dismissableSurfaces
+  } = args;
   const handlePointerDownOutside = useCallbackRef$1(onPointerDownOutside);
   const isPointerInsideReactTreeRef = reactExports.useRef(false);
+  const isPointerDownOutsideRef = reactExports.useRef(false);
+  const interceptedOutsideInteractionEventsRef = reactExports.useRef(/* @__PURE__ */ new Map());
   const handleClickRef = reactExports.useRef(() => {
   });
   reactExports.useEffect(() => {
+    function resetOutsideInteraction() {
+      isPointerDownOutsideRef.current = false;
+      isDeferredPointerDownOutsideRef.current = false;
+      interceptedOutsideInteractionEventsRef.current.clear();
+    }
+    function isOutsideInteractionIntercepted() {
+      return Array.from(interceptedOutsideInteractionEventsRef.current.values()).some(Boolean);
+    }
+    function handleInteractionCapture(event) {
+      if (!isPointerDownOutsideRef.current) {
+        return;
+      }
+      const target = event.target;
+      const isDismissableSurface = target instanceof Node && [...dismissableSurfaces].some((surface) => surface.contains(target));
+      if (!isDismissableSurface) {
+        interceptedOutsideInteractionEventsRef.current.set(event.type, true);
+      }
+      if (event.type === "click") {
+        window.setTimeout(() => {
+          if (isPointerDownOutsideRef.current) {
+            handleClickRef.current();
+          }
+        }, 0);
+      }
+    }
+    function handleInteractionBubble(event) {
+      if (isPointerDownOutsideRef.current) {
+        interceptedOutsideInteractionEventsRef.current.set(event.type, false);
+      }
+    }
     const handlePointerDown = (event) => {
       if (event.target && !isPointerInsideReactTreeRef.current) {
         let handleAndDispatchPointerDownOutsideEvent2 = function() {
-          handleAndDispatchCustomEvent(
-            POINTER_DOWN_OUTSIDE,
-            handlePointerDownOutside,
-            eventDetail,
-            { discrete: true }
-          );
+          ownerDocument.removeEventListener("click", handleClickRef.current);
+          const wasOutsideInteractionIntercepted = isOutsideInteractionIntercepted();
+          resetOutsideInteraction();
+          if (!wasOutsideInteractionIntercepted) {
+            handleAndDispatchCustomEvent(
+              POINTER_DOWN_OUTSIDE,
+              handlePointerDownOutside,
+              eventDetail,
+              { discrete: true }
+            );
+          }
         };
         const eventDetail = { originalEvent: event };
-        if (event.pointerType === "touch") {
+        isPointerDownOutsideRef.current = true;
+        isDeferredPointerDownOutsideRef.current = deferPointerDownOutside && event.button === 0;
+        interceptedOutsideInteractionEventsRef.current.clear();
+        if (!deferPointerDownOutside || event.button !== 0) {
+          handleAndDispatchPointerDownOutsideEvent2();
+        } else {
           ownerDocument.removeEventListener("click", handleClickRef.current);
           handleClickRef.current = handleAndDispatchPointerDownOutsideEvent2;
           ownerDocument.addEventListener("click", handleClickRef.current, { once: true });
-        } else {
-          handleAndDispatchPointerDownOutsideEvent2();
         }
       } else {
         ownerDocument.removeEventListener("click", handleClickRef.current);
+        resetOutsideInteraction();
       }
       isPointerInsideReactTreeRef.current = false;
     };
+    const outsideInteractionEvents = [
+      "pointerup",
+      "mousedown",
+      "mouseup",
+      "touchstart",
+      "touchend",
+      "click"
+    ];
+    for (const eventName of outsideInteractionEvents) {
+      ownerDocument.addEventListener(eventName, handleInteractionCapture, true);
+      ownerDocument.addEventListener(eventName, handleInteractionBubble);
+    }
     const timerId = window.setTimeout(() => {
       ownerDocument.addEventListener("pointerdown", handlePointerDown);
     }, 0);
@@ -37089,8 +37309,18 @@ function usePointerDownOutside(onPointerDownOutside, ownerDocument = globalThis 
       window.clearTimeout(timerId);
       ownerDocument.removeEventListener("pointerdown", handlePointerDown);
       ownerDocument.removeEventListener("click", handleClickRef.current);
+      for (const eventName of outsideInteractionEvents) {
+        ownerDocument.removeEventListener(eventName, handleInteractionCapture, true);
+        ownerDocument.removeEventListener(eventName, handleInteractionBubble);
+      }
     };
-  }, [ownerDocument, handlePointerDownOutside]);
+  }, [
+    ownerDocument,
+    handlePointerDownOutside,
+    deferPointerDownOutside,
+    isDeferredPointerDownOutsideRef,
+    dismissableSurfaces
+  ]);
   return {
     // ensures we check React component tree (not just DOM tree)
     onPointerDownCapture: () => isPointerInsideReactTreeRef.current = true
@@ -37146,7 +37376,7 @@ var FocusScope = reactExports.forwardRef((props, forwardedRef) => {
   const onMountAutoFocus = useCallbackRef$1(onMountAutoFocusProp);
   const onUnmountAutoFocus = useCallbackRef$1(onUnmountAutoFocusProp);
   const lastFocusedElementRef = reactExports.useRef(null);
-  const composedRefs = useComposedRefs(forwardedRef, (node) => setContainer(node));
+  const composedRefs = useComposedRefs(forwardedRef, setContainer);
   const focusScope = reactExports.useRef({
     paused: false,
     pause() {
@@ -37331,27 +37561,37 @@ function removeLinks(items) {
   return items.filter((item) => item.tagName !== "A");
 }
 var PORTAL_NAME$1 = "Portal";
-var Portal$1 = reactExports.forwardRef((props, forwardedRef) => {
+var Portal = reactExports.forwardRef((props, forwardedRef) => {
   var _a;
   const { container: containerProp, ...portalProps } = props;
   const [mounted, setMounted] = reactExports.useState(false);
   useLayoutEffect2(() => setMounted(true), []);
   const container = containerProp || mounted && ((_a = globalThis == null ? void 0 : globalThis.document) == null ? void 0 : _a.body);
-  return container ? ReactDOM.createPortal(/* @__PURE__ */ jsxRuntimeExports.jsx(Primitive.div, { ...portalProps, ref: forwardedRef }), container) : null;
+  return container ? reactDomExports.createPortal(/* @__PURE__ */ jsxRuntimeExports.jsx(Primitive.div, { ...portalProps, ref: forwardedRef }), container) : null;
 });
-Portal$1.displayName = PORTAL_NAME$1;
+Portal.displayName = PORTAL_NAME$1;
 var count = 0;
+var guards = null;
 function useFocusGuards() {
   reactExports.useEffect(() => {
-    const edgeGuards = document.querySelectorAll("[data-radix-focus-guard]");
-    document.body.insertAdjacentElement("afterbegin", edgeGuards[0] ?? createFocusGuard());
-    document.body.insertAdjacentElement("beforeend", edgeGuards[1] ?? createFocusGuard());
+    if (!guards) {
+      guards = { start: createFocusGuard(), end: createFocusGuard() };
+    }
+    const { start, end } = guards;
+    if (document.body.firstElementChild !== start) {
+      document.body.insertAdjacentElement("afterbegin", start);
+    }
+    if (document.body.lastElementChild !== end) {
+      document.body.insertAdjacentElement("beforeend", end);
+    }
     count++;
     return () => {
       if (count === 1) {
-        document.querySelectorAll("[data-radix-focus-guard]").forEach((node) => node.remove());
+        guards == null ? void 0 : guards.start.remove();
+        guards == null ? void 0 : guards.end.remove();
+        guards = null;
       }
-      count--;
+      count = Math.max(0, count - 1);
     };
   }, []);
 }
@@ -38144,89 +38384,6 @@ var hideOthers = function(originalTarget, parentNode, markerName) {
   targets.push.apply(targets, Array.from(activeParentNode.querySelectorAll("[aria-live], script")));
   return applyAttributeToOthers(targets, activeParentNode, markerName, "aria-hidden");
 };
-// @__NO_SIDE_EFFECTS__
-function createSlot$1(ownerName) {
-  const SlotClone = /* @__PURE__ */ createSlotClone$1(ownerName);
-  const Slot2 = reactExports.forwardRef((props, forwardedRef) => {
-    const { children, ...slotProps } = props;
-    const childrenArray = reactExports.Children.toArray(children);
-    const slottable = childrenArray.find(isSlottable$1);
-    if (slottable) {
-      const newElement = slottable.props.children;
-      const newChildren = childrenArray.map((child) => {
-        if (child === slottable) {
-          if (reactExports.Children.count(newElement) > 1) return reactExports.Children.only(null);
-          return reactExports.isValidElement(newElement) ? newElement.props.children : null;
-        } else {
-          return child;
-        }
-      });
-      return /* @__PURE__ */ jsxRuntimeExports.jsx(SlotClone, { ...slotProps, ref: forwardedRef, children: reactExports.isValidElement(newElement) ? reactExports.cloneElement(newElement, void 0, newChildren) : null });
-    }
-    return /* @__PURE__ */ jsxRuntimeExports.jsx(SlotClone, { ...slotProps, ref: forwardedRef, children });
-  });
-  Slot2.displayName = `${ownerName}.Slot`;
-  return Slot2;
-}
-// @__NO_SIDE_EFFECTS__
-function createSlotClone$1(ownerName) {
-  const SlotClone = reactExports.forwardRef((props, forwardedRef) => {
-    const { children, ...slotProps } = props;
-    if (reactExports.isValidElement(children)) {
-      const childrenRef = getElementRef$1(children);
-      const props2 = mergeProps$1(slotProps, children.props);
-      if (children.type !== reactExports.Fragment) {
-        props2.ref = forwardedRef ? composeRefs(forwardedRef, childrenRef) : childrenRef;
-      }
-      return reactExports.cloneElement(children, props2);
-    }
-    return reactExports.Children.count(children) > 1 ? reactExports.Children.only(null) : null;
-  });
-  SlotClone.displayName = `${ownerName}.SlotClone`;
-  return SlotClone;
-}
-var SLOTTABLE_IDENTIFIER$1 = Symbol("radix.slottable");
-function isSlottable$1(child) {
-  return reactExports.isValidElement(child) && typeof child.type === "function" && "__radixId" in child.type && child.type.__radixId === SLOTTABLE_IDENTIFIER$1;
-}
-function mergeProps$1(slotProps, childProps) {
-  const overrideProps = { ...childProps };
-  for (const propName in childProps) {
-    const slotPropValue = slotProps[propName];
-    const childPropValue = childProps[propName];
-    const isHandler = /^on[A-Z]/.test(propName);
-    if (isHandler) {
-      if (slotPropValue && childPropValue) {
-        overrideProps[propName] = (...args) => {
-          const result = childPropValue(...args);
-          slotPropValue(...args);
-          return result;
-        };
-      } else if (slotPropValue) {
-        overrideProps[propName] = slotPropValue;
-      }
-    } else if (propName === "style") {
-      overrideProps[propName] = { ...slotPropValue, ...childPropValue };
-    } else if (propName === "className") {
-      overrideProps[propName] = [slotPropValue, childPropValue].filter(Boolean).join(" ");
-    }
-  }
-  return { ...slotProps, ...overrideProps };
-}
-function getElementRef$1(element) {
-  var _a, _b;
-  let getter = (_a = Object.getOwnPropertyDescriptor(element.props, "ref")) == null ? void 0 : _a.get;
-  let mayWarn = getter && "isReactWarning" in getter && getter.isReactWarning;
-  if (mayWarn) {
-    return element.ref;
-  }
-  getter = (_b = Object.getOwnPropertyDescriptor(element, "ref")) == null ? void 0 : _b.get;
-  mayWarn = getter && "isReactWarning" in getter && getter.isReactWarning;
-  if (mayWarn) {
-    return element.props.ref;
-  }
-  return element.props.ref || element.ref;
-}
 var DIALOG_NAME = "Dialog";
 var [createDialogContext] = createContextScope(DIALOG_NAME);
 var [DialogProvider, useDialogContext] = createDialogContext(DIALOG_NAME);
@@ -38277,7 +38434,7 @@ var DialogTrigger = reactExports.forwardRef(
         type: "button",
         "aria-haspopup": "dialog",
         "aria-expanded": context.open,
-        "aria-controls": context.contentId,
+        "aria-controls": context.open ? context.contentId : void 0,
         "data-state": getState(context.open),
         ...triggerProps,
         ref: composedTriggerRef,
@@ -38294,7 +38451,7 @@ var [PortalProvider, usePortalContext] = createDialogContext(PORTAL_NAME, {
 var DialogPortal = (props) => {
   const { __scopeDialog, forceMount, children, container } = props;
   const context = useDialogContext(PORTAL_NAME, __scopeDialog);
-  return /* @__PURE__ */ jsxRuntimeExports.jsx(PortalProvider, { scope: __scopeDialog, forceMount, children: reactExports.Children.map(children, (child) => /* @__PURE__ */ jsxRuntimeExports.jsx(Presence, { present: forceMount || context.open, children: /* @__PURE__ */ jsxRuntimeExports.jsx(Portal$1, { asChild: true, container, children: child }) })) });
+  return /* @__PURE__ */ jsxRuntimeExports.jsx(PortalProvider, { scope: __scopeDialog, forceMount, children: reactExports.Children.map(children, (child) => /* @__PURE__ */ jsxRuntimeExports.jsx(Presence, { present: forceMount || context.open, children: /* @__PURE__ */ jsxRuntimeExports.jsx(Portal, { asChild: true, container, children: child }) })) });
 };
 DialogPortal.displayName = PORTAL_NAME;
 var OVERLAY_NAME = "DialogOverlay";
@@ -38307,20 +38464,22 @@ var DialogOverlay = reactExports.forwardRef(
   }
 );
 DialogOverlay.displayName = OVERLAY_NAME;
-var Slot$1 = /* @__PURE__ */ createSlot$1("DialogOverlay.RemoveScroll");
+var Slot = /* @__PURE__ */ createSlot("DialogOverlay.RemoveScroll");
 var DialogOverlayImpl = reactExports.forwardRef(
   (props, forwardedRef) => {
     const { __scopeDialog, ...overlayProps } = props;
     const context = useDialogContext(OVERLAY_NAME, __scopeDialog);
+    const registerDismissableSurface = useDismissableLayerSurface();
+    const composedRefs = useComposedRefs(forwardedRef, registerDismissableSurface);
     return (
       // Make sure `Content` is scrollable even when it doesn't live inside `RemoveScroll`
       // ie. when `Overlay` and `Content` are siblings
-      /* @__PURE__ */ jsxRuntimeExports.jsx(ReactRemoveScroll, { as: Slot$1, allowPinchZoom: true, shards: [context.contentRef], children: /* @__PURE__ */ jsxRuntimeExports.jsx(
+      /* @__PURE__ */ jsxRuntimeExports.jsx(ReactRemoveScroll, { as: Slot, allowPinchZoom: true, shards: [context.contentRef], children: /* @__PURE__ */ jsxRuntimeExports.jsx(
         Primitive.div,
         {
           "data-state": getState(context.open),
           ...overlayProps,
-          ref: forwardedRef,
+          ref: composedRefs,
           style: { pointerEvents: "auto", ...overlayProps.style }
         }
       ) })
@@ -38352,7 +38511,7 @@ var DialogContentModal = reactExports.forwardRef(
         ...props,
         ref: composedRefs,
         trapFocus: context.open,
-        disableOutsidePointerEvents: true,
+        disableOutsidePointerEvents: context.open,
         onCloseAutoFocus: composeEventHandlers(props.onCloseAutoFocus, (event) => {
           var _a;
           event.preventDefault();
@@ -38418,38 +38577,31 @@ var DialogContentImpl = reactExports.forwardRef(
   (props, forwardedRef) => {
     const { __scopeDialog, trapFocus, onOpenAutoFocus, onCloseAutoFocus, ...contentProps } = props;
     const context = useDialogContext(CONTENT_NAME, __scopeDialog);
-    const contentRef = reactExports.useRef(null);
-    const composedRefs = useComposedRefs(forwardedRef, contentRef);
     useFocusGuards();
-    return /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsx(
-        FocusScope,
-        {
-          asChild: true,
-          loop: true,
-          trapped: trapFocus,
-          onMountAutoFocus: onOpenAutoFocus,
-          onUnmountAutoFocus: onCloseAutoFocus,
-          children: /* @__PURE__ */ jsxRuntimeExports.jsx(
-            DismissableLayer,
-            {
-              role: "dialog",
-              id: context.contentId,
-              "aria-describedby": context.descriptionId,
-              "aria-labelledby": context.titleId,
-              "data-state": getState(context.open),
-              ...contentProps,
-              ref: composedRefs,
-              onDismiss: () => context.onOpenChange(false)
-            }
-          )
-        }
-      ),
-      /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsx(TitleWarning, { titleId: context.titleId }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx(DescriptionWarning, { contentRef, descriptionId: context.descriptionId })
-      ] })
-    ] });
+    return /* @__PURE__ */ jsxRuntimeExports.jsx(jsxRuntimeExports.Fragment, { children: /* @__PURE__ */ jsxRuntimeExports.jsx(
+      FocusScope,
+      {
+        asChild: true,
+        loop: true,
+        trapped: trapFocus,
+        onMountAutoFocus: onOpenAutoFocus,
+        onUnmountAutoFocus: onCloseAutoFocus,
+        children: /* @__PURE__ */ jsxRuntimeExports.jsx(
+          DismissableLayer,
+          {
+            role: "dialog",
+            id: context.contentId,
+            "aria-describedby": context.descriptionId,
+            "aria-labelledby": context.titleId,
+            "data-state": getState(context.open),
+            ...contentProps,
+            ref: forwardedRef,
+            deferPointerDownOutside: true,
+            onDismiss: () => context.onOpenChange(false)
+          }
+        )
+      }
+    ) });
   }
 );
 var TITLE_NAME = "DialogTitle";
@@ -38489,131 +38641,6 @@ var DialogClose = reactExports.forwardRef(
 DialogClose.displayName = CLOSE_NAME;
 function getState(open) {
   return open ? "open" : "closed";
-}
-var TITLE_WARNING_NAME = "DialogTitleWarning";
-var [WarningProvider, useWarningContext] = createContext2(TITLE_WARNING_NAME, {
-  contentName: CONTENT_NAME,
-  titleName: TITLE_NAME,
-  docsSlug: "dialog"
-});
-var TitleWarning = ({ titleId }) => {
-  const titleWarningContext = useWarningContext(TITLE_WARNING_NAME);
-  const MESSAGE = `\`${titleWarningContext.contentName}\` requires a \`${titleWarningContext.titleName}\` for the component to be accessible for screen reader users.
-
-If you want to hide the \`${titleWarningContext.titleName}\`, you can wrap it with our VisuallyHidden component.
-
-For more information, see https://radix-ui.com/primitives/docs/components/${titleWarningContext.docsSlug}`;
-  reactExports.useEffect(() => {
-    if (titleId) {
-      const hasTitle = document.getElementById(titleId);
-      if (!hasTitle) console.error(MESSAGE);
-    }
-  }, [MESSAGE, titleId]);
-  return null;
-};
-var DESCRIPTION_WARNING_NAME = "DialogDescriptionWarning";
-var DescriptionWarning = ({ contentRef, descriptionId }) => {
-  const descriptionWarningContext = useWarningContext(DESCRIPTION_WARNING_NAME);
-  const MESSAGE = `Warning: Missing \`Description\` or \`aria-describedby={undefined}\` for {${descriptionWarningContext.contentName}}.`;
-  reactExports.useEffect(() => {
-    var _a;
-    const describedById = (_a = contentRef.current) == null ? void 0 : _a.getAttribute("aria-describedby");
-    if (descriptionId && describedById) {
-      const hasDescription = document.getElementById(descriptionId);
-      if (!hasDescription) console.warn(MESSAGE);
-    }
-  }, [MESSAGE, contentRef, descriptionId]);
-  return null;
-};
-var Root = Dialog;
-var Trigger = DialogTrigger;
-var Portal = DialogPortal;
-var Overlay = DialogOverlay;
-var Content = DialogContent;
-var Close = DialogClose;
-// @__NO_SIDE_EFFECTS__
-function createSlot(ownerName) {
-  const SlotClone = /* @__PURE__ */ createSlotClone(ownerName);
-  const Slot2 = reactExports.forwardRef((props, forwardedRef) => {
-    const { children, ...slotProps } = props;
-    const childrenArray = reactExports.Children.toArray(children);
-    const slottable = childrenArray.find(isSlottable);
-    if (slottable) {
-      const newElement = slottable.props.children;
-      const newChildren = childrenArray.map((child) => {
-        if (child === slottable) {
-          if (reactExports.Children.count(newElement) > 1) return reactExports.Children.only(null);
-          return reactExports.isValidElement(newElement) ? newElement.props.children : null;
-        } else {
-          return child;
-        }
-      });
-      return /* @__PURE__ */ jsxRuntimeExports.jsx(SlotClone, { ...slotProps, ref: forwardedRef, children: reactExports.isValidElement(newElement) ? reactExports.cloneElement(newElement, void 0, newChildren) : null });
-    }
-    return /* @__PURE__ */ jsxRuntimeExports.jsx(SlotClone, { ...slotProps, ref: forwardedRef, children });
-  });
-  Slot2.displayName = `${ownerName}.Slot`;
-  return Slot2;
-}
-var Slot = /* @__PURE__ */ createSlot("Slot");
-// @__NO_SIDE_EFFECTS__
-function createSlotClone(ownerName) {
-  const SlotClone = reactExports.forwardRef((props, forwardedRef) => {
-    const { children, ...slotProps } = props;
-    if (reactExports.isValidElement(children)) {
-      const childrenRef = getElementRef(children);
-      const props2 = mergeProps(slotProps, children.props);
-      if (children.type !== reactExports.Fragment) {
-        props2.ref = forwardedRef ? composeRefs(forwardedRef, childrenRef) : childrenRef;
-      }
-      return reactExports.cloneElement(children, props2);
-    }
-    return reactExports.Children.count(children) > 1 ? reactExports.Children.only(null) : null;
-  });
-  SlotClone.displayName = `${ownerName}.SlotClone`;
-  return SlotClone;
-}
-var SLOTTABLE_IDENTIFIER = Symbol("radix.slottable");
-function isSlottable(child) {
-  return reactExports.isValidElement(child) && typeof child.type === "function" && "__radixId" in child.type && child.type.__radixId === SLOTTABLE_IDENTIFIER;
-}
-function mergeProps(slotProps, childProps) {
-  const overrideProps = { ...childProps };
-  for (const propName in childProps) {
-    const slotPropValue = slotProps[propName];
-    const childPropValue = childProps[propName];
-    const isHandler = /^on[A-Z]/.test(propName);
-    if (isHandler) {
-      if (slotPropValue && childPropValue) {
-        overrideProps[propName] = (...args) => {
-          const result = childPropValue(...args);
-          slotPropValue(...args);
-          return result;
-        };
-      } else if (slotPropValue) {
-        overrideProps[propName] = slotPropValue;
-      }
-    } else if (propName === "style") {
-      overrideProps[propName] = { ...slotPropValue, ...childPropValue };
-    } else if (propName === "className") {
-      overrideProps[propName] = [slotPropValue, childPropValue].filter(Boolean).join(" ");
-    }
-  }
-  return { ...slotProps, ...overrideProps };
-}
-function getElementRef(element) {
-  var _a, _b;
-  let getter = (_a = Object.getOwnPropertyDescriptor(element.props, "ref")) == null ? void 0 : _a.get;
-  let mayWarn = getter && "isReactWarning" in getter && getter.isReactWarning;
-  if (mayWarn) {
-    return element.ref;
-  }
-  getter = (_b = Object.getOwnPropertyDescriptor(element, "ref")) == null ? void 0 : _b.get;
-  mayWarn = getter && "isReactWarning" in getter && getter.isReactWarning;
-  if (mayWarn) {
-    return element.props.ref;
-  }
-  return element.props.ref || element.ref;
 }
 const concatArrays = (array1, array2) => {
   const combinedArray = new Array(array1.length + array2.length);
@@ -41906,7 +41933,7 @@ function Button({
   asChild = false,
   ...props
 }) {
-  const Comp = asChild ? Slot : "button";
+  const Comp = asChild ? Slot$1 : "button";
   return /* @__PURE__ */ jsxRuntimeExports.jsx(
     Comp,
     {
@@ -42051,24 +42078,24 @@ const __iconNode = [
 ];
 const X = createLucideIcon("X", __iconNode);
 function Sheet({ ...props }) {
-  return /* @__PURE__ */ jsxRuntimeExports.jsx(Root, { "data-slot": "sheet", ...props });
+  return /* @__PURE__ */ jsxRuntimeExports.jsx(Dialog, { "data-slot": "sheet", ...props });
 }
 function SheetTrigger({
   ...props
 }) {
-  return /* @__PURE__ */ jsxRuntimeExports.jsx(Trigger, { "data-slot": "sheet-trigger", ...props });
+  return /* @__PURE__ */ jsxRuntimeExports.jsx(DialogTrigger, { "data-slot": "sheet-trigger", ...props });
 }
 function SheetPortal({
   ...props
 }) {
-  return /* @__PURE__ */ jsxRuntimeExports.jsx(Portal, { "data-slot": "sheet-portal", ...props });
+  return /* @__PURE__ */ jsxRuntimeExports.jsx(DialogPortal, { "data-slot": "sheet-portal", ...props });
 }
 function SheetOverlay({
   className,
   ...props
 }) {
   return /* @__PURE__ */ jsxRuntimeExports.jsx(
-    Overlay,
+    DialogOverlay,
     {
       "data-slot": "sheet-overlay",
       className: cn(
@@ -42089,7 +42116,7 @@ function SheetContent({
   return /* @__PURE__ */ jsxRuntimeExports.jsxs(SheetPortal, { children: [
     /* @__PURE__ */ jsxRuntimeExports.jsx(SheetOverlay, {}),
     /* @__PURE__ */ jsxRuntimeExports.jsxs(
-      Content,
+      DialogContent,
       {
         "data-slot": "sheet-content",
         "data-side": side,
@@ -42100,7 +42127,7 @@ function SheetContent({
         ...props,
         children: [
           children,
-          showCloseButton && /* @__PURE__ */ jsxRuntimeExports.jsx(Close, { "data-slot": "sheet-close", asChild: true, children: /* @__PURE__ */ jsxRuntimeExports.jsxs(
+          showCloseButton && /* @__PURE__ */ jsxRuntimeExports.jsx(DialogClose, { "data-slot": "sheet-close", asChild: true, children: /* @__PURE__ */ jsxRuntimeExports.jsxs(
             Button,
             {
               variant: "ghost",
@@ -42198,7 +42225,7 @@ const HeaderMenuItemSchema = objectType({
   href: stringType().describe("ui:text"),
   isCta: booleanType().optional().describe("ui:checkbox")
 });
-const HeaderSchema = No.extend({
+const HeaderSchema = Lo.extend({
   logoText: stringType().describe("ui:text").default("Radice"),
   menu: arrayType(HeaderMenuItemSchema).optional().describe("ui:list")
 });
@@ -42273,7 +42300,7 @@ const SocialLinkSchema = objectType({
   platform: stringType().describe("ui:text"),
   url: stringType().describe("ui:text")
 });
-const FooterSchema = No.extend({
+const FooterSchema = Lo.extend({
   logoText: stringType().describe("ui:text").default("Radice"),
   tagline: stringType().optional().describe("ui:text"),
   address: stringType().optional().describe("ui:textarea"),
@@ -42329,12 +42356,12 @@ const LocalCtaSchema$1 = objectType({
   label: stringType().describe("ui:text"),
   href: stringType().describe("ui:text")
 });
-const EditorialHeroSchema = No.extend({
+const EditorialHeroSchema = Lo.extend({
   label: stringType().optional().describe("ui:text"),
   headline: stringType().describe("ui:textarea"),
   subheadline: stringType().optional().describe("ui:textarea"),
   primaryCta: LocalCtaSchema$1.optional(),
-  backgroundImage: zo.optional()
+  backgroundImage: Mo.optional()
 });
 const TextBlock = ({ data }) => {
   const alignmentClass = data.alignment === "center" ? "text-center" : "text-left";
@@ -42364,7 +42391,7 @@ const TextBlock = ({ data }) => {
     }
   );
 };
-const TextBlockSchema = No.extend({
+const TextBlockSchema = Lo.extend({
   label: stringType().optional().describe("ui:text"),
   headline: stringType().optional().describe("ui:text"),
   content: stringType().describe("ui:textarea"),
@@ -42395,8 +42422,8 @@ const ImageBlock = ({ data }) => {
     }
   );
 };
-const ImageBlockSchema = No.extend({
-  image: zo.describe("ui:image-picker"),
+const ImageBlockSchema = Lo.extend({
+  image: Mo.describe("ui:image-picker"),
   caption: stringType().optional().describe("ui:text")
 });
 const MenuDisplay = ({ data }) => {
@@ -42430,12 +42457,12 @@ const MenuDisplay = ({ data }) => {
     }
   );
 };
-const MenuItemSchema = Io.extend({
+const MenuItemSchema = Do.extend({
   name: stringType().describe("ui:text"),
   description: stringType().optional().describe("ui:textarea"),
   price: stringType().optional().describe("ui:text")
 });
-const MenuDisplaySchema = No.extend({
+const MenuDisplaySchema = Lo.extend({
   title: stringType().describe("ui:text"),
   description: stringType().optional().describe("ui:textarea"),
   items: arrayType(MenuItemSchema).describe("ui:list"),
@@ -42471,11 +42498,11 @@ const PhilosophySection = ({ data }) => {
     }
   );
 };
-const PhilosophySectionSchema = No.extend({
+const PhilosophySectionSchema = Lo.extend({
   label: stringType().optional().describe("ui:text"),
   headline: stringType().describe("ui:text"),
   content: stringType().describe("ui:textarea"),
-  image: zo.optional(),
+  image: Mo.optional(),
   imagePosition: enumType(["left", "right"]).default("right").describe("ui:select")
 });
 const InfoGrid = ({ data }) => {
@@ -42499,11 +42526,11 @@ const InfoGrid = ({ data }) => {
     }
   );
 };
-const InfoItemSchema = Io.extend({
+const InfoItemSchema = Do.extend({
   title: stringType().describe("ui:text"),
   content: stringType().describe("ui:textarea")
 });
-const InfoGridSchema = No.extend({
+const InfoGridSchema = Lo.extend({
   headline: stringType().optional().describe("ui:text"),
   items: arrayType(InfoItemSchema).describe("ui:list")
 });
@@ -42532,12 +42559,12 @@ const ChefProfile = ({ data }) => {
     }
   );
 };
-const ChefProfileSchema = No.extend({
+const ChefProfileSchema = Lo.extend({
   name: stringType().describe("ui:text"),
   title: stringType().describe("ui:text"),
   bio: stringType().describe("ui:textarea"),
   quote: stringType().optional().describe("ui:textarea"),
-  image: zo.optional()
+  image: Mo.optional()
 });
 const CtaBanner = ({ data }) => {
   return /* @__PURE__ */ jsxRuntimeExports.jsx(
@@ -42562,7 +42589,7 @@ const LocalCtaSchema = objectType({
   label: stringType().describe("ui:text"),
   href: stringType().describe("ui:text")
 });
-const CtaBannerSchema = No.extend({
+const CtaBannerSchema = Lo.extend({
   headline: stringType().describe("ui:text"),
   primaryCta: LocalCtaSchema.optional()
 });
@@ -42589,11 +42616,11 @@ const GalleryGrid = ({ data }) => {
     }
   );
 };
-const GalleryItemSchema = Io.extend({
-  image: zo.describe("ui:image-picker"),
+const GalleryItemSchema = Do.extend({
+  image: Mo.describe("ui:image-picker"),
   caption: stringType().optional().describe("ui:text")
 });
-const GalleryGridSchema = No.extend({
+const GalleryGridSchema = Lo.extend({
   headline: stringType().optional().describe("ui:text"),
   items: arrayType(GalleryItemSchema).describe("ui:list")
 });
@@ -42832,7 +42859,7 @@ const refDocuments = {
   "config/menu.json": menuConfig,
   "src/data/config/menu.json": menuConfig
 };
-const tenantCss = `@import"https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,500;6..96,600;6..96,700&family=Hanken+Grotesk:wght@400;600&display=swap";/*! tailwindcss v4.3.0 | MIT License | https://tailwindcss.com */@layer properties{@supports (((-webkit-hyphens:none)) and (not (margin-trim:inline))) or ((-moz-orient:inline) and (not (color:rgb(from red r g b)))){*,:before,:after,::backdrop{--tw-translate-x:0;--tw-translate-y:0;--tw-translate-z:0;--tw-scale-x:1;--tw-scale-y:1;--tw-scale-z:1;--tw-rotate-x:initial;--tw-rotate-y:initial;--tw-rotate-z:initial;--tw-skew-x:initial;--tw-skew-y:initial;--tw-pan-x:initial;--tw-pan-y:initial;--tw-pinch-zoom:initial;--tw-space-y-reverse:0;--tw-space-x-reverse:0;--tw-divide-x-reverse:0;--tw-border-style:solid;--tw-divide-y-reverse:0;--tw-gradient-position:initial;--tw-gradient-from:#0000;--tw-gradient-via:#0000;--tw-gradient-to:#0000;--tw-gradient-stops:initial;--tw-gradient-via-stops:initial;--tw-gradient-from-position:0%;--tw-gradient-via-position:50%;--tw-gradient-to-position:100%;--tw-leading:initial;--tw-font-weight:initial;--tw-tracking:initial;--tw-ordinal:initial;--tw-slashed-zero:initial;--tw-numeric-figure:initial;--tw-numeric-spacing:initial;--tw-numeric-fraction:initial;--tw-shadow:0 0 #0000;--tw-shadow-color:initial;--tw-shadow-alpha:100%;--tw-inset-shadow:0 0 #0000;--tw-inset-shadow-color:initial;--tw-inset-shadow-alpha:100%;--tw-ring-color:initial;--tw-ring-shadow:0 0 #0000;--tw-inset-ring-color:initial;--tw-inset-ring-shadow:0 0 #0000;--tw-ring-inset:initial;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-offset-shadow:0 0 #0000;--tw-outline-style:solid;--tw-blur:initial;--tw-brightness:initial;--tw-contrast:initial;--tw-grayscale:initial;--tw-hue-rotate:initial;--tw-invert:initial;--tw-opacity:initial;--tw-saturate:initial;--tw-sepia:initial;--tw-drop-shadow:initial;--tw-drop-shadow-color:initial;--tw-drop-shadow-alpha:100%;--tw-drop-shadow-size:initial;--tw-backdrop-blur:initial;--tw-backdrop-brightness:initial;--tw-backdrop-contrast:initial;--tw-backdrop-grayscale:initial;--tw-backdrop-hue-rotate:initial;--tw-backdrop-invert:initial;--tw-backdrop-opacity:initial;--tw-backdrop-saturate:initial;--tw-backdrop-sepia:initial;--tw-duration:initial;--tw-ease:initial;--tw-content:""}}}@layer theme{:root,:host{--font-sans:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";--font-mono:var(--theme-font-mono);--color-red-400:oklch(70.4% .191 22.216);--color-red-500:oklch(63.7% .237 25.331);--color-red-700:oklch(50.5% .213 27.518);--color-orange-50:oklch(98% .016 73.684);--color-orange-700:oklch(55.3% .195 38.402);--color-amber-50:oklch(98.7% .022 95.277);--color-amber-200:oklch(92.4% .12 95.746);--color-amber-500:oklch(76.9% .188 70.08);--color-lime-400:oklch(84.1% .238 128.85);--color-green-500:oklch(72.3% .219 149.579);--color-green-600:oklch(62.7% .194 149.214);--color-green-700:oklch(52.7% .154 150.069);--color-teal-600:oklch(60% .118 184.704);--color-cyan-500:oklch(71.5% .143 215.221);--color-blue-200:oklch(88.2% .059 254.128);--color-blue-400:oklch(70.7% .165 254.624);--color-blue-500:oklch(62.3% .214 259.815);--color-blue-600:oklch(54.6% .245 262.881);--color-blue-900:oklch(37.9% .146 265.522);--color-gray-50:oklch(98.5% .002 247.839);--color-gray-100:oklch(96.7% .003 264.542);--color-gray-200:oklch(92.8% .006 264.531);--color-gray-300:oklch(87.2% .01 258.338);--color-gray-400:oklch(70.7% .022 261.325);--color-gray-500:oklch(55.1% .027 264.364);--color-gray-600:oklch(44.6% .03 256.802);--color-gray-700:oklch(37.3% .034 259.733);--color-gray-800:oklch(27.8% .033 256.848);--color-gray-900:oklch(21% .034 264.665);--color-zinc-100:oklch(96.7% .001 286.375);--color-zinc-200:oklch(92% .004 286.32);--color-zinc-400:oklch(70.5% .015 286.067);--color-zinc-500:oklch(55.2% .016 285.938);--color-zinc-600:oklch(44.2% .017 285.786);--color-zinc-700:oklch(37% .013 285.805);--color-zinc-800:oklch(27.4% .006 286.033);--color-zinc-950:oklch(14.1% .005 285.823);--color-black:#000;--color-white:#fff;--spacing:.25rem;--container-xs:20rem;--container-sm:24rem;--container-md:28rem;--container-xl:36rem;--container-2xl:42rem;--container-3xl:48rem;--container-4xl:56rem;--text-xs:.75rem;--text-xs--line-height:calc(1 / .75);--text-sm:.875rem;--text-sm--line-height:calc(1.25 / .875);--text-base:1rem;--text-base--line-height: 1.5 ;--text-lg:1.125rem;--text-lg--line-height:calc(1.75 / 1.125);--text-xl:1.25rem;--text-xl--line-height:calc(1.75 / 1.25);--text-2xl:1.5rem;--text-2xl--line-height:calc(2 / 1.5);--text-3xl:1.875rem;--text-3xl--line-height: 1.2 ;--text-4xl:2.25rem;--text-4xl--line-height:calc(2.5 / 2.25);--font-weight-normal:400;--font-weight-medium:500;--font-weight-semibold:600;--font-weight-bold:700;--font-weight-black:900;--tracking-tight:-.025em;--tracking-widest:.1em;--leading-tight:1.25;--leading-snug:1.375;--leading-relaxed:1.625;--radius-sm:var(--theme-radius-sm);--radius-md:var(--theme-radius-md);--radius-lg:var(--theme-radius-lg);--radius-xl:.75rem;--radius-4xl:2rem;--ease-in:cubic-bezier(.4, 0, 1, 1);--ease-out:cubic-bezier(0, 0, .2, 1);--ease-in-out:cubic-bezier(.4, 0, .2, 1);--animate-pulse:pulse 2s cubic-bezier(.4, 0, .6, 1) infinite;--blur-xs:4px;--blur-sm:8px;--blur-md:12px;--blur-xl:24px;--default-transition-duration:.15s;--default-transition-timing-function:cubic-bezier(.4, 0, .2, 1);--default-font-family:var(--font-sans);--default-mono-font-family:var(--font-mono);--color-background:var(--background);--color-foreground:var(--foreground);--color-card:var(--card);--color-card-foreground:var(--card-foreground);--color-primary:var(--primary);--color-primary-foreground:var(--primary-foreground);--color-secondary:var(--secondary);--color-secondary-foreground:var(--secondary-foreground);--color-muted:var(--muted);--color-muted-foreground:var(--muted-foreground);--color-accent:var(--accent);--color-border:var(--border);--font-primary:var(--theme-font-primary);--font-display:var(--theme-font-display)}}@layer base{*,:after,:before,::backdrop{box-sizing:border-box;border:0 solid;margin:0;padding:0}::file-selector-button{box-sizing:border-box;border:0 solid;margin:0;padding:0}html,:host{-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;line-height:1.5;font-family:var(--default-font-family,ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji");font-feature-settings:var(--default-font-feature-settings,normal);font-variation-settings:var(--default-font-variation-settings,normal);-webkit-tap-highlight-color:transparent}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;-webkit-text-decoration:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,samp,pre{font-family:var(--default-mono-font-family,ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace);font-feature-settings:var(--default-mono-font-feature-settings,normal);font-variation-settings:var(--default-mono-font-variation-settings,normal);font-size:1em}small{font-size:80%}sub,sup{vertical-align:baseline;font-size:75%;line-height:0;position:relative}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}:-moz-focusring{outline:auto}progress{vertical-align:baseline}summary{display:list-item}ol,ul,menu{list-style:none}img,svg,video,canvas,audio,iframe,embed,object{vertical-align:middle;display:block}img,video{max-width:100%;height:auto}button,input,select,optgroup,textarea{font:inherit;font-feature-settings:inherit;font-variation-settings:inherit;letter-spacing:inherit;color:inherit;opacity:1;background-color:#0000;border-radius:0}::file-selector-button{font:inherit;font-feature-settings:inherit;font-variation-settings:inherit;letter-spacing:inherit;color:inherit;opacity:1;background-color:#0000;border-radius:0}:where(select:is([multiple],[size])) optgroup{font-weight:bolder}:where(select:is([multiple],[size])) optgroup option{padding-inline-start:20px}::file-selector-button{margin-inline-end:4px}::placeholder{opacity:1}@supports (not ((-webkit-appearance:-apple-pay-button))) or (contain-intrinsic-size:1px){::placeholder{color:currentColor}@supports (color:color-mix(in lab,red,red)){::placeholder{color:color-mix(in oklab,currentcolor 50%,transparent)}}}textarea{resize:vertical}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-date-and-time-value{min-height:1lh;text-align:inherit}::-webkit-datetime-edit{display:inline-flex}::-webkit-datetime-edit-fields-wrapper{padding:0}::-webkit-datetime-edit{padding-block:0}::-webkit-datetime-edit-year-field{padding-block:0}::-webkit-datetime-edit-month-field{padding-block:0}::-webkit-datetime-edit-day-field{padding-block:0}::-webkit-datetime-edit-hour-field{padding-block:0}::-webkit-datetime-edit-minute-field{padding-block:0}::-webkit-datetime-edit-second-field{padding-block:0}::-webkit-datetime-edit-millisecond-field{padding-block:0}::-webkit-datetime-edit-meridiem-field{padding-block:0}::-webkit-calendar-picker-indicator{line-height:1}:-moz-ui-invalid{box-shadow:none}button,input:where([type=button],[type=reset],[type=submit]){-webkit-appearance:button;-moz-appearance:button;appearance:button}::file-selector-button{-webkit-appearance:button;-moz-appearance:button;appearance:button}::-webkit-inner-spin-button{height:auto}::-webkit-outer-spin-button{height:auto}[hidden]:where(:not([hidden=until-found])){display:none!important}*{border-color:var(--border)}body{background-color:var(--background);color:var(--foreground);font-family:var(--font-primary);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;line-height:1.6;overflow-x:hidden}body:before{content:"";opacity:.03;z-index:-1;pointer-events:none;background-image:url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800"%3E%3Cfilter id="noiseFilter"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%" height="100%" filter="url('%23noiseFilter')"/%3E%3C/svg%3E');width:100vw;height:100vh;position:fixed;top:0;left:0}}@layer components;@layer utilities{.\\@container\\/card-header{container:card-header/inline-size}.\\@container{container-type:inline-size}.pointer-events-auto{pointer-events:auto}.pointer-events-none{pointer-events:none}.collapse{visibility:collapse}.invisible{visibility:hidden}.visible{visibility:visible}.sr-only{clip-path:inset(50%);white-space:nowrap;border-width:0;width:1px;height:1px;margin:-1px;padding:0;position:absolute;overflow:hidden}.not-sr-only{clip-path:none;white-space:normal;width:auto;height:auto;margin:0;padding:0;position:static;overflow:visible}.absolute{position:absolute}.fixed{position:fixed}.relative{position:relative}.static{position:static}.sticky{position:sticky}.-inset-4{inset:calc(var(--spacing) * -4)}.inset-0{inset:calc(var(--spacing) * 0)}.top-0{top:calc(var(--spacing) * 0)}.top-1{top:calc(var(--spacing) * 1)}.top-1\\/2{top:50%}.top-2{top:calc(var(--spacing) * 2)}.top-3{top:calc(var(--spacing) * 3)}.top-\\[60\\%\\]{top:60%}.top-full{top:100%}.top-px{top:1px}.right-0{right:calc(var(--spacing) * 0)}.right-2{right:calc(var(--spacing) * 2)}.right-3{right:calc(var(--spacing) * 3)}.bottom-0{bottom:calc(var(--spacing) * 0)}.left-0{left:calc(var(--spacing) * 0)}.left-1{left:calc(var(--spacing) * 1)}.left-1\\/2{left:50%}.left-6{left:calc(var(--spacing) * 6)}.left-8{left:calc(var(--spacing) * 8)}.isolate{isolation:isolate}.isolation-auto{isolation:auto}.z-0{z-index:0}.z-1{z-index:1}.z-10{z-index:10}.z-50,.z-\\[50\\]{z-index:50}.z-\\[60\\]{z-index:60}.z-\\[65\\]{z-index:65}.z-\\[70\\]{z-index:70}.z-\\[110\\]{z-index:110}.z-\\[1290\\]{z-index:1290}.col-start-2{grid-column-start:2}.row-span-2{grid-row:span 2/span 2}.row-start-1{grid-row-start:1}.container{width:100%}@media(min-width:40rem){.container{max-width:40rem}}@media(min-width:48rem){.container{max-width:48rem}}@media(min-width:64rem){.container{max-width:64rem}}@media(min-width:80rem){.container{max-width:80rem}}@media(min-width:96rem){.container{max-width:96rem}}.m-4{margin:calc(var(--spacing) * 4)}.-mx-1{margin-inline:calc(var(--spacing) * -1)}.-mx-4{margin-inline:calc(var(--spacing) * -4)}.mx-0{margin-inline:calc(var(--spacing) * 0)}.mx-0\\.5{margin-inline:calc(var(--spacing) * .5)}.mx-auto{margin-inline:auto}.my-1{margin-block:calc(var(--spacing) * 1)}.my-8{margin-block:calc(var(--spacing) * 8)}.mt-0{margin-top:calc(var(--spacing) * 0)}.mt-0\\.5{margin-top:calc(var(--spacing) * .5)}.mt-1{margin-top:calc(var(--spacing) * 1)}.mt-1\\.5{margin-top:calc(var(--spacing) * 1.5)}.mt-2{margin-top:calc(var(--spacing) * 2)}.mt-3{margin-top:calc(var(--spacing) * 3)}.mt-4{margin-top:calc(var(--spacing) * 4)}.mt-8{margin-top:calc(var(--spacing) * 8)}.mt-12{margin-top:calc(var(--spacing) * 12)}.mt-16{margin-top:calc(var(--spacing) * 16)}.mt-auto{margin-top:auto}.-mb-4{margin-bottom:calc(var(--spacing) * -4)}.mb-1{margin-bottom:calc(var(--spacing) * 1)}.mb-2{margin-bottom:calc(var(--spacing) * 2)}.mb-3{margin-bottom:calc(var(--spacing) * 3)}.mb-4{margin-bottom:calc(var(--spacing) * 4)}.mb-6{margin-bottom:calc(var(--spacing) * 6)}.mb-8{margin-bottom:calc(var(--spacing) * 8)}.mb-12{margin-bottom:calc(var(--spacing) * 12)}.mb-16{margin-bottom:calc(var(--spacing) * 16)}.mb-20{margin-bottom:calc(var(--spacing) * 20)}.ml-1{margin-left:calc(var(--spacing) * 1)}.ml-2{margin-left:calc(var(--spacing) * 2)}.ml-auto{margin-left:auto}.block{display:block}.contents{display:contents}.flex{display:flex}.flow-root{display:flow-root}.grid{display:grid}.hidden{display:none}.inline{display:inline}.inline-block{display:inline-block}.inline-flex{display:inline-flex}.inline-grid{display:inline-grid}.inline-table{display:inline-table}.list-item{display:list-item}.table{display:table}.table-caption{display:table-caption}.table-cell{display:table-cell}.table-column{display:table-column}.table-column-group{display:table-column-group}.table-footer-group{display:table-footer-group}.table-header-group{display:table-header-group}.table-row{display:table-row}.table-row-group{display:table-row-group}.field-sizing-content{field-sizing:content}.aspect-\\[3\\/4\\]{aspect-ratio:3/4}.aspect-square{aspect-ratio:1}.size-2{width:calc(var(--spacing) * 2);height:calc(var(--spacing) * 2)}.size-2\\.5{width:calc(var(--spacing) * 2.5);height:calc(var(--spacing) * 2.5)}.size-3{width:calc(var(--spacing) * 3);height:calc(var(--spacing) * 3)}.size-4{width:calc(var(--spacing) * 4);height:calc(var(--spacing) * 4)}.size-5{width:calc(var(--spacing) * 5);height:calc(var(--spacing) * 5)}.size-6{width:calc(var(--spacing) * 6);height:calc(var(--spacing) * 6)}.size-7{width:calc(var(--spacing) * 7);height:calc(var(--spacing) * 7)}.size-8{width:calc(var(--spacing) * 8);height:calc(var(--spacing) * 8)}.size-9{width:calc(var(--spacing) * 9);height:calc(var(--spacing) * 9)}.size-full{width:100%;height:100%}.h-\\(--radix-accordion-content-height\\){height:var(--radix-accordion-content-height)}.h-\\(--radix-navigation-menu-viewport-height\\){height:var(--radix-navigation-menu-viewport-height)}.h-\\(--radix-select-trigger-height\\){height:var(--radix-select-trigger-height)}.h-1{height:calc(var(--spacing) * 1)}.h-1\\.5{height:calc(var(--spacing) * 1.5)}.h-2{height:calc(var(--spacing) * 2)}.h-4{height:calc(var(--spacing) * 4)}.h-5{height:calc(var(--spacing) * 5)}.h-6{height:calc(var(--spacing) * 6)}.h-7{height:calc(var(--spacing) * 7)}.h-8{height:calc(var(--spacing) * 8)}.h-9{height:calc(var(--spacing) * 9)}.h-10{height:calc(var(--spacing) * 10)}.h-24{height:calc(var(--spacing) * 24)}.h-48{height:calc(var(--spacing) * 48)}.h-64{height:calc(var(--spacing) * 64)}.h-72{height:calc(var(--spacing) * 72)}.h-80{height:calc(var(--spacing) * 80)}.h-\\[220px\\]{height:220px}.h-\\[600px\\]{height:600px}.h-\\[700px\\]{height:700px}.h-\\[calc\\(100\\%-1px\\)\\]{height:calc(100% - 1px)}.h-auto{height:auto}.h-full{height:100%}.h-px{height:1px}.max-h-\\(--radix-dropdown-menu-content-available-height\\){max-height:var(--radix-dropdown-menu-content-available-height)}.max-h-\\(--radix-select-content-available-height\\){max-height:var(--radix-select-content-available-height)}.min-h-16{min-height:calc(var(--spacing) * 16)}.min-h-\\[18px\\]{min-height:18px}.min-h-\\[85vh\\]{min-height:85vh}.min-h-\\[220px\\]{min-height:220px}.min-h-screen{min-height:100vh}.w-\\(--radix-dropdown-menu-trigger-width\\){width:var(--radix-dropdown-menu-trigger-width)}.w-1{width:calc(var(--spacing) * 1)}.w-2{width:calc(var(--spacing) * 2)}.w-4{width:calc(var(--spacing) * 4)}.w-4\\/6{width:66.6667%}.w-5{width:calc(var(--spacing) * 5)}.w-5\\/6{width:83.3333%}.w-8{width:calc(var(--spacing) * 8)}.w-10{width:calc(var(--spacing) * 10)}.w-24{width:calc(var(--spacing) * 24)}.w-32{width:calc(var(--spacing) * 32)}.w-64{width:calc(var(--spacing) * 64)}.w-80{width:calc(var(--spacing) * 80)}.w-fit{width:fit-content}.w-full{width:100%}.w-max{width:max-content}.w-px{width:1px}.max-w-2xl{max-width:var(--container-2xl)}.max-w-3xl{max-width:var(--container-3xl)}.max-w-4xl{max-width:var(--container-4xl)}.max-w-\\[280px\\]{max-width:280px}.max-w-\\[1280px\\]{max-width:1280px}.max-w-\\[1600px\\]{max-width:1600px}.max-w-\\[calc\\(100\\%-2rem\\)\\]{max-width:calc(100% - 2rem)}.max-w-max{max-width:max-content}.max-w-md{max-width:var(--container-md)}.max-w-none{max-width:none}.max-w-xl{max-width:var(--container-xl)}.max-w-xs{max-width:var(--container-xs)}.min-w-\\(--radix-select-trigger-width\\){min-width:var(--radix-select-trigger-width)}.min-w-0{min-width:calc(var(--spacing) * 0)}.min-w-7{min-width:calc(var(--spacing) * 7)}.min-w-8{min-width:calc(var(--spacing) * 8)}.min-w-9{min-width:calc(var(--spacing) * 9)}.min-w-32{min-width:calc(var(--spacing) * 32)}.min-w-36{min-width:calc(var(--spacing) * 36)}.min-w-\\[18px\\]{min-width:18px}.min-w-\\[96px\\]{min-width:96px}.min-w-max{min-width:max-content}.flex-1{flex:1}.flex-shrink{flex-shrink:1}.flex-shrink-0{flex-shrink:0}.shrink{flex-shrink:1}.shrink-0{flex-shrink:0}.flex-grow,.grow{flex-grow:1}.caption-bottom{caption-side:bottom}.border-collapse{border-collapse:collapse}.origin-\\(--radix-dropdown-menu-content-transform-origin\\){transform-origin:var(--radix-dropdown-menu-content-transform-origin)}.origin-\\(--radix-hover-card-content-transform-origin\\){transform-origin:var(--radix-hover-card-content-transform-origin)}.origin-\\(--radix-select-content-transform-origin\\){transform-origin:var(--radix-select-content-transform-origin)}.origin-\\(--radix-tooltip-content-transform-origin\\){transform-origin:var(--radix-tooltip-content-transform-origin)}.-translate-x-1{--tw-translate-x:calc(var(--spacing) * -1);translate:var(--tw-translate-x) var(--tw-translate-y)}.-translate-x-1\\/2{--tw-translate-x: -50% ;translate:var(--tw-translate-x) var(--tw-translate-y)}.-translate-y-1{--tw-translate-y:calc(var(--spacing) * -1);translate:var(--tw-translate-x) var(--tw-translate-y)}.-translate-y-1\\/2{--tw-translate-y: -50% ;translate:var(--tw-translate-x) var(--tw-translate-y)}.translate-y-\\[calc\\(-50\\%_-_2px\\)\\]{--tw-translate-y: calc(-50% - 2px) ;translate:var(--tw-translate-x) var(--tw-translate-y)}.translate-none{translate:none}.scale-3d{scale:var(--tw-scale-x) var(--tw-scale-y) var(--tw-scale-z)}.rotate-45{rotate:45deg}.transform{transform:var(--tw-rotate-x,) var(--tw-rotate-y,) var(--tw-rotate-z,) var(--tw-skew-x,) var(--tw-skew-y,)}.animate-pulse{animation:var(--animate-pulse)}.cursor-default{cursor:default}.cursor-pointer{cursor:pointer}.touch-pinch-zoom{--tw-pinch-zoom:pinch-zoom;touch-action:var(--tw-pan-x,) var(--tw-pan-y,) var(--tw-pinch-zoom,)}.touch-none{touch-action:none}.resize{resize:both}.resize-none{resize:none}.scroll-my-1{scroll-margin-block:calc(var(--spacing) * 1)}.list-none{list-style-type:none}.columns-2{columns:2}.break-inside-avoid{break-inside:avoid}.auto-rows-min{grid-auto-rows:min-content}.grid-cols-1{grid-template-columns:repeat(1,minmax(0,1fr))}.grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}.flex-col{flex-direction:column}.flex-col-reverse{flex-direction:column-reverse}.flex-row{flex-direction:row}.flex-nowrap{flex-wrap:nowrap}.flex-wrap{flex-wrap:wrap}.place-content-center{place-content:center}.items-baseline{align-items:baseline}.items-center{align-items:center}.items-end{align-items:flex-end}.items-start{align-items:flex-start}.justify-between{justify-content:space-between}.justify-center{justify-content:center}.gap-0{gap:calc(var(--spacing) * 0)}.gap-0\\.5{gap:calc(var(--spacing) * .5)}.gap-1{gap:calc(var(--spacing) * 1)}.gap-1\\.5{gap:calc(var(--spacing) * 1.5)}.gap-2{gap:calc(var(--spacing) * 2)}.gap-3{gap:calc(var(--spacing) * 3)}.gap-4{gap:calc(var(--spacing) * 4)}.gap-6{gap:calc(var(--spacing) * 6)}.gap-8{gap:calc(var(--spacing) * 8)}.gap-12{gap:calc(var(--spacing) * 12)}.gap-16{gap:calc(var(--spacing) * 16)}.gap-20{gap:calc(var(--spacing) * 20)}.gap-\\[--spacing\\(var\\(--gap\\)\\)\\]{gap:calc(var(--spacing) * var(--gap))}:where(.space-y-1>:not(:last-child)){--tw-space-y-reverse:0;margin-block-start:calc(calc(var(--spacing) * 1) * var(--tw-space-y-reverse));margin-block-end:calc(calc(var(--spacing) * 1) * calc(1 - var(--tw-space-y-reverse)))}:where(.space-y-2>:not(:last-child)){--tw-space-y-reverse:0;margin-block-start:calc(calc(var(--spacing) * 2) * var(--tw-space-y-reverse));margin-block-end:calc(calc(var(--spacing) * 2) * calc(1 - var(--tw-space-y-reverse)))}:where(.space-y-3>:not(:last-child)){--tw-space-y-reverse:0;margin-block-start:calc(calc(var(--spacing) * 3) * var(--tw-space-y-reverse));margin-block-end:calc(calc(var(--spacing) * 3) * calc(1 - var(--tw-space-y-reverse)))}:where(.space-y-4>:not(:last-child)){--tw-space-y-reverse:0;margin-block-start:calc(calc(var(--spacing) * 4) * var(--tw-space-y-reverse));margin-block-end:calc(calc(var(--spacing) * 4) * calc(1 - var(--tw-space-y-reverse)))}:where(.space-y-6>:not(:last-child)){--tw-space-y-reverse:0;margin-block-start:calc(calc(var(--spacing) * 6) * var(--tw-space-y-reverse));margin-block-end:calc(calc(var(--spacing) * 6) * calc(1 - var(--tw-space-y-reverse)))}:where(.space-y-8>:not(:last-child)){--tw-space-y-reverse:0;margin-block-start:calc(calc(var(--spacing) * 8) * var(--tw-space-y-reverse));margin-block-end:calc(calc(var(--spacing) * 8) * calc(1 - var(--tw-space-y-reverse)))}:where(.space-y-10>:not(:last-child)){--tw-space-y-reverse:0;margin-block-start:calc(calc(var(--spacing) * 10) * var(--tw-space-y-reverse));margin-block-end:calc(calc(var(--spacing) * 10) * calc(1 - var(--tw-space-y-reverse)))}:where(.space-y-12>:not(:last-child)){--tw-space-y-reverse:0;margin-block-start:calc(calc(var(--spacing) * 12) * var(--tw-space-y-reverse));margin-block-end:calc(calc(var(--spacing) * 12) * calc(1 - var(--tw-space-y-reverse)))}:where(.space-y-16>:not(:last-child)){--tw-space-y-reverse:0;margin-block-start:calc(calc(var(--spacing) * 16) * var(--tw-space-y-reverse));margin-block-end:calc(calc(var(--spacing) * 16) * calc(1 - var(--tw-space-y-reverse)))}:where(.space-y-reverse>:not(:last-child)){--tw-space-y-reverse:1}.gap-x-16{column-gap:calc(var(--spacing) * 16)}:where(.-space-x-2>:not(:last-child)){--tw-space-x-reverse:0;margin-inline-start:calc(calc(var(--spacing) * -2) * var(--tw-space-x-reverse));margin-inline-end:calc(calc(var(--spacing) * -2) * calc(1 - var(--tw-space-x-reverse)))}:where(.space-x-4>:not(:last-child)){--tw-space-x-reverse:0;margin-inline-start:calc(calc(var(--spacing) * 4) * var(--tw-space-x-reverse));margin-inline-end:calc(calc(var(--spacing) * 4) * calc(1 - var(--tw-space-x-reverse)))}:where(.space-x-reverse>:not(:last-child)){--tw-space-x-reverse:1}.gap-y-12{row-gap:calc(var(--spacing) * 12)}:where(.divide-x>:not(:last-child)){--tw-divide-x-reverse:0;border-inline-style:var(--tw-border-style);border-inline-start-width:calc(1px * var(--tw-divide-x-reverse));border-inline-end-width:calc(1px * calc(1 - var(--tw-divide-x-reverse)))}:where(.divide-y>:not(:last-child)){--tw-divide-y-reverse:0;border-bottom-style:var(--tw-border-style);border-top-style:var(--tw-border-style);border-top-width:calc(1px * var(--tw-divide-y-reverse));border-bottom-width:calc(1px * calc(1 - var(--tw-divide-y-reverse)))}:where(.divide-y-reverse>:not(:last-child)){--tw-divide-y-reverse:1}.self-start{align-self:flex-start}.justify-self-end{justify-self:flex-end}.truncate{text-overflow:ellipsis;white-space:nowrap;overflow:hidden}.overflow-hidden{overflow:hidden}.overflow-x-auto{overflow-x:auto}.overflow-x-hidden{overflow-x:hidden}.overflow-y-auto{overflow-y:auto}.rounded{border-radius:.25rem}.rounded-4xl{border-radius:var(--radius-4xl)}.rounded-\\[2px\\]{border-radius:2px}.rounded-\\[4px\\]{border-radius:4px}.rounded-\\[inherit\\]{border-radius:inherit}.rounded-\\[min\\(var\\(--radius-md\\)\\,10px\\)\\]{border-radius:min(var(--radius-md),10px)}.rounded-\\[min\\(var\\(--radius-md\\)\\,12px\\)\\]{border-radius:min(var(--radius-md),12px)}.rounded-full{border-radius:3.40282e38px}.rounded-lg{border-radius:var(--radius-lg)}.rounded-md{border-radius:var(--radius-md)}.rounded-none{border-radius:0}.rounded-xl{border-radius:var(--radius-xl)}.rounded-s{border-start-start-radius:.25rem;border-end-start-radius:.25rem}.rounded-ss{border-start-start-radius:.25rem}.rounded-e{border-start-end-radius:.25rem;border-end-end-radius:.25rem}.rounded-se{border-start-end-radius:.25rem}.rounded-ee{border-end-end-radius:.25rem}.rounded-es{border-end-start-radius:.25rem}.rounded-t{border-top-left-radius:.25rem;border-top-right-radius:.25rem}.rounded-t-xl{border-top-left-radius:var(--radius-xl);border-top-right-radius:var(--radius-xl)}.rounded-l{border-top-left-radius:.25rem;border-bottom-left-radius:.25rem}.rounded-tl{border-top-left-radius:.25rem}.rounded-tl-sm{border-top-left-radius:var(--radius-sm)}.rounded-r{border-top-right-radius:.25rem;border-bottom-right-radius:.25rem}.rounded-tr{border-top-right-radius:.25rem}.rounded-b{border-bottom-right-radius:.25rem;border-bottom-left-radius:.25rem}.rounded-b-xl{border-bottom-right-radius:var(--radius-xl);border-bottom-left-radius:var(--radius-xl)}.rounded-br{border-bottom-right-radius:.25rem}.rounded-bl{border-bottom-left-radius:.25rem}.border{border-style:var(--tw-border-style);border-width:1px}.border-2{border-style:var(--tw-border-style);border-width:2px}.border-x{border-inline-style:var(--tw-border-style);border-inline-width:1px}.border-y{border-block-style:var(--tw-border-style);border-block-width:1px}.border-s{border-inline-start-style:var(--tw-border-style);border-inline-start-width:1px}.border-e{border-inline-end-style:var(--tw-border-style);border-inline-end-width:1px}.border-bs{border-block-start-style:var(--tw-border-style);border-block-start-width:1px}.border-be{border-block-end-style:var(--tw-border-style);border-block-end-width:1px}.border-t{border-top-style:var(--tw-border-style);border-top-width:1px}.border-r{border-right-style:var(--tw-border-style);border-right-width:1px}.border-b{border-bottom-style:var(--tw-border-style);border-bottom-width:1px}.border-l{border-left-style:var(--tw-border-style);border-left-width:1px}.border-l-2{border-left-style:var(--tw-border-style);border-left-width:2px}.border-dashed{--tw-border-style:dashed;border-style:dashed}.border-dotted{--tw-border-style:dotted;border-style:dotted}.border-none{--tw-border-style:none;border-style:none}.border-solid{--tw-border-style:solid;border-style:solid}.border-\\[var\\(--local-bg\\)\\]{border-color:var(--local-bg)}.border-\\[var\\(--local-border\\)\\]{border-color:var(--local-border)}.border-\\[var\\(--local-text\\)\\]{border-color:var(--local-text)}.border-amber-500{border-color:var(--color-amber-500)}.border-amber-500\\/20{border-color:#f99c0033}@supports (color:color-mix(in lab,red,red)){.border-amber-500\\/20{border-color:color-mix(in oklab,var(--color-amber-500) 20%,transparent)}}.border-blue-600{border-color:var(--color-blue-600)}.border-border,.border-border\\/50{border-color:var(--color-border)}@supports (color:color-mix(in lab,red,red)){.border-border\\/50{border-color:color-mix(in oklab,var(--color-border) 50%,transparent)}}.border-red-500{border-color:var(--color-red-500)}.border-red-500\\/20{border-color:#fb2c3633}@supports (color:color-mix(in lab,red,red)){.border-red-500\\/20{border-color:color-mix(in oklab,var(--color-red-500) 20%,transparent)}}.border-transparent{border-color:#0000}.border-zinc-700{border-color:var(--color-zinc-700)}.border-zinc-800{border-color:var(--color-zinc-800)}.bg-\\[var\\(--background\\)\\]{background-color:var(--background)}.bg-\\[var\\(--color-background\\)\\]{background-color:var(--color-background)}.bg-\\[var\\(--local-accent-soft\\)\\]{background-color:var(--local-accent-soft)}.bg-\\[var\\(--local-bg\\)\\],.bg-\\[var\\(--local-bg\\)\\]\\/80{background-color:var(--local-bg)}@supports (color:color-mix(in lab,red,red)){.bg-\\[var\\(--local-bg\\)\\]\\/80{background-color:color-mix(in oklab,var(--local-bg) 80%,transparent)}}.bg-\\[var\\(--local-border\\)\\]{background-color:var(--local-border)}.bg-\\[var\\(--local-primary\\)\\]{background-color:var(--local-primary)}.bg-\\[var\\(--local-surface\\)\\]{background-color:var(--local-surface)}.bg-\\[var\\(--local-text\\)\\]{background-color:var(--local-text)}.bg-amber-500{background-color:var(--color-amber-500)}.bg-amber-500\\/5{background-color:#f99c000d}@supports (color:color-mix(in lab,red,red)){.bg-amber-500\\/5{background-color:color-mix(in oklab,var(--color-amber-500) 5%,transparent)}}.bg-background,.bg-background\\/80{background-color:var(--color-background)}@supports (color:color-mix(in lab,red,red)){.bg-background\\/80{background-color:color-mix(in oklab,var(--color-background) 80%,transparent)}}.bg-black{background-color:var(--color-black)}.bg-black\\/10{background-color:#0000001a}@supports (color:color-mix(in lab,red,red)){.bg-black\\/10{background-color:color-mix(in oklab,var(--color-black) 10%,transparent)}}.bg-blue-500{background-color:var(--color-blue-500)}.bg-blue-500\\/5{background-color:#3080ff0d}@supports (color:color-mix(in lab,red,red)){.bg-blue-500\\/5{background-color:color-mix(in oklab,var(--color-blue-500) 5%,transparent)}}.bg-blue-600{background-color:var(--color-blue-600)}.bg-border{background-color:var(--color-border)}.bg-card,.bg-card\\/60{background-color:var(--color-card)}@supports (color:color-mix(in lab,red,red)){.bg-card\\/60{background-color:color-mix(in oklab,var(--color-card) 60%,transparent)}}.bg-foreground{background-color:var(--color-foreground)}.bg-muted,.bg-muted\\/40{background-color:var(--color-muted)}@supports (color:color-mix(in lab,red,red)){.bg-muted\\/40{background-color:color-mix(in oklab,var(--color-muted) 40%,transparent)}}.bg-muted\\/50{background-color:var(--color-muted)}@supports (color:color-mix(in lab,red,red)){.bg-muted\\/50{background-color:color-mix(in oklab,var(--color-muted) 50%,transparent)}}.bg-primary{background-color:var(--color-primary)}.bg-red-500{background-color:var(--color-red-500)}.bg-red-500\\/10{background-color:#fb2c361a}@supports (color:color-mix(in lab,red,red)){.bg-red-500\\/10{background-color:color-mix(in oklab,var(--color-red-500) 10%,transparent)}}.bg-secondary{background-color:var(--color-secondary)}.bg-transparent{background-color:#0000}.bg-white{background-color:var(--color-white)}.bg-white\\/20{background-color:#fff3}@supports (color:color-mix(in lab,red,red)){.bg-white\\/20{background-color:color-mix(in oklab,var(--color-white) 20%,transparent)}}.bg-zinc-700{background-color:var(--color-zinc-700)}.bg-zinc-700\\/70{background-color:#3f3f46b3}@supports (color:color-mix(in lab,red,red)){.bg-zinc-700\\/70{background-color:color-mix(in oklab,var(--color-zinc-700) 70%,transparent)}}.bg-zinc-800{background-color:var(--color-zinc-800)}.bg-zinc-950{background-color:var(--color-zinc-950)}.bg-gradient-to-b{--tw-gradient-position:to bottom in oklab;background-image:linear-gradient(var(--tw-gradient-stops))}.bg-gradient-to-br{--tw-gradient-position:to bottom right in oklab;background-image:linear-gradient(var(--tw-gradient-stops))}.bg-gradient-to-r{--tw-gradient-position:to right in oklab;background-image:linear-gradient(var(--tw-gradient-stops))}.bg-gradient-to-t{--tw-gradient-position:to top in oklab;background-image:linear-gradient(var(--tw-gradient-stops))}.bg-\\[image\\:linear-gradient\\(var\\(--local-accent-soft\\)_1px\\,transparent_1px\\)\\,linear-gradient\\(90deg\\,var\\(--local-accent-soft\\)_1px\\,transparent_1px\\)\\]{background-image:linear-gradient(var(--local-accent-soft) 1px,transparent 1px),linear-gradient(90deg,var(--local-accent-soft) 1px,transparent 1px)}.bg-\\[image\\:linear-gradient\\(var\\(--local-border\\)_1px\\,transparent_1px\\)\\,linear-gradient\\(90deg\\,var\\(--local-border\\)_1px\\,transparent_1px\\)\\]{background-image:linear-gradient(var(--local-border) 1px,transparent 1px),linear-gradient(90deg,var(--local-border) 1px,transparent 1px)}.from-\\[var\\(--local-accent\\)\\]{--tw-gradient-from:var(--local-accent);--tw-gradient-stops:var(--tw-gradient-via-stops,var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position))}.from-\\[var\\(--local-bg\\)\\]{--tw-gradient-from:var(--local-bg);--tw-gradient-stops:var(--tw-gradient-via-stops,var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position))}.from-\\[var\\(--local-bg\\)\\]\\/20{--tw-gradient-from:var(--local-bg)}@supports (color:color-mix(in lab,red,red)){.from-\\[var\\(--local-bg\\)\\]\\/20{--tw-gradient-from:color-mix(in oklab, var(--local-bg) 20%, transparent)}}.from-\\[var\\(--local-bg\\)\\]\\/20{--tw-gradient-stops:var(--tw-gradient-via-stops,var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position))}.from-\\[var\\(--local-bg\\)\\]\\/40{--tw-gradient-from:var(--local-bg)}@supports (color:color-mix(in lab,red,red)){.from-\\[var\\(--local-bg\\)\\]\\/40{--tw-gradient-from:color-mix(in oklab, var(--local-bg) 40%, transparent)}}.from-\\[var\\(--local-bg\\)\\]\\/40{--tw-gradient-stops:var(--tw-gradient-via-stops,var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position))}.from-\\[var\\(--local-bg\\)\\]\\/60{--tw-gradient-from:var(--local-bg)}@supports (color:color-mix(in lab,red,red)){.from-\\[var\\(--local-bg\\)\\]\\/60{--tw-gradient-from:color-mix(in oklab, var(--local-bg) 60%, transparent)}}.from-\\[var\\(--local-bg\\)\\]\\/60{--tw-gradient-stops:var(--tw-gradient-via-stops,var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position))}.from-\\[var\\(--local-bg\\)\\]\\/80{--tw-gradient-from:var(--local-bg)}@supports (color:color-mix(in lab,red,red)){.from-\\[var\\(--local-bg\\)\\]\\/80{--tw-gradient-from:color-mix(in oklab, var(--local-bg) 80%, transparent)}}.from-\\[var\\(--local-bg\\)\\]\\/80{--tw-gradient-stops:var(--tw-gradient-via-stops,var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position))}.from-\\[var\\(--local-primary\\)\\]{--tw-gradient-from:var(--local-primary);--tw-gradient-stops:var(--tw-gradient-via-stops,var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position))}.from-\\[var\\(--local-primary\\)\\]\\/10{--tw-gradient-from:var(--local-primary)}@supports (color:color-mix(in lab,red,red)){.from-\\[var\\(--local-primary\\)\\]\\/10{--tw-gradient-from:color-mix(in oklab, var(--local-primary) 10%, transparent)}}.from-\\[var\\(--local-primary\\)\\]\\/10{--tw-gradient-stops:var(--tw-gradient-via-stops,var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position))}.from-transparent{--tw-gradient-from:transparent;--tw-gradient-stops:var(--tw-gradient-via-stops,var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position))}.via-\\[var\\(--local-accent\\)\\]{--tw-gradient-via:var(--local-accent);--tw-gradient-via-stops:var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-via) var(--tw-gradient-via-position), var(--tw-gradient-to) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-via-stops)}.via-\\[var\\(--local-bg\\)\\]\\/80{--tw-gradient-via:var(--local-bg)}@supports (color:color-mix(in lab,red,red)){.via-\\[var\\(--local-bg\\)\\]\\/80{--tw-gradient-via:color-mix(in oklab, var(--local-bg) 80%, transparent)}}.via-\\[var\\(--local-bg\\)\\]\\/80{--tw-gradient-via-stops:var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-via) var(--tw-gradient-via-position), var(--tw-gradient-to) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-via-stops)}.via-\\[var\\(--local-primary\\)\\]{--tw-gradient-via:var(--local-primary);--tw-gradient-via-stops:var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-via) var(--tw-gradient-via-position), var(--tw-gradient-to) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-via-stops)}.via-transparent{--tw-gradient-via:transparent;--tw-gradient-via-stops:var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-via) var(--tw-gradient-via-position), var(--tw-gradient-to) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-via-stops)}.to-\\[var\\(--local-accent\\)\\]{--tw-gradient-to:var(--local-accent);--tw-gradient-stops:var(--tw-gradient-via-stops,var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position))}.to-\\[var\\(--local-accent\\)\\]\\/5{--tw-gradient-to:var(--local-accent)}@supports (color:color-mix(in lab,red,red)){.to-\\[var\\(--local-accent\\)\\]\\/5{--tw-gradient-to:color-mix(in oklab, var(--local-accent) 5%, transparent)}}.to-\\[var\\(--local-accent\\)\\]\\/5{--tw-gradient-stops:var(--tw-gradient-via-stops,var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position))}.to-\\[var\\(--local-primary\\)\\]{--tw-gradient-to:var(--local-primary);--tw-gradient-stops:var(--tw-gradient-via-stops,var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position))}.to-transparent{--tw-gradient-to:transparent;--tw-gradient-stops:var(--tw-gradient-via-stops,var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position))}.bg-\\[size\\:40px_40px\\]{background-size:40px 40px}.bg-\\[size\\:120px_120px\\]{background-size:120px 120px}.bg-clip-padding{background-clip:padding-box}.bg-clip-text{-webkit-background-clip:text;background-clip:text}.bg-repeat{background-repeat:repeat}.mask-no-clip{-webkit-mask-clip:no-clip;mask-clip:no-clip}.mask-repeat{-webkit-mask-repeat:repeat;mask-repeat:repeat}.fill-foreground{fill:var(--color-foreground)}.object-cover{object-fit:cover}.p-1{padding:calc(var(--spacing) * 1)}.p-2{padding:calc(var(--spacing) * 2)}.p-2\\.5{padding:calc(var(--spacing) * 2.5)}.p-4{padding:calc(var(--spacing) * 4)}.p-6{padding:calc(var(--spacing) * 6)}.p-8{padding:calc(var(--spacing) * 8)}.p-\\[3px\\]{padding:3px}.p-px{padding:1px}.px-1{padding-inline:calc(var(--spacing) * 1)}.px-1\\.5{padding-inline:calc(var(--spacing) * 1.5)}.px-2{padding-inline:calc(var(--spacing) * 2)}.px-2\\.5{padding-inline:calc(var(--spacing) * 2.5)}.px-3{padding-inline:calc(var(--spacing) * 3)}.px-4{padding-inline:calc(var(--spacing) * 4)}.px-6{padding-inline:calc(var(--spacing) * 6)}.px-8{padding-inline:calc(var(--spacing) * 8)}.px-10{padding-inline:calc(var(--spacing) * 10)}.px-12{padding-inline:calc(var(--spacing) * 12)}.py-0{padding-block:calc(var(--spacing) * 0)}.py-0\\.5{padding-block:calc(var(--spacing) * .5)}.py-1{padding-block:calc(var(--spacing) * 1)}.py-1\\.5{padding-block:calc(var(--spacing) * 1.5)}.py-2{padding-block:calc(var(--spacing) * 2)}.py-2\\.5{padding-block:calc(var(--spacing) * 2.5)}.py-4{padding-block:calc(var(--spacing) * 4)}.py-6{padding-block:calc(var(--spacing) * 6)}.py-12{padding-block:calc(var(--spacing) * 12)}.py-24{padding-block:calc(var(--spacing) * 24)}.py-32{padding-block:calc(var(--spacing) * 32)}.pt-0{padding-top:calc(var(--spacing) * 0)}.pt-4{padding-top:calc(var(--spacing) * 4)}.pt-8{padding-top:calc(var(--spacing) * 8)}.pt-12{padding-top:calc(var(--spacing) * 12)}.pr-2{padding-right:calc(var(--spacing) * 2)}.pr-8{padding-right:calc(var(--spacing) * 8)}.pb-2{padding-bottom:calc(var(--spacing) * 2)}.pb-2\\.5{padding-bottom:calc(var(--spacing) * 2.5)}.pb-8{padding-bottom:calc(var(--spacing) * 8)}.pl-1{padding-left:calc(var(--spacing) * 1)}.pl-1\\.5{padding-left:calc(var(--spacing) * 1.5)}.pl-2{padding-left:calc(var(--spacing) * 2)}.pl-2\\.5{padding-left:calc(var(--spacing) * 2.5)}.pl-6{padding-left:calc(var(--spacing) * 6)}.pl-8{padding-left:calc(var(--spacing) * 8)}.pl-20{padding-left:calc(var(--spacing) * 20)}.text-center{text-align:center}.text-left{text-align:left}.align-middle{vertical-align:middle}.font-display{font-family:var(--font-display)}.font-mono{font-family:var(--font-mono)}.font-primary{font-family:var(--font-primary)}.text-2xl{font-size:var(--text-2xl);line-height:var(--tw-leading,var(--text-2xl--line-height))}.text-3xl{font-size:var(--text-3xl);line-height:var(--tw-leading,var(--text-3xl--line-height))}.text-4xl{font-size:var(--text-4xl);line-height:var(--tw-leading,var(--text-4xl--line-height))}.text-base{font-size:var(--text-base);line-height:var(--tw-leading,var(--text-base--line-height))}.text-lg{font-size:var(--text-lg);line-height:var(--tw-leading,var(--text-lg--line-height))}.text-sm{font-size:var(--text-sm);line-height:var(--tw-leading,var(--text-sm--line-height))}.text-xl{font-size:var(--text-xl);line-height:var(--tw-leading,var(--text-xl--line-height))}.text-xs{font-size:var(--text-xs);line-height:var(--tw-leading,var(--text-xs--line-height))}.text-\\[0\\.8rem\\]{font-size:.8rem}.text-\\[9px\\]{font-size:9px}.text-\\[clamp\\(2\\.5rem\\,8vw\\,6rem\\)\\]{font-size:clamp(2.5rem,8vw,6rem)}.text-\\[clamp\\(2rem\\,5vw\\,3rem\\)\\]{font-size:clamp(2rem,5vw,3rem)}.leading-none{--tw-leading:1;line-height:1}.leading-relaxed{--tw-leading:var(--leading-relaxed);line-height:var(--leading-relaxed)}.leading-snug{--tw-leading:var(--leading-snug);line-height:var(--leading-snug)}.leading-tight{--tw-leading:var(--leading-tight);line-height:var(--leading-tight)}.font-black{--tw-font-weight:var(--font-weight-black);font-weight:var(--font-weight-black)}.font-bold{--tw-font-weight:var(--font-weight-bold);font-weight:var(--font-weight-bold)}.font-medium{--tw-font-weight:var(--font-weight-medium);font-weight:var(--font-weight-medium)}.font-normal{--tw-font-weight:var(--font-weight-normal);font-weight:var(--font-weight-normal)}.font-semibold{--tw-font-weight:var(--font-weight-semibold);font-weight:var(--font-weight-semibold)}.tracking-\\[0\\.1em\\]{--tw-tracking:.1em;letter-spacing:.1em}.tracking-\\[0\\.2em\\]{--tw-tracking:.2em;letter-spacing:.2em}.tracking-tight{--tw-tracking:var(--tracking-tight);letter-spacing:var(--tracking-tight)}.tracking-widest{--tw-tracking:var(--tracking-widest);letter-spacing:var(--tracking-widest)}.text-wrap{text-wrap:wrap}.wrap-break-word{overflow-wrap:break-word}.text-clip{text-overflow:clip}.text-ellipsis{text-overflow:ellipsis}.whitespace-nowrap{white-space:nowrap}.whitespace-pre-line{white-space:pre-line}.text-\\[var\\(--background\\)\\]{color:var(--background)}.text-\\[var\\(--foreground\\)\\]{color:var(--foreground)}.text-\\[var\\(--local-accent\\)\\]{color:var(--local-accent)}.text-\\[var\\(--local-bg\\)\\]{color:var(--local-bg)}.text-\\[var\\(--local-primary\\)\\]{color:var(--local-primary)}.text-\\[var\\(--local-primary-foreground\\)\\]{color:var(--local-primary-foreground)}.text-\\[var\\(--local-text\\)\\]{color:var(--local-text)}.text-\\[var\\(--local-text-muted\\)\\]{color:var(--local-text-muted)}.text-\\[var\\(--primary\\)\\]{color:var(--primary)}.text-amber-200{color:var(--color-amber-200)}.text-amber-500{color:var(--color-amber-500)}.text-amber-500\\/70{color:#f99c00b3}@supports (color:color-mix(in lab,red,red)){.text-amber-500\\/70{color:color-mix(in oklab,var(--color-amber-500) 70%,transparent)}}.text-background{color:var(--color-background)}.text-card-foreground{color:var(--color-card-foreground)}.text-current{color:currentColor}.text-foreground,.text-foreground\\/60{color:var(--color-foreground)}@supports (color:color-mix(in lab,red,red)){.text-foreground\\/60{color:color-mix(in oklab,var(--color-foreground) 60%,transparent)}}.text-green-500{color:var(--color-green-500)}.text-green-600{color:var(--color-green-600)}.text-muted-foreground{color:var(--color-muted-foreground)}.text-primary{color:var(--color-primary)}.text-primary-foreground{color:var(--color-primary-foreground)}.text-red-400{color:var(--color-red-400)}.text-secondary-foreground{color:var(--color-secondary-foreground)}.text-transparent{color:#0000}.text-white{color:var(--color-white)}.text-zinc-100{color:var(--color-zinc-100)}.text-zinc-200{color:var(--color-zinc-200)}.text-zinc-400{color:var(--color-zinc-400)}.text-zinc-500{color:var(--color-zinc-500)}.capitalize{text-transform:capitalize}.lowercase{text-transform:lowercase}.normal-case{text-transform:none}.uppercase{text-transform:uppercase}.italic{font-style:italic}.not-italic{font-style:normal}.diagonal-fractions{--tw-numeric-fraction:diagonal-fractions;font-variant-numeric:var(--tw-ordinal,) var(--tw-slashed-zero,) var(--tw-numeric-figure,) var(--tw-numeric-spacing,) var(--tw-numeric-fraction,)}.lining-nums{--tw-numeric-figure:lining-nums;font-variant-numeric:var(--tw-ordinal,) var(--tw-slashed-zero,) var(--tw-numeric-figure,) var(--tw-numeric-spacing,) var(--tw-numeric-fraction,)}.oldstyle-nums{--tw-numeric-figure:oldstyle-nums;font-variant-numeric:var(--tw-ordinal,) var(--tw-slashed-zero,) var(--tw-numeric-figure,) var(--tw-numeric-spacing,) var(--tw-numeric-fraction,)}.ordinal{--tw-ordinal:ordinal;font-variant-numeric:var(--tw-ordinal,) var(--tw-slashed-zero,) var(--tw-numeric-figure,) var(--tw-numeric-spacing,) var(--tw-numeric-fraction,)}.proportional-nums{--tw-numeric-spacing:proportional-nums;font-variant-numeric:var(--tw-ordinal,) var(--tw-slashed-zero,) var(--tw-numeric-figure,) var(--tw-numeric-spacing,) var(--tw-numeric-fraction,)}.slashed-zero{--tw-slashed-zero:slashed-zero;font-variant-numeric:var(--tw-ordinal,) var(--tw-slashed-zero,) var(--tw-numeric-figure,) var(--tw-numeric-spacing,) var(--tw-numeric-fraction,)}.stacked-fractions{--tw-numeric-fraction:stacked-fractions;font-variant-numeric:var(--tw-ordinal,) var(--tw-slashed-zero,) var(--tw-numeric-figure,) var(--tw-numeric-spacing,) var(--tw-numeric-fraction,)}.tabular-nums{--tw-numeric-spacing:tabular-nums;font-variant-numeric:var(--tw-ordinal,) var(--tw-slashed-zero,) var(--tw-numeric-figure,) var(--tw-numeric-spacing,) var(--tw-numeric-fraction,)}.normal-nums{font-variant-numeric:normal}.line-through{text-decoration-line:line-through}.no-underline{text-decoration-line:none}.overline{text-decoration-line:overline}.underline{text-decoration-line:underline}.underline-offset-4{text-underline-offset:4px}.antialiased{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}.subpixel-antialiased{-webkit-font-smoothing:auto;-moz-osx-font-smoothing:auto}.opacity-0{opacity:0}.opacity-20{opacity:.2}.opacity-30{opacity:.3}.opacity-50{opacity:.5}.bg-blend-color{background-blend-mode:color}.shadow{--tw-shadow:0 1px 3px 0 var(--tw-shadow-color,#0000001a), 0 1px 2px -1px var(--tw-shadow-color,#0000001a);box-shadow:var(--tw-inset-shadow),var(--tw-inset-ring-shadow),var(--tw-ring-offset-shadow),var(--tw-ring-shadow),var(--tw-shadow)}.shadow-2xl{--tw-shadow:0 25px 50px -12px var(--tw-shadow-color,#00000040);box-shadow:var(--tw-inset-shadow),var(--tw-inset-ring-shadow),var(--tw-ring-offset-shadow),var(--tw-ring-shadow),var(--tw-shadow)}.shadow-lg{--tw-shadow:0 10px 15px -3px var(--tw-shadow-color,#0000001a), 0 4px 6px -4px var(--tw-shadow-color,#0000001a);box-shadow:var(--tw-inset-shadow),var(--tw-inset-ring-shadow),var(--tw-ring-offset-shadow),var(--tw-ring-shadow),var(--tw-shadow)}.shadow-md{--tw-shadow:0 4px 6px -1px var(--tw-shadow-color,#0000001a), 0 2px 4px -2px var(--tw-shadow-color,#0000001a);box-shadow:var(--tw-inset-shadow),var(--tw-inset-ring-shadow),var(--tw-ring-offset-shadow),var(--tw-ring-shadow),var(--tw-shadow)}.shadow-sm{--tw-shadow:0 1px 3px 0 var(--tw-shadow-color,#0000001a), 0 1px 2px -1px var(--tw-shadow-color,#0000001a);box-shadow:var(--tw-inset-shadow),var(--tw-inset-ring-shadow),var(--tw-ring-offset-shadow),var(--tw-ring-shadow),var(--tw-shadow)}.ring{--tw-ring-shadow:var(--tw-ring-inset,) 0 0 0 calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color,currentcolor);box-shadow:var(--tw-inset-shadow),var(--tw-inset-ring-shadow),var(--tw-ring-offset-shadow),var(--tw-ring-shadow),var(--tw-shadow)}.ring-0{--tw-ring-shadow:var(--tw-ring-inset,) 0 0 0 calc(0px + var(--tw-ring-offset-width)) var(--tw-ring-color,currentcolor);box-shadow:var(--tw-inset-shadow),var(--tw-inset-ring-shadow),var(--tw-ring-offset-shadow),var(--tw-ring-shadow),var(--tw-shadow)}.ring-1{--tw-ring-shadow:var(--tw-ring-inset,) 0 0 0 calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color,currentcolor);box-shadow:var(--tw-inset-shadow),var(--tw-inset-ring-shadow),var(--tw-ring-offset-shadow),var(--tw-ring-shadow),var(--tw-shadow)}.ring-2{--tw-ring-shadow:var(--tw-ring-inset,) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color,currentcolor);box-shadow:var(--tw-inset-shadow),var(--tw-inset-ring-shadow),var(--tw-ring-offset-shadow),var(--tw-ring-shadow),var(--tw-shadow)}.inset-ring{--tw-inset-ring-shadow:inset 0 0 0 1px var(--tw-inset-ring-color,currentcolor);box-shadow:var(--tw-inset-shadow),var(--tw-inset-ring-shadow),var(--tw-ring-offset-shadow),var(--tw-ring-shadow),var(--tw-shadow)}.ring-background{--tw-ring-color:var(--color-background)}.ring-foreground,.ring-foreground\\/10{--tw-ring-color:var(--color-foreground)}@supports (color:color-mix(in lab,red,red)){.ring-foreground\\/10{--tw-ring-color:color-mix(in oklab, var(--color-foreground) 10%, transparent)}}.ring-offset-background{--tw-ring-offset-color:var(--color-background)}.outline-hidden{--tw-outline-style:none;outline-style:none}@media(forced-colors:active){.outline-hidden{outline-offset:2px;outline:2px solid #0000}}.outline{outline-style:var(--tw-outline-style);outline-width:1px}.blur{--tw-blur:blur(8px);filter:var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,)}.blur-xl{--tw-blur:blur(var(--blur-xl));filter:var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,)}.drop-shadow{--tw-drop-shadow-size:drop-shadow(0 1px 2px var(--tw-drop-shadow-color,#0000001a)) drop-shadow(0 1px 1px var(--tw-drop-shadow-color,#0000000f));--tw-drop-shadow:drop-shadow(0 1px 2px #0000001a) drop-shadow(0 1px 1px #0000000f);filter:var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,)}.grayscale{--tw-grayscale:grayscale(100%);filter:var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,)}.invert{--tw-invert:invert(100%);filter:var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,)}.sepia{--tw-sepia:sepia(100%);filter:var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,)}.filter{filter:var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,)}.backdrop-blur{--tw-backdrop-blur:blur(8px);-webkit-backdrop-filter:var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);backdrop-filter:var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,)}.backdrop-blur-md{--tw-backdrop-blur:blur(var(--blur-md));-webkit-backdrop-filter:var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);backdrop-filter:var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,)}.backdrop-blur-sm{--tw-backdrop-blur:blur(var(--blur-sm));-webkit-backdrop-filter:var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);backdrop-filter:var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,)}.backdrop-grayscale{--tw-backdrop-grayscale:grayscale(100%);-webkit-backdrop-filter:var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);backdrop-filter:var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,)}.backdrop-invert{--tw-backdrop-invert:invert(100%);-webkit-backdrop-filter:var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);backdrop-filter:var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,)}.backdrop-sepia{--tw-backdrop-sepia:sepia(100%);-webkit-backdrop-filter:var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);backdrop-filter:var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,)}.backdrop-filter{-webkit-backdrop-filter:var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);backdrop-filter:var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,)}.transition{transition-property:color,background-color,border-color,outline-color,text-decoration-color,fill,stroke,--tw-gradient-from,--tw-gradient-via,--tw-gradient-to,opacity,box-shadow,transform,translate,scale,rotate,filter,-webkit-backdrop-filter,backdrop-filter,display,content-visibility,overlay,pointer-events;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration))}.transition-\\[color\\,box-shadow\\]{transition-property:color,box-shadow;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration))}.transition-all{transition-property:all;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration))}.transition-colors{transition-property:color,background-color,border-color,outline-color,text-decoration-color,fill,stroke,--tw-gradient-from,--tw-gradient-via,--tw-gradient-to;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration))}.transition-opacity{transition-property:opacity;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration))}.transition-transform{transition-property:transform,translate,scale,rotate;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration))}.transition-none{transition-property:none}.duration-100{--tw-duration:.1s;transition-duration:.1s}.duration-200{--tw-duration:.2s;transition-duration:.2s}.duration-300{--tw-duration:.3s;transition-duration:.3s}.duration-700{--tw-duration:.7s;transition-duration:.7s}.ease-\\[cubic-bezier\\(0\\.22\\,1\\,0\\.36\\,1\\)\\]{--tw-ease:cubic-bezier(.22,1,.36,1);transition-timing-function:cubic-bezier(.22,1,.36,1)}.ease-in{--tw-ease:var(--ease-in);transition-timing-function:var(--ease-in)}.ease-in-out{--tw-ease:var(--ease-in-out);transition-timing-function:var(--ease-in-out)}.ease-out{--tw-ease:var(--ease-out);transition-timing-function:var(--ease-out)}.outline-none{--tw-outline-style:none;outline-style:none}.select-none{-webkit-user-select:none;user-select:none}.\\[tenant-alpha\\:getFilePages\\]{tenant-alpha:getFilePages}:where(.divide-x-reverse>:not(:last-child)){--tw-divide-x-reverse:1}.ring-inset{--tw-ring-inset:inset}.not-last\\:border-b:not(:last-child){border-bottom-style:var(--tw-border-style);border-bottom-width:1px}@media(hover:hover){.group-hover\\:scale-105:is(:where(.group):hover *){--tw-scale-x:105%;--tw-scale-y:105%;--tw-scale-z:105%;scale:var(--tw-scale-x) var(--tw-scale-y)}.group-hover\\:border-dashed:is(:where(.group):hover *){--tw-border-style:dashed;border-style:dashed}.group-hover\\:border-blue-400\\/50:is(:where(.group):hover *){border-color:#54a2ff80}@supports (color:color-mix(in lab,red,red)){.group-hover\\:border-blue-400\\/50:is(:where(.group):hover *){border-color:color-mix(in oklab,var(--color-blue-400) 50%,transparent)}}.group-hover\\:text-\\[var\\(--local-accent\\)\\]:is(:where(.group):hover *){color:var(--local-accent)}.group-hover\\:text-\\[var\\(--local-primary\\)\\]:is(:where(.group):hover *){color:var(--local-primary)}.group-hover\\:opacity-100:is(:where(.group):hover *){opacity:1}.group-hover\\:shadow-lg:is(:where(.group):hover *){--tw-shadow:0 10px 15px -3px var(--tw-shadow-color,#0000001a), 0 4px 6px -4px var(--tw-shadow-color,#0000001a);box-shadow:var(--tw-inset-shadow),var(--tw-inset-ring-shadow),var(--tw-ring-offset-shadow),var(--tw-ring-shadow),var(--tw-shadow)}}.group-has-disabled\\/field\\:opacity-50:is(:where(.group\\/field):has(:disabled) *){opacity:.5}.group-has-data-\\[size\\=lg\\]\\/avatar-group\\:size-10:is(:where(.group\\/avatar-group):has([data-size=lg]) *){width:calc(var(--spacing) * 10);height:calc(var(--spacing) * 10)}.group-has-data-\\[size\\=sm\\]\\/avatar-group\\:size-6:is(:where(.group\\/avatar-group):has([data-size=sm]) *){width:calc(var(--spacing) * 6);height:calc(var(--spacing) * 6)}.group-aria-expanded\\/accordion-trigger\\:hidden:is(:where(.group\\/accordion-trigger)[aria-expanded=true] *){display:none}.group-aria-expanded\\/accordion-trigger\\:inline:is(:where(.group\\/accordion-trigger)[aria-expanded=true] *){display:inline}.group-data-horizontal\\/tabs\\:h-8:is(:where(.group\\/tabs)[data-horizontal] *){height:calc(var(--spacing) * 8)}.group-data-open\\/navigation-menu-trigger\\:rotate-180:is(:where(.group\\/navigation-menu-trigger)[data-open] *),.group-data-popup-open\\/navigation-menu-trigger\\:rotate-180:is(:where(.group\\/navigation-menu-trigger)[data-popup-open] *){rotate:180deg}.group-data-vertical\\/tabs\\:h-fit:is(:where(.group\\/tabs)[data-vertical] *){height:fit-content}.group-data-vertical\\/tabs\\:w-full:is(:where(.group\\/tabs)[data-vertical] *){width:100%}.group-data-vertical\\/tabs\\:flex-col:is(:where(.group\\/tabs)[data-vertical] *){flex-direction:column}.group-data-vertical\\/tabs\\:justify-start:is(:where(.group\\/tabs)[data-vertical] *){justify-content:flex-start}.group-data-\\[disabled\\=true\\]\\:pointer-events-none:is(:where(.group)[data-disabled=true] *){pointer-events:none}.group-data-\\[disabled\\=true\\]\\:opacity-50:is(:where(.group)[data-disabled=true] *){opacity:.5}.group-data-\\[size\\=default\\]\\/avatar\\:size-2\\.5:is(:where(.group\\/avatar)[data-size=default] *){width:calc(var(--spacing) * 2.5);height:calc(var(--spacing) * 2.5)}.group-data-\\[size\\=default\\]\\/switch\\:size-4:is(:where(.group\\/switch)[data-size=default] *){width:calc(var(--spacing) * 4);height:calc(var(--spacing) * 4)}.group-data-\\[size\\=lg\\]\\/avatar\\:size-3:is(:where(.group\\/avatar)[data-size=lg] *){width:calc(var(--spacing) * 3);height:calc(var(--spacing) * 3)}.group-data-\\[size\\=sm\\]\\/avatar\\:size-2:is(:where(.group\\/avatar)[data-size=sm] *){width:calc(var(--spacing) * 2);height:calc(var(--spacing) * 2)}.group-data-\\[size\\=sm\\]\\/avatar\\:text-xs:is(:where(.group\\/avatar)[data-size=sm] *){font-size:var(--text-xs);line-height:var(--tw-leading,var(--text-xs--line-height))}.group-data-\\[size\\=sm\\]\\/card\\:p-3:is(:where(.group\\/card)[data-size=sm] *){padding:calc(var(--spacing) * 3)}.group-data-\\[size\\=sm\\]\\/card\\:px-3:is(:where(.group\\/card)[data-size=sm] *){padding-inline:calc(var(--spacing) * 3)}.group-data-\\[size\\=sm\\]\\/card\\:text-sm:is(:where(.group\\/card)[data-size=sm] *){font-size:var(--text-sm);line-height:var(--tw-leading,var(--text-sm--line-height))}.group-data-\\[size\\=sm\\]\\/switch\\:size-3:is(:where(.group\\/switch)[data-size=sm] *){width:calc(var(--spacing) * 3);height:calc(var(--spacing) * 3)}.group-data-\\[spacing\\=0\\]\\/toggle-group\\:rounded-none:is(:where(.group\\/toggle-group)[data-spacing="0"] *){border-radius:0}.group-data-\\[spacing\\=0\\]\\/toggle-group\\:px-2:is(:where(.group\\/toggle-group)[data-spacing="0"] *){padding-inline:calc(var(--spacing) * 2)}.group-data-\\[variant\\=line\\]\\/tabs-list\\:bg-transparent:is(:where(.group\\/tabs-list)[data-variant=line] *){background-color:#0000}.group-data-\\[viewport\\=false\\]\\/navigation-menu\\:top-full:is(:where(.group\\/navigation-menu)[data-viewport=false] *){top:100%}.group-data-\\[viewport\\=false\\]\\/navigation-menu\\:mt-1\\.5:is(:where(.group\\/navigation-menu)[data-viewport=false] *){margin-top:calc(var(--spacing) * 1.5)}.group-data-\\[viewport\\=false\\]\\/navigation-menu\\:overflow-hidden:is(:where(.group\\/navigation-menu)[data-viewport=false] *){overflow:hidden}.group-data-\\[viewport\\=false\\]\\/navigation-menu\\:rounded-lg:is(:where(.group\\/navigation-menu)[data-viewport=false] *){border-radius:var(--radius-lg)}.group-data-\\[viewport\\=false\\]\\/navigation-menu\\:shadow:is(:where(.group\\/navigation-menu)[data-viewport=false] *){--tw-shadow:0 1px 3px 0 var(--tw-shadow-color,#0000001a), 0 1px 2px -1px var(--tw-shadow-color,#0000001a);box-shadow:var(--tw-inset-shadow),var(--tw-inset-ring-shadow),var(--tw-ring-offset-shadow),var(--tw-ring-shadow),var(--tw-shadow)}.group-data-\\[viewport\\=false\\]\\/navigation-menu\\:ring-1:is(:where(.group\\/navigation-menu)[data-viewport=false] *){--tw-ring-shadow:var(--tw-ring-inset,) 0 0 0 calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color,currentcolor);box-shadow:var(--tw-inset-shadow),var(--tw-inset-ring-shadow),var(--tw-ring-offset-shadow),var(--tw-ring-shadow),var(--tw-shadow)}.group-data-\\[viewport\\=false\\]\\/navigation-menu\\:ring-foreground\\/10:is(:where(.group\\/navigation-menu)[data-viewport=false] *){--tw-ring-color:var(--color-foreground)}@supports (color:color-mix(in lab,red,red)){.group-data-\\[viewport\\=false\\]\\/navigation-menu\\:ring-foreground\\/10:is(:where(.group\\/navigation-menu)[data-viewport=false] *){--tw-ring-color:color-mix(in oklab, var(--color-foreground) 10%, transparent)}}.group-data-\\[viewport\\=false\\]\\/navigation-menu\\:duration-300:is(:where(.group\\/navigation-menu)[data-viewport=false] *){--tw-duration:.3s;transition-duration:.3s}.peer-disabled\\:cursor-not-allowed:is(:where(.peer):disabled~*){cursor:not-allowed}.peer-disabled\\:opacity-50:is(:where(.peer):disabled~*){opacity:.5}.file\\:inline-flex::file-selector-button{display:inline-flex}.file\\:h-6::file-selector-button{height:calc(var(--spacing) * 6)}.file\\:border-0::file-selector-button{border-style:var(--tw-border-style);border-width:0}.file\\:bg-transparent::file-selector-button{background-color:#0000}.file\\:text-sm::file-selector-button{font-size:var(--text-sm);line-height:var(--tw-leading,var(--text-sm--line-height))}.file\\:font-medium::file-selector-button{--tw-font-weight:var(--font-weight-medium);font-weight:var(--font-weight-medium)}.file\\:text-foreground::file-selector-button{color:var(--color-foreground)}.placeholder\\:text-muted-foreground::placeholder{color:var(--color-muted-foreground)}.placeholder\\:text-zinc-500::placeholder{color:var(--color-zinc-500)}.after\\:absolute:after{content:var(--tw-content);position:absolute}.after\\:inset-0:after{content:var(--tw-content);inset:calc(var(--spacing) * 0)}.after\\:-inset-x-3:after{content:var(--tw-content);inset-inline:calc(var(--spacing) * -3)}.after\\:-inset-y-2:after{content:var(--tw-content);inset-block:calc(var(--spacing) * -2)}.after\\:rounded-full:after{content:var(--tw-content);border-radius:3.40282e38px}.after\\:border:after{content:var(--tw-content);border-style:var(--tw-border-style);border-width:1px}.after\\:border-border:after{content:var(--tw-content);border-color:var(--color-border)}.after\\:bg-foreground:after{content:var(--tw-content);background-color:var(--color-foreground)}.after\\:opacity-0:after{content:var(--tw-content);opacity:0}.after\\:mix-blend-darken:after{content:var(--tw-content);mix-blend-mode:darken}.after\\:transition-opacity:after{content:var(--tw-content);transition-property:opacity;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration))}.group-data-horizontal\\/tabs\\:after\\:inset-x-0:is(:where(.group\\/tabs)[data-horizontal] *):after{content:var(--tw-content);inset-inline:calc(var(--spacing) * 0)}.group-data-horizontal\\/tabs\\:after\\:bottom-\\[-5px\\]:is(:where(.group\\/tabs)[data-horizontal] *):after{content:var(--tw-content);bottom:-5px}.group-data-horizontal\\/tabs\\:after\\:h-0\\.5:is(:where(.group\\/tabs)[data-horizontal] *):after{content:var(--tw-content);height:calc(var(--spacing) * .5)}.group-data-vertical\\/tabs\\:after\\:inset-y-0:is(:where(.group\\/tabs)[data-vertical] *):after{content:var(--tw-content);inset-block:calc(var(--spacing) * 0)}.group-data-vertical\\/tabs\\:after\\:-right-1:is(:where(.group\\/tabs)[data-vertical] *):after{content:var(--tw-content);right:calc(var(--spacing) * -1)}.group-data-vertical\\/tabs\\:after\\:w-0\\.5:is(:where(.group\\/tabs)[data-vertical] *):after{content:var(--tw-content);width:calc(var(--spacing) * .5)}@media(hover:hover){.hover\\:border-\\[var\\(--local-accent\\)\\]:hover{border-color:var(--local-accent)}.hover\\:border-\\[var\\(--local-primary\\)\\]:hover{border-color:var(--local-primary)}.hover\\:bg-\\[var\\(--local-bg\\)\\]:hover{background-color:var(--local-bg)}.hover\\:bg-\\[var\\(--local-primary\\)\\]:hover{background-color:var(--local-primary)}.hover\\:bg-\\[var\\(--local-surface\\)\\]:hover{background-color:var(--local-surface)}.hover\\:bg-blue-500:hover{background-color:var(--color-blue-500)}.hover\\:bg-muted:hover,.hover\\:bg-muted\\/50:hover{background-color:var(--color-muted)}@supports (color:color-mix(in lab,red,red)){.hover\\:bg-muted\\/50:hover{background-color:color-mix(in oklab,var(--color-muted) 50%,transparent)}}.hover\\:bg-secondary\\/80:hover{background-color:var(--color-secondary)}@supports (color:color-mix(in lab,red,red)){.hover\\:bg-secondary\\/80:hover{background-color:color-mix(in oklab,var(--color-secondary) 80%,transparent)}}.hover\\:bg-transparent:hover{background-color:#0000}.hover\\:bg-white\\/30:hover{background-color:#ffffff4d}@supports (color:color-mix(in lab,red,red)){.hover\\:bg-white\\/30:hover{background-color:color-mix(in oklab,var(--color-white) 30%,transparent)}}.hover\\:bg-zinc-600:hover{background-color:var(--color-zinc-600)}.hover\\:bg-zinc-800:hover{background-color:var(--color-zinc-800)}.hover\\:text-\\[var\\(--local-primary\\)\\]:hover{color:var(--local-primary)}.hover\\:text-\\[var\\(--local-primary-foreground\\)\\]:hover{color:var(--local-primary-foreground)}.hover\\:text-\\[var\\(--primary-foreground\\)\\]:hover{color:var(--primary-foreground)}.hover\\:text-foreground:hover{color:var(--color-foreground)}.hover\\:text-muted-foreground:hover{color:var(--color-muted-foreground)}.hover\\:text-zinc-200:hover{color:var(--color-zinc-200)}.hover\\:underline:hover{text-decoration-line:underline}.hover\\:opacity-90:hover{opacity:.9}}.focus\\:z-10:focus{z-index:10}.focus\\:bg-accent:focus{background-color:var(--color-accent)}.focus\\:bg-muted:focus{background-color:var(--color-muted)}.focus\\:ring-1:focus{--tw-ring-shadow:var(--tw-ring-inset,) 0 0 0 calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color,currentcolor);box-shadow:var(--tw-inset-shadow),var(--tw-inset-ring-shadow),var(--tw-ring-offset-shadow),var(--tw-ring-shadow),var(--tw-shadow)}.focus\\:ring-primary:focus{--tw-ring-color:var(--color-primary)}.focus\\:outline-none:focus{--tw-outline-style:none;outline-style:none}.focus-visible\\:z-10:focus-visible{z-index:10}.focus-visible\\:ring-2:focus-visible{--tw-ring-shadow:var(--tw-ring-inset,) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color,currentcolor);box-shadow:var(--tw-inset-shadow),var(--tw-inset-ring-shadow),var(--tw-ring-offset-shadow),var(--tw-ring-shadow),var(--tw-shadow)}.focus-visible\\:ring-3:focus-visible,.focus-visible\\:ring-\\[3px\\]:focus-visible{--tw-ring-shadow:var(--tw-ring-inset,) 0 0 0 calc(3px + var(--tw-ring-offset-width)) var(--tw-ring-color,currentcolor);box-shadow:var(--tw-inset-shadow),var(--tw-inset-ring-shadow),var(--tw-ring-offset-shadow),var(--tw-ring-shadow),var(--tw-shadow)}.focus-visible\\:ring-offset-2:focus-visible{--tw-ring-offset-width:2px;--tw-ring-offset-shadow:var(--tw-ring-inset,) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color)}.focus-visible\\:outline-1:focus-visible{outline-style:var(--tw-outline-style);outline-width:1px}.focus-visible\\:outline-none:focus-visible{--tw-outline-style:none;outline-style:none}.active\\:not-aria-\\[haspopup\\]\\:translate-y-px:active:not([aria-haspopup]){--tw-translate-y:1px;translate:var(--tw-translate-x) var(--tw-translate-y)}.disabled\\:pointer-events-none:disabled{pointer-events:none}.disabled\\:cursor-not-allowed:disabled{cursor:not-allowed}.disabled\\:opacity-30:disabled{opacity:.3}.disabled\\:opacity-50:disabled{opacity:.5}.disabled\\:opacity-60:disabled{opacity:.6}:where([data-slot=button-group]) .in-data-\\[slot\\=button-group\\]\\:rounded-lg{border-radius:var(--radius-lg)}:where([data-slot=navigation-menu-content]) .in-data-\\[slot\\=navigation-menu-content\\]\\:rounded-md{border-radius:var(--radius-md)}.has-aria-expanded\\:bg-muted\\/50:has([aria-expanded=true]){background-color:var(--color-muted)}@supports (color:color-mix(in lab,red,red)){.has-aria-expanded\\:bg-muted\\/50:has([aria-expanded=true]){background-color:color-mix(in oklab,var(--color-muted) 50%,transparent)}}.has-data-\\[icon\\=inline-end\\]\\:pr-1:has([data-icon=inline-end]){padding-right:calc(var(--spacing) * 1)}.has-data-\\[icon\\=inline-end\\]\\:pr-1\\.5:has([data-icon=inline-end]){padding-right:calc(var(--spacing) * 1.5)}.has-data-\\[icon\\=inline-end\\]\\:pr-2:has([data-icon=inline-end]){padding-right:calc(var(--spacing) * 2)}.group-data-\\[spacing\\=0\\]\\/toggle-group\\:has-data-\\[icon\\=inline-end\\]\\:pr-1\\.5:is(:where(.group\\/toggle-group)[data-spacing="0"] *):has([data-icon=inline-end]){padding-right:calc(var(--spacing) * 1.5)}.has-data-\\[icon\\=inline-start\\]\\:pl-1:has([data-icon=inline-start]){padding-left:calc(var(--spacing) * 1)}.has-data-\\[icon\\=inline-start\\]\\:pl-1\\.5:has([data-icon=inline-start]){padding-left:calc(var(--spacing) * 1.5)}.has-data-\\[icon\\=inline-start\\]\\:pl-2:has([data-icon=inline-start]){padding-left:calc(var(--spacing) * 2)}.group-data-\\[spacing\\=0\\]\\/toggle-group\\:has-data-\\[icon\\=inline-start\\]\\:pl-1\\.5:is(:where(.group\\/toggle-group)[data-spacing="0"] *):has([data-icon=inline-start]){padding-left:calc(var(--spacing) * 1.5)}.has-data-\\[slot\\=card-action\\]\\:grid-cols-\\[1fr_auto\\]:has([data-slot=card-action]){grid-template-columns:1fr auto}.has-data-\\[slot\\=card-description\\]\\:grid-rows-\\[auto_auto\\]:has([data-slot=card-description]){grid-template-rows:auto auto}.has-data-\\[slot\\=card-footer\\]\\:pb-0:has([data-slot=card-footer]){padding-bottom:calc(var(--spacing) * 0)}.has-data-\\[slot\\=kbd\\]\\:pr-1\\.5:has([data-slot=kbd]){padding-right:calc(var(--spacing) * 1.5)}.has-\\[\\>img\\:first-child\\]\\:pt-0:has(>img:first-child){padding-top:calc(var(--spacing) * 0)}.aria-expanded\\:bg-muted[aria-expanded=true]{background-color:var(--color-muted)}.aria-expanded\\:bg-secondary[aria-expanded=true]{background-color:var(--color-secondary)}.aria-expanded\\:text-foreground[aria-expanded=true]{color:var(--color-foreground)}.aria-expanded\\:text-secondary-foreground[aria-expanded=true]{color:var(--color-secondary-foreground)}.aria-invalid\\:ring-3[aria-invalid=true]{--tw-ring-shadow:var(--tw-ring-inset,) 0 0 0 calc(3px + var(--tw-ring-offset-width)) var(--tw-ring-color,currentcolor);box-shadow:var(--tw-inset-shadow),var(--tw-inset-ring-shadow),var(--tw-ring-offset-shadow),var(--tw-ring-shadow),var(--tw-shadow)}.aria-invalid\\:aria-checked\\:border-primary[aria-invalid=true][aria-checked=true]{border-color:var(--color-primary)}.aria-pressed\\:bg-muted[aria-pressed=true]{background-color:var(--color-muted)}.data-active\\:bg-background[data-active]{background-color:var(--color-background)}.data-active\\:bg-muted\\/50[data-active]{background-color:var(--color-muted)}@supports (color:color-mix(in lab,red,red)){.data-active\\:bg-muted\\/50[data-active]{background-color:color-mix(in oklab,var(--color-muted) 50%,transparent)}}.data-active\\:text-foreground[data-active]{color:var(--color-foreground)}.group-data-\\[variant\\=default\\]\\/tabs-list\\:data-active\\:shadow-sm:is(:where(.group\\/tabs-list)[data-variant=default] *)[data-active]{--tw-shadow:0 1px 3px 0 var(--tw-shadow-color,#0000001a), 0 1px 2px -1px var(--tw-shadow-color,#0000001a);box-shadow:var(--tw-inset-shadow),var(--tw-inset-ring-shadow),var(--tw-ring-offset-shadow),var(--tw-ring-shadow),var(--tw-shadow)}.group-data-\\[variant\\=line\\]\\/tabs-list\\:data-active\\:bg-transparent:is(:where(.group\\/tabs-list)[data-variant=line] *)[data-active]{background-color:#0000}.group-data-\\[variant\\=line\\]\\/tabs-list\\:data-active\\:shadow-none:is(:where(.group\\/tabs-list)[data-variant=line] *)[data-active]{--tw-shadow:0 0 #0000;box-shadow:var(--tw-inset-shadow),var(--tw-inset-ring-shadow),var(--tw-ring-offset-shadow),var(--tw-ring-shadow),var(--tw-shadow)}.group-data-\\[variant\\=line\\]\\/tabs-list\\:data-active\\:after\\:opacity-100:is(:where(.group\\/tabs-list)[data-variant=line] *)[data-active]:after{content:var(--tw-content);opacity:1}@media(hover:hover){.data-active\\:hover\\:bg-muted[data-active]:hover{background-color:var(--color-muted)}}.data-active\\:focus\\:bg-muted[data-active]:focus{background-color:var(--color-muted)}.data-checked\\:border-primary[data-checked]{border-color:var(--color-primary)}.data-checked\\:bg-primary[data-checked]{background-color:var(--color-primary)}.data-checked\\:text-primary-foreground[data-checked]{color:var(--color-primary-foreground)}.group-data-\\[size\\=default\\]\\/switch\\:data-checked\\:translate-x-\\[calc\\(100\\%-2px\\)\\]:is(:where(.group\\/switch)[data-size=default] *)[data-checked],.group-data-\\[size\\=sm\\]\\/switch\\:data-checked\\:translate-x-\\[calc\\(100\\%-2px\\)\\]:is(:where(.group\\/switch)[data-size=sm] *)[data-checked]{--tw-translate-x: calc(100% - 2px) ;translate:var(--tw-translate-x) var(--tw-translate-y)}.data-disabled\\:pointer-events-none[data-disabled]{pointer-events:none}.data-disabled\\:cursor-not-allowed[data-disabled]{cursor:not-allowed}.data-disabled\\:opacity-50[data-disabled]{opacity:.5}.data-horizontal\\:h-2\\.5[data-horizontal]{height:calc(var(--spacing) * 2.5)}.data-horizontal\\:h-px[data-horizontal]{height:1px}.data-horizontal\\:w-full[data-horizontal]{width:100%}.data-horizontal\\:flex-col[data-horizontal]{flex-direction:column}.data-horizontal\\:border-t[data-horizontal]{border-top-style:var(--tw-border-style);border-top-width:1px}.data-horizontal\\:border-t-transparent[data-horizontal]{border-top-color:#0000}.data-inset\\:pl-7[data-inset]{padding-left:calc(var(--spacing) * 7)}.data-open\\:bg-accent[data-open]{background-color:var(--color-accent)}.data-open\\:bg-muted\\/50[data-open]{background-color:var(--color-muted)}@supports (color:color-mix(in lab,red,red)){.data-open\\:bg-muted\\/50[data-open]{background-color:color-mix(in oklab,var(--color-muted) 50%,transparent)}}@media(hover:hover){.data-open\\:hover\\:bg-muted[data-open]:hover{background-color:var(--color-muted)}}.data-open\\:focus\\:bg-muted[data-open]:focus{background-color:var(--color-muted)}.data-placeholder\\:text-muted-foreground[data-placeholder]{color:var(--color-muted-foreground)}.data-popup-open\\:bg-muted\\/50[data-popup-open]{background-color:var(--color-muted)}@supports (color:color-mix(in lab,red,red)){.data-popup-open\\:bg-muted\\/50[data-popup-open]{background-color:color-mix(in oklab,var(--color-muted) 50%,transparent)}}@media(hover:hover){.data-popup-open\\:hover\\:bg-muted[data-popup-open]:hover{background-color:var(--color-muted)}}.group-data-\\[size\\=default\\]\\/switch\\:data-unchecked\\:translate-x-0:is(:where(.group\\/switch)[data-size=default] *)[data-unchecked],.group-data-\\[size\\=sm\\]\\/switch\\:data-unchecked\\:translate-x-0:is(:where(.group\\/switch)[data-size=sm] *)[data-unchecked]{--tw-translate-x:calc(var(--spacing) * 0);translate:var(--tw-translate-x) var(--tw-translate-y)}.data-vertical\\:h-full[data-vertical]{height:100%}.data-vertical\\:w-2\\.5[data-vertical]{width:calc(var(--spacing) * 2.5)}.data-vertical\\:w-px[data-vertical]{width:1px}.data-vertical\\:flex-col[data-vertical]{flex-direction:column}.data-vertical\\:items-stretch[data-vertical]{align-items:stretch}.data-vertical\\:self-stretch[data-vertical]{align-self:stretch}.data-vertical\\:border-l[data-vertical]{border-left-style:var(--tw-border-style);border-left-width:1px}.data-vertical\\:border-l-transparent[data-vertical]{border-left-color:#0000}.data-\\[align-trigger\\=true\\]\\:animate-none[data-align-trigger=true]{animation:none}.data-\\[position\\=popper\\]\\:h-\\(--radix-select-trigger-height\\)[data-position=popper]{height:var(--radix-select-trigger-height)}.data-\\[position\\=popper\\]\\:w-full[data-position=popper]{width:100%}.data-\\[position\\=popper\\]\\:min-w-\\(--radix-select-trigger-width\\)[data-position=popper]{min-width:var(--radix-select-trigger-width)}.data-\\[side\\=bottom\\]\\:inset-x-0[data-side=bottom]{inset-inline:calc(var(--spacing) * 0)}.data-\\[side\\=bottom\\]\\:bottom-0[data-side=bottom]{bottom:calc(var(--spacing) * 0)}.data-\\[side\\=bottom\\]\\:h-auto[data-side=bottom]{height:auto}.data-\\[side\\=bottom\\]\\:translate-y-1[data-side=bottom]{--tw-translate-y:calc(var(--spacing) * 1);translate:var(--tw-translate-x) var(--tw-translate-y)}.data-\\[side\\=bottom\\]\\:border-t[data-side=bottom]{border-top-style:var(--tw-border-style);border-top-width:1px}.data-\\[side\\=left\\]\\:inset-y-0[data-side=left]{inset-block:calc(var(--spacing) * 0)}.data-\\[side\\=left\\]\\:left-0[data-side=left]{left:calc(var(--spacing) * 0)}.data-\\[side\\=left\\]\\:h-full[data-side=left]{height:100%}.data-\\[side\\=left\\]\\:w-3\\/4[data-side=left]{width:75%}.data-\\[side\\=left\\]\\:-translate-x-1[data-side=left]{--tw-translate-x:calc(var(--spacing) * -1);translate:var(--tw-translate-x) var(--tw-translate-y)}.data-\\[side\\=left\\]\\:border-r[data-side=left]{border-right-style:var(--tw-border-style);border-right-width:1px}.data-\\[side\\=right\\]\\:inset-y-0[data-side=right]{inset-block:calc(var(--spacing) * 0)}.data-\\[side\\=right\\]\\:right-0[data-side=right]{right:calc(var(--spacing) * 0)}.data-\\[side\\=right\\]\\:h-full[data-side=right]{height:100%}.data-\\[side\\=right\\]\\:w-3\\/4[data-side=right]{width:75%}.data-\\[side\\=right\\]\\:translate-x-1[data-side=right]{--tw-translate-x:calc(var(--spacing) * 1);translate:var(--tw-translate-x) var(--tw-translate-y)}.data-\\[side\\=right\\]\\:border-l[data-side=right]{border-left-style:var(--tw-border-style);border-left-width:1px}.data-\\[side\\=top\\]\\:inset-x-0[data-side=top]{inset-inline:calc(var(--spacing) * 0)}.data-\\[side\\=top\\]\\:top-0[data-side=top]{top:calc(var(--spacing) * 0)}.data-\\[side\\=top\\]\\:h-auto[data-side=top]{height:auto}.data-\\[side\\=top\\]\\:-translate-y-1[data-side=top]{--tw-translate-y:calc(var(--spacing) * -1);translate:var(--tw-translate-x) var(--tw-translate-y)}.data-\\[side\\=top\\]\\:border-b[data-side=top]{border-bottom-style:var(--tw-border-style);border-bottom-width:1px}.data-\\[size\\=default\\]\\:h-8[data-size=default]{height:calc(var(--spacing) * 8)}.data-\\[size\\=default\\]\\:h-\\[18\\.4px\\][data-size=default]{height:18.4px}.data-\\[size\\=default\\]\\:w-\\[32px\\][data-size=default]{width:32px}.data-\\[size\\=lg\\]\\:size-10[data-size=lg]{width:calc(var(--spacing) * 10);height:calc(var(--spacing) * 10)}.data-\\[size\\=sm\\]\\:size-6[data-size=sm]{width:calc(var(--spacing) * 6);height:calc(var(--spacing) * 6)}.data-\\[size\\=sm\\]\\:h-7[data-size=sm]{height:calc(var(--spacing) * 7)}.data-\\[size\\=sm\\]\\:h-\\[14px\\][data-size=sm]{height:14px}.data-\\[size\\=sm\\]\\:w-\\[24px\\][data-size=sm]{width:24px}.data-\\[size\\=sm\\]\\:gap-3[data-size=sm]{gap:calc(var(--spacing) * 3)}.data-\\[size\\=sm\\]\\:rounded-\\[min\\(var\\(--radius-md\\)\\,10px\\)\\][data-size=sm]{border-radius:min(var(--radius-md),10px)}.data-\\[size\\=sm\\]\\:py-3[data-size=sm]{padding-block:calc(var(--spacing) * 3)}.data-\\[size\\=sm\\]\\:has-data-\\[slot\\=card-footer\\]\\:pb-0[data-size=sm]:has([data-slot=card-footer]){padding-bottom:calc(var(--spacing) * 0)}:is(.\\*\\*\\:data-\\[slot\\=accordion-trigger-icon\\]\\:ml-auto *)[data-slot=accordion-trigger-icon]{margin-left:auto}:is(.\\*\\*\\:data-\\[slot\\=accordion-trigger-icon\\]\\:size-4 *)[data-slot=accordion-trigger-icon]{width:calc(var(--spacing) * 4);height:calc(var(--spacing) * 4)}:is(.\\*\\*\\:data-\\[slot\\=accordion-trigger-icon\\]\\:text-muted-foreground *)[data-slot=accordion-trigger-icon]{color:var(--color-muted-foreground)}:is(.\\*\\:data-\\[slot\\=avatar\\]\\:ring-2>*)[data-slot=avatar]{--tw-ring-shadow:var(--tw-ring-inset,) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color,currentcolor);box-shadow:var(--tw-inset-shadow),var(--tw-inset-ring-shadow),var(--tw-ring-offset-shadow),var(--tw-ring-shadow),var(--tw-shadow)}:is(.\\*\\:data-\\[slot\\=avatar\\]\\:ring-background>*)[data-slot=avatar]{--tw-ring-color:var(--color-background)}:is(.\\*\\*\\:data-\\[slot\\=kbd\\]\\:relative *)[data-slot=kbd]{position:relative}:is(.\\*\\*\\:data-\\[slot\\=kbd\\]\\:isolate *)[data-slot=kbd]{isolation:isolate}:is(.\\*\\*\\:data-\\[slot\\=kbd\\]\\:z-50 *)[data-slot=kbd]{z-index:50}:is(.\\*\\*\\:data-\\[slot\\=kbd\\]\\:rounded-sm *)[data-slot=kbd]{border-radius:var(--radius-sm)}:is(.\\*\\*\\:data-\\[slot\\=navigation-menu-link\\]\\:focus\\:ring-0 *)[data-slot=navigation-menu-link]:focus{--tw-ring-shadow:var(--tw-ring-inset,) 0 0 0 calc(0px + var(--tw-ring-offset-width)) var(--tw-ring-color,currentcolor);box-shadow:var(--tw-inset-shadow),var(--tw-inset-ring-shadow),var(--tw-ring-offset-shadow),var(--tw-ring-shadow),var(--tw-shadow)}:is(.\\*\\*\\:data-\\[slot\\=navigation-menu-link\\]\\:focus\\:outline-none *)[data-slot=navigation-menu-link]:focus{--tw-outline-style:none;outline-style:none}:is(.\\*\\:data-\\[slot\\=select-value\\]\\:line-clamp-1>*)[data-slot=select-value]{-webkit-line-clamp:1;-webkit-box-orient:vertical;display:-webkit-box;overflow:hidden}:is(.\\*\\:data-\\[slot\\=select-value\\]\\:flex>*)[data-slot=select-value]{display:flex}:is(.\\*\\:data-\\[slot\\=select-value\\]\\:items-center>*)[data-slot=select-value]{align-items:center}:is(.\\*\\:data-\\[slot\\=select-value\\]\\:gap-1\\.5>*)[data-slot=select-value]{gap:calc(var(--spacing) * 1.5)}.group-data-horizontal\\/toggle-group\\:data-\\[spacing\\=0\\]\\:first\\:rounded-l-lg:is(:where(.group\\/toggle-group)[data-horizontal] *)[data-spacing="0"]:first-child{border-top-left-radius:var(--radius-lg);border-bottom-left-radius:var(--radius-lg)}.group-data-vertical\\/toggle-group\\:data-\\[spacing\\=0\\]\\:first\\:rounded-t-lg:is(:where(.group\\/toggle-group)[data-vertical] *)[data-spacing="0"]:first-child{border-top-left-radius:var(--radius-lg);border-top-right-radius:var(--radius-lg)}.group-data-horizontal\\/toggle-group\\:data-\\[spacing\\=0\\]\\:last\\:rounded-r-lg:is(:where(.group\\/toggle-group)[data-horizontal] *)[data-spacing="0"]:last-child{border-top-right-radius:var(--radius-lg);border-bottom-right-radius:var(--radius-lg)}.group-data-vertical\\/toggle-group\\:data-\\[spacing\\=0\\]\\:last\\:rounded-b-lg:is(:where(.group\\/toggle-group)[data-vertical] *)[data-spacing="0"]:last-child{border-bottom-right-radius:var(--radius-lg);border-bottom-left-radius:var(--radius-lg)}.data-\\[state\\=closed\\]\\:overflow-hidden[data-state=closed]{overflow:hidden}.data-\\[state\\=on\\]\\:bg-muted[data-state=on],.data-\\[state\\=selected\\]\\:bg-muted[data-state=selected]{background-color:var(--color-muted)}.data-\\[variant\\=line\\]\\:rounded-none[data-variant=line]{border-radius:0}.group-data-horizontal\\/toggle-group\\:data-\\[spacing\\=0\\]\\:data-\\[variant\\=outline\\]\\:border-l-0:is(:where(.group\\/toggle-group)[data-horizontal] *)[data-spacing="0"][data-variant=outline]{border-left-style:var(--tw-border-style);border-left-width:0}.group-data-vertical\\/toggle-group\\:data-\\[spacing\\=0\\]\\:data-\\[variant\\=outline\\]\\:border-t-0:is(:where(.group\\/toggle-group)[data-vertical] *)[data-spacing="0"][data-variant=outline]{border-top-style:var(--tw-border-style);border-top-width:0}.group-data-horizontal\\/toggle-group\\:data-\\[spacing\\=0\\]\\:data-\\[variant\\=outline\\]\\:first\\:border-l:is(:where(.group\\/toggle-group)[data-horizontal] *)[data-spacing="0"][data-variant=outline]:first-child{border-left-style:var(--tw-border-style);border-left-width:1px}.group-data-vertical\\/toggle-group\\:data-\\[spacing\\=0\\]\\:data-\\[variant\\=outline\\]\\:first\\:border-t:is(:where(.group\\/toggle-group)[data-vertical] *)[data-spacing="0"][data-variant=outline]:first-child{border-top-style:var(--tw-border-style);border-top-width:1px}@supports ((-webkit-backdrop-filter:var(--tw)) or (backdrop-filter:var(--tw))){.supports-backdrop-filter\\:backdrop-blur-xs{--tw-backdrop-blur:blur(var(--blur-xs));-webkit-backdrop-filter:var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);backdrop-filter:var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,)}}@media(min-width:40rem){.sm\\:mt-0{margin-top:calc(var(--spacing) * 0)}.sm\\:flex{display:flex}.sm\\:max-w-sm{max-width:var(--container-sm)}.sm\\:grid-cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}.sm\\:flex-row{flex-direction:row}.sm\\:items-center{align-items:center}.sm\\:justify-between{justify-content:space-between}.sm\\:justify-end{justify-content:flex-end}.sm\\:py-32{padding-block:calc(var(--spacing) * 32)}.data-\\[side\\=left\\]\\:sm\\:max-w-sm[data-side=left],.data-\\[side\\=right\\]\\:sm\\:max-w-sm[data-side=right]{max-width:var(--container-sm)}}@media(min-width:48rem){.md\\:absolute{position:absolute}.md\\:col-span-2{grid-column:span 2/span 2}.md\\:mb-6{margin-bottom:calc(var(--spacing) * 6)}.md\\:w-\\(--radix-navigation-menu-viewport-width\\){width:var(--radix-navigation-menu-viewport-width)}.md\\:w-auto{width:auto}.md\\:columns-3{columns:3}.md\\:grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}.md\\:flex-row{flex-direction:row}.md\\:gap-6{gap:calc(var(--spacing) * 6)}.md\\:px-12{padding-inline:calc(var(--spacing) * 12)}.md\\:text-left{text-align:left}.md\\:text-sm{font-size:var(--text-sm);line-height:var(--tw-leading,var(--text-sm--line-height))}}@media(min-width:64rem){.lg\\:order-first{order:-9999}.lg\\:order-last{order:9999}.lg\\:col-span-1{grid-column:span 1/span 1}.lg\\:col-span-2{grid-column:span 2/span 2}.lg\\:col-span-3{grid-column:span 3/span 3}.lg\\:col-span-4{grid-column:span 4/span 4}.lg\\:col-span-5{grid-column:span 5/span 5}.lg\\:col-span-7{grid-column:span 7/span 7}.lg\\:col-span-8{grid-column:span 8/span 8}.lg\\:col-span-12{grid-column:span 12/span 12}.lg\\:flex{display:flex}.lg\\:hidden{display:none}.lg\\:grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}.lg\\:grid-cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}.lg\\:grid-cols-5{grid-template-columns:repeat(5,minmax(0,1fr))}.lg\\:grid-cols-12{grid-template-columns:repeat(12,minmax(0,1fr))}.lg\\:grid-cols-\\[1fr_420px\\]{grid-template-columns:1fr 420px}.lg\\:items-start{align-items:flex-start}}@media(prefers-color-scheme:dark){.dark\\:text-muted-foreground{color:var(--color-muted-foreground)}.dark\\:after\\:mix-blend-lighten:after{content:var(--tw-content);mix-blend-mode:lighten}@media(hover:hover){.dark\\:hover\\:bg-muted\\/50:hover{background-color:var(--color-muted)}@supports (color:color-mix(in lab,red,red)){.dark\\:hover\\:bg-muted\\/50:hover{background-color:color-mix(in oklab,var(--color-muted) 50%,transparent)}}.dark\\:hover\\:text-foreground:hover{color:var(--color-foreground)}}.dark\\:data-active\\:text-foreground[data-active]{color:var(--color-foreground)}.dark\\:group-data-\\[variant\\=line\\]\\/tabs-list\\:data-active\\:border-transparent:is(:where(.group\\/tabs-list)[data-variant=line] *)[data-active]{border-color:#0000}.dark\\:group-data-\\[variant\\=line\\]\\/tabs-list\\:data-active\\:bg-transparent:is(:where(.group\\/tabs-list)[data-variant=line] *)[data-active]{background-color:#0000}.dark\\:data-checked\\:bg-primary[data-checked]{background-color:var(--color-primary)}.dark\\:data-checked\\:bg-primary-foreground[data-checked]{background-color:var(--color-primary-foreground)}.dark\\:data-unchecked\\:bg-foreground[data-unchecked]{background-color:var(--color-foreground)}}.\\[\\&_a\\]\\:underline a{text-decoration-line:underline}.\\[\\&_a\\]\\:underline-offset-3 a{text-underline-offset:3px}@media(hover:hover){.\\[\\&_a\\]\\:hover\\:text-foreground a:hover{color:var(--color-foreground)}}.\\[\\&_p\\:not\\(\\:last-child\\)\\]\\:mb-4 p:not(:last-child){margin-bottom:calc(var(--spacing) * 4)}.\\[\\&_svg\\]\\:pointer-events-none svg{pointer-events:none}.\\[\\&_svg\\]\\:shrink-0 svg{flex-shrink:0}.\\[\\&_svg\\:not\\(\\[class\\*\\=\\'size-\\'\\]\\)\\]\\:size-3 svg:not([class*=size-]){width:calc(var(--spacing) * 3);height:calc(var(--spacing) * 3)}.\\[\\&_svg\\:not\\(\\[class\\*\\=\\'size-\\'\\]\\)\\]\\:size-3\\.5 svg:not([class*=size-]){width:calc(var(--spacing) * 3.5);height:calc(var(--spacing) * 3.5)}.\\[\\&_svg\\:not\\(\\[class\\*\\=\\'size-\\'\\]\\)\\]\\:size-4 svg:not([class*=size-]){width:calc(var(--spacing) * 4);height:calc(var(--spacing) * 4)}.\\[\\&_tr\\]\\:border-b tr{border-bottom-style:var(--tw-border-style);border-bottom-width:1px}.\\[\\&_tr\\:last-child\\]\\:border-0 tr:last-child{border-style:var(--tw-border-style);border-width:0}.\\[\\&\\:has\\(\\[role\\=checkbox\\]\\)\\]\\:pr-0:has([role=checkbox]){padding-right:calc(var(--spacing) * 0)}.\\[\\.border-b\\]\\:pb-4.border-b{padding-bottom:calc(var(--spacing) * 4)}.group-data-\\[size\\=sm\\]\\/card\\:\\[\\.border-b\\]\\:pb-3:is(:where(.group\\/card)[data-size=sm] *).border-b{padding-bottom:calc(var(--spacing) * 3)}:is(.\\*\\:\\[a\\]\\:underline>*):is(a){text-decoration-line:underline}:is(.\\*\\:\\[a\\]\\:underline-offset-3>*):is(a){text-underline-offset:3px}@media(hover:hover){.\\[a\\]\\:hover\\:bg-muted:is(a):hover{background-color:var(--color-muted)}.\\[a\\]\\:hover\\:bg-primary\\/80:is(a):hover{background-color:var(--color-primary)}@supports (color:color-mix(in lab,red,red)){.\\[a\\]\\:hover\\:bg-primary\\/80:is(a):hover{background-color:color-mix(in oklab,var(--color-primary) 80%,transparent)}}.\\[a\\]\\:hover\\:bg-secondary\\/80:is(a):hover{background-color:var(--color-secondary)}@supports (color:color-mix(in lab,red,red)){.\\[a\\]\\:hover\\:bg-secondary\\/80:is(a):hover{background-color:color-mix(in oklab,var(--color-secondary) 80%,transparent)}}.\\[a\\]\\:hover\\:text-muted-foreground:is(a):hover{color:var(--color-muted-foreground)}:is(.\\*\\:\\[a\\]\\:hover\\:text-foreground>*):is(a):hover{color:var(--color-foreground)}}:is(.\\*\\:\\[img\\:first-child\\]\\:rounded-t-xl>*):is(img:first-child){border-top-left-radius:var(--radius-xl);border-top-right-radius:var(--radius-xl)}:is(.\\*\\:\\[img\\:last-child\\]\\:rounded-b-xl>*):is(img:last-child){border-bottom-right-radius:var(--radius-xl);border-bottom-left-radius:var(--radius-xl)}:is(.\\*\\:\\[span\\]\\:last\\:flex>*):is(span):last-child{display:flex}:is(.\\*\\:\\[span\\]\\:last\\:items-center>*):is(span):last-child{align-items:center}:is(.\\*\\:\\[span\\]\\:last\\:gap-2>*):is(span):last-child{gap:calc(var(--spacing) * 2)}.\\[\\&\\>svg\\]\\:pointer-events-none>svg{pointer-events:none}.\\[\\&\\>svg\\]\\:size-3\\!>svg{width:calc(var(--spacing) * 3)!important;height:calc(var(--spacing) * 3)!important}.\\[\\&\\>svg\\]\\:size-3\\.5>svg{width:calc(var(--spacing) * 3.5);height:calc(var(--spacing) * 3.5)}.\\[\\&\\>svg\\]\\:size-4>svg{width:calc(var(--spacing) * 4);height:calc(var(--spacing) * 4)}.group-has-data-\\[size\\=lg\\]\\/avatar-group\\:\\[\\&\\>svg\\]\\:size-5:is(:where(.group\\/avatar-group):has([data-size=lg]) *)>svg{width:calc(var(--spacing) * 5);height:calc(var(--spacing) * 5)}.group-has-data-\\[size\\=sm\\]\\/avatar-group\\:\\[\\&\\>svg\\]\\:size-3:is(:where(.group\\/avatar-group):has([data-size=sm]) *)>svg{width:calc(var(--spacing) * 3);height:calc(var(--spacing) * 3)}.group-data-\\[size\\=default\\]\\/avatar\\:\\[\\&\\>svg\\]\\:size-2:is(:where(.group\\/avatar)[data-size=default] *)>svg,.group-data-\\[size\\=lg\\]\\/avatar\\:\\[\\&\\>svg\\]\\:size-2:is(:where(.group\\/avatar)[data-size=lg] *)>svg{width:calc(var(--spacing) * 2);height:calc(var(--spacing) * 2)}.group-data-\\[size\\=sm\\]\\/avatar\\:\\[\\&\\>svg\\]\\:hidden:is(:where(.group\\/avatar)[data-size=sm] *)>svg{display:none}.\\[\\&\\>tr\\]\\:last\\:border-b-0>tr:last-child{border-bottom-style:var(--tw-border-style);border-bottom-width:0}}:root,[data-theme=light]{--background:var(--theme-colors-light-background);--foreground:var(--theme-colors-light-on-background);--card:var(--theme-colors-light-surface-container);--card-foreground:var(--theme-colors-light-on-surface);--primary:var(--theme-colors-light-primary);--primary-foreground:var(--theme-colors-light-on-primary);--secondary:var(--theme-colors-light-secondary);--secondary-foreground:var(--theme-colors-light-on-secondary);--muted:var(--theme-colors-light-surface-container-high);--muted-foreground:var(--theme-colors-light-on-surface-variant);--accent:var(--theme-colors-light-tertiary);--accent-foreground:var(--theme-colors-light-on-tertiary);--border:var(--theme-colors-light-outline);--input:var(--theme-colors-light-surface-container-high);--ring:var(--theme-colors-light-primary);--destructive:var(--theme-colors-light-error);--destructive-foreground:var(--theme-colors-light-on-error);--radius:var(--theme-radius-lg)}[data-theme=dark]{--background:var(--theme-colors-dark-background);--foreground:var(--theme-colors-dark-on-background);--card:var(--theme-colors-dark-surface-container);--card-foreground:var(--theme-colors-dark-on-surface);--primary:var(--theme-colors-dark-primary);--primary-foreground:var(--theme-colors-dark-on-primary);--secondary:var(--theme-colors-dark-secondary);--secondary-foreground:var(--theme-colors-dark-on-secondary);--muted:var(--theme-colors-dark-surface-container-high);--muted-foreground:var(--theme-colors-dark-on-surface-variant);--accent:var(--theme-colors-dark-tertiary);--accent-foreground:var(--theme-colors-dark-on-tertiary);--border:var(--theme-colors-dark-outline);--input:var(--theme-colors-dark-surface-container-high);--ring:var(--theme-colors-dark-primary);--destructive:var(--theme-colors-dark-error);--destructive-foreground:var(--theme-colors-dark-on-error)}.font-display{font-family:var(--font-display,var(--font-primary))}html{scroll-behavior:smooth}[data-jp-section-overlay]{z-index:9999;pointer-events:none;border:2px solid #0000;transition:border-color .15s,background-color .15s;position:absolute;top:0;right:0;bottom:0;left:0}[data-section-id]:hover [data-jp-section-overlay]{border:2px dashed var(--primary)}@supports (color:color-mix(in lab,red,red)){[data-section-id]:hover [data-jp-section-overlay]{border:2px dashed color-mix(in oklch,var(--primary) 50%,transparent)}}[data-section-id]:hover [data-jp-section-overlay]{background-color:var(--primary)}@supports (color:color-mix(in lab,red,red)){[data-section-id]:hover [data-jp-section-overlay]{background-color:color-mix(in oklch,var(--primary) 6%,transparent)}}[data-section-id][data-jp-selected] [data-jp-section-overlay]{border:2px solid var(--primary);background-color:var(--primary)}@supports (color:color-mix(in lab,red,red)){[data-section-id][data-jp-selected] [data-jp-section-overlay]{background-color:color-mix(in oklch,var(--primary) 10%,transparent)}}[data-jp-section-overlay]>div{text-transform:uppercase;letter-spacing:.1em;background:var(--primary);color:var(--primary-foreground);opacity:0;padding:.2rem .55rem;font-size:9px;font-weight:800;transition:opacity .15s;position:absolute;top:0;right:0}[data-section-id]:hover [data-jp-section-overlay]>div,[data-section-id][data-jp-selected] [data-jp-section-overlay]>div{opacity:1}@property --tw-translate-x{syntax:"*";inherits:false;initial-value:0}@property --tw-translate-y{syntax:"*";inherits:false;initial-value:0}@property --tw-translate-z{syntax:"*";inherits:false;initial-value:0}@property --tw-scale-x{syntax:"*";inherits:false;initial-value:1}@property --tw-scale-y{syntax:"*";inherits:false;initial-value:1}@property --tw-scale-z{syntax:"*";inherits:false;initial-value:1}@property --tw-rotate-x{syntax:"*";inherits:false}@property --tw-rotate-y{syntax:"*";inherits:false}@property --tw-rotate-z{syntax:"*";inherits:false}@property --tw-skew-x{syntax:"*";inherits:false}@property --tw-skew-y{syntax:"*";inherits:false}@property --tw-pan-x{syntax:"*";inherits:false}@property --tw-pan-y{syntax:"*";inherits:false}@property --tw-pinch-zoom{syntax:"*";inherits:false}@property --tw-space-y-reverse{syntax:"*";inherits:false;initial-value:0}@property --tw-space-x-reverse{syntax:"*";inherits:false;initial-value:0}@property --tw-divide-x-reverse{syntax:"*";inherits:false;initial-value:0}@property --tw-border-style{syntax:"*";inherits:false;initial-value:solid}@property --tw-divide-y-reverse{syntax:"*";inherits:false;initial-value:0}@property --tw-gradient-position{syntax:"*";inherits:false}@property --tw-gradient-from{syntax:"<color>";inherits:false;initial-value:#0000}@property --tw-gradient-via{syntax:"<color>";inherits:false;initial-value:#0000}@property --tw-gradient-to{syntax:"<color>";inherits:false;initial-value:#0000}@property --tw-gradient-stops{syntax:"*";inherits:false}@property --tw-gradient-via-stops{syntax:"*";inherits:false}@property --tw-gradient-from-position{syntax:"<length-percentage>";inherits:false;initial-value:0%}@property --tw-gradient-via-position{syntax:"<length-percentage>";inherits:false;initial-value:50%}@property --tw-gradient-to-position{syntax:"<length-percentage>";inherits:false;initial-value:100%}@property --tw-leading{syntax:"*";inherits:false}@property --tw-font-weight{syntax:"*";inherits:false}@property --tw-tracking{syntax:"*";inherits:false}@property --tw-ordinal{syntax:"*";inherits:false}@property --tw-slashed-zero{syntax:"*";inherits:false}@property --tw-numeric-figure{syntax:"*";inherits:false}@property --tw-numeric-spacing{syntax:"*";inherits:false}@property --tw-numeric-fraction{syntax:"*";inherits:false}@property --tw-shadow{syntax:"*";inherits:false;initial-value:0 0 #0000}@property --tw-shadow-color{syntax:"*";inherits:false}@property --tw-shadow-alpha{syntax:"<percentage>";inherits:false;initial-value:100%}@property --tw-inset-shadow{syntax:"*";inherits:false;initial-value:0 0 #0000}@property --tw-inset-shadow-color{syntax:"*";inherits:false}@property --tw-inset-shadow-alpha{syntax:"<percentage>";inherits:false;initial-value:100%}@property --tw-ring-color{syntax:"*";inherits:false}@property --tw-ring-shadow{syntax:"*";inherits:false;initial-value:0 0 #0000}@property --tw-inset-ring-color{syntax:"*";inherits:false}@property --tw-inset-ring-shadow{syntax:"*";inherits:false;initial-value:0 0 #0000}@property --tw-ring-inset{syntax:"*";inherits:false}@property --tw-ring-offset-width{syntax:"<length>";inherits:false;initial-value:0}@property --tw-ring-offset-color{syntax:"*";inherits:false;initial-value:#fff}@property --tw-ring-offset-shadow{syntax:"*";inherits:false;initial-value:0 0 #0000}@property --tw-outline-style{syntax:"*";inherits:false;initial-value:solid}@property --tw-blur{syntax:"*";inherits:false}@property --tw-brightness{syntax:"*";inherits:false}@property --tw-contrast{syntax:"*";inherits:false}@property --tw-grayscale{syntax:"*";inherits:false}@property --tw-hue-rotate{syntax:"*";inherits:false}@property --tw-invert{syntax:"*";inherits:false}@property --tw-opacity{syntax:"*";inherits:false}@property --tw-saturate{syntax:"*";inherits:false}@property --tw-sepia{syntax:"*";inherits:false}@property --tw-drop-shadow{syntax:"*";inherits:false}@property --tw-drop-shadow-color{syntax:"*";inherits:false}@property --tw-drop-shadow-alpha{syntax:"<percentage>";inherits:false;initial-value:100%}@property --tw-drop-shadow-size{syntax:"*";inherits:false}@property --tw-backdrop-blur{syntax:"*";inherits:false}@property --tw-backdrop-brightness{syntax:"*";inherits:false}@property --tw-backdrop-contrast{syntax:"*";inherits:false}@property --tw-backdrop-grayscale{syntax:"*";inherits:false}@property --tw-backdrop-hue-rotate{syntax:"*";inherits:false}@property --tw-backdrop-invert{syntax:"*";inherits:false}@property --tw-backdrop-opacity{syntax:"*";inherits:false}@property --tw-backdrop-saturate{syntax:"*";inherits:false}@property --tw-backdrop-sepia{syntax:"*";inherits:false}@property --tw-duration{syntax:"*";inherits:false}@property --tw-ease{syntax:"*";inherits:false}@property --tw-content{syntax:"*";inherits:false;initial-value:""}@keyframes pulse{50%{opacity:.5}}`;
+const tenantCss = `@import"https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,500;6..96,600;6..96,700&family=Hanken+Grotesk:wght@400;600&display=swap";/*! tailwindcss v4.3.2 | MIT License | https://tailwindcss.com */@layer properties{@supports (((-webkit-hyphens:none)) and (not (margin-trim:inline))) or ((-moz-orient:inline) and (not (color:rgb(from red r g b)))){*,:before,:after,::backdrop{--tw-translate-x:0;--tw-translate-y:0;--tw-translate-z:0;--tw-scale-x:1;--tw-scale-y:1;--tw-scale-z:1;--tw-rotate-x:initial;--tw-rotate-y:initial;--tw-rotate-z:initial;--tw-skew-x:initial;--tw-skew-y:initial;--tw-pan-x:initial;--tw-pan-y:initial;--tw-pinch-zoom:initial;--tw-space-y-reverse:0;--tw-space-x-reverse:0;--tw-divide-x-reverse:0;--tw-border-style:solid;--tw-divide-y-reverse:0;--tw-gradient-position:initial;--tw-gradient-from:#0000;--tw-gradient-via:#0000;--tw-gradient-to:#0000;--tw-gradient-stops:initial;--tw-gradient-via-stops:initial;--tw-gradient-from-position:0%;--tw-gradient-via-position:50%;--tw-gradient-to-position:100%;--tw-leading:initial;--tw-font-weight:initial;--tw-tracking:initial;--tw-ordinal:initial;--tw-slashed-zero:initial;--tw-numeric-figure:initial;--tw-numeric-spacing:initial;--tw-numeric-fraction:initial;--tw-shadow:0 0 #0000;--tw-shadow-color:initial;--tw-shadow-alpha:100%;--tw-inset-shadow:0 0 #0000;--tw-inset-shadow-color:initial;--tw-inset-shadow-alpha:100%;--tw-ring-color:initial;--tw-ring-shadow:0 0 #0000;--tw-inset-ring-color:initial;--tw-inset-ring-shadow:0 0 #0000;--tw-ring-inset:initial;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-offset-shadow:0 0 #0000;--tw-outline-style:solid;--tw-blur:initial;--tw-brightness:initial;--tw-contrast:initial;--tw-grayscale:initial;--tw-hue-rotate:initial;--tw-invert:initial;--tw-opacity:initial;--tw-saturate:initial;--tw-sepia:initial;--tw-drop-shadow:initial;--tw-drop-shadow-color:initial;--tw-drop-shadow-alpha:100%;--tw-drop-shadow-size:initial;--tw-backdrop-blur:initial;--tw-backdrop-brightness:initial;--tw-backdrop-contrast:initial;--tw-backdrop-grayscale:initial;--tw-backdrop-hue-rotate:initial;--tw-backdrop-invert:initial;--tw-backdrop-opacity:initial;--tw-backdrop-saturate:initial;--tw-backdrop-sepia:initial;--tw-duration:initial;--tw-ease:initial;--tw-content:""}}}@layer theme{:root,:host{--font-sans:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";--font-mono:var(--theme-font-mono);--color-red-400:oklch(70.4% .191 22.216);--color-red-500:oklch(63.7% .237 25.331);--color-red-700:oklch(50.5% .213 27.518);--color-orange-50:oklch(98% .016 73.684);--color-orange-700:oklch(55.3% .195 38.402);--color-amber-50:oklch(98.7% .022 95.277);--color-amber-200:oklch(92.4% .12 95.746);--color-amber-500:oklch(76.9% .188 70.08);--color-lime-400:oklch(84.1% .238 128.85);--color-green-500:oklch(72.3% .219 149.579);--color-green-600:oklch(62.7% .194 149.214);--color-green-700:oklch(52.7% .154 150.069);--color-teal-600:oklch(60% .118 184.704);--color-cyan-500:oklch(71.5% .143 215.221);--color-blue-200:oklch(88.2% .059 254.128);--color-blue-400:oklch(70.7% .165 254.624);--color-blue-500:oklch(62.3% .214 259.815);--color-blue-600:oklch(54.6% .245 262.881);--color-blue-900:oklch(37.9% .146 265.522);--color-gray-50:oklch(98.5% .002 247.839);--color-gray-100:oklch(96.7% .003 264.542);--color-gray-200:oklch(92.8% .006 264.531);--color-gray-300:oklch(87.2% .01 258.338);--color-gray-400:oklch(70.7% .022 261.325);--color-gray-500:oklch(55.1% .027 264.364);--color-gray-600:oklch(44.6% .03 256.802);--color-gray-700:oklch(37.3% .034 259.733);--color-gray-800:oklch(27.8% .033 256.848);--color-gray-900:oklch(21% .034 264.665);--color-zinc-100:oklch(96.7% .001 286.375);--color-zinc-200:oklch(92% .004 286.32);--color-zinc-400:oklch(70.5% .015 286.067);--color-zinc-500:oklch(55.2% .016 285.938);--color-zinc-600:oklch(44.2% .017 285.786);--color-zinc-700:oklch(37% .013 285.805);--color-zinc-800:oklch(27.4% .006 286.033);--color-zinc-950:oklch(14.1% .005 285.823);--color-black:#000;--color-white:#fff;--spacing:.25rem;--container-xs:20rem;--container-sm:24rem;--container-md:28rem;--container-xl:36rem;--container-2xl:42rem;--container-3xl:48rem;--container-4xl:56rem;--text-xs:.75rem;--text-xs--line-height:calc(1 / .75);--text-sm:.875rem;--text-sm--line-height:calc(1.25 / .875);--text-base:1rem;--text-base--line-height: 1.5 ;--text-lg:1.125rem;--text-lg--line-height:calc(1.75 / 1.125);--text-xl:1.25rem;--text-xl--line-height:calc(1.75 / 1.25);--text-2xl:1.5rem;--text-2xl--line-height:calc(2 / 1.5);--text-3xl:1.875rem;--text-3xl--line-height: 1.2 ;--text-4xl:2.25rem;--text-4xl--line-height:calc(2.5 / 2.25);--font-weight-normal:400;--font-weight-medium:500;--font-weight-semibold:600;--font-weight-bold:700;--font-weight-black:900;--tracking-tight:-.025em;--tracking-widest:.1em;--leading-tight:1.25;--leading-snug:1.375;--leading-relaxed:1.625;--radius-sm:var(--theme-radius-sm);--radius-md:var(--theme-radius-md);--radius-lg:var(--theme-radius-lg);--radius-xl:.75rem;--radius-4xl:2rem;--ease-in:cubic-bezier(.4, 0, 1, 1);--ease-out:cubic-bezier(0, 0, .2, 1);--ease-in-out:cubic-bezier(.4, 0, .2, 1);--animate-pulse:pulse 2s cubic-bezier(.4, 0, .6, 1) infinite;--blur-xs:4px;--blur-sm:8px;--blur-md:12px;--blur-xl:24px;--default-transition-duration:.15s;--default-transition-timing-function:cubic-bezier(.4, 0, .2, 1);--default-font-family:var(--font-sans);--default-mono-font-family:var(--font-mono);--color-background:var(--background);--color-foreground:var(--foreground);--color-card:var(--card);--color-card-foreground:var(--card-foreground);--color-primary:var(--primary);--color-primary-foreground:var(--primary-foreground);--color-secondary:var(--secondary);--color-secondary-foreground:var(--secondary-foreground);--color-muted:var(--muted);--color-muted-foreground:var(--muted-foreground);--color-accent:var(--accent);--color-border:var(--border);--font-primary:var(--theme-font-primary);--font-display:var(--theme-font-display)}}@layer base{*,:after,:before,::backdrop{box-sizing:border-box;border:0 solid;margin:0;padding:0}::file-selector-button{box-sizing:border-box;border:0 solid;margin:0;padding:0}html,:host{-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;line-height:1.5;font-family:var(--default-font-family,ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji");font-feature-settings:var(--default-font-feature-settings,normal);font-variation-settings:var(--default-font-variation-settings,normal);-webkit-tap-highlight-color:transparent}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;-webkit-text-decoration:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,samp,pre{font-family:var(--default-mono-font-family,ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace);font-feature-settings:var(--default-mono-font-feature-settings,normal);font-variation-settings:var(--default-mono-font-variation-settings,normal);font-size:1em}small{font-size:80%}sub,sup{vertical-align:baseline;font-size:75%;line-height:0;position:relative}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}:-moz-focusring{outline:auto}progress{vertical-align:baseline}summary{display:list-item}ol,ul,menu{list-style:none}img,svg,video,canvas,audio,iframe,embed,object{vertical-align:middle;display:block}img,video{max-width:100%;height:auto}button,input,select,optgroup,textarea{font:inherit;font-feature-settings:inherit;font-variation-settings:inherit;letter-spacing:inherit;color:inherit;opacity:1;background-color:#0000;border-radius:0}::file-selector-button{font:inherit;font-feature-settings:inherit;font-variation-settings:inherit;letter-spacing:inherit;color:inherit;opacity:1;background-color:#0000;border-radius:0}:where(select:is([multiple],[size])) optgroup{font-weight:bolder}:where(select:is([multiple],[size])) optgroup option{padding-inline-start:20px}::file-selector-button{margin-inline-end:4px}::placeholder{opacity:1}@supports (not ((-webkit-appearance:-apple-pay-button))) or (contain-intrinsic-size:1px){::placeholder{color:currentColor}@supports (color:color-mix(in lab,red,red)){::placeholder{color:color-mix(in oklab,currentcolor 50%,transparent)}}}textarea{resize:vertical}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-date-and-time-value{min-height:1lh;text-align:inherit}::-webkit-datetime-edit{display:inline-flex}::-webkit-datetime-edit-fields-wrapper{padding:0}::-webkit-datetime-edit{padding-block:0}::-webkit-datetime-edit-year-field{padding-block:0}::-webkit-datetime-edit-month-field{padding-block:0}::-webkit-datetime-edit-day-field{padding-block:0}::-webkit-datetime-edit-hour-field{padding-block:0}::-webkit-datetime-edit-minute-field{padding-block:0}::-webkit-datetime-edit-second-field{padding-block:0}::-webkit-datetime-edit-millisecond-field{padding-block:0}::-webkit-datetime-edit-meridiem-field{padding-block:0}::-webkit-calendar-picker-indicator{line-height:1}:-moz-ui-invalid{box-shadow:none}button,input:where([type=button],[type=reset],[type=submit]){-webkit-appearance:button;-moz-appearance:button;appearance:button}::file-selector-button{-webkit-appearance:button;-moz-appearance:button;appearance:button}::-webkit-inner-spin-button{height:auto}::-webkit-outer-spin-button{height:auto}[hidden]:where(:not([hidden=until-found])){display:none!important}*{border-color:var(--border)}body{background-color:var(--background);color:var(--foreground);font-family:var(--font-primary);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;line-height:1.6;overflow-x:hidden}body:before{content:"";opacity:.03;z-index:-1;pointer-events:none;background-image:url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800"%3E%3Cfilter id="noiseFilter"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%" height="100%" filter="url('%23noiseFilter')"/%3E%3C/svg%3E');width:100vw;height:100vh;position:fixed;top:0;left:0}}@layer components;@layer utilities{.\\@container\\/card-header{container:card-header/inline-size}.\\@container{container-type:inline-size}.pointer-events-auto{pointer-events:auto}.pointer-events-none{pointer-events:none}.collapse{visibility:collapse}.invisible{visibility:hidden}.visible{visibility:visible}.sr-only{clip-path:inset(50%);white-space:nowrap;border-width:0;width:1px;height:1px;margin:-1px;padding:0;position:absolute;overflow:hidden}.not-sr-only{clip-path:none;white-space:normal;width:auto;height:auto;margin:0;padding:0;position:static;overflow:visible}.absolute{position:absolute}.fixed{position:fixed}.relative{position:relative}.static{position:static}.sticky{position:sticky}.-inset-4{inset:calc(var(--spacing) * -4)}.inset-0{top:0;right:0;bottom:0;left:0}.top-0{top:0}.top-1{top:var(--spacing)}.top-1\\/2{top:50%}.top-2{top:calc(var(--spacing) * 2)}.top-3{top:calc(var(--spacing) * 3)}.top-\\[60\\%\\]{top:60%}.top-full{top:100%}.top-px{top:1px}.right-0{right:0}.right-2{right:calc(var(--spacing) * 2)}.right-3{right:calc(var(--spacing) * 3)}.bottom-0{bottom:0}.left-0{left:0}.left-1{left:var(--spacing)}.left-1\\/2{left:50%}.left-6{left:calc(var(--spacing) * 6)}.left-8{left:calc(var(--spacing) * 8)}.isolate{isolation:isolate}.isolation-auto{isolation:auto}.z-0{z-index:0}.z-1{z-index:1}.z-10{z-index:10}.z-50,.z-\\[50\\]{z-index:50}.z-\\[60\\]{z-index:60}.z-\\[65\\]{z-index:65}.z-\\[70\\]{z-index:70}.z-\\[110\\]{z-index:110}.z-\\[1290\\]{z-index:1290}.col-start-2{grid-column-start:2}.row-span-2{grid-row:span 2/span 2}.row-start-1{grid-row-start:1}.container{width:100%}@media(min-width:40rem){.container{max-width:40rem}}@media(min-width:48rem){.container{max-width:48rem}}@media(min-width:64rem){.container{max-width:64rem}}@media(min-width:80rem){.container{max-width:80rem}}@media(min-width:96rem){.container{max-width:96rem}}.m-4{margin:calc(var(--spacing) * 4)}.-mx-1{margin-inline:calc(var(--spacing) * -1)}.-mx-4{margin-inline:calc(var(--spacing) * -4)}.mx-0{margin-inline:0}.mx-0\\.5{margin-inline:calc(var(--spacing) * .5)}.mx-auto{margin-inline:auto}.my-1{margin-block:var(--spacing)}.my-8{margin-block:calc(var(--spacing) * 8)}.mt-0{margin-top:0}.mt-0\\.5{margin-top:calc(var(--spacing) * .5)}.mt-1{margin-top:var(--spacing)}.mt-1\\.5{margin-top:calc(var(--spacing) * 1.5)}.mt-2{margin-top:calc(var(--spacing) * 2)}.mt-3{margin-top:calc(var(--spacing) * 3)}.mt-4{margin-top:calc(var(--spacing) * 4)}.mt-8{margin-top:calc(var(--spacing) * 8)}.mt-12{margin-top:calc(var(--spacing) * 12)}.mt-16{margin-top:calc(var(--spacing) * 16)}.mt-auto{margin-top:auto}.-mb-4{margin-bottom:calc(var(--spacing) * -4)}.mb-1{margin-bottom:var(--spacing)}.mb-2{margin-bottom:calc(var(--spacing) * 2)}.mb-3{margin-bottom:calc(var(--spacing) * 3)}.mb-4{margin-bottom:calc(var(--spacing) * 4)}.mb-6{margin-bottom:calc(var(--spacing) * 6)}.mb-8{margin-bottom:calc(var(--spacing) * 8)}.mb-12{margin-bottom:calc(var(--spacing) * 12)}.mb-16{margin-bottom:calc(var(--spacing) * 16)}.mb-20{margin-bottom:calc(var(--spacing) * 20)}.ml-1{margin-left:var(--spacing)}.ml-2{margin-left:calc(var(--spacing) * 2)}.ml-auto{margin-left:auto}.block{display:block}.contents{display:contents}.flex{display:flex}.flow-root{display:flow-root}.grid{display:grid}.hidden{display:none}.inline{display:inline}.inline-block{display:inline-block}.inline-flex{display:inline-flex}.inline-grid{display:inline-grid}.inline-table{display:inline-table}.list-item{display:list-item}.table{display:table}.table-caption{display:table-caption}.table-cell{display:table-cell}.table-column{display:table-column}.table-column-group{display:table-column-group}.table-footer-group{display:table-footer-group}.table-header-group{display:table-header-group}.table-row{display:table-row}.table-row-group{display:table-row-group}.field-sizing-content{field-sizing:content}.aspect-\\[3\\/4\\]{aspect-ratio:3/4}.aspect-square{aspect-ratio:1}.size-2{width:calc(var(--spacing) * 2);height:calc(var(--spacing) * 2)}.size-2\\.5{width:calc(var(--spacing) * 2.5);height:calc(var(--spacing) * 2.5)}.size-3{width:calc(var(--spacing) * 3);height:calc(var(--spacing) * 3)}.size-4{width:calc(var(--spacing) * 4);height:calc(var(--spacing) * 4)}.size-5{width:calc(var(--spacing) * 5);height:calc(var(--spacing) * 5)}.size-6{width:calc(var(--spacing) * 6);height:calc(var(--spacing) * 6)}.size-7{width:calc(var(--spacing) * 7);height:calc(var(--spacing) * 7)}.size-8{width:calc(var(--spacing) * 8);height:calc(var(--spacing) * 8)}.size-9{width:calc(var(--spacing) * 9);height:calc(var(--spacing) * 9)}.size-full{width:100%;height:100%}.h-\\(--radix-accordion-content-height\\){height:var(--radix-accordion-content-height)}.h-\\(--radix-navigation-menu-viewport-height\\){height:var(--radix-navigation-menu-viewport-height)}.h-\\(--radix-select-trigger-height\\){height:var(--radix-select-trigger-height)}.h-1{height:var(--spacing)}.h-1\\.5{height:calc(var(--spacing) * 1.5)}.h-2{height:calc(var(--spacing) * 2)}.h-4{height:calc(var(--spacing) * 4)}.h-5{height:calc(var(--spacing) * 5)}.h-6{height:calc(var(--spacing) * 6)}.h-7{height:calc(var(--spacing) * 7)}.h-8{height:calc(var(--spacing) * 8)}.h-9{height:calc(var(--spacing) * 9)}.h-10{height:calc(var(--spacing) * 10)}.h-24{height:calc(var(--spacing) * 24)}.h-48{height:calc(var(--spacing) * 48)}.h-64{height:calc(var(--spacing) * 64)}.h-72{height:calc(var(--spacing) * 72)}.h-80{height:calc(var(--spacing) * 80)}.h-\\[220px\\]{height:220px}.h-\\[600px\\]{height:600px}.h-\\[700px\\]{height:700px}.h-\\[calc\\(100\\%-1px\\)\\]{height:calc(100% - 1px)}.h-auto{height:auto}.h-full{height:100%}.h-px{height:1px}.max-h-\\(--radix-dropdown-menu-content-available-height\\){max-height:var(--radix-dropdown-menu-content-available-height)}.max-h-\\(--radix-select-content-available-height\\){max-height:var(--radix-select-content-available-height)}.min-h-16{min-height:calc(var(--spacing) * 16)}.min-h-\\[18px\\]{min-height:18px}.min-h-\\[85vh\\]{min-height:85vh}.min-h-\\[220px\\]{min-height:220px}.min-h-screen{min-height:100vh}.w-\\(--radix-dropdown-menu-trigger-width\\){width:var(--radix-dropdown-menu-trigger-width)}.w-1{width:var(--spacing)}.w-2{width:calc(var(--spacing) * 2)}.w-4{width:calc(var(--spacing) * 4)}.w-4\\/6{width:66.6667%}.w-5{width:calc(var(--spacing) * 5)}.w-5\\/6{width:83.3333%}.w-8{width:calc(var(--spacing) * 8)}.w-10{width:calc(var(--spacing) * 10)}.w-24{width:calc(var(--spacing) * 24)}.w-32{width:calc(var(--spacing) * 32)}.w-64{width:calc(var(--spacing) * 64)}.w-80{width:calc(var(--spacing) * 80)}.w-fit{width:fit-content}.w-full{width:100%}.w-max{width:max-content}.w-px{width:1px}.max-w-2xl{max-width:var(--container-2xl)}.max-w-3xl{max-width:var(--container-3xl)}.max-w-4xl{max-width:var(--container-4xl)}.max-w-\\[280px\\]{max-width:280px}.max-w-\\[1280px\\]{max-width:1280px}.max-w-\\[1600px\\]{max-width:1600px}.max-w-\\[calc\\(100\\%-2rem\\)\\]{max-width:calc(100% - 2rem)}.max-w-max{max-width:max-content}.max-w-md{max-width:var(--container-md)}.max-w-none{max-width:none}.max-w-xl{max-width:var(--container-xl)}.max-w-xs{max-width:var(--container-xs)}.min-w-\\(--radix-select-trigger-width\\){min-width:var(--radix-select-trigger-width)}.min-w-0{min-width:0}.min-w-7{min-width:calc(var(--spacing) * 7)}.min-w-8{min-width:calc(var(--spacing) * 8)}.min-w-9{min-width:calc(var(--spacing) * 9)}.min-w-32{min-width:calc(var(--spacing) * 32)}.min-w-36{min-width:calc(var(--spacing) * 36)}.min-w-\\[18px\\]{min-width:18px}.min-w-\\[96px\\]{min-width:96px}.min-w-max{min-width:max-content}.flex-1{flex:1}.flex-shrink{flex-shrink:1}.flex-shrink-0{flex-shrink:0}.shrink{flex-shrink:1}.shrink-0{flex-shrink:0}.flex-grow,.grow{flex-grow:1}.caption-bottom{caption-side:bottom}.border-collapse{border-collapse:collapse}.origin-\\(--radix-dropdown-menu-content-transform-origin\\){transform-origin:var(--radix-dropdown-menu-content-transform-origin)}.origin-\\(--radix-hover-card-content-transform-origin\\){transform-origin:var(--radix-hover-card-content-transform-origin)}.origin-\\(--radix-select-content-transform-origin\\){transform-origin:var(--radix-select-content-transform-origin)}.origin-\\(--radix-tooltip-content-transform-origin\\){transform-origin:var(--radix-tooltip-content-transform-origin)}.-translate-x-1{--tw-translate-x:calc(var(--spacing) * -1);translate:var(--tw-translate-x) var(--tw-translate-y)}.-translate-x-1\\/2{--tw-translate-x: -50% ;translate:var(--tw-translate-x) var(--tw-translate-y)}.-translate-y-1{--tw-translate-y:calc(var(--spacing) * -1);translate:var(--tw-translate-x) var(--tw-translate-y)}.-translate-y-1\\/2{--tw-translate-y: -50% ;translate:var(--tw-translate-x) var(--tw-translate-y)}.translate-y-\\[calc\\(-50\\%_-_2px\\)\\]{--tw-translate-y: calc(-50% - 2px) ;translate:var(--tw-translate-x) var(--tw-translate-y)}.translate-none{translate:none}.scale-3d{scale:var(--tw-scale-x) var(--tw-scale-y) var(--tw-scale-z)}.rotate-45{rotate:45deg}.transform{transform:var(--tw-rotate-x,) var(--tw-rotate-y,) var(--tw-rotate-z,) var(--tw-skew-x,) var(--tw-skew-y,)}.animate-pulse{animation:var(--animate-pulse)}.cursor-default{cursor:default}.cursor-pointer{cursor:pointer}.touch-pinch-zoom{--tw-pinch-zoom:pinch-zoom;touch-action:var(--tw-pan-x,) var(--tw-pan-y,) var(--tw-pinch-zoom,)}.touch-none{touch-action:none}.resize{resize:both}.resize-none{resize:none}.scroll-my-1{scroll-margin-block:var(--spacing)}.list-none{list-style-type:none}.columns-2{columns:2}.break-inside-avoid{break-inside:avoid}.auto-rows-min{grid-auto-rows:min-content}.grid-cols-1{grid-template-columns:repeat(1,minmax(0,1fr))}.grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}.flex-col{flex-direction:column}.flex-col-reverse{flex-direction:column-reverse}.flex-row{flex-direction:row}.flex-nowrap{flex-wrap:nowrap}.flex-wrap{flex-wrap:wrap}.place-content-center{place-content:center}.items-baseline{align-items:baseline}.items-center{align-items:center}.items-end{align-items:flex-end}.items-start{align-items:flex-start}.justify-between{justify-content:space-between}.justify-center{justify-content:center}.gap-0{gap:0}.gap-0\\.5{gap:calc(var(--spacing) * .5)}.gap-1{gap:var(--spacing)}.gap-1\\.5{gap:calc(var(--spacing) * 1.5)}.gap-2{gap:calc(var(--spacing) * 2)}.gap-3{gap:calc(var(--spacing) * 3)}.gap-4{gap:calc(var(--spacing) * 4)}.gap-6{gap:calc(var(--spacing) * 6)}.gap-8{gap:calc(var(--spacing) * 8)}.gap-12{gap:calc(var(--spacing) * 12)}.gap-16{gap:calc(var(--spacing) * 16)}.gap-20{gap:calc(var(--spacing) * 20)}.gap-\\[--spacing\\(var\\(--gap\\)\\)\\]{gap:calc(var(--spacing) * var(--gap))}:where(.space-y-1>:not(:last-child)){--tw-space-y-reverse:0;margin-block-start:calc(var(--spacing) * var(--tw-space-y-reverse));margin-block-end:calc(var(--spacing) * calc(1 - var(--tw-space-y-reverse)))}:where(.space-y-2>:not(:last-child)){--tw-space-y-reverse:0;margin-block-start:calc(calc(var(--spacing) * 2) * var(--tw-space-y-reverse));margin-block-end:calc(calc(var(--spacing) * 2) * calc(1 - var(--tw-space-y-reverse)))}:where(.space-y-3>:not(:last-child)){--tw-space-y-reverse:0;margin-block-start:calc(calc(var(--spacing) * 3) * var(--tw-space-y-reverse));margin-block-end:calc(calc(var(--spacing) * 3) * calc(1 - var(--tw-space-y-reverse)))}:where(.space-y-4>:not(:last-child)){--tw-space-y-reverse:0;margin-block-start:calc(calc(var(--spacing) * 4) * var(--tw-space-y-reverse));margin-block-end:calc(calc(var(--spacing) * 4) * calc(1 - var(--tw-space-y-reverse)))}:where(.space-y-6>:not(:last-child)){--tw-space-y-reverse:0;margin-block-start:calc(calc(var(--spacing) * 6) * var(--tw-space-y-reverse));margin-block-end:calc(calc(var(--spacing) * 6) * calc(1 - var(--tw-space-y-reverse)))}:where(.space-y-8>:not(:last-child)){--tw-space-y-reverse:0;margin-block-start:calc(calc(var(--spacing) * 8) * var(--tw-space-y-reverse));margin-block-end:calc(calc(var(--spacing) * 8) * calc(1 - var(--tw-space-y-reverse)))}:where(.space-y-10>:not(:last-child)){--tw-space-y-reverse:0;margin-block-start:calc(calc(var(--spacing) * 10) * var(--tw-space-y-reverse));margin-block-end:calc(calc(var(--spacing) * 10) * calc(1 - var(--tw-space-y-reverse)))}:where(.space-y-12>:not(:last-child)){--tw-space-y-reverse:0;margin-block-start:calc(calc(var(--spacing) * 12) * var(--tw-space-y-reverse));margin-block-end:calc(calc(var(--spacing) * 12) * calc(1 - var(--tw-space-y-reverse)))}:where(.space-y-16>:not(:last-child)){--tw-space-y-reverse:0;margin-block-start:calc(calc(var(--spacing) * 16) * var(--tw-space-y-reverse));margin-block-end:calc(calc(var(--spacing) * 16) * calc(1 - var(--tw-space-y-reverse)))}:where(.space-y-reverse>:not(:last-child)){--tw-space-y-reverse:1}.gap-x-16{column-gap:calc(var(--spacing) * 16)}:where(.-space-x-2>:not(:last-child)){--tw-space-x-reverse:0;margin-inline-start:calc(calc(var(--spacing) * -2) * var(--tw-space-x-reverse));margin-inline-end:calc(calc(var(--spacing) * -2) * calc(1 - var(--tw-space-x-reverse)))}:where(.space-x-4>:not(:last-child)){--tw-space-x-reverse:0;margin-inline-start:calc(calc(var(--spacing) * 4) * var(--tw-space-x-reverse));margin-inline-end:calc(calc(var(--spacing) * 4) * calc(1 - var(--tw-space-x-reverse)))}:where(.space-x-reverse>:not(:last-child)){--tw-space-x-reverse:1}.gap-y-12{row-gap:calc(var(--spacing) * 12)}:where(.divide-x>:not(:last-child)){--tw-divide-x-reverse:0;border-inline-style:var(--tw-border-style);border-inline-start-width:calc(1px * var(--tw-divide-x-reverse));border-inline-end-width:calc(1px * calc(1 - var(--tw-divide-x-reverse)))}:where(.divide-y>:not(:last-child)){--tw-divide-y-reverse:0;border-bottom-style:var(--tw-border-style);border-top-style:var(--tw-border-style);border-top-width:calc(1px * var(--tw-divide-y-reverse));border-bottom-width:calc(1px * calc(1 - var(--tw-divide-y-reverse)))}:where(.divide-y-reverse>:not(:last-child)){--tw-divide-y-reverse:1}.self-start{align-self:flex-start}.justify-self-end{justify-self:flex-end}.truncate{text-overflow:ellipsis;white-space:nowrap;overflow:hidden}.overflow-hidden{overflow:hidden}.overflow-x-auto{overflow-x:auto}.overflow-x-hidden{overflow-x:hidden}.overflow-y-auto{overflow-y:auto}.rounded{border-radius:.25rem}.rounded-4xl{border-radius:var(--radius-4xl)}.rounded-\\[2px\\]{border-radius:2px}.rounded-\\[4px\\]{border-radius:4px}.rounded-\\[inherit\\]{border-radius:inherit}.rounded-\\[min\\(var\\(--radius-md\\)\\,10px\\)\\]{border-radius:min(var(--radius-md),10px)}.rounded-\\[min\\(var\\(--radius-md\\)\\,12px\\)\\]{border-radius:min(var(--radius-md),12px)}.rounded-full{border-radius:3.40282e38px}.rounded-lg{border-radius:var(--radius-lg)}.rounded-md{border-radius:var(--radius-md)}.rounded-none{border-radius:0}.rounded-xl{border-radius:var(--radius-xl)}.rounded-s{border-start-start-radius:.25rem;border-end-start-radius:.25rem}.rounded-ss{border-start-start-radius:.25rem}.rounded-e{border-start-end-radius:.25rem;border-end-end-radius:.25rem}.rounded-se{border-start-end-radius:.25rem}.rounded-ee{border-end-end-radius:.25rem}.rounded-es{border-end-start-radius:.25rem}.rounded-t{border-top-left-radius:.25rem;border-top-right-radius:.25rem}.rounded-t-xl{border-top-left-radius:var(--radius-xl);border-top-right-radius:var(--radius-xl)}.rounded-l{border-top-left-radius:.25rem;border-bottom-left-radius:.25rem}.rounded-tl{border-top-left-radius:.25rem}.rounded-tl-sm{border-top-left-radius:var(--radius-sm)}.rounded-r{border-top-right-radius:.25rem;border-bottom-right-radius:.25rem}.rounded-tr{border-top-right-radius:.25rem}.rounded-b{border-bottom-right-radius:.25rem;border-bottom-left-radius:.25rem}.rounded-b-xl{border-bottom-right-radius:var(--radius-xl);border-bottom-left-radius:var(--radius-xl)}.rounded-br{border-bottom-right-radius:.25rem}.rounded-bl{border-bottom-left-radius:.25rem}.border{border-style:var(--tw-border-style);border-width:1px}.border-2{border-style:var(--tw-border-style);border-width:2px}.border-x{border-inline-style:var(--tw-border-style);border-inline-width:1px}.border-y{border-block-style:var(--tw-border-style);border-block-width:1px}.border-s{border-inline-start-style:var(--tw-border-style);border-inline-start-width:1px}.border-e{border-inline-end-style:var(--tw-border-style);border-inline-end-width:1px}.border-bs{border-block-start-style:var(--tw-border-style);border-block-start-width:1px}.border-be{border-block-end-style:var(--tw-border-style);border-block-end-width:1px}.border-t{border-top-style:var(--tw-border-style);border-top-width:1px}.border-r{border-right-style:var(--tw-border-style);border-right-width:1px}.border-b{border-bottom-style:var(--tw-border-style);border-bottom-width:1px}.border-l{border-left-style:var(--tw-border-style);border-left-width:1px}.border-l-2{border-left-style:var(--tw-border-style);border-left-width:2px}.border-dashed{--tw-border-style:dashed;border-style:dashed}.border-dotted{--tw-border-style:dotted;border-style:dotted}.border-none{--tw-border-style:none;border-style:none}.border-solid{--tw-border-style:solid;border-style:solid}.border-\\[var\\(--local-bg\\)\\]{border-color:var(--local-bg)}.border-\\[var\\(--local-border\\)\\]{border-color:var(--local-border)}.border-\\[var\\(--local-text\\)\\]{border-color:var(--local-text)}.border-amber-500{border-color:var(--color-amber-500)}.border-amber-500\\/20{border-color:#f99c0033}@supports (color:color-mix(in lab,red,red)){.border-amber-500\\/20{border-color:color-mix(in oklab,var(--color-amber-500) 20%,transparent)}}.border-blue-600{border-color:var(--color-blue-600)}.border-border,.border-border\\/50{border-color:var(--color-border)}@supports (color:color-mix(in lab,red,red)){.border-border\\/50{border-color:color-mix(in oklab,var(--color-border) 50%,transparent)}}.border-red-500{border-color:var(--color-red-500)}.border-red-500\\/20{border-color:#fb2c3633}@supports (color:color-mix(in lab,red,red)){.border-red-500\\/20{border-color:color-mix(in oklab,var(--color-red-500) 20%,transparent)}}.border-transparent{border-color:#0000}.border-zinc-700{border-color:var(--color-zinc-700)}.border-zinc-800{border-color:var(--color-zinc-800)}.bg-\\[var\\(--background\\)\\]{background-color:var(--background)}.bg-\\[var\\(--color-background\\)\\]{background-color:var(--color-background)}.bg-\\[var\\(--local-accent-soft\\)\\]{background-color:var(--local-accent-soft)}.bg-\\[var\\(--local-bg\\)\\],.bg-\\[var\\(--local-bg\\)\\]\\/80{background-color:var(--local-bg)}@supports (color:color-mix(in lab,red,red)){.bg-\\[var\\(--local-bg\\)\\]\\/80{background-color:color-mix(in oklab,var(--local-bg) 80%,transparent)}}.bg-\\[var\\(--local-border\\)\\]{background-color:var(--local-border)}.bg-\\[var\\(--local-primary\\)\\]{background-color:var(--local-primary)}.bg-\\[var\\(--local-surface\\)\\]{background-color:var(--local-surface)}.bg-\\[var\\(--local-text\\)\\]{background-color:var(--local-text)}.bg-amber-500{background-color:var(--color-amber-500)}.bg-amber-500\\/5{background-color:#f99c000d}@supports (color:color-mix(in lab,red,red)){.bg-amber-500\\/5{background-color:color-mix(in oklab,var(--color-amber-500) 5%,transparent)}}.bg-background,.bg-background\\/80{background-color:var(--color-background)}@supports (color:color-mix(in lab,red,red)){.bg-background\\/80{background-color:color-mix(in oklab,var(--color-background) 80%,transparent)}}.bg-black{background-color:var(--color-black)}.bg-black\\/10{background-color:#0000001a}@supports (color:color-mix(in lab,red,red)){.bg-black\\/10{background-color:color-mix(in oklab,var(--color-black) 10%,transparent)}}.bg-blue-500{background-color:var(--color-blue-500)}.bg-blue-500\\/5{background-color:#3080ff0d}@supports (color:color-mix(in lab,red,red)){.bg-blue-500\\/5{background-color:color-mix(in oklab,var(--color-blue-500) 5%,transparent)}}.bg-blue-600{background-color:var(--color-blue-600)}.bg-border{background-color:var(--color-border)}.bg-card,.bg-card\\/60{background-color:var(--color-card)}@supports (color:color-mix(in lab,red,red)){.bg-card\\/60{background-color:color-mix(in oklab,var(--color-card) 60%,transparent)}}.bg-foreground{background-color:var(--color-foreground)}.bg-muted,.bg-muted\\/40{background-color:var(--color-muted)}@supports (color:color-mix(in lab,red,red)){.bg-muted\\/40{background-color:color-mix(in oklab,var(--color-muted) 40%,transparent)}}.bg-muted\\/50{background-color:var(--color-muted)}@supports (color:color-mix(in lab,red,red)){.bg-muted\\/50{background-color:color-mix(in oklab,var(--color-muted) 50%,transparent)}}.bg-primary{background-color:var(--color-primary)}.bg-red-500{background-color:var(--color-red-500)}.bg-red-500\\/10{background-color:#fb2c361a}@supports (color:color-mix(in lab,red,red)){.bg-red-500\\/10{background-color:color-mix(in oklab,var(--color-red-500) 10%,transparent)}}.bg-secondary{background-color:var(--color-secondary)}.bg-transparent{background-color:#0000}.bg-white{background-color:var(--color-white)}.bg-white\\/20{background-color:#fff3}@supports (color:color-mix(in lab,red,red)){.bg-white\\/20{background-color:color-mix(in oklab,var(--color-white) 20%,transparent)}}.bg-zinc-700{background-color:var(--color-zinc-700)}.bg-zinc-700\\/70{background-color:#3f3f46b3}@supports (color:color-mix(in lab,red,red)){.bg-zinc-700\\/70{background-color:color-mix(in oklab,var(--color-zinc-700) 70%,transparent)}}.bg-zinc-800{background-color:var(--color-zinc-800)}.bg-zinc-950{background-color:var(--color-zinc-950)}.bg-gradient-to-b{--tw-gradient-position:to bottom in oklab;background-image:linear-gradient(var(--tw-gradient-stops))}.bg-gradient-to-br{--tw-gradient-position:to bottom right in oklab;background-image:linear-gradient(var(--tw-gradient-stops))}.bg-gradient-to-r{--tw-gradient-position:to right in oklab;background-image:linear-gradient(var(--tw-gradient-stops))}.bg-gradient-to-t{--tw-gradient-position:to top in oklab;background-image:linear-gradient(var(--tw-gradient-stops))}.bg-\\[image\\:linear-gradient\\(var\\(--local-accent-soft\\)_1px\\,transparent_1px\\)\\,linear-gradient\\(90deg\\,var\\(--local-accent-soft\\)_1px\\,transparent_1px\\)\\]{background-image:linear-gradient(var(--local-accent-soft) 1px,transparent 1px),linear-gradient(90deg,var(--local-accent-soft) 1px,transparent 1px)}.bg-\\[image\\:linear-gradient\\(var\\(--local-border\\)_1px\\,transparent_1px\\)\\,linear-gradient\\(90deg\\,var\\(--local-border\\)_1px\\,transparent_1px\\)\\]{background-image:linear-gradient(var(--local-border) 1px,transparent 1px),linear-gradient(90deg,var(--local-border) 1px,transparent 1px)}.from-\\[var\\(--local-accent\\)\\]{--tw-gradient-from:var(--local-accent);--tw-gradient-stops:var(--tw-gradient-via-stops,var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position))}.from-\\[var\\(--local-bg\\)\\]{--tw-gradient-from:var(--local-bg);--tw-gradient-stops:var(--tw-gradient-via-stops,var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position))}.from-\\[var\\(--local-bg\\)\\]\\/20{--tw-gradient-from:var(--local-bg)}@supports (color:color-mix(in lab,red,red)){.from-\\[var\\(--local-bg\\)\\]\\/20{--tw-gradient-from:color-mix(in oklab, var(--local-bg) 20%, transparent)}}.from-\\[var\\(--local-bg\\)\\]\\/20{--tw-gradient-stops:var(--tw-gradient-via-stops,var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position))}.from-\\[var\\(--local-bg\\)\\]\\/40{--tw-gradient-from:var(--local-bg)}@supports (color:color-mix(in lab,red,red)){.from-\\[var\\(--local-bg\\)\\]\\/40{--tw-gradient-from:color-mix(in oklab, var(--local-bg) 40%, transparent)}}.from-\\[var\\(--local-bg\\)\\]\\/40{--tw-gradient-stops:var(--tw-gradient-via-stops,var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position))}.from-\\[var\\(--local-bg\\)\\]\\/60{--tw-gradient-from:var(--local-bg)}@supports (color:color-mix(in lab,red,red)){.from-\\[var\\(--local-bg\\)\\]\\/60{--tw-gradient-from:color-mix(in oklab, var(--local-bg) 60%, transparent)}}.from-\\[var\\(--local-bg\\)\\]\\/60{--tw-gradient-stops:var(--tw-gradient-via-stops,var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position))}.from-\\[var\\(--local-bg\\)\\]\\/80{--tw-gradient-from:var(--local-bg)}@supports (color:color-mix(in lab,red,red)){.from-\\[var\\(--local-bg\\)\\]\\/80{--tw-gradient-from:color-mix(in oklab, var(--local-bg) 80%, transparent)}}.from-\\[var\\(--local-bg\\)\\]\\/80{--tw-gradient-stops:var(--tw-gradient-via-stops,var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position))}.from-\\[var\\(--local-primary\\)\\]{--tw-gradient-from:var(--local-primary);--tw-gradient-stops:var(--tw-gradient-via-stops,var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position))}.from-\\[var\\(--local-primary\\)\\]\\/10{--tw-gradient-from:var(--local-primary)}@supports (color:color-mix(in lab,red,red)){.from-\\[var\\(--local-primary\\)\\]\\/10{--tw-gradient-from:color-mix(in oklab, var(--local-primary) 10%, transparent)}}.from-\\[var\\(--local-primary\\)\\]\\/10{--tw-gradient-stops:var(--tw-gradient-via-stops,var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position))}.from-transparent{--tw-gradient-from:transparent;--tw-gradient-stops:var(--tw-gradient-via-stops,var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position))}.via-\\[var\\(--local-accent\\)\\]{--tw-gradient-via:var(--local-accent);--tw-gradient-via-stops:var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-via) var(--tw-gradient-via-position), var(--tw-gradient-to) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-via-stops)}.via-\\[var\\(--local-bg\\)\\]\\/80{--tw-gradient-via:var(--local-bg)}@supports (color:color-mix(in lab,red,red)){.via-\\[var\\(--local-bg\\)\\]\\/80{--tw-gradient-via:color-mix(in oklab, var(--local-bg) 80%, transparent)}}.via-\\[var\\(--local-bg\\)\\]\\/80{--tw-gradient-via-stops:var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-via) var(--tw-gradient-via-position), var(--tw-gradient-to) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-via-stops)}.via-\\[var\\(--local-primary\\)\\]{--tw-gradient-via:var(--local-primary);--tw-gradient-via-stops:var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-via) var(--tw-gradient-via-position), var(--tw-gradient-to) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-via-stops)}.via-transparent{--tw-gradient-via:transparent;--tw-gradient-via-stops:var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-via) var(--tw-gradient-via-position), var(--tw-gradient-to) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-via-stops)}.to-\\[var\\(--local-accent\\)\\]{--tw-gradient-to:var(--local-accent);--tw-gradient-stops:var(--tw-gradient-via-stops,var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position))}.to-\\[var\\(--local-accent\\)\\]\\/5{--tw-gradient-to:var(--local-accent)}@supports (color:color-mix(in lab,red,red)){.to-\\[var\\(--local-accent\\)\\]\\/5{--tw-gradient-to:color-mix(in oklab, var(--local-accent) 5%, transparent)}}.to-\\[var\\(--local-accent\\)\\]\\/5{--tw-gradient-stops:var(--tw-gradient-via-stops,var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position))}.to-\\[var\\(--local-primary\\)\\]{--tw-gradient-to:var(--local-primary);--tw-gradient-stops:var(--tw-gradient-via-stops,var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position))}.to-transparent{--tw-gradient-to:transparent;--tw-gradient-stops:var(--tw-gradient-via-stops,var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position))}.bg-\\[size\\:40px_40px\\]{background-size:40px 40px}.bg-\\[size\\:120px_120px\\]{background-size:120px 120px}.bg-clip-padding{background-clip:padding-box}.bg-clip-text{-webkit-background-clip:text;background-clip:text}.bg-repeat{background-repeat:repeat}.mask-no-clip{-webkit-mask-clip:no-clip;mask-clip:no-clip}.mask-repeat{-webkit-mask-repeat:repeat;mask-repeat:repeat}.fill-foreground{fill:var(--color-foreground)}.object-cover{object-fit:cover}.p-1{padding:var(--spacing)}.p-2{padding:calc(var(--spacing) * 2)}.p-2\\.5{padding:calc(var(--spacing) * 2.5)}.p-4{padding:calc(var(--spacing) * 4)}.p-6{padding:calc(var(--spacing) * 6)}.p-8{padding:calc(var(--spacing) * 8)}.p-\\[3px\\]{padding:3px}.p-px{padding:1px}.px-1{padding-inline:var(--spacing)}.px-1\\.5{padding-inline:calc(var(--spacing) * 1.5)}.px-2{padding-inline:calc(var(--spacing) * 2)}.px-2\\.5{padding-inline:calc(var(--spacing) * 2.5)}.px-3{padding-inline:calc(var(--spacing) * 3)}.px-4{padding-inline:calc(var(--spacing) * 4)}.px-6{padding-inline:calc(var(--spacing) * 6)}.px-8{padding-inline:calc(var(--spacing) * 8)}.px-10{padding-inline:calc(var(--spacing) * 10)}.px-12{padding-inline:calc(var(--spacing) * 12)}.py-0{padding-block:0}.py-0\\.5{padding-block:calc(var(--spacing) * .5)}.py-1{padding-block:var(--spacing)}.py-1\\.5{padding-block:calc(var(--spacing) * 1.5)}.py-2{padding-block:calc(var(--spacing) * 2)}.py-2\\.5{padding-block:calc(var(--spacing) * 2.5)}.py-4{padding-block:calc(var(--spacing) * 4)}.py-6{padding-block:calc(var(--spacing) * 6)}.py-12{padding-block:calc(var(--spacing) * 12)}.py-24{padding-block:calc(var(--spacing) * 24)}.py-32{padding-block:calc(var(--spacing) * 32)}.pt-0{padding-top:0}.pt-4{padding-top:calc(var(--spacing) * 4)}.pt-8{padding-top:calc(var(--spacing) * 8)}.pt-12{padding-top:calc(var(--spacing) * 12)}.pr-2{padding-right:calc(var(--spacing) * 2)}.pr-8{padding-right:calc(var(--spacing) * 8)}.pb-2{padding-bottom:calc(var(--spacing) * 2)}.pb-2\\.5{padding-bottom:calc(var(--spacing) * 2.5)}.pb-8{padding-bottom:calc(var(--spacing) * 8)}.pl-1{padding-left:var(--spacing)}.pl-1\\.5{padding-left:calc(var(--spacing) * 1.5)}.pl-2{padding-left:calc(var(--spacing) * 2)}.pl-2\\.5{padding-left:calc(var(--spacing) * 2.5)}.pl-6{padding-left:calc(var(--spacing) * 6)}.pl-8{padding-left:calc(var(--spacing) * 8)}.pl-20{padding-left:calc(var(--spacing) * 20)}.text-center{text-align:center}.text-left{text-align:left}.align-middle{vertical-align:middle}.font-display{font-family:var(--font-display)}.font-mono{font-family:var(--font-mono)}.font-primary{font-family:var(--font-primary)}.text-2xl{font-size:var(--text-2xl);line-height:var(--tw-leading,var(--text-2xl--line-height))}.text-3xl{font-size:var(--text-3xl);line-height:var(--tw-leading,var(--text-3xl--line-height))}.text-4xl{font-size:var(--text-4xl);line-height:var(--tw-leading,var(--text-4xl--line-height))}.text-base{font-size:var(--text-base);line-height:var(--tw-leading,var(--text-base--line-height))}.text-lg{font-size:var(--text-lg);line-height:var(--tw-leading,var(--text-lg--line-height))}.text-sm{font-size:var(--text-sm);line-height:var(--tw-leading,var(--text-sm--line-height))}.text-xl{font-size:var(--text-xl);line-height:var(--tw-leading,var(--text-xl--line-height))}.text-xs{font-size:var(--text-xs);line-height:var(--tw-leading,var(--text-xs--line-height))}.text-\\[0\\.8rem\\]{font-size:.8rem}.text-\\[9px\\]{font-size:9px}.text-\\[clamp\\(2\\.5rem\\,8vw\\,6rem\\)\\]{font-size:clamp(2.5rem,8vw,6rem)}.text-\\[clamp\\(2rem\\,5vw\\,3rem\\)\\]{font-size:clamp(2rem,5vw,3rem)}.leading-none{--tw-leading:1;line-height:1}.leading-relaxed{--tw-leading:var(--leading-relaxed);line-height:var(--leading-relaxed)}.leading-snug{--tw-leading:var(--leading-snug);line-height:var(--leading-snug)}.leading-tight{--tw-leading:var(--leading-tight);line-height:var(--leading-tight)}.font-black{--tw-font-weight:var(--font-weight-black);font-weight:var(--font-weight-black)}.font-bold{--tw-font-weight:var(--font-weight-bold);font-weight:var(--font-weight-bold)}.font-medium{--tw-font-weight:var(--font-weight-medium);font-weight:var(--font-weight-medium)}.font-normal{--tw-font-weight:var(--font-weight-normal);font-weight:var(--font-weight-normal)}.font-semibold{--tw-font-weight:var(--font-weight-semibold);font-weight:var(--font-weight-semibold)}.tracking-\\[0\\.1em\\]{--tw-tracking:.1em;letter-spacing:.1em}.tracking-\\[0\\.2em\\]{--tw-tracking:.2em;letter-spacing:.2em}.tracking-tight{--tw-tracking:var(--tracking-tight);letter-spacing:var(--tracking-tight)}.tracking-widest{--tw-tracking:var(--tracking-widest);letter-spacing:var(--tracking-widest)}.text-wrap{text-wrap:wrap}.wrap-break-word{overflow-wrap:break-word}.text-clip{text-overflow:clip}.text-ellipsis{text-overflow:ellipsis}.whitespace-nowrap{white-space:nowrap}.whitespace-pre-line{white-space:pre-line}.text-\\[var\\(--background\\)\\]{color:var(--background)}.text-\\[var\\(--foreground\\)\\]{color:var(--foreground)}.text-\\[var\\(--local-accent\\)\\]{color:var(--local-accent)}.text-\\[var\\(--local-bg\\)\\]{color:var(--local-bg)}.text-\\[var\\(--local-primary\\)\\]{color:var(--local-primary)}.text-\\[var\\(--local-primary-foreground\\)\\]{color:var(--local-primary-foreground)}.text-\\[var\\(--local-text\\)\\]{color:var(--local-text)}.text-\\[var\\(--local-text-muted\\)\\]{color:var(--local-text-muted)}.text-\\[var\\(--primary\\)\\]{color:var(--primary)}.text-amber-200{color:var(--color-amber-200)}.text-amber-500{color:var(--color-amber-500)}.text-amber-500\\/70{color:#f99c00b3}@supports (color:color-mix(in lab,red,red)){.text-amber-500\\/70{color:color-mix(in oklab,var(--color-amber-500) 70%,transparent)}}.text-background{color:var(--color-background)}.text-card-foreground{color:var(--color-card-foreground)}.text-current{color:currentColor}.text-foreground,.text-foreground\\/60{color:var(--color-foreground)}@supports (color:color-mix(in lab,red,red)){.text-foreground\\/60{color:color-mix(in oklab,var(--color-foreground) 60%,transparent)}}.text-green-500{color:var(--color-green-500)}.text-green-600{color:var(--color-green-600)}.text-muted-foreground{color:var(--color-muted-foreground)}.text-primary{color:var(--color-primary)}.text-primary-foreground{color:var(--color-primary-foreground)}.text-red-400{color:var(--color-red-400)}.text-red-500{color:var(--color-red-500)}.text-secondary-foreground{color:var(--color-secondary-foreground)}.text-transparent{color:#0000}.text-white{color:var(--color-white)}.text-zinc-100{color:var(--color-zinc-100)}.text-zinc-200{color:var(--color-zinc-200)}.text-zinc-400{color:var(--color-zinc-400)}.text-zinc-500{color:var(--color-zinc-500)}.capitalize{text-transform:capitalize}.lowercase{text-transform:lowercase}.normal-case{text-transform:none}.uppercase{text-transform:uppercase}.italic{font-style:italic}.not-italic{font-style:normal}.diagonal-fractions{--tw-numeric-fraction:diagonal-fractions;font-variant-numeric:var(--tw-ordinal,) var(--tw-slashed-zero,) var(--tw-numeric-figure,) var(--tw-numeric-spacing,) var(--tw-numeric-fraction,)}.lining-nums{--tw-numeric-figure:lining-nums;font-variant-numeric:var(--tw-ordinal,) var(--tw-slashed-zero,) var(--tw-numeric-figure,) var(--tw-numeric-spacing,) var(--tw-numeric-fraction,)}.oldstyle-nums{--tw-numeric-figure:oldstyle-nums;font-variant-numeric:var(--tw-ordinal,) var(--tw-slashed-zero,) var(--tw-numeric-figure,) var(--tw-numeric-spacing,) var(--tw-numeric-fraction,)}.ordinal{--tw-ordinal:ordinal;font-variant-numeric:var(--tw-ordinal,) var(--tw-slashed-zero,) var(--tw-numeric-figure,) var(--tw-numeric-spacing,) var(--tw-numeric-fraction,)}.proportional-nums{--tw-numeric-spacing:proportional-nums;font-variant-numeric:var(--tw-ordinal,) var(--tw-slashed-zero,) var(--tw-numeric-figure,) var(--tw-numeric-spacing,) var(--tw-numeric-fraction,)}.slashed-zero{--tw-slashed-zero:slashed-zero;font-variant-numeric:var(--tw-ordinal,) var(--tw-slashed-zero,) var(--tw-numeric-figure,) var(--tw-numeric-spacing,) var(--tw-numeric-fraction,)}.stacked-fractions{--tw-numeric-fraction:stacked-fractions;font-variant-numeric:var(--tw-ordinal,) var(--tw-slashed-zero,) var(--tw-numeric-figure,) var(--tw-numeric-spacing,) var(--tw-numeric-fraction,)}.tabular-nums{--tw-numeric-spacing:tabular-nums;font-variant-numeric:var(--tw-ordinal,) var(--tw-slashed-zero,) var(--tw-numeric-figure,) var(--tw-numeric-spacing,) var(--tw-numeric-fraction,)}.normal-nums{font-variant-numeric:normal}.line-through{text-decoration-line:line-through}.no-underline{text-decoration-line:none}.overline{text-decoration-line:overline}.underline{text-decoration-line:underline}.underline-offset-4{text-underline-offset:4px}.antialiased{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}.subpixel-antialiased{-webkit-font-smoothing:auto;-moz-osx-font-smoothing:auto}.opacity-0{opacity:0}.opacity-20{opacity:.2}.opacity-30{opacity:.3}.opacity-50{opacity:.5}.bg-blend-color{background-blend-mode:color}.shadow{--tw-shadow:0 1px 3px 0 var(--tw-shadow-color,#0000001a), 0 1px 2px -1px var(--tw-shadow-color,#0000001a);box-shadow:var(--tw-inset-shadow),var(--tw-inset-ring-shadow),var(--tw-ring-offset-shadow),var(--tw-ring-shadow),var(--tw-shadow)}.shadow-2xl{--tw-shadow:0 25px 50px -12px var(--tw-shadow-color,#00000040);box-shadow:var(--tw-inset-shadow),var(--tw-inset-ring-shadow),var(--tw-ring-offset-shadow),var(--tw-ring-shadow),var(--tw-shadow)}.shadow-lg{--tw-shadow:0 10px 15px -3px var(--tw-shadow-color,#0000001a), 0 4px 6px -4px var(--tw-shadow-color,#0000001a);box-shadow:var(--tw-inset-shadow),var(--tw-inset-ring-shadow),var(--tw-ring-offset-shadow),var(--tw-ring-shadow),var(--tw-shadow)}.shadow-md{--tw-shadow:0 4px 6px -1px var(--tw-shadow-color,#0000001a), 0 2px 4px -2px var(--tw-shadow-color,#0000001a);box-shadow:var(--tw-inset-shadow),var(--tw-inset-ring-shadow),var(--tw-ring-offset-shadow),var(--tw-ring-shadow),var(--tw-shadow)}.shadow-sm{--tw-shadow:0 1px 3px 0 var(--tw-shadow-color,#0000001a), 0 1px 2px -1px var(--tw-shadow-color,#0000001a);box-shadow:var(--tw-inset-shadow),var(--tw-inset-ring-shadow),var(--tw-ring-offset-shadow),var(--tw-ring-shadow),var(--tw-shadow)}.ring{--tw-ring-shadow:var(--tw-ring-inset,) 0 0 0 calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color,currentcolor);box-shadow:var(--tw-inset-shadow),var(--tw-inset-ring-shadow),var(--tw-ring-offset-shadow),var(--tw-ring-shadow),var(--tw-shadow)}.ring-0{--tw-ring-shadow:var(--tw-ring-inset,) 0 0 0 calc(0px + var(--tw-ring-offset-width)) var(--tw-ring-color,currentcolor);box-shadow:var(--tw-inset-shadow),var(--tw-inset-ring-shadow),var(--tw-ring-offset-shadow),var(--tw-ring-shadow),var(--tw-shadow)}.ring-1{--tw-ring-shadow:var(--tw-ring-inset,) 0 0 0 calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color,currentcolor);box-shadow:var(--tw-inset-shadow),var(--tw-inset-ring-shadow),var(--tw-ring-offset-shadow),var(--tw-ring-shadow),var(--tw-shadow)}.ring-2{--tw-ring-shadow:var(--tw-ring-inset,) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color,currentcolor);box-shadow:var(--tw-inset-shadow),var(--tw-inset-ring-shadow),var(--tw-ring-offset-shadow),var(--tw-ring-shadow),var(--tw-shadow)}.inset-ring{--tw-inset-ring-shadow:inset 0 0 0 1px var(--tw-inset-ring-color,currentcolor);box-shadow:var(--tw-inset-shadow),var(--tw-inset-ring-shadow),var(--tw-ring-offset-shadow),var(--tw-ring-shadow),var(--tw-shadow)}.ring-background{--tw-ring-color:var(--color-background)}.ring-foreground,.ring-foreground\\/10{--tw-ring-color:var(--color-foreground)}@supports (color:color-mix(in lab,red,red)){.ring-foreground\\/10{--tw-ring-color:color-mix(in oklab, var(--color-foreground) 10%, transparent)}}.ring-offset-background{--tw-ring-offset-color:var(--color-background)}.outline-hidden{--tw-outline-style:none;outline-style:none}@media(forced-colors:active){.outline-hidden{outline-offset:2px;outline:2px solid #0000}}.outline{outline-style:var(--tw-outline-style);outline-width:1px}.blur{--tw-blur:blur(8px);filter:var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,)}.blur-xl{--tw-blur:blur(var(--blur-xl));filter:var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,)}.drop-shadow{--tw-drop-shadow-size:drop-shadow(0 1px 2px var(--tw-drop-shadow-color,#0000001a)) drop-shadow(0 1px 1px var(--tw-drop-shadow-color,#0000000f));--tw-drop-shadow:drop-shadow(0 1px 2px #0000001a) drop-shadow(0 1px 1px #0000000f);filter:var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,)}.grayscale{--tw-grayscale:grayscale(100%);filter:var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,)}.invert{--tw-invert:invert(100%);filter:var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,)}.sepia{--tw-sepia:sepia(100%);filter:var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,)}.filter{filter:var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,)}.backdrop-blur{--tw-backdrop-blur:blur(8px);-webkit-backdrop-filter:var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);backdrop-filter:var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,)}.backdrop-blur-md{--tw-backdrop-blur:blur(var(--blur-md));-webkit-backdrop-filter:var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);backdrop-filter:var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,)}.backdrop-blur-sm{--tw-backdrop-blur:blur(var(--blur-sm));-webkit-backdrop-filter:var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);backdrop-filter:var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,)}.backdrop-grayscale{--tw-backdrop-grayscale:grayscale(100%);-webkit-backdrop-filter:var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);backdrop-filter:var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,)}.backdrop-invert{--tw-backdrop-invert:invert(100%);-webkit-backdrop-filter:var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);backdrop-filter:var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,)}.backdrop-sepia{--tw-backdrop-sepia:sepia(100%);-webkit-backdrop-filter:var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);backdrop-filter:var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,)}.backdrop-filter{-webkit-backdrop-filter:var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);backdrop-filter:var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,)}.transition{transition-property:color,background-color,border-color,outline-color,text-decoration-color,fill,stroke,--tw-gradient-from,--tw-gradient-via,--tw-gradient-to,opacity,box-shadow,transform,translate,scale,rotate,filter,-webkit-backdrop-filter,backdrop-filter,display,content-visibility,overlay,pointer-events;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration))}.transition-\\[color\\,box-shadow\\]{transition-property:color,box-shadow;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration))}.transition-all{transition-property:all;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration))}.transition-colors{transition-property:color,background-color,border-color,outline-color,text-decoration-color,fill,stroke,--tw-gradient-from,--tw-gradient-via,--tw-gradient-to;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration))}.transition-opacity{transition-property:opacity;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration))}.transition-transform{transition-property:transform,translate,scale,rotate;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration))}.transition-none{transition-property:none}.duration-100{--tw-duration:.1s;transition-duration:.1s}.duration-200{--tw-duration:.2s;transition-duration:.2s}.duration-300{--tw-duration:.3s;transition-duration:.3s}.duration-700{--tw-duration:.7s;transition-duration:.7s}.ease-\\[cubic-bezier\\(0\\.22\\,1\\,0\\.36\\,1\\)\\]{--tw-ease:cubic-bezier(.22,1,.36,1);transition-timing-function:cubic-bezier(.22,1,.36,1)}.ease-in{--tw-ease:var(--ease-in);transition-timing-function:var(--ease-in)}.ease-in-out{--tw-ease:var(--ease-in-out);transition-timing-function:var(--ease-in-out)}.ease-out{--tw-ease:var(--ease-out);transition-timing-function:var(--ease-out)}.outline-none{--tw-outline-style:none;outline-style:none}.select-none{-webkit-user-select:none;user-select:none}.\\[tenant-alpha\\:getFilePages\\]{tenant-alpha:getFilePages}:where(.divide-x-reverse>:not(:last-child)){--tw-divide-x-reverse:1}.ring-inset{--tw-ring-inset:inset}.not-last\\:border-b:not(:last-child){border-bottom-style:var(--tw-border-style);border-bottom-width:1px}@media(hover:hover){.group-hover\\:scale-105:is(:where(.group):hover *){--tw-scale-x:105%;--tw-scale-y:105%;--tw-scale-z:105%;scale:var(--tw-scale-x) var(--tw-scale-y)}.group-hover\\:border-dashed:is(:where(.group):hover *){--tw-border-style:dashed;border-style:dashed}.group-hover\\:border-blue-400\\/50:is(:where(.group):hover *){border-color:#54a2ff80}@supports (color:color-mix(in lab,red,red)){.group-hover\\:border-blue-400\\/50:is(:where(.group):hover *){border-color:color-mix(in oklab,var(--color-blue-400) 50%,transparent)}}.group-hover\\:text-\\[var\\(--local-accent\\)\\]:is(:where(.group):hover *){color:var(--local-accent)}.group-hover\\:text-\\[var\\(--local-primary\\)\\]:is(:where(.group):hover *){color:var(--local-primary)}.group-hover\\:opacity-100:is(:where(.group):hover *){opacity:1}.group-hover\\:shadow-lg:is(:where(.group):hover *){--tw-shadow:0 10px 15px -3px var(--tw-shadow-color,#0000001a), 0 4px 6px -4px var(--tw-shadow-color,#0000001a);box-shadow:var(--tw-inset-shadow),var(--tw-inset-ring-shadow),var(--tw-ring-offset-shadow),var(--tw-ring-shadow),var(--tw-shadow)}}.group-has-disabled\\/field\\:opacity-50:is(:where(.group\\/field):has(:disabled) *){opacity:.5}.group-has-data-\\[size\\=lg\\]\\/avatar-group\\:size-10:is(:where(.group\\/avatar-group):has([data-size=lg]) *){width:calc(var(--spacing) * 10);height:calc(var(--spacing) * 10)}.group-has-data-\\[size\\=sm\\]\\/avatar-group\\:size-6:is(:where(.group\\/avatar-group):has([data-size=sm]) *){width:calc(var(--spacing) * 6);height:calc(var(--spacing) * 6)}.group-aria-expanded\\/accordion-trigger\\:hidden:is(:where(.group\\/accordion-trigger)[aria-expanded=true] *){display:none}.group-aria-expanded\\/accordion-trigger\\:inline:is(:where(.group\\/accordion-trigger)[aria-expanded=true] *){display:inline}.group-data-horizontal\\/tabs\\:h-8:is(:where(.group\\/tabs)[data-horizontal] *){height:calc(var(--spacing) * 8)}.group-data-open\\/navigation-menu-trigger\\:rotate-180:is(:where(.group\\/navigation-menu-trigger)[data-open] *),.group-data-popup-open\\/navigation-menu-trigger\\:rotate-180:is(:where(.group\\/navigation-menu-trigger)[data-popup-open] *){rotate:180deg}.group-data-vertical\\/tabs\\:h-fit:is(:where(.group\\/tabs)[data-vertical] *){height:fit-content}.group-data-vertical\\/tabs\\:w-full:is(:where(.group\\/tabs)[data-vertical] *){width:100%}.group-data-vertical\\/tabs\\:flex-col:is(:where(.group\\/tabs)[data-vertical] *){flex-direction:column}.group-data-vertical\\/tabs\\:justify-start:is(:where(.group\\/tabs)[data-vertical] *){justify-content:flex-start}.group-data-\\[disabled\\=true\\]\\:pointer-events-none:is(:where(.group)[data-disabled=true] *){pointer-events:none}.group-data-\\[disabled\\=true\\]\\:opacity-50:is(:where(.group)[data-disabled=true] *){opacity:.5}.group-data-\\[size\\=default\\]\\/avatar\\:size-2\\.5:is(:where(.group\\/avatar)[data-size=default] *){width:calc(var(--spacing) * 2.5);height:calc(var(--spacing) * 2.5)}.group-data-\\[size\\=default\\]\\/switch\\:size-4:is(:where(.group\\/switch)[data-size=default] *){width:calc(var(--spacing) * 4);height:calc(var(--spacing) * 4)}.group-data-\\[size\\=lg\\]\\/avatar\\:size-3:is(:where(.group\\/avatar)[data-size=lg] *){width:calc(var(--spacing) * 3);height:calc(var(--spacing) * 3)}.group-data-\\[size\\=sm\\]\\/avatar\\:size-2:is(:where(.group\\/avatar)[data-size=sm] *){width:calc(var(--spacing) * 2);height:calc(var(--spacing) * 2)}.group-data-\\[size\\=sm\\]\\/avatar\\:text-xs:is(:where(.group\\/avatar)[data-size=sm] *){font-size:var(--text-xs);line-height:var(--tw-leading,var(--text-xs--line-height))}.group-data-\\[size\\=sm\\]\\/card\\:p-3:is(:where(.group\\/card)[data-size=sm] *){padding:calc(var(--spacing) * 3)}.group-data-\\[size\\=sm\\]\\/card\\:px-3:is(:where(.group\\/card)[data-size=sm] *){padding-inline:calc(var(--spacing) * 3)}.group-data-\\[size\\=sm\\]\\/card\\:text-sm:is(:where(.group\\/card)[data-size=sm] *){font-size:var(--text-sm);line-height:var(--tw-leading,var(--text-sm--line-height))}.group-data-\\[size\\=sm\\]\\/switch\\:size-3:is(:where(.group\\/switch)[data-size=sm] *){width:calc(var(--spacing) * 3);height:calc(var(--spacing) * 3)}.group-data-\\[spacing\\=0\\]\\/toggle-group\\:rounded-none:is(:where(.group\\/toggle-group)[data-spacing="0"] *){border-radius:0}.group-data-\\[spacing\\=0\\]\\/toggle-group\\:px-2:is(:where(.group\\/toggle-group)[data-spacing="0"] *){padding-inline:calc(var(--spacing) * 2)}.group-data-\\[variant\\=line\\]\\/tabs-list\\:bg-transparent:is(:where(.group\\/tabs-list)[data-variant=line] *){background-color:#0000}.group-data-\\[viewport\\=false\\]\\/navigation-menu\\:top-full:is(:where(.group\\/navigation-menu)[data-viewport=false] *){top:100%}.group-data-\\[viewport\\=false\\]\\/navigation-menu\\:mt-1\\.5:is(:where(.group\\/navigation-menu)[data-viewport=false] *){margin-top:calc(var(--spacing) * 1.5)}.group-data-\\[viewport\\=false\\]\\/navigation-menu\\:overflow-hidden:is(:where(.group\\/navigation-menu)[data-viewport=false] *){overflow:hidden}.group-data-\\[viewport\\=false\\]\\/navigation-menu\\:rounded-lg:is(:where(.group\\/navigation-menu)[data-viewport=false] *){border-radius:var(--radius-lg)}.group-data-\\[viewport\\=false\\]\\/navigation-menu\\:shadow:is(:where(.group\\/navigation-menu)[data-viewport=false] *){--tw-shadow:0 1px 3px 0 var(--tw-shadow-color,#0000001a), 0 1px 2px -1px var(--tw-shadow-color,#0000001a);box-shadow:var(--tw-inset-shadow),var(--tw-inset-ring-shadow),var(--tw-ring-offset-shadow),var(--tw-ring-shadow),var(--tw-shadow)}.group-data-\\[viewport\\=false\\]\\/navigation-menu\\:ring-1:is(:where(.group\\/navigation-menu)[data-viewport=false] *){--tw-ring-shadow:var(--tw-ring-inset,) 0 0 0 calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color,currentcolor);box-shadow:var(--tw-inset-shadow),var(--tw-inset-ring-shadow),var(--tw-ring-offset-shadow),var(--tw-ring-shadow),var(--tw-shadow)}.group-data-\\[viewport\\=false\\]\\/navigation-menu\\:ring-foreground\\/10:is(:where(.group\\/navigation-menu)[data-viewport=false] *){--tw-ring-color:var(--color-foreground)}@supports (color:color-mix(in lab,red,red)){.group-data-\\[viewport\\=false\\]\\/navigation-menu\\:ring-foreground\\/10:is(:where(.group\\/navigation-menu)[data-viewport=false] *){--tw-ring-color:color-mix(in oklab, var(--color-foreground) 10%, transparent)}}.group-data-\\[viewport\\=false\\]\\/navigation-menu\\:duration-300:is(:where(.group\\/navigation-menu)[data-viewport=false] *){--tw-duration:.3s;transition-duration:.3s}.peer-disabled\\:cursor-not-allowed:is(:where(.peer):disabled~*){cursor:not-allowed}.peer-disabled\\:opacity-50:is(:where(.peer):disabled~*){opacity:.5}.file\\:inline-flex::file-selector-button{display:inline-flex}.file\\:h-6::file-selector-button{height:calc(var(--spacing) * 6)}.file\\:border-0::file-selector-button{border-style:var(--tw-border-style);border-width:0}.file\\:bg-transparent::file-selector-button{background-color:#0000}.file\\:text-sm::file-selector-button{font-size:var(--text-sm);line-height:var(--tw-leading,var(--text-sm--line-height))}.file\\:font-medium::file-selector-button{--tw-font-weight:var(--font-weight-medium);font-weight:var(--font-weight-medium)}.file\\:text-foreground::file-selector-button{color:var(--color-foreground)}.placeholder\\:text-muted-foreground::placeholder{color:var(--color-muted-foreground)}.placeholder\\:text-zinc-500::placeholder{color:var(--color-zinc-500)}.after\\:absolute:after{content:var(--tw-content);position:absolute}.after\\:inset-0:after{content:var(--tw-content);top:0;right:0;bottom:0;left:0}.after\\:-inset-x-3:after{content:var(--tw-content);inset-inline:calc(var(--spacing) * -3)}.after\\:-inset-y-2:after{content:var(--tw-content);inset-block:calc(var(--spacing) * -2)}.after\\:rounded-full:after{content:var(--tw-content);border-radius:3.40282e38px}.after\\:border:after{content:var(--tw-content);border-style:var(--tw-border-style);border-width:1px}.after\\:border-border:after{content:var(--tw-content);border-color:var(--color-border)}.after\\:bg-foreground:after{content:var(--tw-content);background-color:var(--color-foreground)}.after\\:opacity-0:after{content:var(--tw-content);opacity:0}.after\\:mix-blend-darken:after{content:var(--tw-content);mix-blend-mode:darken}.after\\:transition-opacity:after{content:var(--tw-content);transition-property:opacity;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration))}.group-data-horizontal\\/tabs\\:after\\:inset-x-0:is(:where(.group\\/tabs)[data-horizontal] *):after{content:var(--tw-content);inset-inline:0}.group-data-horizontal\\/tabs\\:after\\:bottom-\\[-5px\\]:is(:where(.group\\/tabs)[data-horizontal] *):after{content:var(--tw-content);bottom:-5px}.group-data-horizontal\\/tabs\\:after\\:h-0\\.5:is(:where(.group\\/tabs)[data-horizontal] *):after{content:var(--tw-content);height:calc(var(--spacing) * .5)}.group-data-vertical\\/tabs\\:after\\:inset-y-0:is(:where(.group\\/tabs)[data-vertical] *):after{content:var(--tw-content);inset-block:0}.group-data-vertical\\/tabs\\:after\\:-right-1:is(:where(.group\\/tabs)[data-vertical] *):after{content:var(--tw-content);right:calc(var(--spacing) * -1)}.group-data-vertical\\/tabs\\:after\\:w-0\\.5:is(:where(.group\\/tabs)[data-vertical] *):after{content:var(--tw-content);width:calc(var(--spacing) * .5)}@media(hover:hover){.hover\\:border-\\[var\\(--local-accent\\)\\]:hover{border-color:var(--local-accent)}.hover\\:border-\\[var\\(--local-primary\\)\\]:hover{border-color:var(--local-primary)}.hover\\:bg-\\[var\\(--local-bg\\)\\]:hover{background-color:var(--local-bg)}.hover\\:bg-\\[var\\(--local-primary\\)\\]:hover{background-color:var(--local-primary)}.hover\\:bg-\\[var\\(--local-surface\\)\\]:hover{background-color:var(--local-surface)}.hover\\:bg-blue-500:hover{background-color:var(--color-blue-500)}.hover\\:bg-muted:hover,.hover\\:bg-muted\\/50:hover{background-color:var(--color-muted)}@supports (color:color-mix(in lab,red,red)){.hover\\:bg-muted\\/50:hover{background-color:color-mix(in oklab,var(--color-muted) 50%,transparent)}}.hover\\:bg-secondary\\/80:hover{background-color:var(--color-secondary)}@supports (color:color-mix(in lab,red,red)){.hover\\:bg-secondary\\/80:hover{background-color:color-mix(in oklab,var(--color-secondary) 80%,transparent)}}.hover\\:bg-transparent:hover{background-color:#0000}.hover\\:bg-white\\/30:hover{background-color:#ffffff4d}@supports (color:color-mix(in lab,red,red)){.hover\\:bg-white\\/30:hover{background-color:color-mix(in oklab,var(--color-white) 30%,transparent)}}.hover\\:bg-zinc-600:hover{background-color:var(--color-zinc-600)}.hover\\:bg-zinc-800:hover{background-color:var(--color-zinc-800)}.hover\\:text-\\[var\\(--local-primary\\)\\]:hover{color:var(--local-primary)}.hover\\:text-\\[var\\(--local-primary-foreground\\)\\]:hover{color:var(--local-primary-foreground)}.hover\\:text-\\[var\\(--primary-foreground\\)\\]:hover{color:var(--primary-foreground)}.hover\\:text-foreground:hover{color:var(--color-foreground)}.hover\\:text-muted-foreground:hover{color:var(--color-muted-foreground)}.hover\\:text-zinc-200:hover{color:var(--color-zinc-200)}.hover\\:underline:hover{text-decoration-line:underline}.hover\\:opacity-90:hover{opacity:.9}}.focus\\:z-10:focus{z-index:10}.focus\\:bg-accent:focus{background-color:var(--color-accent)}.focus\\:bg-muted:focus{background-color:var(--color-muted)}.focus\\:ring-1:focus{--tw-ring-shadow:var(--tw-ring-inset,) 0 0 0 calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color,currentcolor);box-shadow:var(--tw-inset-shadow),var(--tw-inset-ring-shadow),var(--tw-ring-offset-shadow),var(--tw-ring-shadow),var(--tw-shadow)}.focus\\:ring-primary:focus{--tw-ring-color:var(--color-primary)}.focus\\:outline-none:focus{--tw-outline-style:none;outline-style:none}.focus-visible\\:z-10:focus-visible{z-index:10}.focus-visible\\:ring-2:focus-visible{--tw-ring-shadow:var(--tw-ring-inset,) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color,currentcolor);box-shadow:var(--tw-inset-shadow),var(--tw-inset-ring-shadow),var(--tw-ring-offset-shadow),var(--tw-ring-shadow),var(--tw-shadow)}.focus-visible\\:ring-3:focus-visible,.focus-visible\\:ring-\\[3px\\]:focus-visible{--tw-ring-shadow:var(--tw-ring-inset,) 0 0 0 calc(3px + var(--tw-ring-offset-width)) var(--tw-ring-color,currentcolor);box-shadow:var(--tw-inset-shadow),var(--tw-inset-ring-shadow),var(--tw-ring-offset-shadow),var(--tw-ring-shadow),var(--tw-shadow)}.focus-visible\\:ring-offset-2:focus-visible{--tw-ring-offset-width:2px;--tw-ring-offset-shadow:var(--tw-ring-inset,) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color)}.focus-visible\\:outline-1:focus-visible{outline-style:var(--tw-outline-style);outline-width:1px}.focus-visible\\:outline-none:focus-visible{--tw-outline-style:none;outline-style:none}.active\\:not-aria-\\[haspopup\\]\\:translate-y-px:active:not([aria-haspopup]){--tw-translate-y:1px;translate:var(--tw-translate-x) var(--tw-translate-y)}.disabled\\:pointer-events-none:disabled{pointer-events:none}.disabled\\:cursor-not-allowed:disabled{cursor:not-allowed}.disabled\\:opacity-30:disabled{opacity:.3}.disabled\\:opacity-50:disabled{opacity:.5}.disabled\\:opacity-60:disabled{opacity:.6}:where([data-slot=button-group]) .in-data-\\[slot\\=button-group\\]\\:rounded-lg{border-radius:var(--radius-lg)}:where([data-slot=navigation-menu-content]) .in-data-\\[slot\\=navigation-menu-content\\]\\:rounded-md{border-radius:var(--radius-md)}.has-aria-expanded\\:bg-muted\\/50:has([aria-expanded=true]){background-color:var(--color-muted)}@supports (color:color-mix(in lab,red,red)){.has-aria-expanded\\:bg-muted\\/50:has([aria-expanded=true]){background-color:color-mix(in oklab,var(--color-muted) 50%,transparent)}}.has-data-\\[icon\\=inline-end\\]\\:pr-1:has([data-icon=inline-end]){padding-right:var(--spacing)}.has-data-\\[icon\\=inline-end\\]\\:pr-1\\.5:has([data-icon=inline-end]){padding-right:calc(var(--spacing) * 1.5)}.has-data-\\[icon\\=inline-end\\]\\:pr-2:has([data-icon=inline-end]){padding-right:calc(var(--spacing) * 2)}.group-data-\\[spacing\\=0\\]\\/toggle-group\\:has-data-\\[icon\\=inline-end\\]\\:pr-1\\.5:is(:where(.group\\/toggle-group)[data-spacing="0"] *):has([data-icon=inline-end]){padding-right:calc(var(--spacing) * 1.5)}.has-data-\\[icon\\=inline-start\\]\\:pl-1:has([data-icon=inline-start]){padding-left:var(--spacing)}.has-data-\\[icon\\=inline-start\\]\\:pl-1\\.5:has([data-icon=inline-start]){padding-left:calc(var(--spacing) * 1.5)}.has-data-\\[icon\\=inline-start\\]\\:pl-2:has([data-icon=inline-start]){padding-left:calc(var(--spacing) * 2)}.group-data-\\[spacing\\=0\\]\\/toggle-group\\:has-data-\\[icon\\=inline-start\\]\\:pl-1\\.5:is(:where(.group\\/toggle-group)[data-spacing="0"] *):has([data-icon=inline-start]){padding-left:calc(var(--spacing) * 1.5)}.has-data-\\[slot\\=card-action\\]\\:grid-cols-\\[1fr_auto\\]:has([data-slot=card-action]){grid-template-columns:1fr auto}.has-data-\\[slot\\=card-description\\]\\:grid-rows-\\[auto_auto\\]:has([data-slot=card-description]){grid-template-rows:auto auto}.has-data-\\[slot\\=card-footer\\]\\:pb-0:has([data-slot=card-footer]){padding-bottom:0}.has-data-\\[slot\\=kbd\\]\\:pr-1\\.5:has([data-slot=kbd]){padding-right:calc(var(--spacing) * 1.5)}.has-\\[\\>img\\:first-child\\]\\:pt-0:has(>img:first-child){padding-top:0}.aria-expanded\\:bg-muted[aria-expanded=true]{background-color:var(--color-muted)}.aria-expanded\\:bg-secondary[aria-expanded=true]{background-color:var(--color-secondary)}.aria-expanded\\:text-foreground[aria-expanded=true]{color:var(--color-foreground)}.aria-expanded\\:text-secondary-foreground[aria-expanded=true]{color:var(--color-secondary-foreground)}.aria-invalid\\:ring-3[aria-invalid=true]{--tw-ring-shadow:var(--tw-ring-inset,) 0 0 0 calc(3px + var(--tw-ring-offset-width)) var(--tw-ring-color,currentcolor);box-shadow:var(--tw-inset-shadow),var(--tw-inset-ring-shadow),var(--tw-ring-offset-shadow),var(--tw-ring-shadow),var(--tw-shadow)}.aria-invalid\\:aria-checked\\:border-primary[aria-invalid=true][aria-checked=true]{border-color:var(--color-primary)}.aria-pressed\\:bg-muted[aria-pressed=true]{background-color:var(--color-muted)}.data-active\\:bg-background[data-active]{background-color:var(--color-background)}.data-active\\:bg-muted\\/50[data-active]{background-color:var(--color-muted)}@supports (color:color-mix(in lab,red,red)){.data-active\\:bg-muted\\/50[data-active]{background-color:color-mix(in oklab,var(--color-muted) 50%,transparent)}}.data-active\\:text-foreground[data-active]{color:var(--color-foreground)}.group-data-\\[variant\\=default\\]\\/tabs-list\\:data-active\\:shadow-sm:is(:where(.group\\/tabs-list)[data-variant=default] *)[data-active]{--tw-shadow:0 1px 3px 0 var(--tw-shadow-color,#0000001a), 0 1px 2px -1px var(--tw-shadow-color,#0000001a);box-shadow:var(--tw-inset-shadow),var(--tw-inset-ring-shadow),var(--tw-ring-offset-shadow),var(--tw-ring-shadow),var(--tw-shadow)}.group-data-\\[variant\\=line\\]\\/tabs-list\\:data-active\\:bg-transparent:is(:where(.group\\/tabs-list)[data-variant=line] *)[data-active]{background-color:#0000}.group-data-\\[variant\\=line\\]\\/tabs-list\\:data-active\\:shadow-none:is(:where(.group\\/tabs-list)[data-variant=line] *)[data-active]{--tw-shadow:0 0 #0000;box-shadow:var(--tw-inset-shadow),var(--tw-inset-ring-shadow),var(--tw-ring-offset-shadow),var(--tw-ring-shadow),var(--tw-shadow)}.group-data-\\[variant\\=line\\]\\/tabs-list\\:data-active\\:after\\:opacity-100:is(:where(.group\\/tabs-list)[data-variant=line] *)[data-active]:after{content:var(--tw-content);opacity:1}@media(hover:hover){.data-active\\:hover\\:bg-muted[data-active]:hover{background-color:var(--color-muted)}}.data-active\\:focus\\:bg-muted[data-active]:focus{background-color:var(--color-muted)}.data-checked\\:border-primary[data-checked]{border-color:var(--color-primary)}.data-checked\\:bg-primary[data-checked]{background-color:var(--color-primary)}.data-checked\\:text-primary-foreground[data-checked]{color:var(--color-primary-foreground)}.group-data-\\[size\\=default\\]\\/switch\\:data-checked\\:translate-x-\\[calc\\(100\\%-2px\\)\\]:is(:where(.group\\/switch)[data-size=default] *)[data-checked],.group-data-\\[size\\=sm\\]\\/switch\\:data-checked\\:translate-x-\\[calc\\(100\\%-2px\\)\\]:is(:where(.group\\/switch)[data-size=sm] *)[data-checked]{--tw-translate-x: calc(100% - 2px) ;translate:var(--tw-translate-x) var(--tw-translate-y)}.data-disabled\\:pointer-events-none[data-disabled]{pointer-events:none}.data-disabled\\:cursor-not-allowed[data-disabled]{cursor:not-allowed}.data-disabled\\:opacity-50[data-disabled]{opacity:.5}.data-horizontal\\:h-2\\.5[data-horizontal]{height:calc(var(--spacing) * 2.5)}.data-horizontal\\:h-px[data-horizontal]{height:1px}.data-horizontal\\:w-full[data-horizontal]{width:100%}.data-horizontal\\:flex-col[data-horizontal]{flex-direction:column}.data-horizontal\\:border-t[data-horizontal]{border-top-style:var(--tw-border-style);border-top-width:1px}.data-horizontal\\:border-t-transparent[data-horizontal]{border-top-color:#0000}.data-inset\\:pl-7[data-inset]{padding-left:calc(var(--spacing) * 7)}.data-open\\:bg-accent[data-open]{background-color:var(--color-accent)}.data-open\\:bg-muted\\/50[data-open]{background-color:var(--color-muted)}@supports (color:color-mix(in lab,red,red)){.data-open\\:bg-muted\\/50[data-open]{background-color:color-mix(in oklab,var(--color-muted) 50%,transparent)}}@media(hover:hover){.data-open\\:hover\\:bg-muted[data-open]:hover{background-color:var(--color-muted)}}.data-open\\:focus\\:bg-muted[data-open]:focus{background-color:var(--color-muted)}.data-placeholder\\:text-muted-foreground[data-placeholder]{color:var(--color-muted-foreground)}.data-popup-open\\:bg-muted\\/50[data-popup-open]{background-color:var(--color-muted)}@supports (color:color-mix(in lab,red,red)){.data-popup-open\\:bg-muted\\/50[data-popup-open]{background-color:color-mix(in oklab,var(--color-muted) 50%,transparent)}}@media(hover:hover){.data-popup-open\\:hover\\:bg-muted[data-popup-open]:hover{background-color:var(--color-muted)}}.group-data-\\[size\\=default\\]\\/switch\\:data-unchecked\\:translate-x-0:is(:where(.group\\/switch)[data-size=default] *)[data-unchecked],.group-data-\\[size\\=sm\\]\\/switch\\:data-unchecked\\:translate-x-0:is(:where(.group\\/switch)[data-size=sm] *)[data-unchecked]{--tw-translate-x:0;translate:var(--tw-translate-x) var(--tw-translate-y)}.data-vertical\\:h-full[data-vertical]{height:100%}.data-vertical\\:w-2\\.5[data-vertical]{width:calc(var(--spacing) * 2.5)}.data-vertical\\:w-px[data-vertical]{width:1px}.data-vertical\\:flex-col[data-vertical]{flex-direction:column}.data-vertical\\:items-stretch[data-vertical]{align-items:stretch}.data-vertical\\:self-stretch[data-vertical]{align-self:stretch}.data-vertical\\:border-l[data-vertical]{border-left-style:var(--tw-border-style);border-left-width:1px}.data-vertical\\:border-l-transparent[data-vertical]{border-left-color:#0000}.data-\\[align-trigger\\=true\\]\\:animate-none[data-align-trigger=true]{animation:none}.data-\\[position\\=popper\\]\\:h-\\(--radix-select-trigger-height\\)[data-position=popper]{height:var(--radix-select-trigger-height)}.data-\\[position\\=popper\\]\\:w-full[data-position=popper]{width:100%}.data-\\[position\\=popper\\]\\:min-w-\\(--radix-select-trigger-width\\)[data-position=popper]{min-width:var(--radix-select-trigger-width)}.data-\\[side\\=bottom\\]\\:inset-x-0[data-side=bottom]{inset-inline:0}.data-\\[side\\=bottom\\]\\:bottom-0[data-side=bottom]{bottom:0}.data-\\[side\\=bottom\\]\\:h-auto[data-side=bottom]{height:auto}.data-\\[side\\=bottom\\]\\:translate-y-1[data-side=bottom]{--tw-translate-y:var(--spacing);translate:var(--tw-translate-x) var(--tw-translate-y)}.data-\\[side\\=bottom\\]\\:border-t[data-side=bottom]{border-top-style:var(--tw-border-style);border-top-width:1px}.data-\\[side\\=left\\]\\:inset-y-0[data-side=left]{inset-block:0}.data-\\[side\\=left\\]\\:left-0[data-side=left]{left:0}.data-\\[side\\=left\\]\\:h-full[data-side=left]{height:100%}.data-\\[side\\=left\\]\\:w-3\\/4[data-side=left]{width:75%}.data-\\[side\\=left\\]\\:-translate-x-1[data-side=left]{--tw-translate-x:calc(var(--spacing) * -1);translate:var(--tw-translate-x) var(--tw-translate-y)}.data-\\[side\\=left\\]\\:border-r[data-side=left]{border-right-style:var(--tw-border-style);border-right-width:1px}.data-\\[side\\=right\\]\\:inset-y-0[data-side=right]{inset-block:0}.data-\\[side\\=right\\]\\:right-0[data-side=right]{right:0}.data-\\[side\\=right\\]\\:h-full[data-side=right]{height:100%}.data-\\[side\\=right\\]\\:w-3\\/4[data-side=right]{width:75%}.data-\\[side\\=right\\]\\:translate-x-1[data-side=right]{--tw-translate-x:var(--spacing);translate:var(--tw-translate-x) var(--tw-translate-y)}.data-\\[side\\=right\\]\\:border-l[data-side=right]{border-left-style:var(--tw-border-style);border-left-width:1px}.data-\\[side\\=top\\]\\:inset-x-0[data-side=top]{inset-inline:0}.data-\\[side\\=top\\]\\:top-0[data-side=top]{top:0}.data-\\[side\\=top\\]\\:h-auto[data-side=top]{height:auto}.data-\\[side\\=top\\]\\:-translate-y-1[data-side=top]{--tw-translate-y:calc(var(--spacing) * -1);translate:var(--tw-translate-x) var(--tw-translate-y)}.data-\\[side\\=top\\]\\:border-b[data-side=top]{border-bottom-style:var(--tw-border-style);border-bottom-width:1px}.data-\\[size\\=default\\]\\:h-8[data-size=default]{height:calc(var(--spacing) * 8)}.data-\\[size\\=default\\]\\:h-\\[18\\.4px\\][data-size=default]{height:18.4px}.data-\\[size\\=default\\]\\:w-\\[32px\\][data-size=default]{width:32px}.data-\\[size\\=lg\\]\\:size-10[data-size=lg]{width:calc(var(--spacing) * 10);height:calc(var(--spacing) * 10)}.data-\\[size\\=sm\\]\\:size-6[data-size=sm]{width:calc(var(--spacing) * 6);height:calc(var(--spacing) * 6)}.data-\\[size\\=sm\\]\\:h-7[data-size=sm]{height:calc(var(--spacing) * 7)}.data-\\[size\\=sm\\]\\:h-\\[14px\\][data-size=sm]{height:14px}.data-\\[size\\=sm\\]\\:w-\\[24px\\][data-size=sm]{width:24px}.data-\\[size\\=sm\\]\\:gap-3[data-size=sm]{gap:calc(var(--spacing) * 3)}.data-\\[size\\=sm\\]\\:rounded-\\[min\\(var\\(--radius-md\\)\\,10px\\)\\][data-size=sm]{border-radius:min(var(--radius-md),10px)}.data-\\[size\\=sm\\]\\:py-3[data-size=sm]{padding-block:calc(var(--spacing) * 3)}.data-\\[size\\=sm\\]\\:has-data-\\[slot\\=card-footer\\]\\:pb-0[data-size=sm]:has([data-slot=card-footer]){padding-bottom:0}:is(.\\*\\*\\:data-\\[slot\\=accordion-trigger-icon\\]\\:ml-auto *)[data-slot=accordion-trigger-icon]{margin-left:auto}:is(.\\*\\*\\:data-\\[slot\\=accordion-trigger-icon\\]\\:size-4 *)[data-slot=accordion-trigger-icon]{width:calc(var(--spacing) * 4);height:calc(var(--spacing) * 4)}:is(.\\*\\*\\:data-\\[slot\\=accordion-trigger-icon\\]\\:text-muted-foreground *)[data-slot=accordion-trigger-icon]{color:var(--color-muted-foreground)}:is(.\\*\\:data-\\[slot\\=avatar\\]\\:ring-2>*)[data-slot=avatar]{--tw-ring-shadow:var(--tw-ring-inset,) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color,currentcolor);box-shadow:var(--tw-inset-shadow),var(--tw-inset-ring-shadow),var(--tw-ring-offset-shadow),var(--tw-ring-shadow),var(--tw-shadow)}:is(.\\*\\:data-\\[slot\\=avatar\\]\\:ring-background>*)[data-slot=avatar]{--tw-ring-color:var(--color-background)}:is(.\\*\\*\\:data-\\[slot\\=kbd\\]\\:relative *)[data-slot=kbd]{position:relative}:is(.\\*\\*\\:data-\\[slot\\=kbd\\]\\:isolate *)[data-slot=kbd]{isolation:isolate}:is(.\\*\\*\\:data-\\[slot\\=kbd\\]\\:z-50 *)[data-slot=kbd]{z-index:50}:is(.\\*\\*\\:data-\\[slot\\=kbd\\]\\:rounded-sm *)[data-slot=kbd]{border-radius:var(--radius-sm)}:is(.\\*\\*\\:data-\\[slot\\=navigation-menu-link\\]\\:focus\\:ring-0 *)[data-slot=navigation-menu-link]:focus{--tw-ring-shadow:var(--tw-ring-inset,) 0 0 0 calc(0px + var(--tw-ring-offset-width)) var(--tw-ring-color,currentcolor);box-shadow:var(--tw-inset-shadow),var(--tw-inset-ring-shadow),var(--tw-ring-offset-shadow),var(--tw-ring-shadow),var(--tw-shadow)}:is(.\\*\\*\\:data-\\[slot\\=navigation-menu-link\\]\\:focus\\:outline-none *)[data-slot=navigation-menu-link]:focus{--tw-outline-style:none;outline-style:none}:is(.\\*\\:data-\\[slot\\=select-value\\]\\:line-clamp-1>*)[data-slot=select-value]{-webkit-line-clamp:1;-webkit-box-orient:vertical;display:-webkit-box;overflow:hidden}:is(.\\*\\:data-\\[slot\\=select-value\\]\\:flex>*)[data-slot=select-value]{display:flex}:is(.\\*\\:data-\\[slot\\=select-value\\]\\:items-center>*)[data-slot=select-value]{align-items:center}:is(.\\*\\:data-\\[slot\\=select-value\\]\\:gap-1\\.5>*)[data-slot=select-value]{gap:calc(var(--spacing) * 1.5)}.group-data-horizontal\\/toggle-group\\:data-\\[spacing\\=0\\]\\:first\\:rounded-l-lg:is(:where(.group\\/toggle-group)[data-horizontal] *)[data-spacing="0"]:first-child{border-top-left-radius:var(--radius-lg);border-bottom-left-radius:var(--radius-lg)}.group-data-vertical\\/toggle-group\\:data-\\[spacing\\=0\\]\\:first\\:rounded-t-lg:is(:where(.group\\/toggle-group)[data-vertical] *)[data-spacing="0"]:first-child{border-top-left-radius:var(--radius-lg);border-top-right-radius:var(--radius-lg)}.group-data-horizontal\\/toggle-group\\:data-\\[spacing\\=0\\]\\:last\\:rounded-r-lg:is(:where(.group\\/toggle-group)[data-horizontal] *)[data-spacing="0"]:last-child{border-top-right-radius:var(--radius-lg);border-bottom-right-radius:var(--radius-lg)}.group-data-vertical\\/toggle-group\\:data-\\[spacing\\=0\\]\\:last\\:rounded-b-lg:is(:where(.group\\/toggle-group)[data-vertical] *)[data-spacing="0"]:last-child{border-bottom-right-radius:var(--radius-lg);border-bottom-left-radius:var(--radius-lg)}.data-\\[state\\=closed\\]\\:overflow-hidden[data-state=closed]{overflow:hidden}.data-\\[state\\=on\\]\\:bg-muted[data-state=on],.data-\\[state\\=selected\\]\\:bg-muted[data-state=selected]{background-color:var(--color-muted)}.data-\\[variant\\=line\\]\\:rounded-none[data-variant=line]{border-radius:0}.group-data-horizontal\\/toggle-group\\:data-\\[spacing\\=0\\]\\:data-\\[variant\\=outline\\]\\:border-l-0:is(:where(.group\\/toggle-group)[data-horizontal] *)[data-spacing="0"][data-variant=outline]{border-left-style:var(--tw-border-style);border-left-width:0}.group-data-vertical\\/toggle-group\\:data-\\[spacing\\=0\\]\\:data-\\[variant\\=outline\\]\\:border-t-0:is(:where(.group\\/toggle-group)[data-vertical] *)[data-spacing="0"][data-variant=outline]{border-top-style:var(--tw-border-style);border-top-width:0}.group-data-horizontal\\/toggle-group\\:data-\\[spacing\\=0\\]\\:data-\\[variant\\=outline\\]\\:first\\:border-l:is(:where(.group\\/toggle-group)[data-horizontal] *)[data-spacing="0"][data-variant=outline]:first-child{border-left-style:var(--tw-border-style);border-left-width:1px}.group-data-vertical\\/toggle-group\\:data-\\[spacing\\=0\\]\\:data-\\[variant\\=outline\\]\\:first\\:border-t:is(:where(.group\\/toggle-group)[data-vertical] *)[data-spacing="0"][data-variant=outline]:first-child{border-top-style:var(--tw-border-style);border-top-width:1px}@supports ((-webkit-backdrop-filter:var(--tw)) or (backdrop-filter:var(--tw))){.supports-backdrop-filter\\:backdrop-blur-xs{--tw-backdrop-blur:blur(var(--blur-xs));-webkit-backdrop-filter:var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);backdrop-filter:var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,)}}@media(min-width:40rem){.sm\\:mt-0{margin-top:0}.sm\\:flex{display:flex}.sm\\:max-w-sm{max-width:var(--container-sm)}.sm\\:grid-cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}.sm\\:flex-row{flex-direction:row}.sm\\:items-center{align-items:center}.sm\\:justify-between{justify-content:space-between}.sm\\:justify-end{justify-content:flex-end}.sm\\:py-32{padding-block:calc(var(--spacing) * 32)}.data-\\[side\\=left\\]\\:sm\\:max-w-sm[data-side=left],.data-\\[side\\=right\\]\\:sm\\:max-w-sm[data-side=right]{max-width:var(--container-sm)}}@media(min-width:48rem){.md\\:absolute{position:absolute}.md\\:col-span-2{grid-column:span 2/span 2}.md\\:mb-6{margin-bottom:calc(var(--spacing) * 6)}.md\\:w-\\(--radix-navigation-menu-viewport-width\\){width:var(--radix-navigation-menu-viewport-width)}.md\\:w-auto{width:auto}.md\\:columns-3{columns:3}.md\\:grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}.md\\:flex-row{flex-direction:row}.md\\:gap-6{gap:calc(var(--spacing) * 6)}.md\\:px-12{padding-inline:calc(var(--spacing) * 12)}.md\\:text-left{text-align:left}.md\\:text-sm{font-size:var(--text-sm);line-height:var(--tw-leading,var(--text-sm--line-height))}}@media(min-width:64rem){.lg\\:order-first{order:-9999}.lg\\:order-last{order:9999}.lg\\:col-span-1{grid-column:span 1/span 1}.lg\\:col-span-2{grid-column:span 2/span 2}.lg\\:col-span-3{grid-column:span 3/span 3}.lg\\:col-span-4{grid-column:span 4/span 4}.lg\\:col-span-5{grid-column:span 5/span 5}.lg\\:col-span-7{grid-column:span 7/span 7}.lg\\:col-span-8{grid-column:span 8/span 8}.lg\\:col-span-12{grid-column:span 12/span 12}.lg\\:flex{display:flex}.lg\\:hidden{display:none}.lg\\:grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}.lg\\:grid-cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}.lg\\:grid-cols-5{grid-template-columns:repeat(5,minmax(0,1fr))}.lg\\:grid-cols-12{grid-template-columns:repeat(12,minmax(0,1fr))}.lg\\:grid-cols-\\[1fr_420px\\]{grid-template-columns:1fr 420px}.lg\\:items-start{align-items:flex-start}}@media(prefers-color-scheme:dark){.dark\\:text-muted-foreground{color:var(--color-muted-foreground)}.dark\\:after\\:mix-blend-lighten:after{content:var(--tw-content);mix-blend-mode:lighten}@media(hover:hover){.dark\\:hover\\:bg-muted\\/50:hover{background-color:var(--color-muted)}@supports (color:color-mix(in lab,red,red)){.dark\\:hover\\:bg-muted\\/50:hover{background-color:color-mix(in oklab,var(--color-muted) 50%,transparent)}}.dark\\:hover\\:text-foreground:hover{color:var(--color-foreground)}}.dark\\:data-active\\:text-foreground[data-active]{color:var(--color-foreground)}.dark\\:group-data-\\[variant\\=line\\]\\/tabs-list\\:data-active\\:border-transparent:is(:where(.group\\/tabs-list)[data-variant=line] *)[data-active]{border-color:#0000}.dark\\:group-data-\\[variant\\=line\\]\\/tabs-list\\:data-active\\:bg-transparent:is(:where(.group\\/tabs-list)[data-variant=line] *)[data-active]{background-color:#0000}.dark\\:data-checked\\:bg-primary[data-checked]{background-color:var(--color-primary)}.dark\\:data-checked\\:bg-primary-foreground[data-checked]{background-color:var(--color-primary-foreground)}.dark\\:data-unchecked\\:bg-foreground[data-unchecked]{background-color:var(--color-foreground)}}.\\[\\&_a\\]\\:underline a{text-decoration-line:underline}.\\[\\&_a\\]\\:underline-offset-3 a{text-underline-offset:3px}@media(hover:hover){.\\[\\&_a\\]\\:hover\\:text-foreground a:hover{color:var(--color-foreground)}}.\\[\\&_p\\:not\\(\\:last-child\\)\\]\\:mb-4 p:not(:last-child){margin-bottom:calc(var(--spacing) * 4)}.\\[\\&_svg\\]\\:pointer-events-none svg{pointer-events:none}.\\[\\&_svg\\]\\:shrink-0 svg{flex-shrink:0}.\\[\\&_svg\\:not\\(\\[class\\*\\=\\'size-\\'\\]\\)\\]\\:size-3 svg:not([class*=size-]){width:calc(var(--spacing) * 3);height:calc(var(--spacing) * 3)}.\\[\\&_svg\\:not\\(\\[class\\*\\=\\'size-\\'\\]\\)\\]\\:size-3\\.5 svg:not([class*=size-]){width:calc(var(--spacing) * 3.5);height:calc(var(--spacing) * 3.5)}.\\[\\&_svg\\:not\\(\\[class\\*\\=\\'size-\\'\\]\\)\\]\\:size-4 svg:not([class*=size-]){width:calc(var(--spacing) * 4);height:calc(var(--spacing) * 4)}.\\[\\&_tr\\]\\:border-b tr{border-bottom-style:var(--tw-border-style);border-bottom-width:1px}.\\[\\&_tr\\:last-child\\]\\:border-0 tr:last-child{border-style:var(--tw-border-style);border-width:0}.\\[\\&\\:has\\(\\[role\\=checkbox\\]\\)\\]\\:pr-0:has([role=checkbox]){padding-right:0}.\\[\\.border-b\\]\\:pb-4.border-b{padding-bottom:calc(var(--spacing) * 4)}.group-data-\\[size\\=sm\\]\\/card\\:\\[\\.border-b\\]\\:pb-3:is(:where(.group\\/card)[data-size=sm] *).border-b{padding-bottom:calc(var(--spacing) * 3)}:is(.\\*\\:\\[a\\]\\:underline>*):is(a){text-decoration-line:underline}:is(.\\*\\:\\[a\\]\\:underline-offset-3>*):is(a){text-underline-offset:3px}@media(hover:hover){.\\[a\\]\\:hover\\:bg-muted:is(a):hover{background-color:var(--color-muted)}.\\[a\\]\\:hover\\:bg-primary\\/80:is(a):hover{background-color:var(--color-primary)}@supports (color:color-mix(in lab,red,red)){.\\[a\\]\\:hover\\:bg-primary\\/80:is(a):hover{background-color:color-mix(in oklab,var(--color-primary) 80%,transparent)}}.\\[a\\]\\:hover\\:bg-secondary\\/80:is(a):hover{background-color:var(--color-secondary)}@supports (color:color-mix(in lab,red,red)){.\\[a\\]\\:hover\\:bg-secondary\\/80:is(a):hover{background-color:color-mix(in oklab,var(--color-secondary) 80%,transparent)}}.\\[a\\]\\:hover\\:text-muted-foreground:is(a):hover{color:var(--color-muted-foreground)}:is(.\\*\\:\\[a\\]\\:hover\\:text-foreground>*):is(a):hover{color:var(--color-foreground)}}:is(.\\*\\:\\[img\\:first-child\\]\\:rounded-t-xl>*):is(img:first-child){border-top-left-radius:var(--radius-xl);border-top-right-radius:var(--radius-xl)}:is(.\\*\\:\\[img\\:last-child\\]\\:rounded-b-xl>*):is(img:last-child){border-bottom-right-radius:var(--radius-xl);border-bottom-left-radius:var(--radius-xl)}:is(.\\*\\:\\[span\\]\\:last\\:flex>*):is(span):last-child{display:flex}:is(.\\*\\:\\[span\\]\\:last\\:items-center>*):is(span):last-child{align-items:center}:is(.\\*\\:\\[span\\]\\:last\\:gap-2>*):is(span):last-child{gap:calc(var(--spacing) * 2)}.\\[\\&\\>svg\\]\\:pointer-events-none>svg{pointer-events:none}.\\[\\&\\>svg\\]\\:size-3\\!>svg{width:calc(var(--spacing) * 3)!important;height:calc(var(--spacing) * 3)!important}.\\[\\&\\>svg\\]\\:size-3\\.5>svg{width:calc(var(--spacing) * 3.5);height:calc(var(--spacing) * 3.5)}.\\[\\&\\>svg\\]\\:size-4>svg{width:calc(var(--spacing) * 4);height:calc(var(--spacing) * 4)}.group-has-data-\\[size\\=lg\\]\\/avatar-group\\:\\[\\&\\>svg\\]\\:size-5:is(:where(.group\\/avatar-group):has([data-size=lg]) *)>svg{width:calc(var(--spacing) * 5);height:calc(var(--spacing) * 5)}.group-has-data-\\[size\\=sm\\]\\/avatar-group\\:\\[\\&\\>svg\\]\\:size-3:is(:where(.group\\/avatar-group):has([data-size=sm]) *)>svg{width:calc(var(--spacing) * 3);height:calc(var(--spacing) * 3)}.group-data-\\[size\\=default\\]\\/avatar\\:\\[\\&\\>svg\\]\\:size-2:is(:where(.group\\/avatar)[data-size=default] *)>svg,.group-data-\\[size\\=lg\\]\\/avatar\\:\\[\\&\\>svg\\]\\:size-2:is(:where(.group\\/avatar)[data-size=lg] *)>svg{width:calc(var(--spacing) * 2);height:calc(var(--spacing) * 2)}.group-data-\\[size\\=sm\\]\\/avatar\\:\\[\\&\\>svg\\]\\:hidden:is(:where(.group\\/avatar)[data-size=sm] *)>svg{display:none}.\\[\\&\\>tr\\]\\:last\\:border-b-0>tr:last-child{border-bottom-style:var(--tw-border-style);border-bottom-width:0}}:root,[data-theme=light]{--background:var(--theme-colors-light-background);--foreground:var(--theme-colors-light-on-background);--card:var(--theme-colors-light-surface-container);--card-foreground:var(--theme-colors-light-on-surface);--primary:var(--theme-colors-light-primary);--primary-foreground:var(--theme-colors-light-on-primary);--secondary:var(--theme-colors-light-secondary);--secondary-foreground:var(--theme-colors-light-on-secondary);--muted:var(--theme-colors-light-surface-container-high);--muted-foreground:var(--theme-colors-light-on-surface-variant);--accent:var(--theme-colors-light-tertiary);--accent-foreground:var(--theme-colors-light-on-tertiary);--border:var(--theme-colors-light-outline);--input:var(--theme-colors-light-surface-container-high);--ring:var(--theme-colors-light-primary);--destructive:var(--theme-colors-light-error);--destructive-foreground:var(--theme-colors-light-on-error);--radius:var(--theme-radius-lg)}[data-theme=dark]{--background:var(--theme-colors-dark-background);--foreground:var(--theme-colors-dark-on-background);--card:var(--theme-colors-dark-surface-container);--card-foreground:var(--theme-colors-dark-on-surface);--primary:var(--theme-colors-dark-primary);--primary-foreground:var(--theme-colors-dark-on-primary);--secondary:var(--theme-colors-dark-secondary);--secondary-foreground:var(--theme-colors-dark-on-secondary);--muted:var(--theme-colors-dark-surface-container-high);--muted-foreground:var(--theme-colors-dark-on-surface-variant);--accent:var(--theme-colors-dark-tertiary);--accent-foreground:var(--theme-colors-dark-on-tertiary);--border:var(--theme-colors-dark-outline);--input:var(--theme-colors-dark-surface-container-high);--ring:var(--theme-colors-dark-primary);--destructive:var(--theme-colors-dark-error);--destructive-foreground:var(--theme-colors-dark-on-error)}.font-display{font-family:var(--font-display,var(--font-primary))}html{scroll-behavior:smooth}[data-jp-section-overlay]{z-index:9999;pointer-events:none;border:2px solid #0000;transition:border-color .15s,background-color .15s;position:absolute;top:0;right:0;bottom:0;left:0}[data-section-id]:hover [data-jp-section-overlay]{border:2px dashed var(--primary)}@supports (color:color-mix(in lab,red,red)){[data-section-id]:hover [data-jp-section-overlay]{border:2px dashed color-mix(in oklch,var(--primary) 50%,transparent)}}[data-section-id]:hover [data-jp-section-overlay]{background-color:var(--primary)}@supports (color:color-mix(in lab,red,red)){[data-section-id]:hover [data-jp-section-overlay]{background-color:color-mix(in oklch,var(--primary) 6%,transparent)}}[data-section-id][data-jp-selected] [data-jp-section-overlay]{border:2px solid var(--primary);background-color:var(--primary)}@supports (color:color-mix(in lab,red,red)){[data-section-id][data-jp-selected] [data-jp-section-overlay]{background-color:color-mix(in oklch,var(--primary) 10%,transparent)}}[data-jp-section-overlay]>div{text-transform:uppercase;letter-spacing:.1em;background:var(--primary);color:var(--primary-foreground);opacity:0;padding:.2rem .55rem;font-size:9px;font-weight:800;transition:opacity .15s;position:absolute;top:0;right:0}[data-section-id]:hover [data-jp-section-overlay]>div,[data-section-id][data-jp-selected] [data-jp-section-overlay]>div{opacity:1}@property --tw-translate-x{syntax:"*";inherits:false;initial-value:0}@property --tw-translate-y{syntax:"*";inherits:false;initial-value:0}@property --tw-translate-z{syntax:"*";inherits:false;initial-value:0}@property --tw-scale-x{syntax:"*";inherits:false;initial-value:1}@property --tw-scale-y{syntax:"*";inherits:false;initial-value:1}@property --tw-scale-z{syntax:"*";inherits:false;initial-value:1}@property --tw-rotate-x{syntax:"*";inherits:false}@property --tw-rotate-y{syntax:"*";inherits:false}@property --tw-rotate-z{syntax:"*";inherits:false}@property --tw-skew-x{syntax:"*";inherits:false}@property --tw-skew-y{syntax:"*";inherits:false}@property --tw-pan-x{syntax:"*";inherits:false}@property --tw-pan-y{syntax:"*";inherits:false}@property --tw-pinch-zoom{syntax:"*";inherits:false}@property --tw-space-y-reverse{syntax:"*";inherits:false;initial-value:0}@property --tw-space-x-reverse{syntax:"*";inherits:false;initial-value:0}@property --tw-divide-x-reverse{syntax:"*";inherits:false;initial-value:0}@property --tw-border-style{syntax:"*";inherits:false;initial-value:solid}@property --tw-divide-y-reverse{syntax:"*";inherits:false;initial-value:0}@property --tw-gradient-position{syntax:"*";inherits:false}@property --tw-gradient-from{syntax:"<color>";inherits:false;initial-value:#0000}@property --tw-gradient-via{syntax:"<color>";inherits:false;initial-value:#0000}@property --tw-gradient-to{syntax:"<color>";inherits:false;initial-value:#0000}@property --tw-gradient-stops{syntax:"*";inherits:false}@property --tw-gradient-via-stops{syntax:"*";inherits:false}@property --tw-gradient-from-position{syntax:"<length-percentage>";inherits:false;initial-value:0%}@property --tw-gradient-via-position{syntax:"<length-percentage>";inherits:false;initial-value:50%}@property --tw-gradient-to-position{syntax:"<length-percentage>";inherits:false;initial-value:100%}@property --tw-leading{syntax:"*";inherits:false}@property --tw-font-weight{syntax:"*";inherits:false}@property --tw-tracking{syntax:"*";inherits:false}@property --tw-ordinal{syntax:"*";inherits:false}@property --tw-slashed-zero{syntax:"*";inherits:false}@property --tw-numeric-figure{syntax:"*";inherits:false}@property --tw-numeric-spacing{syntax:"*";inherits:false}@property --tw-numeric-fraction{syntax:"*";inherits:false}@property --tw-shadow{syntax:"*";inherits:false;initial-value:0 0 #0000}@property --tw-shadow-color{syntax:"*";inherits:false}@property --tw-shadow-alpha{syntax:"<percentage>";inherits:false;initial-value:100%}@property --tw-inset-shadow{syntax:"*";inherits:false;initial-value:0 0 #0000}@property --tw-inset-shadow-color{syntax:"*";inherits:false}@property --tw-inset-shadow-alpha{syntax:"<percentage>";inherits:false;initial-value:100%}@property --tw-ring-color{syntax:"*";inherits:false}@property --tw-ring-shadow{syntax:"*";inherits:false;initial-value:0 0 #0000}@property --tw-inset-ring-color{syntax:"*";inherits:false}@property --tw-inset-ring-shadow{syntax:"*";inherits:false;initial-value:0 0 #0000}@property --tw-ring-inset{syntax:"*";inherits:false}@property --tw-ring-offset-width{syntax:"<length>";inherits:false;initial-value:0}@property --tw-ring-offset-color{syntax:"*";inherits:false;initial-value:#fff}@property --tw-ring-offset-shadow{syntax:"*";inherits:false;initial-value:0 0 #0000}@property --tw-outline-style{syntax:"*";inherits:false;initial-value:solid}@property --tw-blur{syntax:"*";inherits:false}@property --tw-brightness{syntax:"*";inherits:false}@property --tw-contrast{syntax:"*";inherits:false}@property --tw-grayscale{syntax:"*";inherits:false}@property --tw-hue-rotate{syntax:"*";inherits:false}@property --tw-invert{syntax:"*";inherits:false}@property --tw-opacity{syntax:"*";inherits:false}@property --tw-saturate{syntax:"*";inherits:false}@property --tw-sepia{syntax:"*";inherits:false}@property --tw-drop-shadow{syntax:"*";inherits:false}@property --tw-drop-shadow-color{syntax:"*";inherits:false}@property --tw-drop-shadow-alpha{syntax:"<percentage>";inherits:false;initial-value:100%}@property --tw-drop-shadow-size{syntax:"*";inherits:false}@property --tw-backdrop-blur{syntax:"*";inherits:false}@property --tw-backdrop-brightness{syntax:"*";inherits:false}@property --tw-backdrop-contrast{syntax:"*";inherits:false}@property --tw-backdrop-grayscale{syntax:"*";inherits:false}@property --tw-backdrop-hue-rotate{syntax:"*";inherits:false}@property --tw-backdrop-invert{syntax:"*";inherits:false}@property --tw-backdrop-opacity{syntax:"*";inherits:false}@property --tw-backdrop-saturate{syntax:"*";inherits:false}@property --tw-backdrop-sepia{syntax:"*";inherits:false}@property --tw-duration{syntax:"*";inherits:false}@property --tw-ease{syntax:"*";inherits:false}@property --tw-content{syntax:"*";inherits:false;initial-value:""}@keyframes pulse{50%{opacity:.5}}`;
 function isRecord(value) {
   return typeof value === "object" && value !== null && !Array.isArray(value);
 }
@@ -42922,7 +42949,7 @@ function resolveTenantId() {
 function render(slug2) {
   const resolved = resolvePage(slug2);
   const location = resolved.slug === "home" ? "/" : `/${resolved.slug}`;
-  const resolvedRuntime = st({
+  const resolvedRuntime = De({
     pages,
     siteConfig,
     themeConfig,
@@ -42932,15 +42959,15 @@ function render(slug2) {
   const resolvedPage = resolvedRuntime.pages[resolved.slug] ?? resolved.page;
   return server_nodeExports.renderToString(
     /* @__PURE__ */ jsxRuntimeExports.jsx(StaticRouter, { location, children: /* @__PURE__ */ jsxRuntimeExports.jsx(
-      Qt,
+      rr,
       {
         config: {
           registry: ComponentRegistry,
           schemas: SECTION_SCHEMAS,
           tenantId: resolveTenantId()
         },
-        children: /* @__PURE__ */ jsxRuntimeExports.jsx(ir, { mode: "visitor", children: /* @__PURE__ */ jsxRuntimeExports.jsx(ThemeProvider, { children: /* @__PURE__ */ jsxRuntimeExports.jsx(
-          po,
+        children: /* @__PURE__ */ jsxRuntimeExports.jsx(dr, { mode: "visitor", children: /* @__PURE__ */ jsxRuntimeExports.jsx(ThemeProvider, { children: /* @__PURE__ */ jsxRuntimeExports.jsx(
+          bo,
           {
             pageConfig: resolvedPage,
             siteConfig: resolvedRuntime.siteConfig,

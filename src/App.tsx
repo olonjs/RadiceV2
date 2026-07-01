@@ -29,6 +29,15 @@ import { ThemeProvider } from '@/components/ThemeProvider';
 import { useOlonForms } from '@/lib/useOlonForms';
 import { OlonFormsContext } from '@olonjs/core/runtime';
 import { iconMap } from '@/lib/IconResolver';
+import {
+  fetchRenderProjection,
+  isAdminPath,
+  normalizeRenderPath,
+  patchHistoryNavigation,
+  resolveRegistrySlugFromRender,
+  type RenderProjectionResponse,
+} from '@/lib/spp/renderClient';
+import { useAdminStudioContent } from '@/lib/cloud/useAdminStudioContent';
 
 import tenantCss from './index.css?inline';
 
@@ -41,12 +50,7 @@ const SAVE2REPO_ENABLED = import.meta.env.VITE_SAVE2REPO === 'true';
 const APP_BASE_PATH = normalizeBasePath(import.meta.env.BASE_URL || '/');
 
 const themeConfig = themeData as unknown as ThemeConfig;
-const menuConfig = menuData as unknown as MenuConfig;
-const refDocuments = {
-  'menu.json': menuConfig,
-  'config/menu.json': menuConfig,
-  'src/data/config/menu.json': menuConfig,
-} satisfies NonNullable<JsonPagesConfig['refDocuments']>;
+const menuConfigSeed = menuData as unknown as MenuConfig;
 
 const TENANT_ID = 'alpha';
 
@@ -68,26 +72,12 @@ interface CloudSaveUiState {
 }
 
 type ContentMode = 'cloud' | 'error';
-type ContentStatus = 'ok' | 'empty_namespace' | 'legacy_fallback';
-
-type ContentResponse = {
-  ok?: boolean;
-  siteConfig?: unknown;
-  pages?: unknown;
-  items?: unknown;
-  error?: string;
-  code?: string;
-  correlationId?: string;
-  contentStatus?: ContentStatus;
-  usedUnscopedFallback?: boolean;
-  namespace?: string;
-  namespaceMatchedKeys?: number;
-};
 
 type CachedCloudContent = {
   keyFingerprint: string;
   savedAt: number;
   siteConfig: unknown | null;
+  menuConfig?: unknown | null;
   pages: Record<string, unknown>;
 };
 
@@ -219,36 +209,6 @@ function normalizePageRegistry(value: unknown): Record<string, PageConfig> {
   }
 
   return normalized;
-}
-
-function extractContentSources(payload: ContentResponse | Record<string, unknown>): {
-  pagesSource: unknown;
-  siteSource: unknown;
-} {
-  // Canonical contract: { pages, siteConfig }
-  if (isObjectRecord(payload) && isObjectRecord(payload.pages)) {
-    return { pagesSource: payload.pages, siteSource: payload.siteConfig };
-  }
-
-  // Edge public JSON contract: { digest, updatedAt, items: { ... } }
-  if (isObjectRecord(payload) && isObjectRecord(payload.items)) {
-    const items = payload.items;
-    let siteSource: unknown = null;
-    const pageEntries: Record<string, unknown> = {};
-    for (const [key, value] of Object.entries(items)) {
-      if (/(_config_site|config_site|config:site)$/i.test(key)) {
-        siteSource = value;
-        continue;
-      }
-      if (/(_page_|^page_|page:)/i.test(key)) {
-        pageEntries[key] = value;
-      }
-    }
-    return { pagesSource: pageEntries, siteSource };
-  }
-
-  // Raw map fallback: treat payload object itself as page map.
-  return { pagesSource: payload, siteSource: null };
 }
 
 type CloudLoadFailure = {
@@ -421,15 +381,6 @@ function setTenantPreviewReady(ready: boolean): void {
   }
 }
 
-/**
- * Engine selector. Visitors get OlonJSEngine (~28 KB gz of @olonjs/core,
- * statically imported above); /admin paths get the full JsonPagesEngine
- * via dynamic import — Vite emits a separate chunk so the visitor never
- * downloads Studio admin code. See ADR-0009.
- */
-const isAdminPath =
-  typeof window !== 'undefined' && window.location.pathname.startsWith('/admin');
-
 const LazyJsonPagesEngine = lazy(() =>
   import('@olonjs/core').then((m) => ({ default: m.JsonPagesEngine })),
 );
@@ -449,6 +400,7 @@ function App() {
   const [siteConfig, setSiteConfig] = useState<SiteConfig>(
     localInitialData?.siteConfig ?? fileSiteConfig
   );
+  const [menuConfig, setMenuConfig] = useState<MenuConfig>(menuConfigSeed);
   const [assetsManifest, setAssetsManifest] = useState<LibraryImageEntry[]>([]);
   const [cloudSaveUi, setCloudSaveUi] = useState<CloudSaveUiState>(getInitialCloudSaveUiState);
   const [contentMode, setContentMode] = useState<ContentMode>('cloud');
@@ -458,11 +410,40 @@ function App() {
   const [bootstrapRunId, setBootstrapRunId] = useState(0);
   const activeCloudSaveController = useRef<AbortController | null>(null);
   const contentLoadInFlight = useRef<Promise<void> | null>(null);
+  const sppRenderInFlightRef = useRef<string | null>(null);
+  const sppBootstrappedRef = useRef(false);
   const pendingCloudSave = useRef<{ state: ProjectState; slug: string } | null>(null);
   const cloudApiCandidates = useMemo(
     () => (isCloudMode && CLOUD_API_URL ? buildApiCandidates(CLOUD_API_URL) : []),
     [isCloudMode, CLOUD_API_URL]
   );
+
+  const engineRefDocuments = useMemo(
+    () => ({
+      'menu.json': menuConfig,
+      'config/menu.json': menuConfig,
+      'src/data/config/menu.json': menuConfig,
+    }),
+    [menuConfig],
+  );
+
+  const writeCloudCache = useCallback((entry: CachedCloudContent) => {
+    writeCachedCloudContent(entry);
+  }, []);
+
+  useAdminStudioContent({
+    enabled: isHotSaveMode,
+    basePath: APP_BASE_PATH,
+    apiCandidates: cloudApiCandidates,
+    apiKey: CLOUD_API_KEY ?? '',
+    setPages,
+    setSiteConfig,
+    setMenuConfig,
+    writeCache: writeCloudCache,
+  });
+
+  const adminRoute =
+    typeof window !== 'undefined' && isAdminPath(window.location.pathname, APP_BASE_PATH);
 
   const loadAssetsManifest = useCallback(async (): Promise<void> => {
     if (isCloudMode && CLOUD_API_URL && CLOUD_API_KEY) {
@@ -572,147 +553,120 @@ function App() {
       return;
     }
 
+    if (isAdminPath(window.location.pathname, APP_BASE_PATH)) {
+      setContentMode('cloud');
+      setContentFallback(null);
+      setShowTopProgress(false);
+      setHasInitialCloudResolved(true);
+      return;
+    }
+
     const controller = new AbortController();
-    const maxRetryAttempts = 2;
     const startedAt = Date.now();
     const primaryApiBase = cloudApiCandidates[0] ?? normalizeApiBase(CLOUD_API_URL);
     const fingerprint = cloudFingerprint(primaryApiBase, CLOUD_API_KEY);
     const cached = readCachedCloudContent(fingerprint);
     const cachedPages = cached ? toPagesRecord(cached.pages) : null;
     const cachedSite = cached ? coerceSiteConfig(cached.siteConfig) : null;
-    const hasCachedFallback = Boolean((cachedPages && Object.keys(cachedPages).length > 0) || cachedSite);
-    if (cached) {
-      logBootstrapEvent('boot.cloud.cache_hit', { ageMs: Date.now() - cached.savedAt });
-    }
+    const cachedMenu =
+      cached?.menuConfig && isObjectRecord(cached.menuConfig)
+        ? (cached.menuConfig as MenuConfig)
+        : null;
+    sppBootstrappedRef.current = false;
     setContentMode('cloud');
     setContentFallback(null);
     setShowTopProgress(true);
     setHasInitialCloudResolved(false);
-    logBootstrapEvent('boot.start', { mode: 'cloud', apiCandidates: cloudApiCandidates.length });
+    logBootstrapEvent('boot.start', { mode: 'spp-render', apiCandidates: cloudApiCandidates.length });
 
-    const loadCloudContent = async () => {
+    const applyRenderPayload = (result: RenderProjectionResponse) => {
+      if (!result.page) return;
+      const registrySlug = resolveRegistrySlugFromRender(result.page);
+      setPages((prev) => ({ ...prev, [registrySlug]: result.page! }));
+      if (result.context?.siteConfig) setSiteConfig(result.context.siteConfig);
+      if (result.context?.menuConfig) setMenuConfig(result.context.menuConfig);
+      writeCachedCloudContent({
+        keyFingerprint: fingerprint,
+        savedAt: Date.now(),
+        siteConfig: result.context?.siteConfig ?? cachedSite ?? null,
+        menuConfig: result.context?.menuConfig ?? cachedMenu ?? null,
+        pages: {
+          ...(cached?.pages ?? {}),
+          [registrySlug]: result.page,
+        },
+      });
+    };
+
+    const loadRenderPath = async (pathname: string, options?: { initial?: boolean }) => {
+      if (controller.signal.aborted) return;
+      if (isAdminPath(pathname, APP_BASE_PATH)) return;
+
+      const renderPath = normalizeRenderPath(pathname, APP_BASE_PATH);
+      const inFlightKey = renderPath;
+      if (sppRenderInFlightRef.current === inFlightKey) return;
+      sppRenderInFlightRef.current = inFlightKey;
+
       try {
-        let payload: ContentResponse | null = null;
-        let lastFailure: CloudLoadFailure | null = null;
+        const result = await fetchRenderProjection(cloudApiCandidates, CLOUD_API_KEY, renderPath, {
+          signal: controller.signal,
+          maxRetryAttempts: 2,
+        });
 
-        for (const apiBase of cloudApiCandidates) {
-          for (let attempt = 0; attempt <= maxRetryAttempts; attempt += 1) {
-            try {
-              const res = await fetch(`${apiBase}/content`, {
-                method: 'GET',
-                cache: 'no-store',
-                headers: {
-                  Authorization: `Bearer ${CLOUD_API_KEY}`,
-                },
-                signal: controller.signal,
-              });
-
-              const contentType = (res.headers.get('content-type') || '').toLowerCase();
-              if (!contentType.includes('application/json')) {
-                lastFailure = {
-                  reasonCode: 'NON_JSON_RESPONSE',
-                  message: `Non-JSON response from ${apiBase}/content`,
-                };
-                break;
-              }
-
-              const parsed = (await res.json().catch(() => ({}))) as ContentResponse;
-              if (!res.ok) {
-                lastFailure = {
-                  reasonCode: parsed.code || `HTTP_${res.status}`,
-                  message: parsed.error || `Cloud content read failed: ${res.status} (${apiBase}/content)`,
-                  correlationId: parsed.correlationId,
-                };
-                if (isRetryableStatus(res.status) && attempt < maxRetryAttempts) {
-                  await sleep(backoffDelayMs(attempt));
-                  continue;
-                }
-                break;
-              }
-
-              payload = parsed;
-              break;
-            } catch (error: unknown) {
-              if (controller.signal.aborted) throw error;
-              const message = error instanceof Error ? error.message : 'Network error';
-              lastFailure = {
-                reasonCode: 'NETWORK_TRANSIENT',
-                message: `${message} (${apiBase}/content)`,
-              };
-              if (attempt < maxRetryAttempts) {
-                await sleep(backoffDelayMs(attempt));
-                continue;
-              }
-            }
+        if (!result.ok) {
+          if (options?.initial) {
+            throw {
+              reasonCode: result.code || 'RENDER_FAILED',
+              message: result.error || 'Render projection failed',
+              correlationId: result.correlationId,
+            } satisfies CloudLoadFailure;
           }
-          if (payload) {
-            break;
-          }
+          logBootstrapEvent('boot.spp_render.route_error', {
+            path: renderPath,
+            code: result.code ?? null,
+          });
+          return;
         }
 
-        if (!payload) {
-          throw (
-            lastFailure || {
-              reasonCode: 'CLOUD_ENDPOINT_UNREACHABLE',
-              message: 'Cloud content endpoint not reachable as JSON.',
-            }
-          );
-        }
-
-        const { pagesSource, siteSource } = extractContentSources(payload);
-        const remotePages = toPagesRecord(pagesSource);
-        const remoteSite = coerceSiteConfig(siteSource);
-        const remotePageCount = remotePages ? Object.keys(remotePages).length : 0;
-        if (remotePageCount === 0 && !remoteSite) {
-          throw {
-            reasonCode: payload.contentStatus === 'empty_namespace' ? 'EMPTY_NAMESPACE' : 'EMPTY_PAYLOAD',
-            message: 'Cloud payload is empty for this tenant namespace.',
-            correlationId: payload.correlationId,
-          } satisfies CloudLoadFailure;
-        }
-        if (import.meta.env.DEV) {
-          console.info('[content] cloud diagnostics', {
-            contentStatus: payload.contentStatus ?? 'ok',
-            namespace: payload.namespace,
-            namespaceMatchedKeys: payload.namespaceMatchedKeys,
-            usedUnscopedFallback: payload.usedUnscopedFallback,
-            correlationId: payload.correlationId,
+        applyRenderPayload(result);
+        if (options?.initial) {
+          sppBootstrappedRef.current = true;
+          setContentMode('cloud');
+          setContentFallback(null);
+          setHasInitialCloudResolved(true);
+          logBootstrapEvent('boot.spp_render.success', {
+            elapsedMs: Date.now() - startedAt,
+            projectionMode: result.diagnostics?.projectionMode ?? null,
+            correlationId: result.correlationId ?? null,
+          });
+        } else {
+          logBootstrapEvent('boot.spp_render.route_success', {
+            path: renderPath,
+            correlationId: result.correlationId ?? null,
           });
         }
-        if (remotePages && remotePageCount > 0) {
-          setPages(remotePages);
+      } finally {
+        if (sppRenderInFlightRef.current === inFlightKey) {
+          sppRenderInFlightRef.current = null;
         }
-        if (remoteSite) {
-          setSiteConfig(remoteSite);
-        }
-        writeCachedCloudContent({
-          keyFingerprint: fingerprint,
-          savedAt: Date.now(),
-          siteConfig: remoteSite ?? null,
-          pages: (remotePages ?? {}) as Record<string, unknown>,
-        });
-        setContentMode('cloud');
-        setContentFallback(null);
-        setHasInitialCloudResolved(true);
-        logBootstrapEvent('boot.cloud.success', {
-          mode: 'cloud',
-          elapsedMs: Date.now() - startedAt,
-          contentStatus: payload.contentStatus ?? 'ok',
-          correlationId: payload.correlationId ?? null,
-        });
+      }
+    };
+
+    const bootstrap = async () => {
+      try {
+        await loadRenderPath(window.location.pathname, { initial: true });
       } catch (error: unknown) {
         if (controller.signal.aborted) return;
         const failure = toCloudLoadFailure(error);
+        const hasCachedFallback = Boolean(
+          (cachedPages && Object.keys(cachedPages).length > 0) || cachedSite,
+        );
         if (hasCachedFallback) {
-          if (cachedPages && Object.keys(cachedPages).length > 0) {
-            setPages(cachedPages);
-          }
-          if (cachedSite) {
-            setSiteConfig(cachedSite);
-          }
+          if (cachedPages && Object.keys(cachedPages).length > 0) setPages(cachedPages);
+          if (cachedSite) setSiteConfig(cachedSite);
+          if (cachedMenu) setMenuConfig(cachedMenu);
           setContentMode('cloud');
           setContentFallback({
-            reasonCode: 'CLOUD_REFRESH_FAILED',
+            reasonCode: 'RENDER_FAILED',
             message: failure.message,
             correlationId: failure.correlationId,
           });
@@ -722,24 +676,33 @@ function App() {
           setContentFallback(failure);
           setHasInitialCloudResolved(true);
         }
-        logBootstrapEvent('boot.cloud.error', {
-          mode: 'cloud',
-          elapsedMs: Date.now() - startedAt,
+        logBootstrapEvent('boot.spp_render.error', {
           reasonCode: failure.reasonCode,
           correlationId: failure.correlationId ?? null,
         });
+      } finally {
+        setShowTopProgress(false);
       }
     };
 
     let inFlight: Promise<void> | null = null;
-    inFlight = loadCloudContent().finally(() => {
-      setShowTopProgress(false);
+    inFlight = bootstrap().finally(() => {
       if (contentLoadInFlight.current === inFlight) {
         contentLoadInFlight.current = null;
       }
     });
     contentLoadInFlight.current = inFlight;
-    return () => controller.abort();
+
+    const unpatchHistory = patchHistoryNavigation(() => {
+      if (!sppBootstrappedRef.current) return;
+      void loadRenderPath(window.location.pathname);
+    });
+
+    return () => {
+      controller.abort();
+      unpatchHistory();
+      contentLoadInFlight.current = null;
+    };
   }, [isCloudMode, isSave2RepoMode, CLOUD_API_KEY, CLOUD_API_URL, cloudApiCandidates, bootstrapRunId]);
 
   const runCloudSave = useCallback(
@@ -883,7 +846,7 @@ function App() {
     siteConfig,
     themeConfig,
     menuConfig,
-    refDocuments,
+    refDocuments: engineRefDocuments,
     iconRegistry: iconMap,
     themeCss: { tenant: resolvedTenantCss },
     addSection: addSectionConfig,
@@ -1104,7 +1067,7 @@ function App() {
      {shouldRenderEngine ? (
         isTenantEmpty ? (
           <EmptyTenantView />
-        ) : isAdminPath ? (
+        ) : adminRoute ? (
           <Suspense fallback={null}>
             <LazyJsonPagesEngine config={config} />
           </Suspense>
@@ -1112,7 +1075,7 @@ function App() {
           <OlonJSEngine config={config} />
         )
       ) : null}
-      {isCloudMode && (contentMode === 'error' || contentFallback?.reasonCode === 'CLOUD_REFRESH_FAILED') ? (
+      {isCloudMode && (contentMode === 'error' || contentFallback?.reasonCode === 'RENDER_FAILED') ? (
         <div
           role="status"
           aria-live="polite"
@@ -1131,7 +1094,7 @@ function App() {
             boxShadow: '0 8px 24px rgba(0,0,0,0.25)',
           }}
         >
-          {contentMode === 'error' ? 'Cloud content unavailable.' : 'Cloud refresh failed, showing cached content.'}
+          {contentMode === 'error' ? 'Cloud content unavailable.' : 'Render refresh failed, showing cached content.'}
           {contentFallback ? (
             <div style={{ opacity: 0.85, marginTop: 4 }}>
               <div>{contentFallback.message}</div>
