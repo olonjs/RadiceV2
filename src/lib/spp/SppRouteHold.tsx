@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useMemo } from 'react';
 import { useLocation } from 'react-router-dom';
-import { DefaultNotFound, PageRenderer } from '@olonjs/core/runtime';
+import { DefaultNotFound, PageRenderer, StudioProvider } from '@olonjs/core/runtime';
 import type { MenuConfig, PageConfig, SiteConfig } from '@/types';
 import { normalizeRenderPath } from '@/lib/spp/renderClient';
 
@@ -42,11 +42,13 @@ export function SppVisitorNotFound() {
   const renderPath = normalizeRenderPath(location.pathname, ctx.basePath);
   if (ctx.pendingPath === renderPath && ctx.lastStable) {
     return (
-      <PageRenderer
-        pageConfig={ctx.lastStable.page}
-        siteConfig={ctx.lastStable.siteConfig}
-        menuConfig={ctx.lastStable.menuConfig}
-      />
+      <StudioProvider mode="visitor">
+        <PageRenderer
+          pageConfig={ctx.lastStable.page}
+          siteConfig={ctx.lastStable.siteConfig}
+          menuConfig={ctx.lastStable.menuConfig}
+        />
+      </StudioProvider>
     );
   }
 
