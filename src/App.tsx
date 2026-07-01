@@ -4,6 +4,7 @@
  * Supports Hybrid Persistence: Local Filesystem (Dev) or Cloud Bridge (Prod).
  */
 import { lazy, Suspense, useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { flushSync } from 'react-dom';
 // ADR-0009: visitor route imports the runtime-only engine statically.
 // The full @olonjs/core (Studio admin) is loaded on demand only when the
 // URL targets /admin (see LazyJsonPagesEngine below).
@@ -37,8 +38,11 @@ import {
   resolveRegistrySlugFromRender,
   type RenderProjectionResponse,
 } from '@/lib/spp/renderClient';
-import { isPageLoadedInRegistry, resolvePageFromRegistry } from '@/lib/spp/sppRouteRegistry';
-import { SppRouteHoldProvider, SppVisitorNotFound, type StableVisitorSnapshot } from '@/lib/spp/SppRouteHold';
+import { isPageLoadedInRegistry } from '@/lib/spp/sppRouteRegistry';
+import {
+  completeSppClientNavigation,
+  installSppNavigationGuard,
+} from '@/lib/spp/sppNavigationGuard';
 import { useAdminStudioContent } from '@/lib/cloud/useAdminStudioContent';
 
 import tenantCss from './index.css?inline';
@@ -416,8 +420,10 @@ function App() {
   const sppBootstrappedRef = useRef(false);
   const pagesRef = useRef(pages);
   pagesRef.current = pages;
-  const lastStableVisitorRef = useRef<StableVisitorSnapshot | null>(null);
-  const [sppRoutePendingPath, setSppRoutePendingPath] = useState<string | null>(null);
+  const sppLoadRenderPathRef = useRef<(pathname: string) => Promise<boolean>>(async () => false);
+  const lastCommittedUrlRef = useRef(
+    typeof window !== 'undefined' ? window.location.href : '',
+  );
   const pendingCloudSave = useRef<{ state: ProjectState; slug: string } | null>(null);
   const cloudApiCandidates = useMemo(
     () => (isCloudMode && CLOUD_API_URL ? buildApiCandidates(CLOUD_API_URL) : []),
@@ -603,13 +609,16 @@ function App() {
       });
     };
 
-    const loadRenderPath = async (pathname: string, options?: { initial?: boolean }) => {
-      if (controller.signal.aborted) return;
-      if (isAdminPath(pathname, APP_BASE_PATH)) return;
+    const loadRenderPath = async (
+      pathname: string,
+      options?: { initial?: boolean },
+    ): Promise<boolean> => {
+      if (controller.signal.aborted) return false;
+      if (isAdminPath(pathname, APP_BASE_PATH)) return false;
 
       const renderPath = normalizeRenderPath(pathname, APP_BASE_PATH);
       const inFlightKey = renderPath;
-      if (sppRenderInFlightRef.current === inFlightKey) return;
+      if (sppRenderInFlightRef.current === inFlightKey) return false;
       sppRenderInFlightRef.current = inFlightKey;
 
       try {
@@ -630,15 +639,23 @@ function App() {
             path: renderPath,
             code: result.code ?? null,
           });
-          return;
+          return false;
         }
 
-        applyRenderPayload(result);
+        if (options?.initial) {
+          applyRenderPayload(result);
+        } else {
+          flushSync(() => {
+            applyRenderPayload(result);
+          });
+        }
+
         if (options?.initial) {
           sppBootstrappedRef.current = true;
           setContentMode('cloud');
           setContentFallback(null);
           setHasInitialCloudResolved(true);
+          lastCommittedUrlRef.current = window.location.href;
           logBootstrapEvent('boot.spp_render.success', {
             elapsedMs: Date.now() - startedAt,
             projectionMode: result.diagnostics?.projectionMode ?? null,
@@ -650,12 +667,16 @@ function App() {
             correlationId: result.correlationId ?? null,
           });
         }
+
+        return true;
       } finally {
         if (sppRenderInFlightRef.current === inFlightKey) {
           sppRenderInFlightRef.current = null;
         }
       }
     };
+
+    sppLoadRenderPathRef.current = loadRenderPath;
 
     const bootstrap = async () => {
       try {
@@ -699,54 +720,60 @@ function App() {
     });
     contentLoadInFlight.current = inFlight;
 
-    const unpatchHistory = patchHistoryNavigation(
-      (pathname) => {
-        if (!sppBootstrappedRef.current) return;
-        if (isAdminPath(pathname, APP_BASE_PATH)) return;
+    const unpatchHistory = patchHistoryNavigation((pathname) => {
+      if (!sppBootstrappedRef.current) return;
+      if (isAdminPath(pathname, APP_BASE_PATH)) return;
+      if (isPageLoadedInRegistry(pagesRef.current, pathname, APP_BASE_PATH)) {
+        lastCommittedUrlRef.current = window.location.href;
+        return;
+      }
 
-        const renderPath = normalizeRenderPath(pathname, APP_BASE_PATH);
-        if (isPageLoadedInRegistry(pagesRef.current, pathname, APP_BASE_PATH)) return;
+      const revertUrl = lastCommittedUrlRef.current;
+      window.history.replaceState(window.history.state, '', revertUrl);
+      window.dispatchEvent(new PopStateEvent('popstate', { state: window.history.state }));
 
-        void loadRenderPath(pathname).finally(() => {
-          setSppRoutePendingPath((current) => (current === renderPath ? null : current));
+      setShowTopProgress(true);
+      void loadRenderPath(pathname)
+        .then((ok) => {
+          if (!ok) return;
+          completeSppClientNavigation(pathname, () => {
+            lastCommittedUrlRef.current = window.location.href;
+          });
+        })
+        .finally(() => {
           setShowTopProgress(false);
         });
-      },
-      {
-        onBeforeNavigate: (pathname) => {
-          if (!sppBootstrappedRef.current) return;
-          if (isAdminPath(pathname, APP_BASE_PATH)) return;
-
-          const renderPath = normalizeRenderPath(pathname, APP_BASE_PATH);
-          if (isPageLoadedInRegistry(pagesRef.current, pathname, APP_BASE_PATH)) return;
-
-          setSppRoutePendingPath(renderPath);
-          setShowTopProgress(true);
-        },
-      },
-    );
+    });
 
     return () => {
       controller.abort();
       unpatchHistory();
       contentLoadInFlight.current = null;
+      sppLoadRenderPathRef.current = async () => false;
     };
   }, [isCloudMode, isSave2RepoMode, CLOUD_API_KEY, CLOUD_API_URL, cloudApiCandidates, bootstrapRunId]);
 
   useEffect(() => {
-    if (!isHotSaveMode || !hasInitialCloudResolved || typeof window === 'undefined') return;
+    if (!isHotSaveMode || !hasInitialCloudResolved) return;
 
-    const renderPath = normalizeRenderPath(window.location.pathname, APP_BASE_PATH);
-    const page = resolvePageFromRegistry(pages, window.location.pathname, APP_BASE_PATH);
-    if (!page) return;
+    return installSppNavigationGuard({
+      basePath: APP_BASE_PATH,
+      isActive: () => sppBootstrappedRef.current,
+      isBusy: () => sppRenderInFlightRef.current !== null,
+      getPages: () => pagesRef.current,
+      loadRenderPath: (pathname) => sppLoadRenderPathRef.current(pathname),
+      onLoadStart: () => setShowTopProgress(true),
+      onLoadEnd: () => setShowTopProgress(false),
+      onNavigateComplete: () => {
+        lastCommittedUrlRef.current = window.location.href;
+      },
+    });
+  }, [isHotSaveMode, hasInitialCloudResolved]);
 
-    lastStableVisitorRef.current = {
-      renderPath,
-      page,
-      siteConfig,
-      menuConfig,
-    };
-  }, [isHotSaveMode, hasInitialCloudResolved, pages, siteConfig, menuConfig]);
+  useEffect(() => {
+    if (!isHotSaveMode || !hasInitialCloudResolved) return;
+    lastCommittedUrlRef.current = window.location.href;
+  }, [isHotSaveMode, hasInitialCloudResolved, pages]);
 
   const runCloudSave = useCallback(
     async (
@@ -893,7 +920,6 @@ function App() {
     iconRegistry: iconMap,
     themeCss: { tenant: resolvedTenantCss },
     addSection: addSectionConfig,
-    ...(isHotSaveMode ? { NotFoundComponent: SppVisitorNotFound } : {}),
     webmcp: {
       enabled: true,
       namespace: typeof window !== 'undefined' ? window.location.href : '',
@@ -1115,14 +1141,6 @@ function App() {
           <Suspense fallback={null}>
             <LazyJsonPagesEngine config={config} />
           </Suspense>
-        ) : isHotSaveMode ? (
-          <SppRouteHoldProvider
-            basePath={APP_BASE_PATH}
-            pendingPath={sppRoutePendingPath}
-            lastStable={lastStableVisitorRef.current}
-          >
-            <OlonJSEngine config={config} />
-          </SppRouteHoldProvider>
         ) : (
           <OlonJSEngine config={config} />
         )

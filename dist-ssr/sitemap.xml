@@ -6,13 +6,13 @@
   <!-- ========================================== -->
   <url>
     <loc>http://localhost:5173/llms.txt</loc>
-    <lastmod>2026-07-01T17:18:52Z</lastmod>
+    <lastmod>2026-07-01T17:44:00Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>http://localhost:5173/mcp-manifest.json</loc>
-    <lastmod>2026-07-01T17:18:52Z</lastmod>
+    <lastmod>2026-07-01T17:44:00Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -36,7 +36,7 @@
   <!-- Machine Contract (Schema) -->
   <url>
     <loc>http://localhost:5173/schemas/chef.schema.json</loc>
-    <lastmod>2026-07-01T17:18:52Z</lastmod>
+    <lastmod>2026-07-01T17:44:00Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -60,7 +60,7 @@
   <!-- Machine Contract (Schema) -->
   <url>
     <loc>http://localhost:5173/schemas/contact.schema.json</loc>
-    <lastmod>2026-07-01T17:18:52Z</lastmod>
+    <lastmod>2026-07-01T17:44:00Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -84,7 +84,7 @@
   <!-- Machine Contract (Schema) -->
   <url>
     <loc>http://localhost:5173/schemas/experience.schema.json</loc>
-    <lastmod>2026-07-01T17:18:52Z</lastmod>
+    <lastmod>2026-07-01T17:44:00Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -108,7 +108,7 @@
   <!-- Machine Contract (Schema) -->
   <url>
     <loc>http://localhost:5173/schemas/home.schema.json</loc>
-    <lastmod>2026-07-01T17:18:52Z</lastmod>
+    <lastmod>2026-07-01T17:44:00Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -132,7 +132,7 @@
   <!-- Machine Contract (Schema) -->
   <url>
     <loc>http://localhost:5173/schemas/menu.schema.json</loc>
-    <lastmod>2026-07-01T17:18:52Z</lastmod>
+    <lastmod>2026-07-01T17:44:00Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -156,7 +156,7 @@
   <!-- Machine Contract (Schema) -->
   <url>
     <loc>http://localhost:5173/schemas/philosophy.schema.json</loc>
-    <lastmod>2026-07-01T17:18:52Z</lastmod>
+    <lastmod>2026-07-01T17:44:00Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -180,7 +180,7 @@
   <!-- Machine Contract (Schema) -->
   <url>
     <loc>http://localhost:5173/schemas/private-dining.schema.json</loc>
-    <lastmod>2026-07-01T17:18:52Z</lastmod>
+    <lastmod>2026-07-01T17:44:00Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -204,7 +204,7 @@
   <!-- Machine Contract (Schema) -->
   <url>
     <loc>http://localhost:5173/schemas/reservations.schema.json</loc>
-    <lastmod>2026-07-01T17:18:52Z</lastmod>
+    <lastmod>2026-07-01T17:44:00Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
