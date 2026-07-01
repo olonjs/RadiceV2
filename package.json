@@ -17,22 +17,13 @@
   },
   "dependencies": {
     "@olonjs/core": "^1.1.12",
-    "@tiptap/extension-image": "^2.11.5",
-    "@tiptap/extension-link": "^2.11.5",
-    "@tiptap/react": "^2.11.5",
-    "@tiptap/starter-kit": "^2.11.5",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "lucide-react": "^0.474.0",
-    "motion": "^12.23.24",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "react-markdown": "^9.0.1",
     "react-router-dom": "^6.30.3",
-    "rehype-sanitize": "^6.0.0",
-    "remark-gfm": "^4.0.1",
     "tailwind-merge": "^3.5.0",
-    "tiptap-markdown": "^0.8.10",
     "zod": "^3.24.1"
   },
   "devDependencies": {

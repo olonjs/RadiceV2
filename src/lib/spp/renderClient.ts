@@ -141,9 +141,14 @@ export async function fetchRenderProjection(
   );
 }
 
-export function patchHistoryNavigation(onNavigate: () => void): () => void {
+export function patchHistoryNavigation(
+  onNavigate: (pathname: string) => void,
+  options?: { onBeforeNavigate?: (pathname: string) => void },
+): () => void {
   const notify = () => {
-    window.queueMicrotask(onNavigate);
+    const pathname = window.location.pathname;
+    options?.onBeforeNavigate?.(pathname);
+    window.queueMicrotask(() => onNavigate(pathname));
   };
 
   window.addEventListener('popstate', notify);
