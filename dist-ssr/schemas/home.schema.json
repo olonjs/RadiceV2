@@ -86,7 +86,8 @@
               },
               "isCta": {
                 "type": "boolean",
-                "description": "ui:checkbox"
+                "description": "ui:checkbox",
+                "default": false
               }
             },
             "additionalProperties": false,
@@ -224,6 +225,16 @@
             "href": {
               "type": "string",
               "description": "ui:text"
+            },
+            "variant": {
+              "type": "string",
+              "enum": [
+                "primary",
+                "secondary",
+                "outline"
+              ],
+              "description": "ui:select",
+              "default": "primary"
             }
           },
           "additionalProperties": false,
@@ -392,6 +403,16 @@
             "href": {
               "type": "string",
               "description": "ui:text"
+            },
+            "variant": {
+              "type": "string",
+              "enum": [
+                "primary",
+                "secondary",
+                "outline"
+              ],
+              "description": "ui:select",
+              "default": "primary"
             }
           },
           "additionalProperties": false,

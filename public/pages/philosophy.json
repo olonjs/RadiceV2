@@ -1,17 +1,17 @@
 {
   "id": "philosophy-page",
+  "slug": "philosophy",
   "meta": {
     "title": "Philosophy | Radice",
     "description": "Discover the culinary philosophy of Radice, centered on seasonality, terroir, and a deep respect for ingredients."
   },
-  "slug": "philosophy",
   "sections": [
     {
       "id": "phil-hero",
       "data": {
         "image": {
-          "alt": "1778254401377-7780b737-6034-412e-ad34-872afd43037c-1778238061787-1771599023714-Generated_Image_February_20__2026_-_3_49PM",
-          "url": "/assets/images/8cd8d078-420c-4f7b-9f32-1235271bc160/1778254401377-7780b737-6034-412e-ad34-872afd43037c-1778238061787-1771599023714-Generated_Image_February_20__2026_-_3_49PM.jpg"
+          "url": "/assets/images/1778238061787-1771599023714-Generated_Image_February_20__2026_-_3_49PM.jpeg",
+          "alt": "1778238061787-1771599023714-Generated_Image_February_20__2026_-_3_49PM.jpeg"
         },
         "label": "Our Foundation",
         "content": "Our philosophy is simple: to honor the ingredient. This begins with sourcing—building lasting relationships with the people who grow, raise, and harvest our food. It continues in the kitchen, where technique is employed not to disguise, but to amplify the inherent character of each element. We cook with intention, precision, and a profound respect for nature's integrity.",

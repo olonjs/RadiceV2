@@ -65,7 +65,8 @@
               },
               "isCta": {
                 "type": "boolean",
-                "description": "ui:checkbox"
+                "description": "ui:checkbox",
+                "default": false
               }
             },
             "additionalProperties": false,
