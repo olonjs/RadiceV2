@@ -949,7 +949,7 @@ function App() {
         if (!isCloudMode || !CLOUD_API_URL || !CLOUD_API_KEY) {
           throw new Error('Cloud mode is not configured for hot save.');
         }
-        const apiBase = CLOUD_API_URL.replace(/\/$/, '');
+        const apiBase = cloudApiCandidates[0] ?? normalizeApiBase(CLOUD_API_URL);
         const res = await fetch(`${apiBase}/hotSave`, {
           method: 'POST',
           headers: {
@@ -960,6 +960,7 @@ function App() {
             slug,
             page: state.page,
             siteConfig: state.site,
+            menuConfig: state.menu,
           }),
         });
         const body = (await res.json().catch(() => ({}))) as { error?: string; code?: string };
@@ -973,6 +974,7 @@ function App() {
           keyFingerprint,
           savedAt: Date.now(),
           siteConfig: state.site ?? null,
+          menuConfig: state.menu ?? null,
           pages: {
             ...(existing?.pages ?? {}),
             [normalizedSlug]: state.page,
