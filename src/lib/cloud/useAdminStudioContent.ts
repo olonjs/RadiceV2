@@ -1,10 +1,11 @@
-import { useEffect, useRef } from 'react';
+import { useCallback, useEffect, useRef } from 'react';
 import type { Dispatch, SetStateAction } from 'react';
 import {
   fetchRenderProjection,
   isAdminPath,
-  listAdminRenderPaths,
   patchHistoryNavigation,
+  registrySlugToRenderPath,
+  resolveAdminSlugFromPathname,
   resolveRegistrySlugFromRender,
 } from '@/lib/spp/renderClient';
 import type { MenuConfig, PageConfig, SiteConfig } from '@/types';
@@ -20,10 +21,16 @@ type UseAdminStudioContentOptions = {
   basePath: string;
   apiCandidates: string[];
   apiKey: string;
-  pageRegistry: Record<string, unknown>;
   setPages: Dispatch<SetStateAction<Record<string, PageConfig>>>;
   setSiteConfig: Dispatch<SetStateAction<SiteConfig>>;
   setMenuConfig: Dispatch<SetStateAction<MenuConfig>>;
+  readCache: () => {
+    keyFingerprint: string;
+    savedAt: number;
+    siteConfig: unknown | null;
+    menuConfig?: unknown | null;
+    pages: Record<string, unknown>;
+  } | null;
   writeCache: (entry: {
     keyFingerprint: string;
     savedAt: number;
@@ -34,110 +41,102 @@ type UseAdminStudioContentOptions = {
   onBootstrapResolved?: () => void;
 };
 
-/** Studio `/admin` fan-out: GET /render per static page path. Visitor uses single-path render — never mix `/content`. */
+/** Studio `/admin`: one GET /render for the active admin page; refetch when the page changes. */
 export function useAdminStudioContent({
   enabled,
   basePath,
   apiCandidates,
   apiKey,
-  pageRegistry,
   setPages,
   setSiteConfig,
   setMenuConfig,
+  readCache,
   writeCache,
   onBootstrapResolved,
 }: UseAdminStudioContentOptions) {
-  const loadedRef = useRef(false);
-  const inFlightRef = useRef<Promise<void> | null>(null);
+  const bootstrapResolvedRef = useRef(false);
+  const fetchControllerRef = useRef<AbortController | null>(null);
 
-  useEffect(() => {
-    if (!enabled || apiCandidates.length === 0 || !apiKey.trim()) return;
-
-    const syncIfAdmin = () => {
-      if (!isAdminPath(window.location.pathname, basePath)) return;
-      if (loadedRef.current) {
-        onBootstrapResolved?.();
-        return;
-      }
-      if (inFlightRef.current) return;
-
-      const controller = new AbortController();
+  const loadAdminPage = useCallback(
+    async (pathname: string, options?: { signal?: AbortSignal }) => {
+      const slug = resolveAdminSlugFromPathname(pathname, basePath);
       const fingerprint = cloudFingerprint(apiCandidates[0]!, apiKey);
-      const renderPaths = listAdminRenderPaths(pageRegistry);
+      const cached = readCache();
+      const renderPath = registrySlugToRenderPath(slug);
 
-      inFlightRef.current = (async () => {
-        const mergedPages: Record<string, PageConfig> = {};
-        let remoteSite: SiteConfig | null = null;
-        let remoteMenu: MenuConfig | null = null;
+      try {
+        const result = await fetchRenderProjection(apiCandidates, apiKey, renderPath, {
+          signal: options?.signal,
+          maxRetryAttempts: MAX_RETRIES,
+        });
 
-        const results = await Promise.allSettled(
-          renderPaths.map((path) =>
-            fetchRenderProjection(apiCandidates, apiKey, path, {
-              signal: controller.signal,
-              maxRetryAttempts: MAX_RETRIES,
-            }),
-          ),
-        );
-
-        for (const result of results) {
-          if (result.status !== 'fulfilled' || !result.value.ok || !result.value.page) continue;
-
-          const registrySlug = resolveRegistrySlugFromRender(result.value.page);
-          mergedPages[registrySlug] = result.value.page;
-
-          if (!remoteSite && result.value.context?.siteConfig) {
-            remoteSite = result.value.context.siteConfig;
-          }
-          if (!remoteMenu && result.value.context?.menuConfig) {
-            remoteMenu = result.value.context.menuConfig;
-          }
+        if (!result.ok || !result.page) {
+          throw new Error(result.error || `Render failed for admin page "${slug}".`);
         }
 
-        const pageCount = Object.keys(mergedPages).length;
-        if (pageCount === 0) {
-          throw new Error('Admin render fan-out returned no pages.');
-        }
-
-        setPages((prev) => ({ ...prev, ...mergedPages }));
-        if (remoteSite) setSiteConfig(remoteSite);
-        if (remoteMenu) setMenuConfig(remoteMenu);
+        const registrySlug = resolveRegistrySlugFromRender(result.page);
+        setPages((prev) => ({ ...prev, [registrySlug]: result.page! }));
+        if (result.context?.siteConfig) setSiteConfig(result.context.siteConfig);
+        if (result.context?.menuConfig) setMenuConfig(result.context.menuConfig);
 
         writeCache({
           keyFingerprint: fingerprint,
           savedAt: Date.now(),
-          siteConfig: remoteSite,
-          menuConfig: remoteMenu,
-          pages: mergedPages as Record<string, unknown>,
+          siteConfig: result.context?.siteConfig ?? cached?.siteConfig ?? null,
+          menuConfig: result.context?.menuConfig ?? cached?.menuConfig ?? null,
+          pages: {
+            ...(cached?.pages ?? {}),
+            [registrySlug]: result.page,
+          },
         });
-        loadedRef.current = true;
-      })()
+      } catch (error: unknown) {
+        if (options?.signal?.aborted) return;
+        throw error;
+      }
+    },
+    [
+      apiCandidates,
+      apiKey,
+      basePath,
+      readCache,
+      setMenuConfig,
+      setPages,
+      setSiteConfig,
+      writeCache,
+    ],
+  );
+
+  useEffect(() => {
+    if (!enabled || apiCandidates.length === 0 || !apiKey.trim()) return;
+
+    const syncAdminPage = (pathname: string) => {
+      if (!isAdminPath(pathname, basePath)) return;
+
+      fetchControllerRef.current?.abort();
+      const controller = new AbortController();
+      fetchControllerRef.current = controller;
+
+      void loadAdminPage(pathname, { signal: controller.signal })
         .catch((error: unknown) => {
           if (import.meta.env.DEV) {
-            console.warn('[admin-studio] render fan-out failed', error);
+            console.warn('[admin-studio] render load failed', error);
           }
         })
         .finally(() => {
-          inFlightRef.current = null;
-          onBootstrapResolved?.();
+          if (!bootstrapResolvedRef.current) {
+            bootstrapResolvedRef.current = true;
+            onBootstrapResolved?.();
+          }
         });
     };
 
-    syncIfAdmin();
-    const unpatch = patchHistoryNavigation(syncIfAdmin);
+    syncAdminPage(window.location.pathname);
+    const unpatch = patchHistoryNavigation(syncAdminPage);
+
     return () => {
+      fetchControllerRef.current?.abort();
+      fetchControllerRef.current = null;
       unpatch();
-      inFlightRef.current = null;
     };
-  }, [
-    enabled,
-    basePath,
-    apiCandidates,
-    apiKey,
-    pageRegistry,
-    setPages,
-    setSiteConfig,
-    setMenuConfig,
-    writeCache,
-    onBootstrapResolved,
-  ]);
+  }, [enabled, basePath, apiCandidates, apiKey, loadAdminPage, onBootstrapResolved]);
 }

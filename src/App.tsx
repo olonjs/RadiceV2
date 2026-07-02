@@ -105,6 +105,19 @@ function getInitialData() {
   return getHydratedData(TENANT_ID, filePages, fileSiteConfig);
 }
 
+function buildCloudPageStubs(registry: Record<string, PageConfig>): Record<string, PageConfig> {
+  const stubs: Record<string, PageConfig> = {};
+  for (const [slug, seed] of Object.entries(registry)) {
+    stubs[slug] = {
+      id: seed.id ?? `${slug}-page`,
+      slug,
+      meta: seed.meta ?? { title: slug, description: '' },
+      sections: [],
+    };
+  }
+  return stubs;
+}
+
 function getInitialCloudSaveUiState(): CloudSaveUiState {
   return {
     isOpen: false,
@@ -402,7 +415,9 @@ function App() {
     const normalized = normalizePageRegistry(localInitialData.pages as unknown);
     return Object.keys(normalized).length > 0 ? normalized : localInitialData.pages;
   }, [localInitialData]);
-  const [pages, setPages] = useState<Record<string, PageConfig>>(localInitialPages);
+  const [pages, setPages] = useState<Record<string, PageConfig>>(() =>
+    isCloudMode && !isSave2RepoMode ? buildCloudPageStubs(filePages) : localInitialPages,
+  );
   const [siteConfig, setSiteConfig] = useState<SiteConfig>(
     localInitialData?.siteConfig ?? fileSiteConfig
   );
@@ -443,6 +458,12 @@ function App() {
     writeCachedCloudContent(entry);
   }, []);
 
+  const readCloudCache = useCallback((): CachedCloudContent | null => {
+    if (!CLOUD_API_URL || !CLOUD_API_KEY) return null;
+    const apiBase = cloudApiCandidates[0] ?? normalizeApiBase(CLOUD_API_URL);
+    return readCachedCloudContent(cloudFingerprint(apiBase, CLOUD_API_KEY));
+  }, [cloudApiCandidates]);
+
   const resolveAdminBootstrap = useCallback(() => {
     setContentMode('cloud');
     setContentFallback(null);
@@ -455,10 +476,10 @@ function App() {
     basePath: APP_BASE_PATH,
     apiCandidates: cloudApiCandidates,
     apiKey: CLOUD_API_KEY ?? '',
-    pageRegistry: filePages,
     setPages,
     setSiteConfig,
     setMenuConfig,
+    readCache: readCloudCache,
     writeCache: writeCloudCache,
     onBootstrapResolved: resolveAdminBootstrap,
   });

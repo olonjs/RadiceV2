@@ -43,6 +43,16 @@ export function resolveRegistrySlugFromRender(page: PageConfig): string {
   return 'home';
 }
 
+export function resolveAdminSlugFromPathname(pathname: string, basePath: string): string {
+  const path = normalizeRenderPath(pathname, basePath);
+  if (path === '/admin') return 'home';
+  if (path.startsWith('/admin/')) {
+    const remainder = path.slice('/admin/'.length).replace(/^\/+|\/+$/g, '');
+    return remainder || 'home';
+  }
+  return 'home';
+}
+
 /** Maps a registry slug to the SPP render path query value. */
 export function registrySlugToRenderPath(slug: string): string {
   const normalized = slug.trim().replace(/^\/+|\/+$/g, '');

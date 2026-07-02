@@ -6,11 +6,16 @@ import assert from 'node:assert/strict';
 import {
   listAdminRenderPaths,
   registrySlugToRenderPath,
+  resolveAdminSlugFromPathname,
 } from '../src/lib/spp/renderClient.ts';
 
 assert.equal(registrySlugToRenderPath('home'), '/');
 assert.equal(registrySlugToRenderPath('menu'), '/menu');
 assert.equal(registrySlugToRenderPath('/chef/'), '/chef');
+
+assert.equal(resolveAdminSlugFromPathname('/admin', ''), 'home');
+assert.equal(resolveAdminSlugFromPathname('/admin/menu', ''), 'menu');
+assert.equal(resolveAdminSlugFromPathname('/admin/private-dining', ''), 'private-dining');
 
 const radiceLikePages = {
   home: {},
