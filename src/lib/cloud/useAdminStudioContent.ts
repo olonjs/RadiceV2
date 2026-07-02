@@ -165,6 +165,7 @@ type UseAdminStudioContentOptions = {
     menuConfig?: unknown | null;
     pages: Record<string, unknown>;
   }) => void;
+  onBootstrapResolved?: () => void;
 };
 
 /** Studio `/admin` loads legacy `/content` (all pages). Visitor uses `/render` — never mix the two. */
@@ -177,6 +178,7 @@ export function useAdminStudioContent({
   setSiteConfig,
   setMenuConfig,
   writeCache,
+  onBootstrapResolved,
 }: UseAdminStudioContentOptions) {
   const loadedRef = useRef(false);
   const inFlightRef = useRef<Promise<void> | null>(null);
@@ -186,7 +188,11 @@ export function useAdminStudioContent({
 
     const syncIfAdmin = () => {
       if (!isAdminPath(window.location.pathname, basePath)) return;
-      if (loadedRef.current || inFlightRef.current) return;
+      if (loadedRef.current) {
+        onBootstrapResolved?.();
+        return;
+      }
+      if (inFlightRef.current) return;
 
       const controller = new AbortController();
       const fingerprint = cloudFingerprint(apiCandidates[0]!, apiKey);
@@ -221,6 +227,7 @@ export function useAdminStudioContent({
         })
         .finally(() => {
           inFlightRef.current = null;
+          onBootstrapResolved?.();
         });
     };
 
@@ -230,5 +237,5 @@ export function useAdminStudioContent({
       unpatch();
       inFlightRef.current = null;
     };
-  }, [enabled, basePath, apiCandidates, apiKey, setPages, setSiteConfig, setMenuConfig, writeCache]);
+  }, [enabled, basePath, apiCandidates, apiKey, setPages, setSiteConfig, setMenuConfig, writeCache, onBootstrapResolved]);
 }

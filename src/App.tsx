@@ -443,6 +443,13 @@ function App() {
     writeCachedCloudContent(entry);
   }, []);
 
+  const resolveAdminBootstrap = useCallback(() => {
+    setContentMode('cloud');
+    setContentFallback(null);
+    setShowTopProgress(false);
+    setHasInitialCloudResolved(true);
+  }, []);
+
   useAdminStudioContent({
     enabled: isHotSaveMode,
     basePath: APP_BASE_PATH,
@@ -452,6 +459,7 @@ function App() {
     setSiteConfig,
     setMenuConfig,
     writeCache: writeCloudCache,
+    onBootstrapResolved: resolveAdminBootstrap,
   });
 
   const adminRoute =
@@ -569,7 +577,7 @@ function App() {
       setContentMode('cloud');
       setContentFallback(null);
       setShowTopProgress(false);
-      setHasInitialCloudResolved(true);
+      setHasInitialCloudResolved(false);
       return;
     }
 
