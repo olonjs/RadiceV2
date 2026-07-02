@@ -7,6 +7,7 @@
     "dev": "vite",
     "dev:clean": "vite --force",
     "verify:webmcp": "node scripts/webmcp-feature-check.mjs",
+    "test:admin-render-paths": "node --experimental-strip-types scripts/admin-render-paths-unit.mjs",
     "prebuild": "node scripts/sync-pages-to-public.mjs && node scripts/generate-llms-txt.mjs && node scripts/bake.mjs && node scripts/sitemap.mjs && node scripts/robots.mjs",
     "build": "tsc && vite build",
     "dist": "bash ./src2Code.sh --template alpha src .cursor vercel.json components.json index.html tsconfig.json package.json tsconfig.node.json vite.config.ts scripts ",

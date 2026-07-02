@@ -455,6 +455,7 @@ function App() {
     basePath: APP_BASE_PATH,
     apiCandidates: cloudApiCandidates,
     apiKey: CLOUD_API_KEY ?? '',
+    pageRegistry: filePages,
     setPages,
     setSiteConfig,
     setMenuConfig,

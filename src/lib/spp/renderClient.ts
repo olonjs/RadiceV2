@@ -43,6 +43,26 @@ export function resolveRegistrySlugFromRender(page: PageConfig): string {
   return 'home';
 }
 
+/** Maps a registry slug to the SPP render path query value. */
+export function registrySlugToRenderPath(slug: string): string {
+  const normalized = slug.trim().replace(/^\/+|\/+$/g, '');
+  if (!normalized || normalized === 'home') return '/';
+  return `/${normalized}`;
+}
+
+/** Static registry slugs → unique render paths for admin fan-out (skips dynamic templates). */
+export function listAdminRenderPaths(pages: Record<string, unknown>): string[] {
+  const paths = Object.keys(pages)
+    .filter((slug) => slug.trim() && !slug.includes('['))
+    .map((slug) => registrySlugToRenderPath(slug));
+
+  return Array.from(new Set(paths)).sort((a, b) => {
+    if (a === '/') return -1;
+    if (b === '/') return 1;
+    return a.localeCompare(b);
+  });
+}
+
 function isRetryableStatus(status: number): boolean {
   return status === 429 || status === 500 || status === 502 || status === 503 || status === 504;
 }
