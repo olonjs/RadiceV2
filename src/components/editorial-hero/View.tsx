@@ -1,8 +1,14 @@
 import React from 'react';
+import { resolveAssetUrl, useConfig } from '@olonjs/core/runtime';
 import type { EditorialHeroData, EditorialHeroSettings } from './types';
 import { Button } from '@/components/ui/button';
 
 export const EditorialHero: React.FC<{ data: EditorialHeroData; settings: EditorialHeroSettings }> = ({ data }) => {
+  const { tenantId } = useConfig();
+  const backgroundUrl = data.backgroundImage?.url
+    ? resolveAssetUrl(data.backgroundImage.url, tenantId)
+    : '';
+
   return (
     <section
       style={{
@@ -13,12 +19,13 @@ export const EditorialHero: React.FC<{ data: EditorialHeroData; settings: Editor
       } as React.CSSProperties}
       className="relative z-0 flex min-h-screen items-center bg-[var(--local-bg)] py-32"
     >
-      {data.backgroundImage?.url && (
+      {backgroundUrl && (
         <div className="absolute inset-0 z-0">
           <img
-            src={data.backgroundImage.url}
-            alt={data.backgroundImage.alt || 'Atmospheric background image for Radice'}
+            src={backgroundUrl}
+            alt={data.backgroundImage?.alt || 'Atmospheric background image for Radice'}
             className="h-full w-full object-cover"
+            data-jp-field="backgroundImage"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[var(--local-bg)] via-[var(--local-bg)]/80 to-transparent"></div>
         </div>
@@ -42,8 +49,20 @@ export const EditorialHero: React.FC<{ data: EditorialHeroData; settings: Editor
         )}
         {data.primaryCta?.label && (
           <div className="mt-12">
-            <Button asChild variant="outline" className="h-auto rounded-none border border-[var(--local-text)] bg-transparent px-8 py-4 text-xs uppercase tracking-[0.1em] text-[var(--local-text)] transition-colors hover:border-[var(--local-primary)] hover:bg-[var(--local-primary)] hover:text-[var(--primary-foreground)]">
-              <a href={data.primaryCta.href}>{data.primaryCta.label}</a>
+            <Button
+              asChild
+              variant={data.primaryCta.variant === 'secondary' ? 'secondary' : data.primaryCta.variant === 'outline' ? 'outline' : 'default'}
+              className={
+                data.primaryCta.variant === 'secondary'
+                  ? 'h-auto rounded-none border border-[var(--secondary)] bg-[var(--secondary)] px-8 py-4 text-xs uppercase tracking-[0.1em] text-[var(--secondary-foreground)] transition-colors hover:opacity-90'
+                  : data.primaryCta.variant === 'outline'
+                    ? 'h-auto rounded-none border border-[var(--local-text)] bg-transparent px-8 py-4 text-xs uppercase tracking-[0.1em] text-[var(--local-text)] transition-colors hover:border-[var(--local-primary)] hover:bg-[var(--local-primary)] hover:text-[var(--primary-foreground)]'
+                    : 'h-auto rounded-none border border-[var(--local-primary)] bg-[var(--local-primary)] px-8 py-4 text-xs uppercase tracking-[0.1em] text-[var(--primary-foreground)] transition-colors hover:opacity-90'
+              }
+            >
+              <a href={data.primaryCta.href} data-jp-field="primaryCta">
+                <span data-jp-field="primaryCta">{data.primaryCta.label}</span>
+              </a>
             </Button>
           </div>
         )}
@@ -51,4 +70,3 @@ export const EditorialHero: React.FC<{ data: EditorialHeroData; settings: Editor
     </section>
   );
 };
-

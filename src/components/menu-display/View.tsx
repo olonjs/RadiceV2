@@ -2,6 +2,8 @@ import React from 'react';
 import type { MenuDisplayData, MenuDisplaySettings } from './types';
 
 export const MenuDisplay: React.FC<{ data: MenuDisplayData; settings: MenuDisplaySettings }> = ({ data }) => {
+  const items = data.items.filter((item) => item.id);
+
   return (
     <section
       style={{
@@ -25,21 +27,21 @@ export const MenuDisplay: React.FC<{ data: MenuDisplayData; settings: MenuDispla
 
       <div className="mx-auto mt-16 max-w-4xl px-6 md:px-12">
         <div className="space-y-12">
-          {data.items.map((item, idx) => (
-            <div key={item.id || `menu-item-${idx}`} data-jp-item-id={item.id || `menu-item-${idx}`} data-jp-item-field="items">
+          {items.map((item) => (
+            <div key={item.id} data-jp-item-id={item.id} data-jp-item-field="items">
               <div className="flex items-baseline justify-between gap-4">
-                <h3 className="font-display text-xl font-medium text-[var(--local-text)]" data-jp-item-field-path="name">
+                <h3 className="font-display text-xl font-medium text-[var(--local-text)]" data-jp-field="name">
                   {item.name}
                 </h3>
                 <div className="flex-grow border-b border-dotted border-[var(--local-border)]"></div>
                 {item.price && (
-                  <span className="font-primary text-base text-[var(--local-text)]" data-jp-item-field-path="price">
+                  <span className="font-primary text-base text-[var(--local-text)]" data-jp-field="price">
                     {item.price}
                   </span>
                 )}
               </div>
               {item.description && (
-                <p className="mt-2 text-base text-[var(--local-text-muted)]" data-jp-item-field-path="description">
+                <p className="mt-2 text-base text-[var(--local-text-muted)]" data-jp-field="description">
                   {item.description}
                 </p>
               )}
@@ -55,4 +57,3 @@ export const MenuDisplay: React.FC<{ data: MenuDisplayData; settings: MenuDispla
     </section>
   );
 };
-

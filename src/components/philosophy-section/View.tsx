@@ -1,8 +1,11 @@
 import React from 'react';
+import { resolveAssetUrl, useConfig } from '@olonjs/core/runtime';
 import type { PhilosophySectionData, PhilosophySectionSettings } from './types';
 
 export const PhilosophySection: React.FC<{ data: PhilosophySectionData; settings: PhilosophySectionSettings }> = ({ data }) => {
+  const { tenantId } = useConfig();
   const imageOrderClass = data.imagePosition === 'left' ? 'lg:order-first' : 'lg:order-last';
+  const imageUrl = data.image?.url ? resolveAssetUrl(data.image.url, tenantId) : '';
   
   return (
     <section
@@ -28,12 +31,13 @@ export const PhilosophySection: React.FC<{ data: PhilosophySectionData; settings
               {data.content}
             </p>
           </div>
-          {data.image?.url && (
+          {imageUrl && (
             <div className={`relative ${imageOrderClass}`}>
               <img
-                src={data.image.url}
-                alt={data.image.alt || ''}
+                src={imageUrl}
+                alt={data.image?.alt || ''}
                 className="relative z-10 aspect-[3/4] w-full max-w-md object-cover"
+                data-jp-field="image"
               />
             </div>
           )}
@@ -42,4 +46,3 @@ export const PhilosophySection: React.FC<{ data: PhilosophySectionData; settings
     </section>
   );
 };
-

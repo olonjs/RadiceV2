@@ -7,7 +7,7 @@ import { isInAppPathHref } from '@/lib/isInAppPathHref';
 import type { HeaderData, HeaderSettings } from './types';
 
 export const Header: React.FC<{ data: HeaderData; settings: HeaderSettings }> = ({ data }) => {
-  const navItems = Array.isArray(data.menu) ? data.menu : [];
+  const navItems = Array.isArray(data.menu) ? data.menu.filter((item) => item.id) : [];
   const [theme, setTheme] = React.useState<'light' | 'dark'>('light');
   const [isScrolled, setIsScrolled] = React.useState(false);
 
@@ -57,28 +57,58 @@ export const Header: React.FC<{ data: HeaderData; settings: HeaderSettings }> = 
         </Link>
 
         <nav className="hidden items-center gap-1 lg:flex">
-          {navItems.filter(item => !item.isCta).map((item, idx) =>
+          {navItems.filter(item => !item.isCta).map((item) =>
             isInAppPathHref(item.href) ? (
-              <Link key={item.id || `nav-${idx}`} to={item.href} viewTransition className={navItemClass + ' px-4 py-2'}>
-                {item.label}
+              <Link
+                key={item.id}
+                to={item.href}
+                viewTransition
+                className={navItemClass + ' px-4 py-2'}
+                data-jp-item-id={item.id}
+                data-jp-item-field="menu"
+                data-jp-field="href"
+              >
+                <span data-jp-field="label">{item.label}</span>
               </Link>
             ) : (
-              <a key={item.id || `nav-${idx}`} href={item.href} className={navItemClass + ' px-4 py-2'}>
-                {item.label}
+              <a
+                key={item.id}
+                href={item.href}
+                className={navItemClass + ' px-4 py-2'}
+                data-jp-item-id={item.id}
+                data-jp-item-field="menu"
+                data-jp-field="href"
+              >
+                <span data-jp-field="label">{item.label}</span>
               </a>
             )
           )}
         </nav>
 
         <div className="hidden items-center gap-2 lg:flex">
-          {navItems.filter(item => item.isCta).map((item, idx) =>
+          {navItems.filter(item => item.isCta).map((item) =>
             isInAppPathHref(item.href) ? (
-              <Link key={item.id || `cta-${idx}`} to={item.href} viewTransition className={ctaButtonClass}>
-                {item.label}
+              <Link
+                key={item.id}
+                to={item.href}
+                viewTransition
+                className={ctaButtonClass}
+                data-jp-item-id={item.id}
+                data-jp-item-field="menu"
+                data-jp-field="href"
+              >
+                <span data-jp-field="label">{item.label}</span>
               </Link>
             ) : (
-              <a key={item.id || `cta-${idx}`} href={item.href} className={ctaButtonClass}>
-                {item.label}
+              <a
+                key={item.id}
+                href={item.href}
+                className={ctaButtonClass}
+                data-jp-item-id={item.id}
+                data-jp-item-field="menu"
+                data-jp-field="href"
+              >
+                <span data-jp-field="label">{item.label}</span>
               </a>
             )
           )}
@@ -100,14 +130,29 @@ export const Header: React.FC<{ data: HeaderData; settings: HeaderSettings }> = 
             </SheetTrigger>
             <SheetContent className="w-full border-none bg-[var(--background)] text-[var(--foreground)]">
               <nav className="mt-16 flex flex-col items-center justify-center gap-8 text-center">
-                {navItems.map((item, idx) =>
+                {navItems.map((item) =>
                   isInAppPathHref(item.href) ? (
-                    <Link key={item.id || `mobile-${idx}`} to={item.href} viewTransition className={`font-display text-3xl ${item.isCta ? 'text-[var(--primary)]' : ''}`}>
-                      {item.label}
+                    <Link
+                      key={item.id}
+                      to={item.href}
+                      viewTransition
+                      className={`font-display text-3xl ${item.isCta ? 'text-[var(--primary)]' : ''}`}
+                      data-jp-item-id={item.id}
+                      data-jp-item-field="menu"
+                      data-jp-field="href"
+                    >
+                      <span data-jp-field="label">{item.label}</span>
                     </Link>
                   ) : (
-                    <a key={item.id || `mobile-${idx}`} href={item.href} className={`font-display text-3xl ${item.isCta ? 'text-[var(--primary)]' : ''}`}>
-                      {item.label}
+                    <a
+                      key={item.id}
+                      href={item.href}
+                      className={`font-display text-3xl ${item.isCta ? 'text-[var(--primary)]' : ''}`}
+                      data-jp-item-id={item.id}
+                      data-jp-item-field="menu"
+                      data-jp-field="href"
+                    >
+                      <span data-jp-field="label">{item.label}</span>
                     </a>
                   )
                 )}

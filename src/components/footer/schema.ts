@@ -1,16 +1,14 @@
 import { z } from 'zod';
-import { BaseSectionData } from '@olonjs/core/runtime';
+import { BaseSectionData, BaseArrayItem } from '@olonjs/core/runtime';
 
-const FooterMenuItemSchema = z.object({
-  id: z.string().optional(),
+const FooterMenuItemSchema = BaseArrayItem.extend({
   label: z.string().describe('ui:text'),
   href: z.string().describe('ui:text'),
 });
 
-const SocialLinkSchema = z.object({
-    id: z.string().optional(),
-    platform: z.string().describe('ui:text'),
-    url: z.string().describe('ui:text'),
+const SocialLinkSchema = BaseArrayItem.extend({
+  platform: z.string().describe('ui:text'),
+  url: z.string().describe('ui:text'),
 });
 
 export const FooterSchema = BaseSectionData.extend({

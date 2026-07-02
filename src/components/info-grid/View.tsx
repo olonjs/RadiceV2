@@ -2,6 +2,8 @@ import React from 'react';
 import type { InfoGridData, InfoGridSettings } from './types';
 
 export const InfoGrid: React.FC<{ data: InfoGridData; settings: InfoGridSettings }> = ({ data }) => {
+  const items = data.items.filter((item) => item.id);
+
   return (
     <section
       style={{
@@ -21,12 +23,12 @@ export const InfoGrid: React.FC<{ data: InfoGridData; settings: InfoGridSettings
           </div>
         )}
         <div className="grid grid-cols-1 gap-12 border-t border-[var(--local-border)] pt-12 md:grid-cols-2 lg:grid-cols-3">
-          {data.items.map((item, idx) => (
-            <div key={item.id || `info-item-${idx}`} data-jp-item-id={item.id || `info-item-${idx}`} data-jp-item-field="items">
-              <h3 className="text-xs font-semibold uppercase tracking-widest text-[var(--local-text)]" data-jp-item-field-path="title">
+          {items.map((item) => (
+            <div key={item.id} data-jp-item-id={item.id} data-jp-item-field="items">
+              <h3 className="text-xs font-semibold uppercase tracking-widest text-[var(--local-text)]" data-jp-field="title">
                 {item.title}
               </h3>
-              <p className="mt-4 whitespace-pre-line text-base text-[var(--local-text-muted)]" data-jp-item-field-path="content">
+              <p className="mt-4 whitespace-pre-line text-base text-[var(--local-text-muted)]" data-jp-field="content">
                 {item.content}
               </p>
             </div>

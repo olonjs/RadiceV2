@@ -1,7 +1,11 @@
 import React from 'react';
+import { resolveAssetUrl, useConfig } from '@olonjs/core/runtime';
 import type { ChefProfileData, ChefProfileSettings } from './types';
 
 export const ChefProfile: React.FC<{ data: ChefProfileData; settings: ChefProfileSettings }> = ({ data }) => {
+  const { tenantId } = useConfig();
+  const imageUrl = data.image?.url ? resolveAssetUrl(data.image.url, tenantId) : '';
+
   return (
     <section
       style={{
@@ -14,8 +18,15 @@ export const ChefProfile: React.FC<{ data: ChefProfileData; settings: ChefProfil
     >
       <div className="mx-auto grid max-w-[1280px] grid-cols-1 items-center gap-16 px-6 md:px-12 lg:grid-cols-5">
         <div className="lg:col-span-2">
-          {data.image?.url && (
-            <img src={data.image.url} alt={data.image.alt || data.name} className="aspect-square w-full object-cover" />
+          {imageUrl && (
+            <>
+              <img
+                src={imageUrl}
+                alt={data.image?.alt || data.name}
+                className="aspect-square w-full object-cover"
+                data-jp-field="image"
+              />
+            </>
           )}
         </div>
         <div className="lg:col-span-3">
@@ -35,4 +46,3 @@ export const ChefProfile: React.FC<{ data: ChefProfileData; settings: ChefProfil
     </section>
   );
 };
-

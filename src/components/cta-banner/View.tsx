@@ -21,11 +21,25 @@ export const CtaBanner: React.FC<{ data: CtaBannerData; settings: CtaBannerSetti
             {data.headline}
           </h2>
           {data.primaryCta && data.primaryCta.label && (
-            <Button asChild variant="default" className="h-auto shrink-0 rounded-none border border-[var(--local-text)] bg-[var(--local-text)] px-8 py-4 text-xs uppercase tracking-[0.1em] text-[var(--background)] transition-colors hover:border-[var(--local-primary)] hover:bg-[var(--local-primary)] hover:text-[var(--local-primary-foreground)]">
+            <Button
+              asChild
+              variant={data.primaryCta.variant === 'secondary' ? 'secondary' : data.primaryCta.variant === 'outline' ? 'outline' : 'default'}
+              className={
+                data.primaryCta.variant === 'secondary'
+                  ? 'h-auto shrink-0 rounded-none border border-[var(--secondary)] bg-[var(--secondary)] px-8 py-4 text-xs uppercase tracking-[0.1em] text-[var(--secondary-foreground)] transition-colors hover:opacity-90'
+                  : data.primaryCta.variant === 'outline'
+                    ? 'h-auto shrink-0 rounded-none border border-[var(--local-text)] bg-transparent px-8 py-4 text-xs uppercase tracking-[0.1em] text-[var(--local-text)] transition-colors hover:border-[var(--local-primary)] hover:bg-[var(--local-primary)] hover:text-[var(--local-primary-foreground)]'
+                    : 'h-auto shrink-0 rounded-none border border-[var(--local-text)] bg-[var(--local-text)] px-8 py-4 text-xs uppercase tracking-[0.1em] text-[var(--background)] transition-colors hover:border-[var(--local-primary)] hover:bg-[var(--local-primary)] hover:text-[var(--local-primary-foreground)]'
+              }
+            >
               {isInAppPathHref(data.primaryCta.href) ? (
-                <Link to={data.primaryCta.href} viewTransition>{data.primaryCta.label}</Link>
+                <Link to={data.primaryCta.href} viewTransition data-jp-field="primaryCta">
+                  <span data-jp-field="primaryCta">{data.primaryCta.label}</span>
+                </Link>
               ) : (
-                <a href={data.primaryCta.href}>{data.primaryCta.label}</a>
+                <a href={data.primaryCta.href} data-jp-field="primaryCta">
+                  <span data-jp-field="primaryCta">{data.primaryCta.label}</span>
+                </a>
               )}
             </Button>
           )}
@@ -34,4 +48,3 @@ export const CtaBanner: React.FC<{ data: CtaBannerData; settings: CtaBannerSetti
     </section>
   );
 };
-

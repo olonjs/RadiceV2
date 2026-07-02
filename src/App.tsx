@@ -58,7 +58,7 @@ const APP_BASE_PATH = normalizeBasePath(import.meta.env.BASE_URL || '/');
 const themeConfig = themeData as unknown as ThemeConfig;
 const menuConfigSeed = menuData as unknown as MenuConfig;
 
-const TENANT_ID = 'alpha';
+const TENANT_ID = 'radice';
 
 const filePages = getFilePages();
 const fileSiteConfig = siteData as unknown as SiteConfig;
@@ -337,9 +337,9 @@ function buildThemeFontVarsCss(input: unknown): string {
   const typography = tokens && isObjectRecord(tokens.typography) ? tokens.typography : null;
   const fontFamily = typography && isObjectRecord(typography.fontFamily) ? typography.fontFamily : null;
   const primary = typeof fontFamily?.primary === 'string' ? fontFamily.primary : "'Instrument Sans', system-ui, sans-serif";
-  const serif = typeof fontFamily?.serif === 'string' ? fontFamily.serif : "'Instrument Serif', Georgia, serif";
+  const display = typeof fontFamily?.display === 'string' ? fontFamily.display : primary;
   const mono = typeof fontFamily?.mono === 'string' ? fontFamily.mono : "'JetBrains Mono', monospace";
-  return `:root{--theme-font-primary:${primary};--theme-font-serif:${serif};--theme-font-mono:${mono};}`;
+  return `:root{--theme-font-primary:${primary};--theme-font-display:${display};--theme-font-mono:${mono};}`;
 }
 
 const REMOTE_CSS_LINK_ATTR = 'data-jp-tenant-remote-css';

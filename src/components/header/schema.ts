@@ -1,11 +1,10 @@
 import { z } from 'zod';
-import { BaseSectionData } from '@olonjs/core/runtime';
+import { BaseSectionData, BaseArrayItem } from '@olonjs/core/runtime';
 
-const HeaderMenuItemSchema = z.object({
-  id: z.string().optional(),
+const HeaderMenuItemSchema = BaseArrayItem.extend({
   label: z.string().describe('ui:text'),
   href: z.string().describe('ui:text'),
-  isCta: z.boolean().optional().describe('ui:checkbox'),
+  isCta: z.boolean().default(false).describe('ui:checkbox'),
 });
 
 export const HeaderSchema = BaseSectionData.extend({

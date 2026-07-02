@@ -1,7 +1,11 @@
 import React from 'react';
+import { resolveAssetUrl, useConfig } from '@olonjs/core/runtime';
 import type { GalleryGridData, GalleryGridSettings } from './types';
 
 export const GalleryGrid: React.FC<{ data: GalleryGridData; settings: GalleryGridSettings }> = ({ data }) => {
+  const { tenantId } = useConfig();
+  const items = data.items.filter((item) => item.id && item.image?.url);
+
   return (
     <section
       style={{
@@ -20,21 +24,23 @@ export const GalleryGrid: React.FC<{ data: GalleryGridData; settings: GalleryGri
           </div>
         )}
         <div className="columns-2 gap-4 md:columns-3 md:gap-6">
-          {data.items.map((item, idx) => (
-            item.image?.url && (
-              <figure key={item.id || `gallery-${idx}`} className="mb-4 break-inside-avoid md:mb-6" data-jp-item-id={item.id || `gallery-${idx}`} data-jp-item-field="items">
-                <img src={item.image.url} alt={item.image.alt || item.caption || ''} className="w-full" />
-                {item.caption && (
-                  <figcaption className="mt-2 text-center text-xs text-[var(--local-text-muted)]" data-jp-item-field-path="caption">
-                    {item.caption}
-                  </figcaption>
-                )}
-              </figure>
-            )
+          {items.map((item) => (
+            <figure key={item.id} className="mb-4 break-inside-avoid md:mb-6" data-jp-item-id={item.id} data-jp-item-field="items">
+              <img
+                src={resolveAssetUrl(item.image!.url, tenantId)}
+                alt={item.image!.alt || item.caption || ''}
+                className="w-full"
+                data-jp-field="image"
+              />
+              {item.caption && (
+                <figcaption className="mt-2 text-center text-xs text-[var(--local-text-muted)]" data-jp-field="caption">
+                  {item.caption}
+                </figcaption>
+              )}
+            </figure>
           ))}
         </div>
       </div>
     </section>
   );
 };
-

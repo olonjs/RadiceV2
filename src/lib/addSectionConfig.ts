@@ -31,17 +31,19 @@ function getDefaultSectionData(type: string): Record<string, unknown> {
     case 'text-block':
       return { content: '<p>Placeholder text about our philosophy and craft.</p>' };
     case 'menu-display':
-      return { title: 'Tasting Menu', items: [] };
+      return { title: 'Tasting Menu', items: [{ id: crypto.randomUUID(), name: 'Menu Item', description: '' }] };
     case 'philosophy-section':
         return { headline: 'Our Philosophy', content: 'Details about our core beliefs and practices.' };
     case 'info-grid':
-        return { items: [{title: "Title", content: "Content"}] };
+        return { items: [{ id: crypto.randomUUID(), title: 'Title', content: 'Content' }] };
+    case 'image-block':
+        return { image: { url: '', alt: '' } };
     case 'chef-profile':
         return { name: 'Chef Name', title: 'Executive Chef', bio: 'Chef biography.' };
     case 'cta-banner':
-        return { headline: 'Reserve Your Table', primaryCta: { label: 'Book Now', href: '/reservations' } };
+        return { headline: 'Reserve Your Table', primaryCta: { label: 'Book Now', href: '/reservations', variant: 'primary' } };
     case 'gallery-grid':
-        return { items: [] };
+        return { items: [{ id: crypto.randomUUID(), image: { url: '', alt: '' } }] };
     default:
       return {};
   }
