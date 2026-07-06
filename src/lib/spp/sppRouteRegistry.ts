@@ -30,13 +30,19 @@ export function isPageLoadedInRegistry(
   const renderPath = normalizeRenderPath(pathname, basePath);
   const requestedSlug = slugFromRenderPath(renderPath);
 
-  if (registry[requestedSlug]) return true;
+  const direct = registry[requestedSlug];
+  // Una pagina è considerata caricata solo se l'istanza esiste e possiede effettivamente delle sezioni.
+  if (direct && Array.isArray(direct.sections) && direct.sections.length > 0) {
+    return true;
+  }
 
   for (const [registrySlug, page] of Object.entries(registry)) {
     const templateSlug = (page.slug || registrySlug).trim();
-    if (templateSlug === requestedSlug) return true;
-    if (templateSlug.includes('[') && matchDynamicTemplate(templateSlug, requestedSlug)) {
-      return true;
+    if (page && Array.isArray(page.sections) && page.sections.length > 0) {
+      if (templateSlug === requestedSlug) return true;
+      if (templateSlug.includes('[') && matchDynamicTemplate(templateSlug, requestedSlug)) {
+        return true;
+      }
     }
   }
 
