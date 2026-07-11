@@ -14,6 +14,7 @@ import { normalizeBasePath, withBasePath } from '@olonjs/core/runtime';
 import { ComponentRegistry } from '@/lib/ComponentRegistry';
 import { SECTION_SCHEMAS, SECTION_SUBMISSION_SCHEMAS } from '@/lib/schemas';
 import { addSectionConfig } from '@/lib/addSectionConfig';
+import { buildColdSaveAdditionalFiles } from '@/lib/coldSaveBundle';
 import { getHydratedData } from '@/lib/draftStorage';
 import type { SiteConfig, ThemeConfig, MenuConfig, PageConfig } from '@/types';
 import type { DeployPhase, StepId } from '@olonjs/core/runtime';
@@ -835,6 +836,8 @@ function App() {
           apiKey: CLOUD_API_KEY,
           path: `src/data/pages/${payload.slug}.json`,
           content: payload.state.page,
+          additionalFiles: buildColdSaveAdditionalFiles(payload.state),
+          changedScopes: ['page', 'site', 'menu'],
           message: `Content update for ${payload.slug} via Visual Editor`,
           signal: controller.signal,
           onStep: (event) => {
