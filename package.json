@@ -3,6 +3,9 @@
   "version": "1.0.104",
   "private": true,
   "type": "module",
+  "olonjs": {
+    "runtime": "next"
+  },
   "scripts": {
     "dev": "vite",
     "dev:clean": "vite --force",
